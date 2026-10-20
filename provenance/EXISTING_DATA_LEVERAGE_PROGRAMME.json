@@ -1063,6 +1063,38 @@
       "exhaustion_decision": null,
       "review_trigger": "Separate owner authorization; no automatic successor or production adoption",
       "notes": "SCI-MD-MASS-DELIVERY-008 completed one independently approved score: **ADAPTATION_ADEQUATE_INCREMENT_NOT_ESTABLISHED**. Fixed A2; adequacy F2/A2/A0/M = FAIL/PASS/FAIL/FAIL; I_CAL/I_CHEM/I_LOCAL = FAIL/FAIL/FAIL. Source/coverage/calibration/numerics qualify. 13 original shots, 11 eligible, 98 prefix assays forming 22 summaries, 55 unique suffix observations; 110 ordered pairs, 550 slots per arm. Exactly 22 scalars and 88 MASS starts; no extra fit, prediction family or rescore. G1 / NO_GOVERNING_PHYSICS_CHANGE; RESEARCH_ONLY / TARGET_EXPOSED / retrospective one-calibration-shot adaptation. 007's failed zero-shot conclusion remains unchanged. PHYSICAL_VALIDATION=NOT_ESTABLISHED. Draft PRs Puckworks #294 / EWP #200 remain open/unmerged; no merge, production adoption/default/lock change, native run, laboratory operation or successor."
+    },
+    {
+      "opportunity_id": "SCI-MD-MO-PRESSURE-FEASIBILITY-001",
+      "title": "Mo2021 scalar pressure-controlled erosion feasibility",
+      "data_families": [
+        "mo2021",
+        "waszkiewicz2025"
+      ],
+      "scientific_question": "Can the declared normal-loading effective erosion reduction produce a declining high-pressure endpoint discharge with common parameters?",
+      "model_component": "analysis-only scalar opening/conductance reduction",
+      "status": "COMPLETE_NEGATIVE",
+      "priority": 1,
+      "prerequisites": [
+        "owner-authorized R-04/T08 source/mathematics scope"
+      ],
+      "task_id": "SCI-MD-MO-PRESSURE-FEASIBILITY-001",
+      "current_evidence": "Scalar no-turnover theorem with finite cohesion and line-pressure adapter; target applicability and full source model unresolved",
+      "expected_information": "source-specific pressure sign/domain restriction before calibration",
+      "positive_action": "identify one candidate and smallest qualification without execution",
+      "negative_action": "retire exactly the disproved scalar reduction for declining high-pressure discharge",
+      "null_action": "identify missing mathematical or observation premise and close",
+      "blocked_action": "retain scoped unresolved mapping without inventing it",
+      "claim_ceiling": "RETROSPECTIVE_TARGET_EXPOSED_NONSCORING_CONDITIONAL_STRUCTURAL_THEOREM_ONLY",
+      "home_lab_effect": "NO_OPERATION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_mo_pressure_feasibility_001/RESULT.md",
+        "docs/analysis/sci_md_mo_pressure_feasibility_001/RESULT.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "material change to declared mathematical assumptions or observation mapping",
+      "notes": "INFEASIBLE applies to common-state scalar opening-only effective law under ordered histories, not all Mo2021 physics or erosion. Endpoint applicability UNRESOLVED; PHYSICAL_VALIDATION=NOT_ESTABLISHED; no implementation or automatic successor."
     }
   ],
   "laboratory_gate": {

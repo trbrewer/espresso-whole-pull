@@ -1,5 +1,19 @@
 # Project State
 
+## SCI-MD-MO-PRESSURE-FEASIBILITY-001 (2026-10-20)
+
+G1 / `NO_GOVERNING_PHYSICS_CHANGE`, retrospective target-exposed non-scoring
+R-04/T08 analysis. [Result](analysis/sci_md_mo_pressure_feasibility_001/RESULT.md):
+the declared affine-traction scalar opening-only effective erosion reduction
+is **INFEASIBLE** for declining high-pressure instantaneous discharge under
+common initial state and pointwise ordered pressure histories, including the
+retained line-pressure adapter throughout evolution. Actual processed
+`endpoint_100s` applicability and full source spatial/stochastic behavior are
+**UNRESOLVED**. Retire exactly that reduction for the declining branch; no
+fit, score, governing-law port, dependency-lock change or automatic successor.
+`PHYSICAL_VALIDATION=NOT_ESTABLISHED`. Issue #206; draft PR delivery and review
+are recorded in the task bundle.
+
 SCI-MD-MASS-DELIVERY-008 completed one independently approved score: **ADAPTATION_ADEQUATE_INCREMENT_NOT_ESTABLISHED**. Fixed A2; adequacy F2/A2/A0/M = FAIL/PASS/FAIL/FAIL; I_CAL/I_CHEM/I_LOCAL = FAIL/FAIL/FAIL. Source/coverage/calibration/numerics qualify. 13 original shots, 11 eligible, 98 prefix assays forming 22 summaries, 55 unique suffix observations; 110 ordered pairs, 550 slots per arm. Exactly 22 scalars and 88 MASS starts; no extra fit, prediction family or rescore. G1 / NO_GOVERNING_PHYSICS_CHANGE; RESEARCH_ONLY / TARGET_EXPOSED / retrospective one-calibration-shot adaptation. 007's failed zero-shot conclusion remains unchanged. PHYSICAL_VALIDATION=NOT_ESTABLISHED. Draft PRs Puckworks #294 / EWP #200 remain open/unmerged; no merge, production adoption/default/lock change, native run, laboratory operation or successor. [Result](analysis/sci_md_mass_delivery_008/RESULT.md).
 
 SCI-MD-MASS-DELIVERY-007 completed one independently approved frozen cross-source score: **FROZEN_CONDITIONAL_TRANSFER_INADEQUATE_ON_DECLARED_COHORT**. C2 adequacy=FAIL; I0/I1=PASS/PASS; coverage/numerics=PASS/PASS. 11/13 qualified shots, 55/55 later vials per arm, 98 original assays summarized into 22 pooled inputs. Zero new fits, optimizer calls or native runs. Retrospective, target-exposed and conditional on collected beverage mass; PHYSICAL_VALIDATION=NOT_ESTABLISHED. No production adoption, lock/default change, merge, laboratory work or successor. Parent 006 and GRUDEVA-CLOCK-001 PRs verified merged at intake; their artifacts remain unchanged. Linked draft PRs Puckworks #292 / EWP #198 remain open/unmerged. [Result](analysis/sci_md_mass_delivery_007/RESULT.md).

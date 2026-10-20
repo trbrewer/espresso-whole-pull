@@ -1,0 +1,302 @@
+{
+  "task_id": "SCI-MD-MO-PRESSURE-FEASIBILITY-001",
+  "programme_scope": "R-04/T08",
+  "governance_class": "G1",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "evidence_role": "RETROSPECTIVE_TARGET_EXPOSED_NONSCORING_SOURCE_AND_MATHEMATICS_ANALYSIS",
+  "structural_capability": "INFEASIBLE",
+  "structural_capability_scope": "declared scalar effective-law opening-only model under common initial state and pointwise ordered admissible pressure histories; instantaneous endpoint discharge",
+  "endpoint_applicability": "UNRESOLVED",
+  "physical_validation": "NOT_ESTABLISHED",
+  "identities": {
+    "resolved_date_utc": "2026-10-20",
+    "ewp_repository": "trbrewer/espresso-whole-pull",
+    "base_ref": "main",
+    "base_commit": "7c025527da7e07982428d4c78a3e79bfa29a76ac",
+    "base_tree": "5864a867a8b8b41d39f35f09a637092929f33831",
+    "analysis_branch": "analysis/sci-md-mo-pressure-feasibility-001",
+    "puckworks_repository": "trbrewer/puckworks",
+    "research_reference_commit": "58075bbbce548e63d94106c96b918c1464221514",
+    "research_reference_tree": "a722e85bf919d038931f97af8c8437c06e922638",
+    "puckworks_pr_347_merge_commit": "58075bbbce548e63d94106c96b918c1464221514",
+    "main_delta_from_preparation": "NONE_FOR_EITHER_REPOSITORY",
+    "production_checkout_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "production_checkout_tree": "1d553e44ee2f7480a5df521560801b478618cc84",
+    "production_lock_unchanged": true,
+    "issue": "https://github.com/trbrewer/espresso-whole-pull/issues/206",
+    "final_git_identity_location": "resolve exact branch head/tree and draft PR metadata; review candidate in REVIEW.md"
+  },
+  "source": {
+    "citation": "Mo, Johnston, Navarini and Ellero (2021), Physics of Fluids 33, 093101",
+    "doi": "10.1063/5.0059707",
+    "record_url": "https://cronfa.swan.ac.uk/Record/cronfa57912",
+    "inspected_url": "https://cronfa.swan.ac.uk/Record/cronfa57912/Download/57912__20869__84fcf87a8f8542e8a1a9e9fd996e9fc5.pdf",
+    "version": "accepted manuscript dated 4 August 2021",
+    "sha256": "55ee1e3746312f85dcc8888e337775cdea0a99e93fec4a35376cb7663b67b99c",
+    "bytes": 26047376,
+    "version_difference": "byte-identical to supplied accepted-manuscript authority; no typeset version substitution",
+    "decisive_locations": [
+      "II B equations 5-12, pages 3-5; Figures 1-3",
+      "II D page 6",
+      "II E, Table I, Figure 7, equations 16-17, pages 7-8",
+      "Introduction incomplete wetting and III A-C geometry interpretation"
+    ],
+    "source_control": "prescribed superficial velocity/flux; not pressure-controlled simulation",
+    "rights": "CC-BY-NC-ND-2.0 per institutional record; manuscript and figures not committed"
+  },
+  "scopes": [
+    {
+      "scope": "fixed_geometry_effective_law",
+      "structural_capability": "INFEASIBLE",
+      "excluded_behavior": "decreasing local erosion rate in P, not an endpoint-flow result",
+      "endpoint_applicability": "UNRESOLVED",
+      "equation": "r_E=C_E[s_E P-D]_+; s_E=A-B tan(psi); D=c+sigma_0 tan(psi)",
+      "domain": [
+        "C_E>=0",
+        "D>=0",
+        "P>=0",
+        "fixed geometry and pressure-independent coefficients"
+      ],
+      "result": "s_E<=0: identically inactive; s_E>0: nondecreasing with onset D/s_E"
+    },
+    {
+      "scope": "scalar_endpoint_reduction",
+      "structural_capability": "INFEASIBLE",
+      "endpoint_applicability": "UNRESOLVED",
+      "equations": [
+        "dx/dt=N(x) C_E(x)[s_E(x) P-D(x)]_+/(rho_s V_*)",
+        "q=K(x)P",
+        "P=L-h(q) throughout evolution when line pressure is imposed"
+      ],
+      "assumptions": [
+        "one common geometry map g(x)",
+        "common initial state x0 in [0,1] or ordered initial states",
+        "common physical material parameters and elapsed time",
+        "N, C_E, A, B, sigma_0 bounded nonnegative Lipschitz on [0,1]",
+        "N(1)=0",
+        "rho_s>0, V_*>0",
+        "finite c>=0; 0<=psi<pi/2",
+        "K bounded C1; K>=0; Kprime>=0",
+        "bounded piecewise-continuous imposed histories pointwise ordered throughout common interval",
+        "quasi-steady instantaneous machine adapter admitted over entire modeled interval",
+        "no separate nonproportional outlet-solids or observation operator in hydraulic theorem"
+      ],
+      "not_required": [
+        "F_x>=0",
+        "D=0",
+        "calibrated erosion clock for structural all-time exclusion"
+      ],
+      "proof": "positive-part scalar comparison with a state Lipschitz bound; monotone implicit adapter in imposed line pressure at fixed state; endpoint q monotone in state and line pressure",
+      "time_domain": "every finite common physical T>=0 while declared hypotheses hold",
+      "bed_pressure_history_domain": "P2(t)>=P1(t)>=0, including constants and proportional nonnegative histories",
+      "line_pressure_history_domain": "L2(t)>=L1(t)>=h0; not arbitrary histories ordered only at endpoint",
+      "state_domain": "0<=x<=1 invariant; erosion mass since x0 <=rho_s V_*(1-x0)",
+      "hydraulic_domain": "q>=0; P>=0; L>=h0 for line adapter; unique nonnegative branch"
+    },
+    {
+      "scope": "full_source_spatial_stochastic",
+      "structural_capability": "UNRESOLVED",
+      "endpoint_applicability": "UNRESOLVED",
+      "missing_premises": [
+        "order preservation for vector/spatial geometry",
+        "source-pressure-to-local-traction mapping",
+        "physical clock and target observation mapping"
+      ],
+      "source_supported_scope_escape": "Figure 7 nonaffine threshold and capped sequential stochastic bond breaking do not equal the linear effective law; no pressure-controlled turnover witness established"
+    }
+  ],
+  "observation_contract": {
+    "physical_brews": 56,
+    "conditions": 11,
+    "target": "mass_flow_rate__g_per_s",
+    "target_window": "endpoint_100s",
+    "predictive_input": "pressure__bar",
+    "predictive_index": 999,
+    "condition_ids": "grouping labels only",
+    "source_60_brew_110_120_s_calibration": "CONTEXT_ONLY",
+    "observed_low_slope_g_s_bar": 0.5042068394004887,
+    "observed_high_slope_g_s_bar": -0.06550641262782862,
+    "low_subset": "measured condition-mean line pressure <=5.25 bar",
+    "high_subset": "measured condition-mean line pressure >=8.5 bar",
+    "historical_high_gate": "NONPOSITIVE_OR_SATURATING slope <= 0; unchanged",
+    "adapter": {
+      "equation": "P=L-(a*q_pred^2+b*q_pred+h0)",
+      "a": 0.017184292098914252,
+      "b": 0.03670858658698296,
+      "h0": 0.2831597837775055,
+      "pressure_units": "bar",
+      "flow_units": "g/s",
+      "observed_basket_pressure_input_used": false
+    }
+  },
+  "applicability": {
+    "recorded_high_pressure_histories": "SUPPORTED_ON_SOURCE_ALIGNED_GRID_AND_PIECEWISE_LINEAR_CONTINUATION: 74/74 cross-condition pairs ordered; not a physical validation claim",
+    "prealignment_histories": "UNRESOLVED",
+    "initial_state_at_common_physical_origin": "UNRESOLVED; no pressure-specific reset",
+    "physical_clock": "UNRESOLVED coffee calibration; theorem all finite common times",
+    "reference_stress": "one common physical reference required; no per-pressure fixed c* or T* under changing q-dependent normalization",
+    "early_geometry_persistence": "possible in irreversible removal; persistence to 100 seconds and brittle-law duration not measured; no five-second cutoff",
+    "discharge_to_beverage_mass": "CONDITIONAL on common positive proportional conversion; separate solids/density/delay mapping unresolved",
+    "processed_endpoint": "UNRESOLVED actual sampling/gradient/filter/edge support and model-to-scale mapping; conditional standard filter illustration is not attribution of observed decline"
+  },
+  "computed_values": {
+    "task_id": "SCI-MD-MO-PRESSURE-FEASIBILITY-001",
+    "role": "DETERMINISTIC_ALGEBRA_AND_APPLICABILITY_CHECK_NOT_SCORING",
+    "status": "PASS",
+    "puckworks_revision": "58075bbbce548e63d94106c96b918c1464221514",
+    "input_sha256": {
+      "puckworks/data/waszkiewicz2025/traces_per_brew.csv": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08",
+      "puckworks/data/waszkiewicz2025/brewer_quadratic_params.csv": "60da3adf0d29da64a1a4730d5c9997f04d8c6ee7d4d12f8e8d142f4ad0aa3919",
+      "docs/analysis/sci_md_010/FOLD_MEMBERSHIP.csv": "72ea3fbdf31acf4304b99b3ed3a920fc797357583f46238b6938107303202064"
+    },
+    "canonical_physical_brews": 56,
+    "conditions": 11,
+    "samples_per_brew": 1000,
+    "all_canonical_line_pressure_range_bar": [
+      "0.86675",
+      "13.09755"
+    ],
+    "history_scope": "high groups selected by retained measured condition means >=8.5 bar; source-aligned grid 0..100 s; not pre-alignment physical histories",
+    "high_pressure_history_checks": [
+      {
+        "lower_group": "WASZ-COND-9.0",
+        "upper_group": "WASZ-COND-11.0",
+        "physical_brew_pairs": 20,
+        "pairs_with_any_negative_pressure_gap": 0,
+        "minimum_gap_bar": "1.39266",
+        "witness_source_row_ids": [
+          "9-5",
+          "10-3"
+        ],
+        "witness_time_index": 319,
+        "witness_time_s_exact": "31900/999"
+      },
+      {
+        "lower_group": "WASZ-COND-9.0",
+        "upper_group": "WASZ-COND-13.0",
+        "physical_brew_pairs": 30,
+        "pairs_with_any_negative_pressure_gap": 0,
+        "minimum_gap_bar": "3.30191",
+        "witness_source_row_ids": [
+          "9-5",
+          "12-8-6"
+        ],
+        "witness_time_index": 318,
+        "witness_time_s_exact": "10600/333"
+      },
+      {
+        "lower_group": "WASZ-COND-11.0",
+        "upper_group": "WASZ-COND-13.0",
+        "physical_brew_pairs": 24,
+        "pairs_with_any_negative_pressure_gap": 0,
+        "minimum_gap_bar": "1.62961",
+        "witness_source_row_ids": [
+          "10-5",
+          "12-8-7"
+        ],
+        "witness_time_index": 757,
+        "witness_time_s_exact": "75700/999"
+      }
+    ],
+    "adapter_algebra_cases": [
+      {
+        "K_g_s_bar": "0",
+        "L_bar": "1",
+        "q_g_s": "0",
+        "P_bar": "0.716840216222494500",
+        "q_minus_KP_g_s": "0E-18"
+      },
+      {
+        "K_g_s_bar": "1",
+        "L_bar": "0.2831597837775055",
+        "q_g_s": "0E+1",
+        "P_bar": "0E-16",
+        "q_minus_KP_g_s": "0E-16"
+      },
+      {
+        "K_g_s_bar": "1",
+        "L_bar": "9",
+        "q_g_s": "7.4806121303745889154307172082159293837183199696853",
+        "P_bar": "7.4806121303745889154307172082159293837183199696852",
+        "q_minus_KP_g_s": "1E-49"
+      },
+      {
+        "K_g_s_bar": "1",
+        "L_bar": "13",
+        "q_g_s": "10.454776578591677613810317503638701400235354860966",
+        "P_bar": "10.454776578591677613810317503638701400235354860966",
+        "q_minus_KP_g_s": "0E-48"
+      }
+    ],
+    "adapter_cases_role": "arbitrary K=0 or 1 dimensional algebra checks only; not coffee parameterization or feasibility witness",
+    "below_intercept_rejected": true,
+    "sensitivity_abs_errors": {
+      "dq_dL": "1.629095031296022487861026946852111390E-14",
+      "dq_dK": "2.24832794489228779321402128989576720341E-11"
+    },
+    "standard_endpoint_linear_filter": {
+      "scope": "conditional illustration of the usual polynomial edge fit; not a reconstruction of the accepted observer",
+      "first_weight_exact": "-29/496",
+      "negative_weights": 10,
+      "sum_exact": "1",
+      "order_preserving_on_arbitrary_gradient_samples": false
+    },
+    "model_trajectories": 0,
+    "fits": 0,
+    "scores": 0,
+    "physical_validation": "NOT_ESTABLISHED"
+  },
+  "evidence_sha256": {
+    "ewp_at_base": {
+      "dependencies/puckworks.lock.json": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+      "provenance/AVAILABLE_DATA_AUTHORITY.json": "62c6b15cadf9fbf737bb9604affb6ab4105ee810a7b2896a78f4d8df11a4ab96",
+      "docs/analysis/sci_md_010/RESULT.md": "93f0c2c6c75c004c54a0b9e2f312c219bb7781c37703279e65a62640447a4cc7",
+      "docs/analysis/sci_md_010/METRIC_CONTRACT.json": "b4f13f1aa512a41a07c9649aeabaae1cc582cbe65bff0bf585803aef261a833d",
+      "docs/analysis/sci_md_010/PRESSURE_RESPONSE_DIAGNOSTICS.json": "f35b42ace4f3f07992a46af8f1dcc2fa0689dd8554a0ff84f18a8f274f747bcd",
+      "docs/analysis/sci_md_010/FOLD_MEMBERSHIP.csv": "72ea3fbdf31acf4304b99b3ed3a920fc797357583f46238b6938107303202064",
+      "docs/analysis/sci_md_010/INPUT_ARTIFACT_REGISTER.json": "026c4b7891c431b66f219bdfd6825b45047a43c1e03331e2860bf30769fb7f03",
+      "docs/analysis/sci_md_011/OBSERVATION_INTERFACE.json": "592f66b7a106e1817e5116dbab73cf69bb366581f3b3b5130d66f7def96c7cfb",
+      "docs/analysis/sci_md_011/EWP_CLOSURE_EQUIVALENCE.json": "ad1a42783e90b0a74b2a69276340a5c0627c06125a758fcc341c3c78cdf75d1f",
+      "docs/analysis/sci_md_012/RESULT.md": "bd751c0fdc37da6195d90b1bcaf3b8c61d589cb202db7b99b607049627fb0683",
+      "docs/analysis/sci_md_002c/CLOSURE_IDENTIFIABILITY_ASSESSMENT.md": "ff517703132f57d05087a227b910c1a6c1bbb433fb76dddcfa14e35b1a815f00",
+      "docs/analysis/sci_md_002c/FEASIBILITY_BOUNDS.md": "6b5b470b287fe2d67012eb8727b771dfc5a5da30a335a61ecc056c856412ae97",
+      "docs/analysis/sci_md_002c/RESULT.md": "f10bb896ddea0bd88da7bea7b5f0e7c71efcbfa26f3a570a9679a0c527f23143",
+      "docs/analysis/sci_lc_001a/PROTOCOL.md": "554692527819d2a83eb67b37b5e7f81853862aed0325a975b3718f2d67b80201",
+      "docs/analysis/sci_lc_001a/RESULT.md": "34b0968239d1993ed877f308a17551460a2d750e5dd51ed23e7fa708a7640d4d",
+      "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/RESULT.md": "e5700af735c01529275a72c95a3b91b77c1911747e2d3deb6f49d105027b151e",
+      "docs/analysis/xsv_waszkiewicz_dynamic_hyd_001/CHANNEL_SEMANTICS.json": "dab6f93323f0bfb9d32fec9ceec5effe0942d96e6f7168a905997e4e172e43df",
+      "docs/analysis/sci_md_mo_transfer_001/RESULT.md": "7130ca781224f10b808f1efe86f49611f4a12f7483a3ff2f1e8b4fa14e8d8b52"
+    },
+    "puckworks_at_research_reference": {
+      "docs/research/REVIEW_PW_EWP_2026-10-18_gpt6-astra-pro.md": "dee129ff0ff62d99f954ba2d3ac89db7194c23bdb8df79bc17930aad312a8740",
+      "docs/data/ESPRESSO_DATA_GUIDE.md": "80756ecf4ac897e9831819a686e7086138cd85358a2b6682f818b2f56cea1b17",
+      "puckworks/data/AVAILABLE_DATA_REGISTER.json": "bf15b981056f31f9710d54db5c4cd293d3893ad0e71f7ab70e8cd5676b3126e3",
+      "puckworks/data/MANIFEST.csv": "eee002dab1074a8412180735a7347f866c5fbe9959be1b0bf0133425b04b3eb1",
+      "docs/cards/mo2021.md": "ebdcafa85ea5ca24b02294b54c7e58630af84a66e47cd7d592516ce2ea83064f",
+      "puckworks/models/brewer2026/streamtube.py": "bdabf7658d3ce587ccb107c6a8252cf0f546d2affc9ca7ab1620c8eb96e8b450",
+      "puckworks/data/waszkiewicz2025/PROVENANCE.md": "7aff3b3d27d47d5a679d0b85a0ec1dbdb4ee7d84dcece332f2d5eff625c08c24",
+      "puckworks/data/waszkiewicz2025/traces_per_brew.csv": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08",
+      "puckworks/data/waszkiewicz2025/brewer_quadratic_params.csv": "60da3adf0d29da64a1a4730d5c9997f04d8c6ee7d4d12f8e8d142f4ad0aa3919",
+      "puckworks/data/waszkiewicz2025/constants.csv": "0428390dae9c3032adb31d155dfc21b56ee34f0b407e8089fee3a31e47abf4ee"
+    }
+  },
+  "decision": "RETIRE_DECLARED_SCALAR_EFFECTIVE_LAW_REDUCTION_FOR_DECLINING_HIGH_PRESSURE_DISCHARGE_UNDER_LISTED_ASSUMPTIONS",
+  "smallest_optional_next_scope": "qualify existing Waszkiewicz endpoint observation operator on original sampling/edge support for ordered discharge; not executed or automatically authorized",
+  "execution": {
+    "fits": 0,
+    "scores": 0,
+    "ode_trajectories": 0,
+    "native_solver_runs": 0,
+    "production_source_changes": 0,
+    "puckworks_writes": 0,
+    "dependency_lock_changes": 0,
+    "successor_executed": false
+  },
+  "review_and_checks": "REVIEW.md; one substantive independent review and focused disposition; actual CI on draft PR",
+  "delivery_constraint": {
+    "draft": true,
+    "open": true,
+    "merged": false,
+    "auto_merge_enabled": false
+  }
+}

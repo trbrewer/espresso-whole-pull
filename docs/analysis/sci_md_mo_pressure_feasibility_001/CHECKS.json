@@ -1,0 +1,107 @@
+{
+  "task_id": "SCI-MD-MO-PRESSURE-FEASIBILITY-001",
+  "role": "DETERMINISTIC_ALGEBRA_AND_APPLICABILITY_CHECK_NOT_SCORING",
+  "status": "PASS",
+  "puckworks_revision": "58075bbbce548e63d94106c96b918c1464221514",
+  "input_sha256": {
+    "puckworks/data/waszkiewicz2025/traces_per_brew.csv": "55fcc6290113932d863b0b6aa6571ad169e5e32f78920659c2cefe2184abef08",
+    "puckworks/data/waszkiewicz2025/brewer_quadratic_params.csv": "60da3adf0d29da64a1a4730d5c9997f04d8c6ee7d4d12f8e8d142f4ad0aa3919",
+    "docs/analysis/sci_md_010/FOLD_MEMBERSHIP.csv": "72ea3fbdf31acf4304b99b3ed3a920fc797357583f46238b6938107303202064"
+  },
+  "canonical_physical_brews": 56,
+  "conditions": 11,
+  "samples_per_brew": 1000,
+  "all_canonical_line_pressure_range_bar": [
+    "0.86675",
+    "13.09755"
+  ],
+  "history_scope": "high groups selected by retained measured condition means >=8.5 bar; source-aligned grid 0..100 s; not pre-alignment physical histories",
+  "high_pressure_history_checks": [
+    {
+      "lower_group": "WASZ-COND-9.0",
+      "upper_group": "WASZ-COND-11.0",
+      "physical_brew_pairs": 20,
+      "pairs_with_any_negative_pressure_gap": 0,
+      "minimum_gap_bar": "1.39266",
+      "witness_source_row_ids": [
+        "9-5",
+        "10-3"
+      ],
+      "witness_time_index": 319,
+      "witness_time_s_exact": "31900/999"
+    },
+    {
+      "lower_group": "WASZ-COND-9.0",
+      "upper_group": "WASZ-COND-13.0",
+      "physical_brew_pairs": 30,
+      "pairs_with_any_negative_pressure_gap": 0,
+      "minimum_gap_bar": "3.30191",
+      "witness_source_row_ids": [
+        "9-5",
+        "12-8-6"
+      ],
+      "witness_time_index": 318,
+      "witness_time_s_exact": "10600/333"
+    },
+    {
+      "lower_group": "WASZ-COND-11.0",
+      "upper_group": "WASZ-COND-13.0",
+      "physical_brew_pairs": 24,
+      "pairs_with_any_negative_pressure_gap": 0,
+      "minimum_gap_bar": "1.62961",
+      "witness_source_row_ids": [
+        "10-5",
+        "12-8-7"
+      ],
+      "witness_time_index": 757,
+      "witness_time_s_exact": "75700/999"
+    }
+  ],
+  "adapter_algebra_cases": [
+    {
+      "K_g_s_bar": "0",
+      "L_bar": "1",
+      "q_g_s": "0",
+      "P_bar": "0.716840216222494500",
+      "q_minus_KP_g_s": "0E-18"
+    },
+    {
+      "K_g_s_bar": "1",
+      "L_bar": "0.2831597837775055",
+      "q_g_s": "0E+1",
+      "P_bar": "0E-16",
+      "q_minus_KP_g_s": "0E-16"
+    },
+    {
+      "K_g_s_bar": "1",
+      "L_bar": "9",
+      "q_g_s": "7.4806121303745889154307172082159293837183199696853",
+      "P_bar": "7.4806121303745889154307172082159293837183199696852",
+      "q_minus_KP_g_s": "1E-49"
+    },
+    {
+      "K_g_s_bar": "1",
+      "L_bar": "13",
+      "q_g_s": "10.454776578591677613810317503638701400235354860966",
+      "P_bar": "10.454776578591677613810317503638701400235354860966",
+      "q_minus_KP_g_s": "0E-48"
+    }
+  ],
+  "adapter_cases_role": "arbitrary K=0 or 1 dimensional algebra checks only; not coffee parameterization or feasibility witness",
+  "below_intercept_rejected": true,
+  "sensitivity_abs_errors": {
+    "dq_dL": "1.629095031296022487861026946852111390E-14",
+    "dq_dK": "2.24832794489228779321402128989576720341E-11"
+  },
+  "standard_endpoint_linear_filter": {
+    "scope": "conditional illustration of the usual polynomial edge fit; not a reconstruction of the accepted observer",
+    "first_weight_exact": "-29/496",
+    "negative_weights": 10,
+    "sum_exact": "1",
+    "order_preserving_on_arbitrary_gradient_samples": false
+  },
+  "model_trajectories": 0,
+  "fits": 0,
+  "scores": 0,
+  "physical_validation": "NOT_ESTABLISHED"
+}
