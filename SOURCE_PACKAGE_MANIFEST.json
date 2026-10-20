@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1417,
-  "total_uncompressed_bytes_excluding_manifest": 23021840,
-  "aggregate_source_sha256": "95b05419cdd816e5e2a67112de421a0dccf645364057d40403f178aaa4e3595f",
-  "aggregate_sha256": "95b05419cdd816e5e2a67112de421a0dccf645364057d40403f178aaa4e3595f",
+  "file_count": 1422,
+  "total_uncompressed_bytes_excluding_manifest": 23089531,
+  "aggregate_source_sha256": "7b5e7b2d7ec27f9bc019e8095e0829f480e34f62229f0c4c57973bfe9f84df39",
+  "aggregate_sha256": "7b5e7b2d7ec27f9bc019e8095e0829f480e34f62229f0c4c57973bfe9f84df39",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -799,8 +799,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "dcaa079530af998e815e08bf1fca9a1ecbae1d7f8171dc9d4064ba46b700985e",
-      "bytes": 29265,
+      "sha256": "eb3160aa01dad041d31337dd13fe174679ed05dad150ac73ebfbdae51e1ecd91",
+      "bytes": 30238,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -2636,6 +2636,31 @@
     "docs/analysis/sci_md_mass_delivery_008/RESULT_BINDING.json": {
       "sha256": "a56954e4196a57445a2c114e77e517a707ee0a174f97e1b6286bdc6c0dde0ccb",
       "bytes": 1271,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mo_pressure_feasibility_001/CHECKS.json": {
+      "sha256": "3c6d0cd249062a0bb023161ae44603bf25c193bc2f4db6bd71d65c22c856334b",
+      "bytes": 3575,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mo_pressure_feasibility_001/PLAN.md": {
+      "sha256": "a6b5e5b68f7413ae36aa6612e10feb1dc9558c3c99a24980d3d26426da3977c8",
+      "bytes": 7964,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mo_pressure_feasibility_001/RESULT.json": {
+      "sha256": "0eccfa1c01709dc107f4cb76b87b6bf6953222537334e035787e838e3e87ac2a",
+      "bytes": 15827,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mo_pressure_feasibility_001/RESULT.md": {
+      "sha256": "972c5562ebe133412e6c86a8b81835b82b1af3d43c20aa3f358b4175cdeb8cea",
+      "bytes": 31612,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mo_pressure_feasibility_001/check.py": {
+      "sha256": "9dd4b8e566617b5fb55431fc307ec214589198f4adf4e9d165ede725aabff5b6",
+      "bytes": 7740,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_mo_transfer_001/DATA_PREFLIGHT.json": {
