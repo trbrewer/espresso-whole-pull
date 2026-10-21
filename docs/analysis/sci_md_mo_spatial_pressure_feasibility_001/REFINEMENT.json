@@ -1,0 +1,90 @@
+{
+  "candidate": {
+    "id": 48,
+    "x0": [
+      0.43256075316850756,
+      0.5086712290875969,
+      0.4258775070405367,
+      0.1853779263020893,
+      0.1704392798907985
+    ],
+    "gamma": 0.0318154835249946,
+    "beta": 3.722627241164446,
+    "pressure_low": 1.0,
+    "pressure_high": 1.0528511677868664
+  },
+  "trajectory_count": 4,
+  "settings_and_results": [
+    {
+      "method": "DOP853",
+      "rtol": 1e-11,
+      "atol": 1e-13,
+      "max_step": 0.0625,
+      "independent_hydraulics_and_integral": false,
+      "samples": 4097,
+      "rhs_evaluations": 15448,
+      "min_ratio": 1.0528511677868664,
+      "theta_min_ratio": 0.0,
+      "QL_at_min_ratio": 0.057350973221437236,
+      "QH_at_min_ratio": 0.060382039129903496,
+      "min_absolute_gap": 0.00303106590846626,
+      "theta_min_gap": 0.0,
+      "x_low_final": [
+        0.43256075316850756,
+        0.754184474395451,
+        0.4258775070405367,
+        0.32633639011496834,
+        0.1704392798907985
+      ],
+      "x_high_final": [
+        0.43256075316850756,
+        0.7688718777644563,
+        0.4258775070405367,
+        0.34177019652575746,
+        0.1704392798907985
+      ],
+      "max_hydraulic_residual": 6.938893903907228e-17,
+      "max_solid_balance_error": 2.220446049250313e-16
+    },
+    {
+      "method": "Radau",
+      "rtol": 1e-10,
+      "atol": 1e-12,
+      "max_step": 0.0625,
+      "independent_hydraulics_and_integral": true,
+      "samples": 4097,
+      "rhs_evaluations": 7224,
+      "min_ratio": 1.0528511677868666,
+      "theta_min_ratio": 0.0,
+      "QL_at_min_ratio": 0.057350973221437236,
+      "QH_at_min_ratio": 0.0603820391299035,
+      "min_absolute_gap": 0.003031065908466267,
+      "theta_min_gap": 0.0,
+      "x_low_final": [
+        0.43256075316850756,
+        0.7541844743954509,
+        0.4258775070405367,
+        0.3263363901149683,
+        0.1704392798907985
+      ],
+      "x_high_final": [
+        0.43256075316850756,
+        0.7688718777644565,
+        0.4258775070405367,
+        0.3417701965257576,
+        0.1704392798907985
+      ],
+      "max_hydraulic_residual": 5.551115123125783e-17,
+      "max_solid_balance_error": 2.220446049250313e-16
+    }
+  ],
+  "comparison": {
+    "max_abs_Q_method_difference": 2.7547408798511697e-15,
+    "max_abs_x_method_difference": 2.0317081350640365e-14,
+    "max_abs_gap_method_difference": 7.216449660063518e-16
+  },
+  "assurance": "INTER_METHOD_DIFFERENCE_ESTIMATE_NOT_GLOBAL_ERROR_BOUND",
+  "scope": "closest completed pair only; no continuous-time or whole-family exclusion",
+  "coarse_min_ratio": 1.0528511677868664,
+  "coarse_samples": 1025
+}

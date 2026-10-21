@@ -1,5 +1,22 @@
 # Project State
 
+## SCI-MD-MO-SPATIAL-PRESSURE-FEASIBILITY-001 (2026-10-21)
+
+Completed G1 / `NO_GOVERNING_PHYSICS_CHANGE`, RESEARCH_ONLY, retrospective,
+target-exposed non-scoring study: **UNRESOLVED_BOUNDED_ANALYSIS** for one
+five-edge finite-cohesion slit bridge with fixed-state pressure-monotone erosion.
+Analytical scalar/common-orbit controls exclude reversal in their subfamilies;
+the general asymmetric finite-threshold question remains open. Of 81 considered
+pairs, 57 completed and 24 failed numerical domain guards; no completed pair
+reversed sampled discharge. The conservative failure budget stopped the screen
+before 47 remaining candidates. Independent closest-pair refinement is not a
+family-wide proof. [Result](analysis/sci_md_mo_spatial_pressure_feasibility_001/RESULT.md).
+No demonstrated candidate is promoted and no general retirement follows.
+#207/#209/#211, production physics/lock and Puckworks remain unchanged.
+Line-pressure applicability NOT_ASSESSED; PHYSICAL_VALIDATION=NOT_ESTABLISHED.
+Issue #212; one draft PR, no automatic successor.
+
+
 
 ## SCI-MD-WASZ-RESTART-RESPONSE-001 (2026-10-20)
 

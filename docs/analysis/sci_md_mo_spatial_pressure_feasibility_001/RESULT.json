@@ -1,0 +1,352 @@
+{
+  "task_id": "SCI-MD-MO-SPATIAL-PRESSURE-FEASIBILITY-001",
+  "governance_class": "G1",
+  "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "evidence_role": "RESEARCH_ONLY_RETROSPECTIVE_TARGET_EXPOSED_NONSCORING",
+  "structural_outcome": "UNRESOLVED_BOUNDED_ANALYSIS",
+  "assurance": "SCOPED_ANALYTICAL_CONTROLS_AND_BOUNDED_NUMERICAL_SCREEN_NOT_CERTIFIED",
+  "physical_validation": "NOT_ESTABLISHED",
+  "line_pressure_applicability": "NOT_ASSESSED",
+  "coffee_observation_applicability": "NOT_ESTABLISHED",
+  "identities": {
+    "resolved_date_utc": "2026-10-21",
+    "ewp_repository": "trbrewer/espresso-whole-pull",
+    "base_commit": "ba28b230d2c3a5da8b7d611b48af59b0ba90df35",
+    "base_tree": "1bc4be38e43483bd1b90f6ffa4b45916d12a316e",
+    "research_reference_commit": "58075bbbce548e63d94106c96b918c1464221514",
+    "research_reference_tree": "a722e85bf919d038931f97af8c8437c06e922638",
+    "main_delta_from_preparation": "NONE_FOR_EITHER_REPOSITORY",
+    "production_checkout_commit": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+    "production_lock_unchanged": true,
+    "plan_commit": "fabd21f0d64145688e68cccf8ffab698ec920112",
+    "pre_exploration_analysis_commit": "2c1d5ed4d8232b434d538911445058cab80222e1",
+    "issue": "https://github.com/trbrewer/espresso-whole-pull/issues/212",
+    "final_identity_location": "draft PR body; reviewed candidate in REVIEW.md"
+  },
+  "source": {
+    "citation": "Mo, Johnston, Navarini and Ellero (2021), Physics of Fluids 33, 093101",
+    "doi": "10.1063/5.0059707",
+    "record_url": "https://cronfa.swan.ac.uk/Record/cronfa57912",
+    "sha256": "55ee1e3746312f85dcc8888e337775cdea0a99e93fec4a35376cb7663b67b99c",
+    "bytes": 26047376,
+    "version": "accepted manuscript 4 August 2021",
+    "passages_inspected": [
+      "II B pp. 4-5 equations 5-12 and incomplete-wetting pressure-unbalance rationale",
+      "II E pp. 7-8 effective-envelope approximation and reference scales"
+    ],
+    "inherited_audit": "docs/analysis/sci_md_mo_pressure_feasibility_001/RESULT.md and REVIEW.md",
+    "manuscript_and_figures_in_git": false
+  },
+  "model": {
+    "edges": [
+      "SA",
+      "AT",
+      "SB",
+      "BT",
+      "AB"
+    ],
+    "l_e_over_L": 1,
+    "w_e_over_L": 1,
+    "epsilon": 0.01,
+    "a_e": "epsilon L x_e",
+    "x_bounds": "x0<=x<=2",
+    "hydraulics": "g=w a^3/(12 mu l); q=g Delta p signed; tau=a abs(Delta p)/(2 l)",
+    "compression": "sigma_c(s)=p(s)-p_out; rigid supports; all solid interiors at common p_out; zero preload",
+    "surface": "two walls; uniform aperture projection after exact axial positive-part integration",
+    "site_mass_rate": "r=C_E[tau-c-sigma_c tan(psi)]_+ kg/s per effective site",
+    "site_density": "n_s b_e sites/m^2; b_e=(2-x)/(2-x0)",
+    "mass_removed": "rho_s w l(a-a0)",
+    "inventory": "rho_s epsilon L^3(2-x0) per edge; distinct nonoverlapping walls",
+    "stress_reference": "S_ref=epsilon P_ref/2; common pressure-independent P_ref",
+    "time_reference": "t_ref=epsilon L/(kappa S_ref); kappa=2 n_s C_E/rho_s",
+    "conductance_reference": "g_ref=epsilon^3 L^3/(12 mu)",
+    "discharge_reference": "Q_ref=g_ref P_ref",
+    "dimensionless_equations": "g*=x^3; hydraulic Kirchhoff system; J=int_0^1[x abs(Delta p*)-gamma-beta p*(s)]_+ ds; dx/dtheta=b J",
+    "gamma": "c/S_ref",
+    "beta": "2 tan(psi)/epsilon",
+    "state_transform": "z=-log b; x=x0-(2-x0)expm1(-z); zprime=J/(2-x0)",
+    "threshold_integration": "exact linear positive-part area; independent root-split midpoint path",
+    "fixed_state_pressure_monotonicity": "[pi s-gamma]_+ nondecreasing for pi>=0,gamma>=0; integrate with nonnegative pressure-independent weights",
+    "storage": "controlled kappa->0 slow-erosion limit at fixed theta; no finite coffee calibration",
+    "removed_solid": "discarded; no deposition viscosity change or beverage mass"
+  },
+  "analytical_controls": {
+    "frozen_and_passive_opening": "PROVED_Q_EQUALS_KP_AND_EACH_CONSTANT_P_TRAJECTORY_NONDECREASING",
+    "scalar": "PROVED_UNDER_UNIQUE_SCALAR_COMMON_INITIAL_STATE_ASSUMPTIONS",
+    "homogeneous": "PROVED_IF_D_EQUALS_ZERO_THROUGHOUT_DOMAIN_INCLUDING_PRELOAD",
+    "common_orbit": "PROVED_IF_F_EQUALS_ALPHA_G_WITH_NONNEGATIVE_PRESSURE_MONOTONE_ALPHA",
+    "general_finite_cohesion": "NOT_PROVED",
+    "noncooperative_example": "partial p_A/partial g_BT=-g_AB p_B/det<0; active AT beta=0",
+    "noncollinear_example": {
+      "x": [
+        1,
+        1,
+        1,
+        0.5,
+        1
+      ],
+      "gamma": 0.1,
+      "beta": 0,
+      "pressures": [
+        1,
+        2
+      ],
+      "SA_AT_determinant": "-7/430",
+      "role": "admissible interior-state obstruction, not reachability or reversal witness"
+    }
+  },
+  "search_domain": {
+    "sampling": "scrambled Sobol d=8 random_base2(7)",
+    "seed": 20261021,
+    "x0_range": [
+      0.1,
+      1
+    ],
+    "x0_scale": "log10",
+    "gamma_range": [
+      0.01,
+      0.5
+    ],
+    "gamma_scale": "log",
+    "beta_range": [
+      0,
+      4
+    ],
+    "tan_psi_range": [
+      0,
+      0.02
+    ],
+    "pressure_low": 1,
+    "pressure_high_range": [
+      1.05,
+      3
+    ],
+    "time_interval": [
+      0,
+      32
+    ],
+    "candidate_budget": 128,
+    "exploratory_trajectory_budget": 256,
+    "rhs_per_trajectory_cap": 100000,
+    "rhs_budget": 5000000,
+    "failed_pair_charge": 200000,
+    "pressure_pair_contract": "same x0, inventories, all materials, references and clock",
+    "numerics": {
+      "method": "DOP853",
+      "rtol": 1e-08,
+      "atol": 1e-10,
+      "max_step": 0.25,
+      "output_samples": 1025,
+      "min_z_guard": -1e-10,
+      "min_x_minus_x0_guard": -1e-10,
+      "min_dx_guard": -1e-08,
+      "upper_x_guard": 2,
+      "min_dQ_guard": "-1e-8 max(max Q,1)"
+    },
+    "stop": "CONSERVATIVELY_CHARGED_FAILURE_BUDGET",
+    "parameter_expansion": false
+  },
+  "search_results": {
+    "seed": 20261021,
+    "candidate_count": 81,
+    "exploratory_trajectory_attempts": 151,
+    "actual_rhs_evaluations_or_upper_charge": 306221,
+    "failures": 24,
+    "rhs_evaluations_or_conservative_failure_charge": 5030283,
+    "preliminary_witnesses": 0,
+    "closest": {
+      "candidate": {
+        "id": 48,
+        "x0": [
+          0.43256075316850756,
+          0.5086712290875969,
+          0.4258775070405367,
+          0.1853779263020893,
+          0.1704392798907985
+        ],
+        "gamma": 0.0318154835249946,
+        "beta": 3.722627241164446,
+        "pressure_low": 1.0,
+        "pressure_high": 1.0528511677868664
+      },
+      "minimum_ratio": 1.0528511677868664,
+      "theta": 0.0,
+      "index": 0
+    },
+    "maximum_hydraulic_residual": 2.842170943040401e-14,
+    "maximum_solid_balance_error": 4.440892098500626e-16,
+    "minimum_individual_dQ": -3.552713678800501e-15,
+    "upper_endpoint_roundoffs": 2263
+  },
+  "refinement": {
+    "candidate": {
+      "id": 48,
+      "x0": [
+        0.43256075316850756,
+        0.5086712290875969,
+        0.4258775070405367,
+        0.1853779263020893,
+        0.1704392798907985
+      ],
+      "gamma": 0.0318154835249946,
+      "beta": 3.722627241164446,
+      "pressure_low": 1.0,
+      "pressure_high": 1.0528511677868664
+    },
+    "trajectory_count": 4,
+    "settings_and_results": [
+      {
+        "method": "DOP853",
+        "rtol": 1e-11,
+        "atol": 1e-13,
+        "max_step": 0.0625,
+        "independent_hydraulics_and_integral": false,
+        "samples": 4097,
+        "rhs_evaluations": 15448,
+        "min_ratio": 1.0528511677868664,
+        "theta_min_ratio": 0.0,
+        "QL_at_min_ratio": 0.057350973221437236,
+        "QH_at_min_ratio": 0.060382039129903496,
+        "min_absolute_gap": 0.00303106590846626,
+        "theta_min_gap": 0.0,
+        "x_low_final": [
+          0.43256075316850756,
+          0.754184474395451,
+          0.4258775070405367,
+          0.32633639011496834,
+          0.1704392798907985
+        ],
+        "x_high_final": [
+          0.43256075316850756,
+          0.7688718777644563,
+          0.4258775070405367,
+          0.34177019652575746,
+          0.1704392798907985
+        ],
+        "max_hydraulic_residual": 6.938893903907228e-17,
+        "max_solid_balance_error": 2.220446049250313e-16
+      },
+      {
+        "method": "Radau",
+        "rtol": 1e-10,
+        "atol": 1e-12,
+        "max_step": 0.0625,
+        "independent_hydraulics_and_integral": true,
+        "samples": 4097,
+        "rhs_evaluations": 7224,
+        "min_ratio": 1.0528511677868666,
+        "theta_min_ratio": 0.0,
+        "QL_at_min_ratio": 0.057350973221437236,
+        "QH_at_min_ratio": 0.0603820391299035,
+        "min_absolute_gap": 0.003031065908466267,
+        "theta_min_gap": 0.0,
+        "x_low_final": [
+          0.43256075316850756,
+          0.7541844743954509,
+          0.4258775070405367,
+          0.3263363901149683,
+          0.1704392798907985
+        ],
+        "x_high_final": [
+          0.43256075316850756,
+          0.7688718777644565,
+          0.4258775070405367,
+          0.3417701965257576,
+          0.1704392798907985
+        ],
+        "max_hydraulic_residual": 5.551115123125783e-17,
+        "max_solid_balance_error": 2.220446049250313e-16
+      }
+    ],
+    "comparison": {
+      "max_abs_Q_method_difference": 2.7547408798511697e-15,
+      "max_abs_x_method_difference": 2.0317081350640365e-14,
+      "max_abs_gap_method_difference": 7.216449660063518e-16
+    },
+    "assurance": "INTER_METHOD_DIFFERENCE_ESTIMATE_NOT_GLOBAL_ERROR_BOUND",
+    "scope": "closest completed pair only; no continuous-time or whole-family exclusion",
+    "coarse_min_ratio": 1.0528511677868664,
+    "coarse_samples": 1025
+  },
+  "execution": {
+    "exploratory_candidate_pairs": 81,
+    "qualified_pairs": 57,
+    "rejected_pairs": 24,
+    "unvisited_candidates": 47,
+    "original_trajectory_starts": 151,
+    "original_rhs_calls": 306221,
+    "metadata_replay_trajectory_starts": 151,
+    "metadata_replay_rhs_calls": 306221,
+    "metadata_replay_scientific_fields_identical": true,
+    "failure_diagnostic_trajectories": 2,
+    "failure_diagnostic_rhs_calls": 4045,
+    "closest_refinement_trajectories": 4,
+    "closest_refinement_rhs_calls": 22672,
+    "control_and_review_runs": "separate focused mathematical tests and independent reviewer verification",
+    "fits": 0,
+    "scores": 0,
+    "native_solver_runs": 0,
+    "puckworks_writes": 0,
+    "production_changes": 0,
+    "successor_executed": false
+  },
+  "numerical_limits": {
+    "lower_z_rejections": 19,
+    "lower_x_rejections": 23,
+    "monotonic_x_rejections": 1,
+    "counts_overlap": true,
+    "upper_x_rejections": 0,
+    "min_z": -1.736375729424402e-09,
+    "min_x_minus_x0": -2.285992839468065e-09,
+    "min_dx": -6.449156986221283e-08,
+    "max_qualified_KL_over_KH": 1.000000000000003,
+    "sampled_order_not_continuous_time_proof": true,
+    "adaptive_tolerances_not_error_enclosures": true,
+    "reversal_time_support": null
+  },
+  "evidence_sha256": {
+    "ewp_at_base": {
+      "dependencies/puckworks.lock.json": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+      "provenance/AVAILABLE_DATA_AUTHORITY.json": "62c6b15cadf9fbf737bb9604affb6ab4105ee810a7b2896a78f4d8df11a4ab96",
+      "docs/analysis/sci_md_mo_pressure_feasibility_001/PLAN.md": "a6b5e5b68f7413ae36aa6612e10feb1dc9558c3c99a24980d3d26426da3977c8",
+      "docs/analysis/sci_md_mo_pressure_feasibility_001/RESULT.md": "972c5562ebe133412e6c86a8b81835b82b1af3d43c20aa3f358b4175cdeb8cea",
+      "docs/analysis/sci_md_mo_pressure_feasibility_001/RESULT.json": "0eccfa1c01709dc107f4cb76b87b6bf6953222537334e035787e838e3e87ac2a",
+      "docs/analysis/sci_md_mo_pressure_feasibility_001/REVIEW.md": "2f75172c9de66f995e19a9871928a1181a2cb9ab8e0a64a4ba8b303ab00f7857",
+      "docs/analysis/sci_md_wasz_terminal_mass_robustness_001/RESULT.md": "921779d6a057c5f9da999327389444137ffa616c4d2dfd6c4475d9793dce90c3",
+      "docs/analysis/sci_md_wasz_restart_response_001/RESULT.md": "b2fb19af5d183b9c2f5e8a1f00658389f25ccdc10c042eb66f6f5638ee4f3626",
+      "docs/analysis/sci_md_011/OBSERVATION_INTERFACE.json": "592f66b7a106e1817e5116dbab73cf69bb366581f3b3b5130d66f7def96c7cfb",
+      "docs/analysis/sci_lc_001a/PROTOCOL.md": "554692527819d2a83eb67b37b5e7f81853862aed0325a975b3718f2d67b80201",
+      "docs/analysis/sci_lc_001a/RESULT.md": "34b0968239d1993ed877f308a17551460a2d750e5dd51ed23e7fa708a7640d4d"
+    },
+    "puckworks_at_research_reference": {
+      "docs/research/ESPRESSO_DEVELOPMENT_GUIDE.md": "360298adc5227dfbf5663876f2be952a8910d59491203a9c0950c44439e5fd83",
+      "docs/research/REVIEW_PW_EWP_2026-10-18_gpt6-astra-pro.md": "dee129ff0ff62d99f954ba2d3ac89db7194c23bdb8df79bc17930aad312a8740",
+      "docs/cards/mo2021.md": "ebdcafa85ea5ca24b02294b54c7e58630af84a66e47cd7d592516ce2ea83064f",
+      "puckworks/models/brewer2026/streamtube.py": "bdabf7658d3ce587ccb107c6a8252cf0f546d2affc9ca7ab1620c8eb96e8b450",
+      "docs/data/ESPRESSO_DATA_GUIDE.md": "80756ecf4ac897e9831819a686e7086138cd85358a2b6682f818b2f56cea1b17",
+      "puckworks/data/AVAILABLE_DATA_REGISTER.json": "bf15b981056f31f9710d54db5c4cd293d3893ad0e71f7ab70e8cd5676b3126e3"
+    },
+    "artifacts": {
+      "PLAN.md": "88a6ea62492a46eca2c8be61867f7a9c32edccd3e1837655dd1fe67de1e20c5d",
+      "CANDIDATES.csv": "ea5fd1f19b24b8e0f17bd1c9d89f1e7762ae1312301d1aceab8d4a2c8574a580",
+      "SEARCH.json": "6bd4c32315a1789aa4e1bd6938ba4109047ddd56f2820cb12d0010238c92bdea",
+      "REFINEMENT.json": "21bccaa847387093e0c222b10fef637dc6d3ef737f6dc62ab37de2005b05dd2a"
+    }
+  },
+  "decision": "NO_DEMONSTRATED_CAPABILITY_AND_NO_FULL_FAMILY_EXCLUSION; RETIRE_ONLY_PROVED_SUBFAMILIES; CLOSE_WITHOUT_SUCCESSOR",
+  "limitations": [
+    "finite search not a domain covering proof",
+    "24 numerical failures unresolved",
+    "47 planned candidates unvisited",
+    "unsampled times not certified",
+    "hypothetical mechanical closure and uniform-aperture projection",
+    "weak-friction range is not measured coffee calibration",
+    "no empirical beverage observer or line-pressure join"
+  ],
+  "delivery_constraint": {
+    "draft": true,
+    "open": true,
+    "merged": false,
+    "auto_merge_enabled": false
+  }
+}

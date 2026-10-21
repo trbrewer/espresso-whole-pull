@@ -1,0 +1,32 @@
+{
+  "seed": 20261021,
+  "candidate_count": 81,
+  "exploratory_trajectory_attempts": 151,
+  "actual_rhs_evaluations_or_upper_charge": 306221,
+  "failures": 24,
+  "rhs_evaluations_or_conservative_failure_charge": 5030283,
+  "preliminary_witnesses": 0,
+  "closest": {
+    "candidate": {
+      "id": 48,
+      "x0": [
+        0.43256075316850756,
+        0.5086712290875969,
+        0.4258775070405367,
+        0.1853779263020893,
+        0.1704392798907985
+      ],
+      "gamma": 0.0318154835249946,
+      "beta": 3.722627241164446,
+      "pressure_low": 1.0,
+      "pressure_high": 1.0528511677868664
+    },
+    "minimum_ratio": 1.0528511677868664,
+    "theta": 0.0,
+    "index": 0
+  },
+  "maximum_hydraulic_residual": 2.842170943040401e-14,
+  "maximum_solid_balance_error": 4.440892098500626e-16,
+  "minimum_individual_dQ": -3.552713678800501e-15,
+  "upper_endpoint_roundoffs": 2263
+}

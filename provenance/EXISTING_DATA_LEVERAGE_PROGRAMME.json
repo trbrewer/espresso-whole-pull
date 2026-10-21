@@ -1157,6 +1157,38 @@
       "exhaustion_decision": null,
       "review_trigger": "Separate owner disposition; no automatic follow-on",
       "notes": "COMPLETE_POSITIVE describes observed later delivery differences only; no unrestricted pressure-only exclusion, chemical exhaustion, mechanism identification or interruption-specific causal claim. One puck, not added to accepted 56-brew cohort. PHYSICAL_VALIDATION=NOT_ESTABLISHED; no successor."
+    },
+    {
+      "opportunity_id": "SCI-MD-MO-SPATIAL-PRESSURE-FEASIBILITY-001",
+      "task_id": "SCI-MD-MO-SPATIAL-PRESSURE-FEASIBILITY-001",
+      "title": "Spatial effective-law pressure feasibility",
+      "data_families": [
+        "mo2021",
+        "waszkiewicz2025"
+      ],
+      "scientific_question": "Can spatial opening escape scalar pressure ordering at common time?",
+      "model_component": "five-edge supported-slit effective-law bridge",
+      "status": "COMPLETE_NULL",
+      "priority": 1,
+      "prerequisites": [
+        "Source/sign crosswalk; explicit mechanical closure; analytical controls; bounded plan before exploration"
+      ],
+      "current_evidence": "UNRESOLVED_BOUNDED_ANALYSIS; 57 completed of 81 considered pairs; 24 numerical failures",
+      "expected_information": "Whether interacting spatial openings escape scalar ordering",
+      "positive_action": "Retain only a verified admissible reduction as structurally capable",
+      "negative_action": "Retire only the exactly proved family",
+      "null_action": "Record bounded mathematical and numerical limits; no automatic successor",
+      "blocked_action": "Identify missing loading or geometry closure without inventing it",
+      "claim_ceiling": "RESEARCH_ONLY;RETROSPECTIVE;TARGET_EXPOSED;NONSCORING;PRESCRIBED_BED_PRESSURE_ONLY",
+      "home_lab_effect": "NO_OPERATION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_mo_spatial_pressure_feasibility_001/RESULT.md",
+        "docs/analysis/sci_md_mo_spatial_pressure_feasibility_001/RESULT.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "Separate owner disposition; no automatic follow-on",
+      "notes": "No physical validation, empirical fitting, production adoption, line-pressure witness, general family exclusion or successor. 24 guard-rejected pairs and 47 unvisited candidates remain unresolved."
     }
   ],
   "laboratory_gate": {
