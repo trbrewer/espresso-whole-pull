@@ -43,7 +43,7 @@
       "sha256": "592f66b7a106e1817e5116dbab73cf69bb366581f3b3b5130d66f7def96c7cfb"
     }
   },
-  "implementation_sha256": "1e8c4457b8ccfca042c4d4f62266cd55b41cbb16422db7a53d918242f4d610fc",
+  "implementation_sha256": "cfc38ef5c6a5d59f62dd3a039cc3e92f754ccc44294bafcebe4cf33ec30bda5b",
   "intake_failure": "Initial local Puckworks clone lacked current main object; explicit fetch of pinned revision succeeded.",
   "licenses": {
     "data": "CC-BY-4.0; Waszkiewicz et al. 2025; Zenodo 18046315",

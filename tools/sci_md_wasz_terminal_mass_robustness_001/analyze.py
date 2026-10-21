@@ -50,7 +50,7 @@ def write_json(path, data):
 
 def write_csv(path, rows):
     with Path(path).open('w', newline='', encoding='utf-8') as stream:
-        writer = csv.DictWriter(stream, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator='\n')
         writer.writeheader()
         for row in rows:
             writer.writerow({k: json.dumps(v, separators=(',', ':'), allow_nan=False)
