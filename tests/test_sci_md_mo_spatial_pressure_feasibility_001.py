@@ -52,6 +52,7 @@ class SpatialPressureControls(unittest.TestCase):
     def test_active_and_inactive_domains(self):
         x = np.full(5, .5)
         self.assertGreater(erosion(x, 1, .1, 4)[1], 0)
+        self.assertAlmostEqual(erosion(x, 1, .1, 4)[1], .005625, places=14)
         assert_allclose(erosion(x, 3, 6, 0), 0)
         c = {"x0": x, "gamma": 6., "beta": 1.}
         sol = integrate(c, 3, times=np.linspace(0, 2, 9))

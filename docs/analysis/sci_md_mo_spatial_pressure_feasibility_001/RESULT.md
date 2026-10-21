@@ -81,8 +81,8 @@ all four outer edges equal, the cross aperture does not affect K. Frozen
 geometry (C_E=0) gives Q_H/Q_L=P_H/P_L exactly. In the search bounds,
 tau*/pi=x|v_u-v_v|<=2; gamma>=2 pi_H is a globally inactive control.
 For example x=.5, gamma=.1, beta=4, pi=1 still gives positive AT/BT
-integrated erosion near the outlet: its endpoint brackets are -.85 and .15,
-and J=.01125. Thus the declared family is not everywhere inactive.
+integrated erosion near the outlet: its endpoint brackets are -1.85 and .15,
+and J=.005625. Thus the declared family is not everywhere inactive.
 
 ## Mass, time and invariant domain
 
