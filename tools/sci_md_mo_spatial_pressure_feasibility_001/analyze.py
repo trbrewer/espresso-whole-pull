@@ -189,6 +189,8 @@ def run(output):
                 # assurance and explicitly resume only if that witness is invalid.
                 (output / "FROZEN_CANDIDATE.json").write_text(json.dumps(candidate, indent=2) + "\n")
                 row["status"] = "PRELIMINARY_WITNESS_REQUIRES_VERIFICATION"
+                actual_evaluations += used
+                row["actual_rhs_evaluations_or_upper_charge"] = used
                 rows.append(row)
                 break
         except (ValueError, RuntimeError, FloatingPointError) as exc:
@@ -204,7 +206,7 @@ def run(output):
             break
     fields = list(dict.fromkeys(k for row in rows for k in row))
     with (output / "CANDIDATES.csv").open("w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fields)
+        writer = csv.DictWriter(f, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
     summary = {"seed": SEED, "candidate_count": len(rows),
