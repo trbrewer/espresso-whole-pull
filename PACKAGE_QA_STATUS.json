@@ -60,7 +60,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 1651,
+    "python_test_count": 1670,
     "xsv_flow_001_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_xsv_flow_001",
     "xsv_flow_001_focused_test_count": 21,
     "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
@@ -80,8 +80,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 39,
-    "source_manifest_file_count": 1435,
-    "source_manifest_aggregate_sha256": "97ea3b72f57304b5c3ee07b077c018e402092be31926da407b66324a302a1cb1",
+    "source_manifest_file_count": 1446,
+    "source_manifest_aggregate_sha256": "4a5efc9cdc37799d17192b147c84fcc194f5a3779f9df62f8800351094f72e89",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -91,7 +91,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "226bb41f08c3520c43ae871a235a2eb2ceed94b4e8a60f07a2d52c5afa47addc",
+    "source_manifest_aggregate_source_sha256": "4a5efc9cdc37799d17192b147c84fcc194f5a3779f9df62f8800351094f72e89",
     "sci_data_fusion_001_c1": {
       "disposition": "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY",
       "focused_tests_run": 51,
@@ -1099,5 +1099,21 @@
     "merge_authorized": false,
     "production_adoption_authorized": false,
     "successor_authorized": false
+  },
+  "sci_md_wasz_restart_response_001": {
+    "status": "IMPLEMENTED_AND_EXECUTED",
+    "declaration": "G1 / NO_GOVERNING_PHYSICS_CHANGE",
+    "physical_pucks": 1,
+    "active_episodes": 6,
+    "eligible_restart_pairs": 15,
+    "fixed_designs": 3,
+    "intervals": 46,
+    "A_D_contrasts": 60,
+    "drift_contrasts": 6,
+    "focused_tests": 19,
+    "independent_scientific_review": "PASS; no material correction requested",
+    "reviewed_candidate": "e902a3d594d12b79a71d963b684cdd9a6e3c4673",
+    "physical_validation": "NOT_ESTABLISHED",
+    "final_head_checks": "Recorded in task PR delivery body; initial environment/bookkeeping diagnostic retained in CHECKS.json"
   }
 }

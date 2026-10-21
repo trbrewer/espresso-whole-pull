@@ -1,44 +1,250 @@
 {
-  "task_id": "SCI-MD-WASZ-RESTART-RESPONSE-001",
-  "scientific_analysis": "EXECUTED",
-  "plan_commit": "20f982d",
-  "plan_sha256": "0ad18c251b5473a9a9c7f81250d620661abec1d6cb8b41f117960da53896b97c",
-  "focused_tests": {
-    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_wasz_restart_response_001 -v",
-    "run": 19,
-    "passed": 19,
+  "affected_checks_after_environment_and_bookkeeping_fix": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 EWP_POROSITY_PERMEABILITY_PRIOR_PUCKWORKS_ROOT=<a3428a4-authority> SCI_MD_012_PUCKWORKS_ROOT=<a3428a4-authority-containing-2058d0e> python3 -m unittest tests.test_sci_md_wasz_restart_response_001 tests.test_sci_md_012 tests.test_val_corpus_001 tests.test_existing_data_leverage_programme -v",
+    "errors": 0,
     "failures": 0,
-    "errors": 0
+    "log_relative_locator": "affected-tests.log",
+    "log_sha256": "12ad5286e890ca28b50bf65bb10b420e5873e249156841622b9a0d4f07f960b3",
+    "passed": 49,
+    "seconds": 2.122,
+    "tests_run": 49
+  },
+  "change_boundary": {
+    "changed_paths": [
+      "SOURCE_PACKAGE_MANIFEST.json",
+      "docs/PROJECT_STATE.md",
+      "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv",
+      "docs/analysis/sci_md_wasz_restart_response_001/CHECKS.json",
+      "docs/analysis/sci_md_wasz_restart_response_001/CONTRASTS.csv",
+      "docs/analysis/sci_md_wasz_restart_response_001/EPISODES.csv",
+      "docs/analysis/sci_md_wasz_restart_response_001/INTERVALS.csv",
+      "docs/analysis/sci_md_wasz_restart_response_001/PLAN.md",
+      "docs/analysis/sci_md_wasz_restart_response_001/RAW_CLOCK.svg",
+      "docs/analysis/sci_md_wasz_restart_response_001/RESULT.json",
+      "docs/analysis/sci_md_wasz_restart_response_001/RESULT.md",
+      "docs/analysis/sci_md_wasz_restart_response_001/SOURCE_MANIFEST.json",
+      "provenance/EXISTING_DATA_LEVERAGE_PROGRAMME.json",
+      "tests/test_sci_md_wasz_restart_response_001.py",
+      "tools/sci_md_wasz_restart_response_001/analyze.py"
+    ],
+    "config": true,
+    "dependencies": true,
+    "docs/analysis/sci_md_010": true,
+    "docs/analysis/sci_md_011": true,
+    "docs/analysis/sci_md_mo_pressure_feasibility_001": true,
+    "docs/analysis/sci_md_wasz_terminal_mass_robustness_001": true,
+    "original_source_clean": true,
+    "production_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10",
+    "research_puckworks_clean": true,
+    "solver": true
   },
   "deterministic_rerun": {
-    "RAW_CLOCK.svg": {
+    "CONTRASTS.csv": {
       "byte_equal": true,
-      "sha256": "33bfc8dff6cbe620794fcef925ff0103ed0b8e5f617bdcc9ab95da71ae46eff3"
+      "sha256": "44864f9f51087a5fdd181d26a33593d6918e029ee1f0cc7536e69d5de9690f92"
     },
     "EPISODES.csv": {
       "byte_equal": true,
       "sha256": "5462c85b5cf4b2551f8cd4539ede6c3c7c05a26cebf892848a329ecf3d992c8b"
     },
-    "SOURCE_MANIFEST.json": {
+    "INTERVALS.csv": {
       "byte_equal": true,
-      "sha256": "65d7a5fe077a28a650a770477f7a104b44077a48d0156b4d97b83457d9cc5f61"
+      "sha256": "3becf285badd55f88847f6e77904c87aba0edb667e040ae6c0c3d43fa43a3654"
+    },
+    "RAW_CLOCK.svg": {
+      "byte_equal": true,
+      "sha256": "33bfc8dff6cbe620794fcef925ff0103ed0b8e5f617bdcc9ab95da71ae46eff3"
     },
     "RESULT.json": {
       "byte_equal": true,
       "sha256": "776fd5ad639461f2071a45f20ef1fb27d5dcb6d5f78cb2ec554382a6ccb6419a"
     },
-    "INTERVALS.csv": {
+    "SOURCE_MANIFEST.json": {
       "byte_equal": true,
-      "sha256": "3becf285badd55f88847f6e77904c87aba0edb667e040ae6c0c3d43fa43a3654"
-    },
-    "CONTRASTS.csv": {
-      "byte_equal": true,
-      "sha256": "44864f9f51087a5fdd181d26a33593d6918e029ee1f0cc7536e69d5de9690f92"
+      "sha256": "65d7a5fe077a28a650a770477f7a104b44077a48d0156b4d97b83457d9cc5f61"
     }
   },
+  "external_evidence_files": {
+    "execution.log": {
+      "bytes": 143,
+      "sha256": "e2efe7e2f98b0a9f76d22b565c23daecb0da8a82c185e6c30a0fdc3b15b95af2"
+    },
+    "focused-tests.log": {
+      "bytes": 3149,
+      "sha256": "bf0ac28a4b0bf073e4e5e169857c304e568377fe60e8427979852638c4df3268"
+    },
+    "independent_focused_tests.log": {
+      "bytes": 3149,
+      "sha256": "bf0ac28a4b0bf073e4e5e169857c304e568377fe60e8427979852638c4df3268"
+    },
+    "independent_reproduction_hashes.json": {
+      "bytes": 529,
+      "sha256": "e2f1f3eb58cbeaccfa72319260786065cbff72f970f063eed0e7343e2e34df8a"
+    },
+    "independent_review_receipt.json": {
+      "bytes": 28577,
+      "sha256": "64fa3d8f89afe7a5911d361cd967676a175b0c04a21b0dca8a3de5d15107547d"
+    },
+    "independent_review_recompute.py": {
+      "bytes": 9268,
+      "sha256": "ba0b8e8455064393f241b6ef1143ff7616b0559724f7cc26652affebfecc4d74"
+    },
+    "intake.json": {
+      "bytes": 3627,
+      "sha256": "a732b51783e879f4c3f1177adc8618cc1399743124428c9125318c698aa8789e"
+    },
+    "local-qa.json": {
+      "bytes": 2036,
+      "sha256": "1cb7b0d2a77195b17bc8580c5323daf6764a238a5c64fc47b69aad749b0c4efb"
+    },
+    "main-rules.json": {
+      "bytes": 1229,
+      "sha256": "b1db53cb21755f153eae12a999e1267643094f6c794a56f960970618b72a6ef6"
+    },
+    "rulesets.json": {
+      "bytes": 471,
+      "sha256": "f4aa74e7415e77dcf7499ffd95bed738d338fac113edf2717e427459ed3e090a"
+    }
+  },
+  "external_evidence_locator_convention": "Paths relative to the task external evidence root; raw paths relative to --source-root in SOURCE_MANIFEST.json. No full logs or raw payloads committed.",
+  "final_head_check_attribution": "This receipt predates its containing commit. Actual final head/tree, final-head local full suite and required hosted CI are recorded in the PR delivery body and external FINAL_DELIVERY_RECEIPT.json; no later check is attributed to the reviewed scientific candidate.",
+  "focused_tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_wasz_restart_response_001 -v",
+    "errors": 0,
+    "failures": 0,
+    "passed": 19,
+    "run": 19
+  },
+  "full_suite_runtime_versions": {
+    "NumPy": "1.26.4",
+    "Python": "3.12.3",
+    "SciPy": "1.11.4",
+    "analysis_dependencies": "standard library only",
+    "jsonschema": "4.23.0"
+  },
+  "historical_authority_group_after_environment_fix": {
+    "commit": "a3428a4d4ad571ef3168a70e8a04620fca5d3520",
+    "errors": 0,
+    "failures": 0,
+    "log_relative_locator": "porosity-authority-tests.log",
+    "log_sha256": "4b1eb067c9018c06ce12662a5712c7b3876431de191ceb72dff494c286981eb4",
+    "passed": 20,
+    "tests_run": 20,
+    "tree": "6175b4ad39f45ebcdec32a176e5611bf3b03655b"
+  },
+  "hosted_ci": "Final-head outcome in PR delivery body; this pre-CI receipt makes no hosted-pass claim.",
+  "independent_scientific_review": {
+    "disposition": "PASS_WITHIN_DECLARED_DESCRIPTIVE_AND_CONDITIONAL_SCOPE",
+    "independently_checked_episodes": 13,
+    "independently_recomputed_contrasts": 66,
+    "independently_recomputed_intervals": 46,
+    "material_corrections_requested": 0,
+    "receipt": "REVIEW.md",
+    "receipt_sha256": "e0816799f6535d0735b7bddda3b2379bf537a0f8248534f4289168a362d648d3",
+    "reviewer": "Independent AI agent independent_scientific_review; not human GitHub approval"
+  },
+  "initial_full_local_suite": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s tests -p 'test_*.py'",
+    "errors": 1,
+    "failures": 2,
+    "failures_detail": [
+      "Missing EWP_POROSITY_PERMEABILITY_PRIOR_PUCKWORKS_ROOT (setUpClass error; 20 tests not run)",
+      "Missing SCI_MD_012_PUCKWORKS_ROOT for legacy deterministic rerun",
+      "PACKAGE_QA_STATUS source manifest count/hash required refresh after task additions"
+    ],
+    "head": "e902a3d594d12b79a71d963b684cdd9a6e3c4673",
+    "log_relative_locator": "full-suite.log",
+    "log_sha256": "e4a5a30c9a99a3ae25603ff315a1764e3087016e1ae856185e025c0a6817158c",
+    "resolution": "Supply the exact historical a3428a4 authority containing 2058d0e; refresh normal package bookkeeping; run affected checks and final-head full suite. Scientific files unchanged.",
+    "run": 1650,
+    "seconds": 466.096,
+    "skipped": 21,
+    "status": "FAILED_ENVIRONMENT_AND_QA_BOOKKEEPING"
+  },
   "initial_test_diagnostic": "First table byte comparison exposed JSON/CSV field-order difference; sorted CSV fields corrected before scientific review; no arithmetic change",
-  "local_repository_checks": "PENDING_AT_SCIENTIFIC_CANDIDATE",
-  "independent_scientific_review": "PENDING_AT_SCIENTIFIC_CANDIDATE",
-  "hosted_ci": "Final-head receipts will be reported in PR; no hosted outcome asserted by this pre-CI artifact",
-  "physical_validation": "NOT_ESTABLISHED"
+  "local_repository_checks": {
+    "administrative_head": {
+      "exit_code": 0,
+      "log_sha256": "a55ab0053e111b45b55f63d38126e82373a39d6c8fd5a23b2e97207e5ba27e54"
+    },
+    "diff_check": {
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "generated_and_private_boundaries": {
+      "exit_code": 0
+    },
+    "governing_boundary": {
+      "exit_code": 0,
+      "log_sha256": "07d82a998a116bfe25463d4484025b0c4a5b3906bd703a2d11949dd65e34f13d"
+    },
+    "head": "e902a3d594d12b79a71d963b684cdd9a6e3c4673",
+    "historical_baseline": {
+      "exit_code": 0,
+      "log_sha256": "982d4fa488835ff6c0ccfe7930db958f6f80f05e74143dcb326c01b028a927fe"
+    },
+    "json_shell_syntax": {
+      "exit_code": 0
+    },
+    "release_contract": {
+      "exit_code": 0,
+      "log_sha256": "0c0f40bc9098c54bd733519b0237fc1023fb232283b986087721a44da4fdb92f"
+    },
+    "release_integrity": {
+      "exit_code": 0,
+      "log_sha256": "0c0f40bc9098c54bd733519b0237fc1023fb232283b986087721a44da4fdb92f"
+    },
+    "rheology005": {
+      "exit_code": 0,
+      "log_sha256": "c41aada8494222b6e8f413946136fd0d76e866962b0353b203d7a8fdf5a86662"
+    },
+    "rheology006": {
+      "exit_code": 0,
+      "log_sha256": "f71d08733779a484c53ee78bba4de225b524f0003505a9dfd14148fd518a0683"
+    },
+    "source": {
+      "exit_code": 0,
+      "log_sha256": "9c633ea30a24d33ab71529af7566a16032bdfd6c459d898145e146a79fe6eeaf"
+    },
+    "static": {
+      "exit_code": 0,
+      "log_sha256": "cc23ac6c21fe397ab6c17d8ae2db449fbe7c4d585e836290451a77e3eda0351d"
+    },
+    "tree": "57ce676517747053b710da58c9dc27a631abf139",
+    "wp03a": {
+      "exit_code": 0,
+      "log_sha256": "19a3e8f85e874333bab33a1474754f7188689fa02edf4d8939f9621d7c031acc"
+    },
+    "wp03b": {
+      "exit_code": 0,
+      "log_sha256": "dd065c09fdd7c4f3ae6ba0c5e2c9db0c2dca95c8f708a2f2f7c2e295636ae0d4"
+    },
+    "wp03c": {
+      "exit_code": 0,
+      "log_sha256": "27e051ce11c64e0e6f996b6b149eb4100e3e0cb1ffc180f4a8d8b9f017f18134"
+    },
+    "xsv_pressure": {
+      "exit_code": 0,
+      "log_sha256": "8196faa1b7339e5588ca0efda337da9fe84c1abf41e5b8196d47cb3c70bae93e"
+    }
+  },
+  "physical_validation": "NOT_ESTABLISHED",
+  "plan_commit": "20f982d",
+  "plan_sha256": "0ad18c251b5473a9a9c7f81250d620661abec1d6cb8b41f117960da53896b97c",
+  "scientific_analysis": "EXECUTED",
+  "scientific_files_unchanged_from_reviewed_candidate": {
+    "docs/analysis/sci_md_wasz_restart_response_001/CONTRASTS.csv": "44864f9f51087a5fdd181d26a33593d6918e029ee1f0cc7536e69d5de9690f92",
+    "docs/analysis/sci_md_wasz_restart_response_001/EPISODES.csv": "5462c85b5cf4b2551f8cd4539ede6c3c7c05a26cebf892848a329ecf3d992c8b",
+    "docs/analysis/sci_md_wasz_restart_response_001/INTERVALS.csv": "3becf285badd55f88847f6e77904c87aba0edb667e040ae6c0c3d43fa43a3654",
+    "docs/analysis/sci_md_wasz_restart_response_001/PLAN.md": "0ad18c251b5473a9a9c7f81250d620661abec1d6cb8b41f117960da53896b97c",
+    "docs/analysis/sci_md_wasz_restart_response_001/RAW_CLOCK.svg": "33bfc8dff6cbe620794fcef925ff0103ed0b8e5f617bdcc9ab95da71ae46eff3",
+    "docs/analysis/sci_md_wasz_restart_response_001/RESULT.json": "776fd5ad639461f2071a45f20ef1fb27d5dcb6d5f78cb2ec554382a6ccb6419a",
+    "docs/analysis/sci_md_wasz_restart_response_001/RESULT.md": "b2fb19af5d183b9c2f5e8a1f00658389f25ccdc10c042eb66f6f5638ee4f3626",
+    "docs/analysis/sci_md_wasz_restart_response_001/SOURCE_MANIFEST.json": "65d7a5fe077a28a650a770477f7a104b44077a48d0156b4d97b83457d9cc5f61",
+    "tests/test_sci_md_wasz_restart_response_001.py": "e7300e782cea0d031d0b59fe8cf9fefedbf83917c40f3df60d64a5dc0281ceab",
+    "tools/sci_md_wasz_restart_response_001/analyze.py": "dbb974b93741128b7b5ae0ae8fce46000cbbf65c30ece748913c8693b3ace5f4"
+  },
+  "scientific_review_candidate": "e902a3d594d12b79a71d963b684cdd9a6e3c4673",
+  "scientific_review_tree": "57ce676517747053b710da58c9dc27a631abf139",
+  "task_id": "SCI-MD-WASZ-RESTART-RESPONSE-001"
 }
