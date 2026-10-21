@@ -1,0 +1,63 @@
+{
+  "attribution": "Waszkiewicz, Myck, Bia\u0142as, Puciata-Mroczynska, Dzikowski, Szymczak and Lisicki (2025)",
+  "deposit": "https://zenodo.org/records/18046315",
+  "evidence_root_convention": "external task evidence directory; full logs referenced by relative locator in CHECKS.json",
+  "ewp_base": "adb50c634f0e7959eb1e5a63405ee881cde7be72",
+  "fields": {
+    "m": "recorded cup mass in grams",
+    "other": "U, v1, v2, p1 uninterpreted; p1 not asserted independent puck pressure",
+    "p2": "recorded pressure; line pressure=p2/100 bar",
+    "t": "milliseconds; analysis time=t/1000 seconds; original clock"
+  },
+  "implementation_sha256": "dbb974b93741128b7b5ae0ae8fce46000cbbf65c30ece748913c8693b3ace5f4",
+  "original_source": {
+    "authenticated": true,
+    "expected_revision": "fbc33d3380a9c8cff2467bae70fec7137a6ed46f",
+    "files": {
+      "measurements_brew_restarting/brew_restarting.txt": {
+        "authenticated": true,
+        "bytes": 163514,
+        "expected_git_blob_id": "7940d6aa008e7cae37bb1bf8ceece44fa07d0bff",
+        "git_blob_id": "7940d6aa008e7cae37bb1bf8ceece44fa07d0bff",
+        "pinned_tree_blob_id": "7940d6aa008e7cae37bb1bf8ceece44fa07d0bff",
+        "sha256": "e82430cde25574140d2026882a883fba21a0f0ac6d9588b15df22571836f68e9",
+        "source_root_relative_locator": "measurements_brew_restarting/brew_restarting.txt",
+        "url": "https://github.com/RadostW/espresso/blob/fbc33d3380a9c8cff2467bae70fec7137a6ed46f/measurements_brew_restarting/brew_restarting.txt"
+      },
+      "plot_singlepanel_brew_restarting.py": {
+        "authenticated": true,
+        "bytes": 1783,
+        "expected_git_blob_id": "f93c4c2abb6847d70b21df669bd6940089c226b3",
+        "git_blob_id": "f93c4c2abb6847d70b21df669bd6940089c226b3",
+        "pinned_tree_blob_id": "f93c4c2abb6847d70b21df669bd6940089c226b3",
+        "sha256": "aa35ade18cc8b6946164279d6e2e82337435c3165698be932ff3d0f32b47cd74",
+        "source_root_relative_locator": "plot_singlepanel_brew_restarting.py",
+        "url": "https://github.com/RadostW/espresso/blob/fbc33d3380a9c8cff2467bae70fec7137a6ed46f/plot_singlepanel_brew_restarting.py"
+      }
+    },
+    "revision": "fbc33d3380a9c8cff2467bae70fec7137a6ed46f"
+  },
+  "paper": "https://arxiv.org/html/2512.21528v1",
+  "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+  "plan_sha256": "0ad18c251b5473a9a9c7f81250d620661abec1d6cb8b41f117960da53896b97c",
+  "production_puckworks_lock": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+  "puckworks_research_main": "58075bbbce548e63d94106c96b918c1464221514",
+  "raw_payloads": "outside repository; locators relative to explicit --source-root",
+  "repository": "https://github.com/RadostW/espresso",
+  "reproducible_retrieval": [
+    "git init SOURCE_ROOT",
+    "git -C SOURCE_ROOT remote add origin https://github.com/RadostW/espresso.git",
+    "git -C SOURCE_ROOT fetch --depth 1 origin fbc33d3380a9c8cff2467bae70fec7137a6ed46f",
+    "git -C SOURCE_ROOT checkout --detach FETCH_HEAD"
+  ],
+  "retrieval_method": "reuse verified existing v1.0.1 Git clone; exact HEAD/tree blobs and independent SHA-256",
+  "rights": {
+    "data": "CC-BY-4.0 deposit data per accepted Puckworks provenance and Zenodo metadata",
+    "software": "GPLv3; inspected only; independently implemented mathematics; no upstream execution/copying"
+  },
+  "runtime": {
+    "dependencies": "Python standard library only",
+    "python": "3.12.3"
+  },
+  "task_id": "SCI-MD-WASZ-RESTART-RESPONSE-001"
+}

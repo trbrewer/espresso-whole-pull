@@ -1,6 +1,21 @@
 # Project State
 
 
+## SCI-MD-WASZ-RESTART-RESPONSE-001 (2026-10-20)
+
+Completed G1 / NO_GOVERNING_PHYSICS_CHANGE, non-scoring RESEARCH_ONLY /
+RETROSPECTIVE / SOURCE_INTERNAL / TARGET_EXPOSED observation study. One original
+Figure 10 puck, five restarts, all supported under three fixed designs. Primary
+later delivery is 3.232878–4.305350 g/s versus 1.823690 g/s before interruption
+(+1.409189–2.481661 g/s); later-minus-early is negative in every design/episode.
+Line-pressure trajectories are close but not independently qualified equivalent;
+pressure-only exclusion, apparatus/observation comparability and causal/mechanical
+attribution remain unresolved. Retain the quantitative later observation and
+withhold an interruption-specific mechanical requirement. [Result](analysis/sci_md_wasz_restart_response_001/RESULT.md).
+The 56-brew cohort, #207/#209 results, solver/defaults/production lock and Puckworks
+are unchanged. PHYSICAL_VALIDATION=NOT_ESTABLISHED; no automatic successor.
+
+
 ## SCI-MD-WASZ-TERMINAL-MASS-ROBUSTNESS-001 (2026-10-20)
 
 G1 / `NO_GOVERNING_PHYSICS_CHANGE`, retrospective source-internal, target-exposed
