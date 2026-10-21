@@ -1,4 +1,40 @@
 {
+  "affected_tests_after_administrative_fix": {
+    "command": "python3 -m unittest tests.test_existing_data_leverage_programme tests.test_sci_md_wasz_terminal_mass_robustness_001 -v",
+    "errors": 0,
+    "failures": 0,
+    "log_sha256": "084793ae9b0c209948bf48f8d63d881f1552ba898703fee826e553eae1258342",
+    "passed": 22,
+    "run": 22
+  },
+  "change_boundary": {
+    "all_changes_task_scoped": true,
+    "base": "f93095abd58b31476ec331f3aa8d68feb98df9b0",
+    "changed_paths": [
+      "PACKAGE_QA_STATUS.json",
+      "SOURCE_PACKAGE_MANIFEST.json",
+      "docs/PROJECT_STATE.md",
+      "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv",
+      "docs/analysis/sci_md_wasz_terminal_mass_robustness_001/ACQUISITION_SUPPORT.json",
+      "docs/analysis/sci_md_wasz_terminal_mass_robustness_001/BREW_RESULTS.csv",
+      "docs/analysis/sci_md_wasz_terminal_mass_robustness_001/CHECKS.json",
+      "docs/analysis/sci_md_wasz_terminal_mass_robustness_001/CONDITION_RESULTS.csv",
+      "docs/analysis/sci_md_wasz_terminal_mass_robustness_001/INFLUENCE.csv",
+      "docs/analysis/sci_md_wasz_terminal_mass_robustness_001/PLAN.md",
+      "docs/analysis/sci_md_wasz_terminal_mass_robustness_001/RECONSTRUCTION.csv",
+      "docs/analysis/sci_md_wasz_terminal_mass_robustness_001/RESULT.json",
+      "docs/analysis/sci_md_wasz_terminal_mass_robustness_001/RESULT.md",
+      "docs/analysis/sci_md_wasz_terminal_mass_robustness_001/SOURCE_MANIFEST.json",
+      "tests/test_sci_md_wasz_terminal_mass_robustness_001.py",
+      "tools/sci_md_wasz_terminal_mass_robustness_001/analyze.py",
+      "provenance/EXISTING_DATA_LEVERAGE_PROGRAMME.json",
+      "docs/analysis/sci_md_wasz_terminal_mass_robustness_001/REVIEW.md"
+    ],
+    "original_and_puckworks_worktrees_clean": true,
+    "prior_scientific_artifacts_unchanged": true,
+    "production_lock_byte_identical": true,
+    "production_lock_sha256": "52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10"
+  },
   "deterministic_rerun": {
     "ACQUISITION_SUPPORT.json": {
       "byte_equal_committed": true,
@@ -47,11 +83,97 @@
     "passed": 16,
     "run": 16
   },
+  "full_local_suite": {
+    "command": "python3 -m unittest discover -s tests -p 'test_*.py'",
+    "correction": "Added only this completed task to existing programme opportunities; scientific code/data unchanged; affected tests rerun; final full suite is required hosted CI",
+    "errors": 0,
+    "failure": "test_existing_data_leverage_programme: new ledger row requires matching existing programme-register entry",
+    "failures": 1,
+    "head": "9bf9e3299fbf367711b63ebcc9b8eabc7f69a7ea",
+    "log_sha256": "d3f9ddce73c9d5e5945532188a8dd19b5950a9dc1bbd0d259f6bcb5fe24f0966",
+    "passed": 1629,
+    "run": 1651,
+    "seconds": 493.876,
+    "skipped": 21
+  },
   "hosted_ci": "See PR final-head receipts; no hosted status asserted by this pre-CI artifact.",
-  "inexpensive_checks": "PENDING_LOCAL_CLOSEOUT",
+  "inexpensive_checks": "LOCAL_FULL_SUITE_ADMINISTRATIVE_FAILURE_CORRECTED_WITH_AFFECTED_TESTS; final complete hosted outcome in PR",
+  "local_repository_checks": {
+    "administrative_head": {
+      "exit_code": 0,
+      "log_sha256": "7c7c008f74a728b0de05f41942dcca9a8ef4791febcfaf9a23604a1a2af05d05"
+    },
+    "diff_check": {
+      "exit_code": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "generated_and_private_boundaries": {
+      "exit_code": 0
+    },
+    "governing_boundary": {
+      "exit_code": 0,
+      "log_sha256": "07d82a998a116bfe25463d4484025b0c4a5b3906bd703a2d11949dd65e34f13d"
+    },
+    "head": "9bf9e3299fbf367711b63ebcc9b8eabc7f69a7ea",
+    "historical_baseline": {
+      "exit_code": 0,
+      "log_sha256": "982d4fa488835ff6c0ccfe7930db958f6f80f05e74143dcb326c01b028a927fe"
+    },
+    "json_shell_syntax": {
+      "exit_code": 0
+    },
+    "release_contract": {
+      "exit_code": 0,
+      "log_sha256": "0c0f40bc9098c54bd733519b0237fc1023fb232283b986087721a44da4fdb92f"
+    },
+    "release_integrity": {
+      "exit_code": 0,
+      "log_sha256": "0c0f40bc9098c54bd733519b0237fc1023fb232283b986087721a44da4fdb92f"
+    },
+    "rheology005": {
+      "exit_code": 0,
+      "log_sha256": "c41aada8494222b6e8f413946136fd0d76e866962b0353b203d7a8fdf5a86662"
+    },
+    "rheology006": {
+      "exit_code": 0,
+      "log_sha256": "f71d08733779a484c53ee78bba4de225b524f0003505a9dfd14148fd518a0683"
+    },
+    "source": {
+      "exit_code": 0,
+      "log_sha256": "93ea322b9190211a944e1b9e2bc82fb545b405a604a01e26c6646304f704d5dc"
+    },
+    "static": {
+      "exit_code": 0,
+      "log_sha256": "447ba33a3f9bcfa5831e104d704f01af36562c9dd275a909e7bbaa0e54b4787e"
+    },
+    "tree": "b2c29007803327faa2e5b096d9e3a45f6dc94b2a",
+    "wp03a": {
+      "exit_code": 0,
+      "log_sha256": "19a3e8f85e874333bab33a1474754f7188689fa02edf4d8939f9621d7c031acc"
+    },
+    "wp03b": {
+      "exit_code": 0,
+      "log_sha256": "dd065c09fdd7c4f3ae6ba0c5e2c9db0c2dca95c8f708a2f2f7c2e295636ae0d4"
+    },
+    "wp03c": {
+      "exit_code": 0,
+      "log_sha256": "6618c16ec4ca875e45609955f8de1d3e6cb4fc026f0ca14eeec74117f187c2dd"
+    },
+    "xsv_pressure": {
+      "exit_code": 0,
+      "log_sha256": "8196faa1b7339e5588ca0efda337da9fe84c1abf41e5b8196d47cb3c70bae93e"
+    }
+  },
   "physical_validation": "NOT_ESTABLISHED",
-  "review": "Independent AI review in progress; substantive receipt to be retained in REVIEW.md.",
+  "review": {
+    "disposition": "PASS_WITH_DECLARED_HISTORICAL_OPERATOR_LINEAGE_LIMITATION",
+    "material_findings": 0,
+    "receipt": "REVIEW.md",
+    "receipt_sha256": "325113c1e7cb4b96f9329565e0a28e4de02694dbfe552447e32835b7e88542b9",
+    "reviewer": "Independent AI agent independent_scientific_review; not human GitHub approval",
+    "scientific_head": "2b5feb4d756981b13d980f51835126dbbeccb1e6"
+  },
   "scientific_review_candidate": "2b5feb4d756981b13d980f51835126dbbeccb1e6",
-  "source_and_boundary": "PENDING_LOCAL_CLOSEOUT",
+  "source_and_boundary": "PASS_AT_RECORDED_LOCAL_HEAD; final-head source/CI receipts in PR",
   "task_id": "SCI-MD-WASZ-TERMINAL-MASS-ROBUSTNESS-001"
 }
