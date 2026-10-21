@@ -1,0 +1,57 @@
+{
+  "deterministic_rerun": {
+    "ACQUISITION_SUPPORT.json": {
+      "byte_equal_committed": true,
+      "byte_equal_worktree": true,
+      "sha256": "7535a0d02fa2a8ae3a09c78bf7a15bfcc3a6c7bc6d1b6fde2aa3517893d6458f"
+    },
+    "BREW_RESULTS.csv": {
+      "byte_equal_committed": true,
+      "byte_equal_worktree": true,
+      "sha256": "9a26ec6d9ab52b6f00d2c08fec212fcd5a3cc163eda62ee7e82494467dc46afd"
+    },
+    "CONDITION_RESULTS.csv": {
+      "byte_equal_committed": true,
+      "byte_equal_worktree": true,
+      "sha256": "72ecf618b714bc9c0bc8abd8305b80085378d451a20ff79593ab0802dd82d707"
+    },
+    "INFLUENCE.csv": {
+      "byte_equal_committed": true,
+      "byte_equal_worktree": true,
+      "sha256": "e4090e629b02b4b7897063af5402845271aaf1f24e560ea55b5dc65428fdd18f"
+    },
+    "RECONSTRUCTION.csv": {
+      "byte_equal_committed": true,
+      "byte_equal_worktree": true,
+      "sha256": "1b57ebf1c673617d95212cdf92ad27ee45456c6084cf1c56c9babda2a0b7cb0a"
+    },
+    "RESULT.json": {
+      "byte_equal_committed": true,
+      "byte_equal_worktree": true,
+      "sha256": "8ec95de8eb1cc8a5bde6392b29e3856b95a63e6a0e6a02850b71fb9236c2ea9b"
+    },
+    "SOURCE_MANIFEST.json": {
+      "byte_equal_committed": true,
+      "byte_equal_worktree": true,
+      "sha256": "38a176bcb5248a39b9a9d47241f68f7f2acc84ebbd59ade49181b5fc63c60ed8"
+    }
+  },
+  "execution_notes": [
+    "Initial assertion exposed accepted-equilibrium versus truncated-trace endpoint discrepancy; original evidence preserved and both paths reconstructed.",
+    "Incomplete final 7-1 record retained explicitly; missing t/m not fabricated.",
+    "Initial JSON write rejected numpy.bool_; explicit builtin bool serialization fixed before retained execution.",
+    "CSV LF output explicitly matches Git representation."
+  ],
+  "focused_tests": {
+    "command": "python3 -m unittest tests.test_sci_md_wasz_terminal_mass_robustness_001 -v",
+    "passed": 16,
+    "run": 16
+  },
+  "hosted_ci": "See PR final-head receipts; no hosted status asserted by this pre-CI artifact.",
+  "inexpensive_checks": "PENDING_LOCAL_CLOSEOUT",
+  "physical_validation": "NOT_ESTABLISHED",
+  "review": "Independent AI review in progress; substantive receipt to be retained in REVIEW.md.",
+  "scientific_review_candidate": "2b5feb4d756981b13d980f51835126dbbeccb1e6",
+  "source_and_boundary": "PENDING_LOCAL_CLOSEOUT",
+  "task_id": "SCI-MD-WASZ-TERMINAL-MASS-ROBUSTNESS-001"
+}
