@@ -144,3 +144,21 @@ Reproduction commands and exact receipts will be recorded with the result;
 implementation belongs in existing scripts/tests locations and the compact
 result bundle, with only necessary current-state/ledger pointers and source/QA
 manifest bookkeeping. Preserve all prior scientific artifacts and production lock.
+
+
+## Intake clarification before mass-window condition slopes
+
+Inspection found that the accepted SCI-MD-010 values come from Puckworks
+`equilibrium_windows.csv`, not the final flow of `traces_per_brew.csv`.
+The initial expectation of equality between those two observers is false.
+The four declared analysis observers are unchanged: historical means the actual
+accepted equilibrium table, q10/q5/q20 remain fixed. Reconstruct both the original
+truncated formatter and the accepted table separately. A full-record SG derivative
+averaged over actual samples in [99.9,100.1] s reproduces all 57 accepted endpoint
+flow/basket-pressure rows and sample counts within 5-decimal serialization.
+This is a numerical lineage inference; its original producer script is not
+retained in inspected Puckworks history. It is neither a new mass window nor a
+replacement historical target. Restrict the historical-operator applicability
+claim accordingly. One `7-1` final JSON record contains p2 but lacks t/m;
+retain its p2 in the reference median, record the incomplete tail, and use only
+the preceding complete measurements for interpolation. No measurement is filled.
