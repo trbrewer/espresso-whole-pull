@@ -1126,6 +1126,37 @@
       "exhaustion_decision": null,
       "review_trigger": "Separate owner disposition; no automatic follow-on",
       "notes": "Accepted historical flow table differs from source truncated endpoints; numerical near100 reproduction does not uniquely establish original producer provenance. No mechanism, independent validation, production change or successor. PHYSICAL_VALIDATION=NOT_ESTABLISHED."
+    },
+    {
+      "opportunity_id": "SCI-MD-WASZ-RESTART-RESPONSE-001",
+      "task_id": "SCI-MD-WASZ-RESTART-RESPONSE-001",
+      "title": "Waszkiewicz original stop\u2013restart beverage-delivery response",
+      "data_families": [
+        "waszkiewicz2025"
+      ],
+      "scientific_question": "Does later within-puck recorded beverage delivery differ at comparable measured line pressure?",
+      "model_component": "source-internal observational characterization",
+      "status": "COMPLETE_POSITIVE",
+      "priority": 1,
+      "prerequisites": [
+        "Authenticated original Figure 10 acquisition; pressure-only support inspection; fixed exposed-data design before mass contrasts"
+      ],
+      "current_evidence": "One physical puck; five restarts; all three designs supported; later delivery above E0 and below early delivery in all 15 pairs; pressure-only exclusion unresolved",
+      "expected_information": "Distinct within-puck pressure-cycling acquisition with direct interval-mass observer and pressure-history comparisons",
+      "positive_action": "Retain quantitative later within-puck observation conditional on pressure-response and observation assumptions",
+      "negative_action": "For supported early-only attenuation prioritize transient/storage/observation explanations",
+      "null_action": "Retain descriptive arithmetic and withhold interruption-specific mechanical requirement when pressure/drift/apparatus remain unresolved",
+      "blocked_action": "Close with exact unsupported comparisons without moving windows",
+      "claim_ceiling": "RESEARCH_ONLY;RETROSPECTIVE;SOURCE_INTERNAL;TARGET_EXPOSED",
+      "home_lab_effect": "NO_OPERATION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_wasz_restart_response_001/RESULT.md",
+        "docs/analysis/sci_md_wasz_restart_response_001/RESULT.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "Separate owner disposition; no automatic follow-on",
+      "notes": "COMPLETE_POSITIVE describes observed later delivery differences only; no unrestricted pressure-only exclusion, chemical exhaustion, mechanism identification or interruption-specific causal claim. One puck, not added to accepted 56-brew cohort. PHYSICAL_VALIDATION=NOT_ESTABLISHED; no successor."
     }
   ],
   "laboratory_gate": {

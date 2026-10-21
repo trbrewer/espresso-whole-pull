@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1435,
-  "total_uncompressed_bytes_excluding_manifest": 23635819,
-  "aggregate_source_sha256": "97ea3b72f57304b5c3ee07b077c018e402092be31926da407b66324a302a1cb1",
-  "aggregate_sha256": "97ea3b72f57304b5c3ee07b077c018e402092be31926da407b66324a302a1cb1",
+  "file_count": 1445,
+  "total_uncompressed_bytes_excluding_manifest": 25735517,
+  "aggregate_source_sha256": "c020650e6cbc2adcfe0d7fa9a42499bdb1e2c33c806df63007b22ccce1d9822a",
+  "aggregate_sha256": "c020650e6cbc2adcfe0d7fa9a42499bdb1e2c33c806df63007b22ccce1d9822a",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -799,8 +799,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "908b925b40c4ed5deb18f612187fc00475054c16e5b29a4d5f022863a340199d",
-      "bytes": 31204,
+      "sha256": "cf6e2e5b26de9b778c4bfa33b04af0d7a67bc49e404111496a4876907ae1a56c",
+      "bytes": 32228,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -3913,6 +3913,51 @@
       "bytes": 5344,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_wasz_restart_response_001/CHECKS.json": {
+      "sha256": "96176a237fac9406a93aa134f0eb12b8267d1bdb859b2356f9d42f40ced11f7a",
+      "bytes": 1743,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_response_001/CONTRASTS.csv": {
+      "sha256": "44864f9f51087a5fdd181d26a33593d6918e029ee1f0cc7536e69d5de9690f92",
+      "bytes": 318594,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_response_001/EPISODES.csv": {
+      "sha256": "5462c85b5cf4b2551f8cd4539ede6c3c7c05a26cebf892848a329ecf3d992c8b",
+      "bytes": 6761,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_response_001/INTERVALS.csv": {
+      "sha256": "3becf285badd55f88847f6e77904c87aba0edb667e040ae6c0c3d43fa43a3654",
+      "bytes": 386227,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_response_001/PLAN.md": {
+      "sha256": "0ad18c251b5473a9a9c7f81250d620661abec1d6cb8b41f117960da53896b97c",
+      "bytes": 11789,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_response_001/RAW_CLOCK.svg": {
+      "sha256": "33bfc8dff6cbe620794fcef925ff0103ed0b8e5f617bdcc9ab95da71ae46eff3",
+      "bytes": 96498,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_response_001/RESULT.json": {
+      "sha256": "776fd5ad639461f2071a45f20ef1fb27d5dcb6d5f78cb2ec554382a6ccb6419a",
+      "bytes": 1244763,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_response_001/RESULT.md": {
+      "sha256": "b2fb19af5d183b9c2f5e8a1f00658389f25ccdc10c042eb66f6f5638ee4f3626",
+      "bytes": 17516,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_response_001/SOURCE_MANIFEST.json": {
+      "sha256": "65d7a5fe077a28a650a770477f7a104b44077a48d0156b4d97b83457d9cc5f61",
+      "bytes": 3470,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_wasz_terminal_mass_robustness_001/ACQUISITION_SUPPORT.json": {
       "sha256": "7535a0d02fa2a8ae3a09c78bf7a15bfcc3a6c7bc6d1b6fde2aa3517893d6458f",
       "bytes": 242388,
@@ -6551,6 +6596,11 @@
     "tests/test_sci_md_rheology_011.py": {
       "sha256": "a6ec5c708333766045a6266fb33702a5a88d1dedec2683fa1c64c52ba08b8bb4",
       "bytes": 8955,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_wasz_restart_response_001.py": {
+      "sha256": "e7300e782cea0d031d0b59fe8cf9fefedbf83917c40f3df60d64a5dc0281ceab",
+      "bytes": 11313,
       "git_mode": "100644"
     },
     "tests/test_sci_md_wasz_terminal_mass_robustness_001.py": {
