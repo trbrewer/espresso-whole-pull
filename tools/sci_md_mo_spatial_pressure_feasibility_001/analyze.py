@@ -114,7 +114,13 @@ def integrate(candidate, pressure, method="DOP853", rtol=1e-8, atol=1e-10,
     if (not np.all(np.isfinite(x)) or np.min(sol.y) < -1e-10
             or np.min(x - x0) < -1e-10 or np.max(x) > 2
             or np.min(np.diff(x, axis=0)) < -1e-8):
-        raise ValueError("accepted state/inventory/monotonicity failure")
+        exc = ValueError("accepted state/inventory/monotonicity failure")
+        exc.evaluations = evaluations
+        exc.diagnostics = {"min_z": float(np.min(sol.y)),
+                           "min_x_minus_x0": float(np.min(x-x0)),
+                           "max_x_minus_2": float(np.max(x-2)),
+                           "min_dx": float(np.min(np.diff(x, axis=0)))}
+        raise exc
     hs = [hydraulics(xx, pressure, independent) for xx in x]
     flow = np.array([h["Qin"] for h in hs])
     if np.min(np.diff(flow)) < -1e-8 * max(flow.max(), 1):
@@ -150,13 +156,19 @@ def run(output):
     output.mkdir(parents=True, exist_ok=True)
     rows, best = [], None
     total = 0
+    actual_evaluations = 0
+    actual_attempts = 0
     for candidate in candidates():
         row = {"id": candidate["id"], **dict(zip(NAMES, candidate["x0"])),
                **{k: v for k, v in candidate.items() if k not in ("id", "x0")}}
+        used = 0
         try:
+            actual_attempts += 1
             low = integrate(candidate, 1.0)
+            used += low["evaluations"]
+            actual_attempts += 1
             high = integrate(candidate, candidate["pressure_high"])
-            used = low["evaluations"] + high["evaluations"]
+            used += high["evaluations"]
             total += used
             ratio = high["Q"] / low["Q"]
             j = int(np.argmin(ratio))
@@ -182,7 +194,11 @@ def run(output):
         except (ValueError, RuntimeError, FloatingPointError) as exc:
             # A failed attempt consumes its full allowed budget conservatively.
             total += 200000
+            used += getattr(exc, "evaluations", 100000)
             row.update(status="FAILED", evaluations=200000, failure=str(exc))
+            row.update(getattr(exc, "diagnostics", {}))
+        actual_evaluations += used
+        row["actual_rhs_evaluations_or_upper_charge"] = used
         rows.append(row)
         if total >= 5000000:
             break
@@ -192,7 +208,8 @@ def run(output):
         writer.writeheader()
         writer.writerows(rows)
     summary = {"seed": SEED, "candidate_count": len(rows),
-               "exploratory_trajectory_attempts": 2 * len(rows),
+               "exploratory_trajectory_attempts": actual_attempts,
+               "actual_rhs_evaluations_or_upper_charge": actual_evaluations,
                "failures": sum(r["status"] == "FAILED" for r in rows),
                "rhs_evaluations_or_conservative_failure_charge": total,
                "preliminary_witnesses": sum(r["status"].startswith("PRELIMINARY") for r in rows),

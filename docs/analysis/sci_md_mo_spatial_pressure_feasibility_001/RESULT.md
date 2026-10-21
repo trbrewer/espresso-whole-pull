@@ -1,5 +1,14 @@
 # Spatial effective-law pressure feasibility
 
+**UNRESOLVED_BOUNDED_ANALYSIS.** No full-family ordering proof or qualified
+reversal was obtained. The declared five-edge finite-cohesion bridge admits
+active erosion and preserves fixed-state pressure monotonicity, but the
+scalar/common-orbit and cooperative comparisons do not cover its general
+asymmetric dynamics. The stopped screen completed 57 of 81 candidate pairs;
+24 were numerically ineligible and 47 planned candidates were not explored.
+No completed pair reversed total discharge on the sampled common-time grid.
+This is neither an infeasibility result nor a capability claim.
+
 Scientific analysis for issue [#212](https://github.com/trbrewer/espresso-whole-pull/issues/212).
 G1 / `NO_GOVERNING_PHYSICS_CHANGE`; RESEARCH_ONLY, retrospective,
 target-exposed, non-scoring. `PHYSICAL_VALIDATION=NOT_ESTABLISHED`.
@@ -160,6 +169,131 @@ comparison test, not every possible ordering proof. A discharge-specific
 ordering invariant for the general finite-threshold network has not been
 established in this bounded analysis. Spatial pattern or cross-flow reversal
 alone is not positive capability evidence.
+
+## Executed bounded screen and numerical assurance
+
+The plan was committed at `fabd21f` before exploration; analytical controls and
+implementation were committed at `2c1d5ed`. Parameters were not adjusted after
+seeing outcomes. [CANDIDATES.csv](CANDIDATES.csv) retains all attempted candidate
+parameters and outcomes; [SEARCH.json](SEARCH.json) holds counts and the closest
+completed pair. Scrambled Sobol seed 20261021, SciPy 1.11.4, five x0 in [.1,1]
+log space, gamma in [.01,.5] log space, beta in [0,4], pi_L=1 and
+pi_H in [1.05,3]; theta in [0,32]. All lengths/breadths, support/background,
+material and finite-inventory contracts are those in PLAN.md. No topology,
+closure, fitting objective or empirical endpoint was searched.
+
+**Stop:** 81 candidate pairs considered, 151 actual trajectory starts,
+57 complete pairs, 24 rejected pairs (11 low-pressure failures, 13 high-pressure
+failures), zero preliminary witnesses. Successful pairs used 230,283 RHS
+calls; including failed integrations, actual calls were 306,221. The
+implementation, frozen before exploration, conservatively charged each failed
+pair its full two-trajectory allowance of 200,000 calls. That charge reached
+5,030,283 at candidate 80 and triggered the 5,000,000 budget stop. The charge
+exceeded the threshold by one completed failure allocation; actual computation
+remained far below it. No remaining candidate was launched. This conservative
+stop limited the screen more than computational cost did; it is not evidence
+that the declared parameter region was exhausted.
+
+The first output called 162 *scheduled* trajectories attempts. A metadata-only
+instrumentation correction and exact deterministic replay of the same stopped
+81-candidate prefix recovered 151 actual starts and the actual call count.
+All original per-candidate scientific fields reproduced exactly. That replay
+added 151 integration starts/306,221 calls, no new candidates. A focused
+candidate-4 rejection diagnostic used two starts/4,045 calls; closest-pair
+refinement used four starts/22,672 calls. These are recorded separately from
+exploration; controls and the independent review are also separate.
+
+The 24 failures were guard rejections of DOP853 sampled dense output, despite
+nonnegative analytical z': 23 had x<x0 beyond 1e-10, 19 had z<0 beyond
+1e-10 (overlapping sets), and one had a sampled aperture decrement below
+-1e-8. Extremes were min z=-1.736375729424402e-9,
+min(x-x0)=-2.285992839468065e-9 and min sampled dx=-6.449156986221283e-8.
+No upper-aperture overshoot occurred. The candidate-4 diagnostic independently
+reproduced small negative z near activation. These are numerical artifacts,
+not physical closure failure or declining discharge evidence. No state was
+clipped, no invalid pair was admitted and no refinement was used to add
+rejected candidates to the qualified search count. The numerical method did
+not resolve the whole attempted set at the prescribed domain guards.
+
+Across the 57 completed pairs on 1025 common times, the maximum sampled
+K_L/K_H was 1.000000000000003: there was no resolved conductance advantage
+for the lower forcing. The closest pair by minimum Q_H/Q_L is candidate 48:
+
+    x0 = (0.43256075316850756, 0.5086712290875969,
+          0.4258775070405367, 0.1853779263020893, 0.1704392798907985)
+    gamma = 0.0318154835249946; beta = 3.722627241164446
+    pi_L = 1; pi_H = 1.0528511677868664
+
+Its smallest ratio is 1.0528511677868664 at theta=0, where both conductances
+are identical. Thus the closest candidate is the smallest sampled pressure
+separation, not an incipient crossing. There is **no reversal interval**.
+
+[REFINEMENT.json](REFINEMENT.json) freezes this pair and records two separate
+integration/calculation paths on 4097 times in [0,32]: DOP853 with
+rtol=1e-11/atol=1e-13 and Radau with rtol=1e-10/atol=1e-12, both
+max_step=.0625. Radau uses independently assembled graph-Laplacian hydraulics
+and root-split midpoint integration of the local positive part. The original
+integral is analytic; this is an independent arithmetic check, not a spatial
+mesh qualification. No inventory-exhaustion event occurs in the exact finite-time
+model; threshold switches are handled by the continuous RHS, with no resets.
+
+Both paths find the closest pair's minimum absolute Q_H-Q_L to be
+**0.00303106590846626 Q_ref**, with Q_L=0.057350973221437236 Q_ref and
+Q_H=0.060382039129903496 Q_ref at theta=0; relative excess **5.28511677868664%**.
+Maximum inter-method differences over the common refined grid are
+2.7547408798511697e-15 in Q*, 7.216449660063518e-16 in the gap, and
+2.0317081350640365e-14 in x. These are numerical difference estimates,
+**not certified global error bounds**, and do not establish continuous-time
+ordering even for this pair. There is no positive witness to certify.
+
+For all accepted exploratory states, maximum absolute hydraulic conservation/
+dissipation residual was 2.842170943040401e-14 in the declared dimensionless
+units, and solid inventory residual was 4.440892098500626e-16. The minimum
+sampled within-run Q increment was -3.552713678800501e-15 (roundoff);
+there was no resolved temporal discharge decline. Pressure maximum principle,
+positive conductances and finite inventory were checked. There were 2,263
+sampled aperture entries rounded exactly to the upper endpoint; exact
+finite-time exhaustion was not claimed and no clipping was performed.
+
+The seven focused tests cover hydraulic symmetry/conservation/dissipation,
+passive conductance monotonicity, independent threshold integration,
+fixed-full-state pressure monotonicity, active/inactive domains,
+homogeneous-orbit scaling/inventory, finite-threshold comparison obstructions,
+and the symmetric scalar exclusion. The frozen C_E=0 control is analytical;
+its physical t_ref is undefined, so no zero-kinetic nondimensional trajectory
+is fabricated. Reproduction uses Python 3.12.3 / NumPy 1.26.4 / SciPy 1.11.4:
+
+```bash
+python3 tools/sci_md_mo_spatial_pressure_feasibility_001/analyze.py --output "$EVIDENCE/spatial"
+python3 -m tools.sci_md_mo_spatial_pressure_feasibility_001.refine --bundle "$EVIDENCE/spatial"
+python3 -m unittest tests.test_sci_md_mo_spatial_pressure_feasibility_001 -v
+```
+
+Compare generated CSV/JSON with the retained three outputs. Full paired
+trajectory artifacts/plots are not retained because there is no witness;
+the exact closest pair and both integration settings are reproducible.
+
+## Terminal disposition
+
+| Item | Disposition |
+|---|---|
+| General finite-cohesion declared bridge | UNRESOLVED_BOUNDED_ANALYSIS |
+| Assurance | Analytical controls; bounded screen; independent closest-pair numerical estimates, no certification |
+| Exact proven scope | Frozen geometry, unique scalar subfamilies, and D=0/common-orbit families with nonnegative pressure-monotone orbit speed |
+| Missing mathematical step | A discharge-ordering invariant for the asymmetric finite-threshold bridge, or one valid resolved reversal |
+| Numerical boundary | 57 completed pairs; 24 guard-rejected pairs; 47 unvisited candidates; sampled times only |
+| Forcing | Constant prescribed bed pressure; common initial state/material/clock |
+| Line-pressure applicability | NOT_ASSESSED |
+| Coffee/observation applicability | NOT_ESTABLISHED; loading, materials, clock, geometry and beverage observer joins remain |
+| Physical validation | NOT_ESTABLISHED |
+
+Retire only the proven scalar/common-orbit subfamilies for reversal. The
+finite-cohesion asymmetric bridge earns neither retention as a demonstrated
+capable candidate nor retirement as infeasible. Close this bounded task
+without production adoption, further parameter expansion or an automatic
+successor. [Independent scientific review](REVIEW.md) and local/hosted QA
+are separate dispositions; final base/head/check URLs are recorded on the
+single draft PR.
 
 ## Empirical and development boundary
 
