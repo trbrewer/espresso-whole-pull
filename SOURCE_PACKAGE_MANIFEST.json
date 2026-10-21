@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1446,
-  "total_uncompressed_bytes_excluding_manifest": 25756765,
-  "aggregate_source_sha256": "4a5efc9cdc37799d17192b147c84fcc194f5a3779f9df62f8800351094f72e89",
-  "aggregate_sha256": "4a5efc9cdc37799d17192b147c84fcc194f5a3779f9df62f8800351094f72e89",
+  "file_count": 1454,
+  "total_uncompressed_bytes_excluding_manifest": 25850582,
+  "aggregate_source_sha256": "63894df7e4aa005cfcc46b7fe0313cdaef7b134c456d2081bb9e911be08dc299",
+  "aggregate_sha256": "63894df7e4aa005cfcc46b7fe0313cdaef7b134c456d2081bb9e911be08dc299",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -799,8 +799,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "cf6e2e5b26de9b778c4bfa33b04af0d7a67bc49e404111496a4876907ae1a56c",
-      "bytes": 32228,
+      "sha256": "f5cc641ed9a787231fff957f8bf9ab637ac61e06dfd28bb2a2c3a83fda8d559b",
+      "bytes": 33191,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -2666,6 +2666,41 @@
     "docs/analysis/sci_md_mo_pressure_feasibility_001/check.py": {
       "sha256": "9dd4b8e566617b5fb55431fc307ec214589198f4adf4e9d165ede725aabff5b6",
       "bytes": 7740,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mo_spatial_pressure_feasibility_001/CANDIDATES.csv": {
+      "sha256": "ea5fd1f19b24b8e0f17bd1c9d89f1e7762ae1312301d1aceab8d4a2c8574a580",
+      "bytes": 26122,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mo_spatial_pressure_feasibility_001/PLAN.md": {
+      "sha256": "88a6ea62492a46eca2c8be61867f7a9c32edccd3e1837655dd1fe67de1e20c5d",
+      "bytes": 12651,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mo_spatial_pressure_feasibility_001/REFINEMENT.json": {
+      "sha256": "21bccaa847387093e0c222b10fef637dc6d3ef737f6dc62ab37de2005b05dd2a",
+      "bytes": 2615,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mo_spatial_pressure_feasibility_001/RESULT.json": {
+      "sha256": "4c93cfb8f8bcbc3e3e4ac20cb975ba8396bf9f2da380e3ef305c3c7f3fdbc76c",
+      "bytes": 14108,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mo_spatial_pressure_feasibility_001/RESULT.md": {
+      "sha256": "658501c2bcd4ee28ad3519145086ea83526bc2e59b662d33fd938b2a0d4d09c7",
+      "bytes": 19387,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mo_spatial_pressure_feasibility_001/REVIEW.md": {
+      "sha256": "45d4d29f7592b81d4cab98e142b367b846a516de4e7da7805c79408ba3c84f5b",
+      "bytes": 12821,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_mo_spatial_pressure_feasibility_001/SEARCH.json": {
+      "sha256": "6bd4c32315a1789aa4e1bd6938ba4109047ddd56f2820cb12d0010238c92bdea",
+      "bytes": 885,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_mo_transfer_001/DATA_PREFLIGHT.json": {
@@ -5854,8 +5889,8 @@
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
-      "sha256": "7c3b8c423fe3ea6757e359b7ed4af036801a43b6e6ac1083f7e68c02b987c5b2",
-      "bytes": 32688,
+      "sha256": "7f264125f0c4b170a464ed2d775ddc9b779618847b889c4a2ca0c37cc724fc3f",
+      "bytes": 32752,
       "git_mode": "100755"
     },
     "scripts/val_case_001.py": {
@@ -6521,6 +6556,11 @@
     "tests/test_sci_md_012.py": {
       "sha256": "96f385eb64fe9a1f95c64474777438fb3c97422c30ac4b68886c901ee1b72304",
       "bytes": 6273,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_mo_spatial_pressure_feasibility_001.py": {
+      "sha256": "5b17ff9c1cf22864317177dcb2909196bc518b44425ae5a4dd31a662a14b7cd8",
+      "bytes": 4201,
       "git_mode": "100644"
     },
     "tests/test_sci_md_pannusch_flow_history_001.py": {

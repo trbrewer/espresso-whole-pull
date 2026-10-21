@@ -60,7 +60,7 @@
     "foundation12_build": "PASS"
   },
   "current_repository_checks": {
-    "python_test_count": 1670,
+    "python_test_count": 1677,
     "xsv_flow_001_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_xsv_flow_001",
     "xsv_flow_001_focused_test_count": 21,
     "sci_md_004_stage_c_focused_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest tests.test_sci_md_004_stage_c",
@@ -80,8 +80,8 @@
     "current_authority_consistency_test_count": 6,
     "val001_synthetic_test_count": 58,
     "static_gate_count": 39,
-    "source_manifest_file_count": 1446,
-    "source_manifest_aggregate_sha256": "4a5efc9cdc37799d17192b147c84fcc194f5a3779f9df62f8800351094f72e89",
+    "source_manifest_file_count": 1454,
+    "source_manifest_aggregate_sha256": "63894df7e4aa005cfcc46b7fe0313cdaef7b134c456d2081bb9e911be08dc299",
     "historical_baseline_integrity": "PASS",
     "active_governing_change_contract": "PASS",
     "release_integrity": "PASS",
@@ -91,7 +91,7 @@
     "wp_0_3c_stage0_boundary": "PASS",
     "shell_syntax": "PASS",
     "json_syntax": "PASS",
-    "source_manifest_aggregate_source_sha256": "4a5efc9cdc37799d17192b147c84fcc194f5a3779f9df62f8800351094f72e89",
+    "source_manifest_aggregate_source_sha256": "63894df7e4aa005cfcc46b7fe0313cdaef7b134c456d2081bb9e911be08dc299",
     "sci_data_fusion_001_c1": {
       "disposition": "SCI_DATA_FUSION_001_COMPLEMENTARY_SOURCE_CONDITIONED_SUPPORTS_ONLY",
       "focused_tests_run": 51,
@@ -1115,5 +1115,30 @@
     "reviewed_candidate": "e902a3d594d12b79a71d963b684cdd9a6e3c4673",
     "physical_validation": "NOT_ESTABLISHED",
     "final_head_checks": "Recorded in task PR delivery body; initial environment/bookkeeping diagnostic retained in CHECKS.json"
+  },
+  "sci_md_mo_spatial_pressure_feasibility_001": {
+    "status": "IMPLEMENTED_AND_EXECUTED",
+    "structural_outcome": "UNRESOLVED_BOUNDED_ANALYSIS",
+    "declaration": "G1 / NO_GOVERNING_PHYSICS_CHANGE",
+    "candidate_pairs_considered": 81,
+    "qualified_pairs": 57,
+    "numerically_ineligible_pairs": 24,
+    "focused_tests": 7,
+    "independent_scientific_review": "PASS for UNRESOLVED_BOUNDED_ANALYSIS; no unresolved material finding",
+    "physical_validation": "NOT_ESTABLISHED",
+    "initial_local_full_suite": {
+      "tests": 1677,
+      "failures": 3,
+      "errors": 1,
+      "skipped": 21,
+      "classification": "QA_ONLY_MANIFEST_SYNCHRONIZATION_AND_SCIENTIFIC_TEST_DEPENDENCY_ALLOWLIST",
+      "correction": "same-lane bookkeeping and existing scientific-test allowlist; affected checks rechecked; final hosted suite recorded in PR"
+    },
+    "final_head_checks": "Recorded in task PR body; no production change or successor",
+    "reviewed_candidate": "5c31093f6c76debc0199ca8df33b0d4015c25976",
+    "affected_recheck": {
+      "tests": 18,
+      "status": "PASS"
+    }
   }
 }
