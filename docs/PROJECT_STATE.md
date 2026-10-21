@@ -1,5 +1,21 @@
 # Project State
 
+
+## SCI-MD-WASZ-TERMINAL-MASS-ROBUSTNESS-001 (2026-10-20)
+
+G1 / `NO_GOVERNING_PHYSICS_CHANGE`, retrospective source-internal, target-exposed
+characterization. [Executed result](analysis/sci_md_wasz_terminal_mass_robustness_001/RESULT.md):
+all 56 physical brews / 11 conditions support fixed q10/q5/q20 terminal beverage-mass
+increments. High-pressure slopes are negative and low-pressure slopes positive;
+no relevant single-brew deletion reverses a sign. Original truncated traces
+reconstruct, but accepted `equilibrium_windows.csv` endpoints use a different
+numerically reproduced untruncated near-100-s rule whose original producer
+provenance remains unresolved. Keep these observer lineages distinct. PR #207's
+scalar theorem remains unchanged. Research only; no model fit, physical-validation
+claim, production dependency change or automatic successor.
+`PHYSICAL_VALIDATION=NOT_ESTABLISHED`. Issue #208; draft PR delivery/review/CI
+are recorded in the task bundle and PR.
+
 ## SCI-MD-MO-PRESSURE-FEASIBILITY-001 (2026-10-20)
 
 G1 / `NO_GOVERNING_PHYSICS_CHANGE`, retrospective target-exposed non-scoring

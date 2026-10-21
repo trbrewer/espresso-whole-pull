@@ -1095,6 +1095,37 @@
       "exhaustion_decision": null,
       "review_trigger": "material change to declared mathematical assumptions or observation mapping",
       "notes": "INFEASIBLE applies to common-state scalar opening-only effective law under ordered histories, not all Mo2021 physics or erosion. Endpoint applicability UNRESOLVED; PHYSICAL_VALIDATION=NOT_ESTABLISHED; no implementation or automatic successor."
+    },
+    {
+      "opportunity_id": "SCI-MD-WASZ-TERMINAL-MASS-ROBUSTNESS-001",
+      "task_id": "SCI-MD-WASZ-TERMINAL-MASS-ROBUSTNESS-001",
+      "title": "Waszkiewicz terminal beverage-mass pressure-response robustness",
+      "data_families": [
+        "waszkiewicz2025"
+      ],
+      "scientific_question": "Does the declining high-pressure response persist in original terminal beverage-mass increments?",
+      "model_component": "source-internal observational characterization",
+      "status": "COMPLETE_POSITIVE",
+      "priority": 1,
+      "prerequisites": [
+        "Owner-authorized finite retrospective analysis; unchanged canonical membership and pressure coordinates"
+      ],
+      "current_evidence": "56/56 support; all q10/q5/q20 high slopes negative and low slopes positive; no relevant deletion sign reversals",
+      "expected_information": "Original terminal mass increments distinguish recorded delivery response from processed endpoint dependence",
+      "positive_action": "Retain descriptive terminal-mass signs conditional on acquisition support",
+      "negative_action": "Narrow empirical requirement to the supported window and brew sensitivities",
+      "null_action": "Retain explicitly limited evidence without selecting another window",
+      "blocked_action": "Identify source, reconstruction or support blocker without filling missing observations",
+      "claim_ceiling": "RESEARCH_ONLY;RETROSPECTIVE;SOURCE_INTERNAL;TARGET_EXPOSED",
+      "home_lab_effect": "NO_OPERATION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_wasz_terminal_mass_robustness_001/RESULT.md",
+        "docs/analysis/sci_md_wasz_terminal_mass_robustness_001/RESULT.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "Separate owner disposition; no automatic follow-on",
+      "notes": "Accepted historical flow table differs from source truncated endpoints; numerical near100 reproduction does not uniquely establish original producer provenance. No mechanism, independent validation, production change or successor. PHYSICAL_VALIDATION=NOT_ESTABLISHED."
     }
   ],
   "laboratory_gate": {
