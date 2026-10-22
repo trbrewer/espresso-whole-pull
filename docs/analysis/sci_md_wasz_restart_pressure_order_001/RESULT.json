@@ -1,0 +1,1971 @@
+{
+  "arithmetic": "exact source-decimal Fraction; rational strings; no tolerance for signs",
+  "comparisons": [
+    {
+      "candidate_end_ms": 91913,
+      "candidate_interval_id": "PRIMARY_E1_later",
+      "candidate_rate_g_s": "3006577/930000",
+      "candidate_start_ms": 89913,
+      "comparison_id": "PRIMARY_E1_E0",
+      "contradiction_status": "CONTRADICTS_COMMON_NONDECREASING_RESPONSE",
+      "dP_max_bar": "8894907/94000000",
+      "dP_min_bar": "33/4000",
+      "delta_q_g_s": "2463825221/1748400000",
+      "design": "PRIMARY",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "A",
+        "B"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CANDIDATE_WEAKLY_LOWER",
+      "reference_end_ms": 75363,
+      "reference_interval_id": "PRIMARY_E0_later",
+      "reference_rate_g_s": "1062846513/582800000",
+      "reference_start_ms": 73363,
+      "robustness": {
+        "adverse_rate_boundary_g_s": "2463825221/1748400000",
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": null,
+        "equal_per_trajectory_pressure_boundary_bar": "33/8000",
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": "2463825221/3496800000",
+        "ordered_margin_bar": "33/4000",
+        "pressure_boundary_reason": null,
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "783": "73/188",
+          "784": "21/188",
+          "804": "-6/31",
+          "805": "-19/62",
+          "960": "-73/186",
+          "961": "-10/93",
+          "981": "6/31",
+          "982": "19/62"
+        },
+        "raw_sample_eta_critical_g": "2463825221/3496800000",
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": true
+    },
+    {
+      "candidate_end_ms": 108559,
+      "candidate_interval_id": "PRIMARY_E2_later",
+      "candidate_rate_g_s": "1660241/470000",
+      "candidate_start_ms": 106559,
+      "comparison_id": "PRIMARY_E2_E0",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "-572271/94000000",
+      "dP_min_bar": "-77249/1000000",
+      "delta_q_g_s": "995852327/582800000",
+      "design": "PRIMARY",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "A"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CANDIDATE_WEAKLY_HIGHER",
+      "reference_end_ms": 75363,
+      "reference_interval_id": "PRIMARY_E0_later",
+      "reference_rate_g_s": "1062846513/582800000",
+      "reference_start_ms": 73363,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": "572271/188000000",
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": "572271/94000000",
+        "pressure_boundary_reason": null,
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1138": "-73/188",
+          "1139": "-21/188",
+          "1159": "37/188",
+          "1160": "57/188",
+          "783": "73/188",
+          "784": "21/188",
+          "804": "-6/31",
+          "805": "-19/62"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": true
+    },
+    {
+      "candidate_end_ms": 126327,
+      "candidate_interval_id": "PRIMARY_E3_later",
+      "candidate_rate_g_s": "226438031/58280000",
+      "candidate_start_ms": 124327,
+      "comparison_id": "PRIMARY_E3_E0",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "2251499/94000000",
+      "dP_min_bar": "-7647/47000",
+      "delta_q_g_s": "1201533797/582800000",
+      "design": "PRIMARY",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "A"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CROSSING",
+      "reference_end_ms": 75363,
+      "reference_interval_id": "PRIMARY_E0_later",
+      "reference_rate_g_s": "1062846513/582800000",
+      "reference_start_ms": 73363,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": null,
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": null,
+        "pressure_boundary_reason": "CROSSING_NO_ORDER_RESERVE",
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1328": "-73/188",
+          "1329": "-21/188",
+          "1349": "6/31",
+          "1350": "19/62",
+          "783": "73/188",
+          "784": "21/188",
+          "804": "-6/31",
+          "805": "-19/62"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": false
+    },
+    {
+      "candidate_end_ms": 144094,
+      "candidate_interval_id": "PRIMARY_E4_later",
+      "candidate_rate_g_s": "3080367/728500",
+      "candidate_start_ms": 142094,
+      "comparison_id": "PRIMARY_E4_E0",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "-27/2000",
+      "dP_min_bar": "-399/4000",
+      "delta_q_g_s": "1401447087/582800000",
+      "design": "PRIMARY",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "A"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CANDIDATE_WEAKLY_HIGHER",
+      "reference_end_ms": 75363,
+      "reference_interval_id": "PRIMARY_E0_later",
+      "reference_rate_g_s": "1062846513/582800000",
+      "reference_start_ms": 73363,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": "27/4000",
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": "27/2000",
+        "pressure_boundary_reason": null,
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1518": "-73/188",
+          "1519": "-21/188",
+          "1539": "6/31",
+          "1540": "19/62",
+          "783": "73/188",
+          "784": "21/188",
+          "804": "-6/31",
+          "805": "-19/62"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": true
+    },
+    {
+      "candidate_end_ms": 165319,
+      "candidate_interval_id": "PRIMARY_E5_later",
+      "candidate_rate_g_s": "768935597/178600000",
+      "candidate_start_ms": 163319,
+      "comparison_id": "PRIMARY_E5_E0",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "8249/1000000",
+      "dP_min_bar": "-351/4000",
+      "delta_q_g_s": "27479923267/11073200000",
+      "design": "PRIMARY",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "A"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CROSSING",
+      "reference_end_ms": 75363,
+      "reference_interval_id": "PRIMARY_E0_later",
+      "reference_rate_g_s": "1062846513/582800000",
+      "reference_start_ms": 73363,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": null,
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": null,
+        "pressure_boundary_reason": "CROSSING_NO_ORDER_RESERVE",
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1745": "-37/95",
+          "1746": "-21/190",
+          "1766": "37/188",
+          "1767": "57/188",
+          "783": "73/188",
+          "784": "21/188",
+          "804": "-6/31",
+          "805": "-19/62"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": false
+    },
+    {
+      "candidate_end_ms": 108559,
+      "candidate_interval_id": "PRIMARY_E2_later",
+      "candidate_rate_g_s": "1660241/470000",
+      "candidate_start_ms": 106559,
+      "comparison_id": "PRIMARY_E2_E1",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "-27/800",
+      "dP_min_bar": "-147749/1000000",
+      "delta_q_g_s": "6546647/21855000",
+      "design": "PRIMARY",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "B"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CANDIDATE_WEAKLY_HIGHER",
+      "reference_end_ms": 91913,
+      "reference_interval_id": "PRIMARY_E1_later",
+      "reference_rate_g_s": "3006577/930000",
+      "reference_start_ms": 89913,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": "27/1600",
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": "27/800",
+        "pressure_boundary_reason": null,
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1138": "-73/188",
+          "1139": "-21/188",
+          "1159": "37/188",
+          "1160": "57/188",
+          "960": "73/186",
+          "961": "10/93",
+          "981": "-6/31",
+          "982": "-19/62"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": true
+    },
+    {
+      "candidate_end_ms": 126327,
+      "candidate_interval_id": "PRIMARY_E3_later",
+      "candidate_rate_g_s": "226438031/58280000",
+      "candidate_start_ms": 124327,
+      "comparison_id": "PRIMARY_E3_E2",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "6499/124000",
+      "dP_min_bar": "-152348857/1457000000",
+      "delta_q_g_s": "20568147/58280000",
+      "design": "PRIMARY",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "B"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CROSSING",
+      "reference_end_ms": 108559,
+      "reference_interval_id": "PRIMARY_E2_later",
+      "reference_rate_g_s": "1660241/470000",
+      "reference_start_ms": 106559,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": null,
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": null,
+        "pressure_boundary_reason": "CROSSING_NO_ORDER_RESERVE",
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1138": "73/188",
+          "1139": "21/188",
+          "1159": "-37/188",
+          "1160": "-57/188",
+          "1328": "-73/188",
+          "1329": "-21/188",
+          "1349": "6/31",
+          "1350": "19/62"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": false
+    },
+    {
+      "candidate_end_ms": 144094,
+      "candidate_interval_id": "PRIMARY_E4_later",
+      "candidate_rate_g_s": "3080367/728500",
+      "candidate_start_ms": 142094,
+      "comparison_id": "PRIMARY_E4_E3",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "18039/188000",
+      "dP_min_bar": "-297/4000",
+      "delta_q_g_s": "19991329/58280000",
+      "design": "PRIMARY",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "B"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CROSSING",
+      "reference_end_ms": 126327,
+      "reference_interval_id": "PRIMARY_E3_later",
+      "reference_rate_g_s": "226438031/58280000",
+      "reference_start_ms": 124327,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": null,
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": null,
+        "pressure_boundary_reason": "CROSSING_NO_ORDER_RESERVE",
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1328": "73/188",
+          "1329": "21/188",
+          "1349": "-6/31",
+          "1350": "-19/62",
+          "1518": "-73/188",
+          "1519": "-21/188",
+          "1539": "6/31",
+          "1540": "19/62"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": false
+    },
+    {
+      "candidate_end_ms": 165319,
+      "candidate_interval_id": "PRIMARY_E5_later",
+      "candidate_rate_g_s": "768935597/178600000",
+      "candidate_start_ms": 163319,
+      "comparison_id": "PRIMARY_E5_E4",
+      "contradiction_status": "CONTRADICTS_COMMON_NONDECREASING_RESPONSE",
+      "dP_max_bar": "342261/5828000",
+      "dP_min_bar": "69/94000",
+      "delta_q_g_s": "426214307/5536600000",
+      "design": "PRIMARY",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "B"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CANDIDATE_WEAKLY_LOWER",
+      "reference_end_ms": 144094,
+      "reference_interval_id": "PRIMARY_E4_later",
+      "reference_rate_g_s": "3080367/728500",
+      "reference_start_ms": 142094,
+      "robustness": {
+        "adverse_rate_boundary_g_s": "426214307/5536600000",
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": null,
+        "equal_per_trajectory_pressure_boundary_bar": "69/188000",
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": "426214307/11073200000",
+        "ordered_margin_bar": "69/94000",
+        "pressure_boundary_reason": null,
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1518": "73/188",
+          "1519": "21/188",
+          "1539": "-6/31",
+          "1540": "-19/62",
+          "1745": "-37/95",
+          "1746": "-21/190",
+          "1766": "37/188",
+          "1767": "57/188"
+        },
+        "raw_sample_eta_critical_g": "426214307/11073200000",
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": true
+    },
+    {
+      "candidate_end_ms": 91913,
+      "candidate_interval_id": "SENSITIVITY_A_E1_later",
+      "candidate_rate_g_s": "4474537/1395000",
+      "candidate_start_ms": 88913,
+      "comparison_id": "SENSITIVITY_A_E1_E0",
+      "contradiction_status": "CONTRADICTS_COMMON_NONDECREASING_RESPONSE",
+      "dP_max_bar": "168037/1500000",
+      "dP_min_bar": "33/4000",
+      "delta_q_g_s": "3834293/2790000",
+      "design": "SENSITIVITY_A",
+      "duration_s": "3",
+      "failure_reason": null,
+      "family_membership": [
+        "A",
+        "B"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CANDIDATE_WEAKLY_LOWER",
+      "reference_end_ms": 75363,
+      "reference_interval_id": "SENSITIVITY_A_E0_later",
+      "reference_rate_g_s": "568309/310000",
+      "reference_start_ms": 72363,
+      "robustness": {
+        "adverse_rate_boundary_g_s": "3834293/2790000",
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": null,
+        "equal_per_trajectory_pressure_boundary_bar": "33/8000",
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "4/3",
+        "mass_endpoint_eta_critical_g": "3834293/3720000",
+        "ordered_margin_bar": "33/4000",
+        "pressure_boundary_reason": null,
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "772": "44/279",
+          "773": "49/279",
+          "804": "-4/31",
+          "805": "-19/93",
+          "949": "-44/279",
+          "950": "-49/279",
+          "981": "4/31",
+          "982": "19/93"
+        },
+        "raw_sample_eta_critical_g": "3834293/3720000",
+        "raw_sample_l1_per_s": "4/3"
+      },
+      "strict_separation": true
+    },
+    {
+      "candidate_end_ms": 108559,
+      "candidate_interval_id": "SENSITIVITY_A_E2_later",
+      "candidate_rate_g_s": "37216729/10490400",
+      "candidate_start_ms": 105559,
+      "comparison_id": "SENSITIVITY_A_E2_E0",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "21/2000",
+      "dP_min_bar": "-77249/1000000",
+      "delta_q_g_s": "449628811/262260000",
+      "design": "SENSITIVITY_A",
+      "duration_s": "3",
+      "failure_reason": null,
+      "family_membership": [
+        "A"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CROSSING",
+      "reference_end_ms": 75363,
+      "reference_interval_id": "SENSITIVITY_A_E0_later",
+      "reference_rate_g_s": "568309/310000",
+      "reference_start_ms": 72363,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": null,
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "4/3",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": null,
+        "pressure_boundary_reason": "CROSSING_NO_ORDER_RESERVE",
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1127": "-44/279",
+          "1128": "-49/279",
+          "1159": "37/282",
+          "1160": "19/94",
+          "772": "44/279",
+          "773": "49/279",
+          "804": "-4/31",
+          "805": "-19/93"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "4/3"
+      },
+      "strict_separation": false
+    },
+    {
+      "candidate_end_ms": 126327,
+      "candidate_interval_id": "SENSITIVITY_A_E3_later",
+      "candidate_rate_g_s": "42421499/10927500",
+      "candidate_start_ms": 123327,
+      "comparison_id": "SENSITIVITY_A_E3_E0",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "4559/124000",
+      "dP_min_bar": "-7647/47000",
+      "delta_q_g_s": "89554427/43710000",
+      "design": "SENSITIVITY_A",
+      "duration_s": "3",
+      "failure_reason": null,
+      "family_membership": [
+        "A"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CROSSING",
+      "reference_end_ms": 75363,
+      "reference_interval_id": "SENSITIVITY_A_E0_later",
+      "reference_rate_g_s": "568309/310000",
+      "reference_start_ms": 72363,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": null,
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "4/3",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": null,
+        "pressure_boundary_reason": "CROSSING_NO_ORDER_RESERVE",
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1317": "-22/141",
+          "1318": "-25/141",
+          "1349": "4/31",
+          "1350": "19/93",
+          "772": "44/279",
+          "773": "49/279",
+          "804": "-4/31",
+          "805": "-19/93"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "4/3"
+      },
+      "strict_separation": false
+    },
+    {
+      "candidate_end_ms": 144094,
+      "candidate_interval_id": "SENSITIVITY_A_E4_later",
+      "candidate_rate_g_s": "3969593/930000",
+      "candidate_start_ms": 141094,
+      "comparison_id": "SENSITIVITY_A_E4_E0",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "-27/2000",
+      "dP_min_bar": "-399/4000",
+      "delta_q_g_s": "1132333/465000",
+      "design": "SENSITIVITY_A",
+      "duration_s": "3",
+      "failure_reason": null,
+      "family_membership": [
+        "A"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CANDIDATE_WEAKLY_HIGHER",
+      "reference_end_ms": 75363,
+      "reference_interval_id": "SENSITIVITY_A_E0_later",
+      "reference_rate_g_s": "568309/310000",
+      "reference_start_ms": 72363,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": "27/4000",
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "4/3",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": "27/2000",
+        "pressure_boundary_reason": null,
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1507": "-44/279",
+          "1508": "-49/279",
+          "1539": "4/31",
+          "1540": "19/93",
+          "772": "44/279",
+          "773": "49/279",
+          "804": "-4/31",
+          "805": "-19/93"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "4/3"
+      },
+      "strict_separation": true
+    },
+    {
+      "candidate_end_ms": 165319,
+      "candidate_interval_id": "SENSITIVITY_A_E5_later",
+      "candidate_rate_g_s": "304027/70500",
+      "candidate_start_ms": 162319,
+      "comparison_id": "SENSITIVITY_A_E5_E0",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "8249/1000000",
+      "dP_min_bar": "-351/4000",
+      "delta_q_g_s": "108365171/43710000",
+      "design": "SENSITIVITY_A",
+      "duration_s": "3",
+      "failure_reason": null,
+      "family_membership": [
+        "A"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CROSSING",
+      "reference_end_ms": 75363,
+      "reference_interval_id": "SENSITIVITY_A_E0_later",
+      "reference_rate_g_s": "568309/310000",
+      "reference_start_ms": 72363,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": null,
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "4/3",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": null,
+        "pressure_boundary_reason": "CROSSING_NO_ORDER_RESERVE",
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1734": "-15/94",
+          "1735": "-49/282",
+          "1766": "37/282",
+          "1767": "19/94",
+          "772": "44/279",
+          "773": "49/279",
+          "804": "-4/31",
+          "805": "-19/93"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "4/3"
+      },
+      "strict_separation": false
+    },
+    {
+      "candidate_end_ms": 108559,
+      "candidate_interval_id": "SENSITIVITY_A_E2_later",
+      "candidate_rate_g_s": "37216729/10490400",
+      "candidate_start_ms": 105559,
+      "comparison_id": "SENSITIVITY_A_E2_E1",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "-27/800",
+      "dP_min_bar": "-1551/10000",
+      "delta_q_g_s": "89205269/262260000",
+      "design": "SENSITIVITY_A",
+      "duration_s": "3",
+      "failure_reason": null,
+      "family_membership": [
+        "B"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CANDIDATE_WEAKLY_HIGHER",
+      "reference_end_ms": 91913,
+      "reference_interval_id": "SENSITIVITY_A_E1_later",
+      "reference_rate_g_s": "4474537/1395000",
+      "reference_start_ms": 88913,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": "27/1600",
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "4/3",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": "27/800",
+        "pressure_boundary_reason": null,
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1127": "-44/279",
+          "1128": "-49/279",
+          "1159": "37/282",
+          "1160": "19/94",
+          "949": "44/279",
+          "950": "49/279",
+          "981": "-4/31",
+          "982": "-19/93"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "4/3"
+      },
+      "strict_separation": true
+    },
+    {
+      "candidate_end_ms": 126327,
+      "candidate_interval_id": "SENSITIVITY_A_E3_later",
+      "candidate_rate_g_s": "42421499/10927500",
+      "candidate_start_ms": 123327,
+      "comparison_id": "SENSITIVITY_A_E3_E2",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "33/500",
+      "dP_min_bar": "-152348857/1457000000",
+      "delta_q_g_s": "87697751/262260000",
+      "design": "SENSITIVITY_A",
+      "duration_s": "3",
+      "failure_reason": null,
+      "family_membership": [
+        "B"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CROSSING",
+      "reference_end_ms": 108559,
+      "reference_interval_id": "SENSITIVITY_A_E2_later",
+      "reference_rate_g_s": "37216729/10490400",
+      "reference_start_ms": 105559,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": null,
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "4/3",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": null,
+        "pressure_boundary_reason": "CROSSING_NO_ORDER_RESERVE",
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1127": "44/279",
+          "1128": "49/279",
+          "1159": "-37/282",
+          "1160": "-19/94",
+          "1317": "-22/141",
+          "1318": "-25/141",
+          "1349": "4/31",
+          "1350": "19/93"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "4/3"
+      },
+      "strict_separation": false
+    },
+    {
+      "candidate_end_ms": 144094,
+      "candidate_interval_id": "SENSITIVITY_A_E4_later",
+      "candidate_rate_g_s": "3969593/930000",
+      "candidate_start_ms": 141094,
+      "comparison_id": "SENSITIVITY_A_E4_E3",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "18039/188000",
+      "dP_min_bar": "-297/4000",
+      "delta_q_g_s": "135079/349680",
+      "design": "SENSITIVITY_A",
+      "duration_s": "3",
+      "failure_reason": null,
+      "family_membership": [
+        "B"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CROSSING",
+      "reference_end_ms": 126327,
+      "reference_interval_id": "SENSITIVITY_A_E3_later",
+      "reference_rate_g_s": "42421499/10927500",
+      "reference_start_ms": 123327,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": null,
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "4/3",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": null,
+        "pressure_boundary_reason": "CROSSING_NO_ORDER_RESERVE",
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1317": "22/141",
+          "1318": "25/141",
+          "1349": "-4/31",
+          "1350": "-19/93",
+          "1507": "-44/279",
+          "1508": "-49/279",
+          "1539": "4/31",
+          "1540": "19/93"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "4/3"
+      },
+      "strict_separation": false
+    },
+    {
+      "candidate_end_ms": 165319,
+      "candidate_interval_id": "SENSITIVITY_A_E5_later",
+      "candidate_rate_g_s": "304027/70500",
+      "candidate_start_ms": 162319,
+      "comparison_id": "SENSITIVITY_A_E5_E4",
+      "contradiction_status": "CONTRADICTS_COMMON_NONDECREASING_RESPONSE",
+      "dP_max_bar": "342261/5828000",
+      "dP_min_bar": "69/94000",
+      "delta_q_g_s": "1925869/43710000",
+      "design": "SENSITIVITY_A",
+      "duration_s": "3",
+      "failure_reason": null,
+      "family_membership": [
+        "B"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CANDIDATE_WEAKLY_LOWER",
+      "reference_end_ms": 144094,
+      "reference_interval_id": "SENSITIVITY_A_E4_later",
+      "reference_rate_g_s": "3969593/930000",
+      "reference_start_ms": 141094,
+      "robustness": {
+        "adverse_rate_boundary_g_s": "1925869/43710000",
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": null,
+        "equal_per_trajectory_pressure_boundary_bar": "69/188000",
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "4/3",
+        "mass_endpoint_eta_critical_g": "1925869/58280000",
+        "ordered_margin_bar": "69/94000",
+        "pressure_boundary_reason": null,
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1507": "44/279",
+          "1508": "49/279",
+          "1539": "-4/31",
+          "1540": "-19/93",
+          "1734": "-15/94",
+          "1735": "-49/282",
+          "1766": "37/282",
+          "1767": "19/94"
+        },
+        "raw_sample_eta_critical_g": "1925869/58280000",
+        "raw_sample_l1_per_s": "4/3"
+      },
+      "strict_separation": true
+    },
+    {
+      "candidate_end_ms": 90913,
+      "candidate_interval_id": "SENSITIVITY_B_E1_later",
+      "candidate_rate_g_s": "499983/155000",
+      "candidate_start_ms": 88913,
+      "comparison_id": "SENSITIVITY_B_E1_E0",
+      "contradiction_status": "CONTRADICTS_COMMON_NONDECREASING_RESPONSE",
+      "dP_max_bar": "168037/1500000",
+      "dP_min_bar": "2679/124000",
+      "delta_q_g_s": "12915653/9300000",
+      "design": "SENSITIVITY_B",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "A",
+        "B"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CANDIDATE_WEAKLY_LOWER",
+      "reference_end_ms": 74363,
+      "reference_interval_id": "SENSITIVITY_B_E0_later",
+      "reference_rate_g_s": "17083327/9300000",
+      "reference_start_ms": 72363,
+      "robustness": {
+        "adverse_rate_boundary_g_s": "12915653/9300000",
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": null,
+        "equal_per_trajectory_pressure_boundary_bar": "2679/248000",
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": "12915653/18600000",
+        "ordered_margin_bar": "2679/124000",
+        "pressure_boundary_reason": null,
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "772": "22/93",
+          "773": "49/186",
+          "793": "-4/93",
+          "794": "-85/186",
+          "949": "-22/93",
+          "950": "-49/186",
+          "970": "4/93",
+          "971": "85/186"
+        },
+        "raw_sample_eta_critical_g": "12915653/18600000",
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": true
+    },
+    {
+      "candidate_end_ms": 107559,
+      "candidate_interval_id": "SENSITIVITY_B_E2_later",
+      "candidate_rate_g_s": "6567767/1860000",
+      "candidate_start_ms": 105559,
+      "comparison_id": "SENSITIVITY_B_E2_E0",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "21/2000",
+      "dP_min_bar": "-77249/1000000",
+      "delta_q_g_s": "1312959/775000",
+      "design": "SENSITIVITY_B",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "A"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CROSSING",
+      "reference_end_ms": 74363,
+      "reference_interval_id": "SENSITIVITY_B_E0_later",
+      "reference_rate_g_s": "17083327/9300000",
+      "reference_start_ms": 72363,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": null,
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": null,
+        "pressure_boundary_reason": "CROSSING_NO_ORDER_RESERVE",
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1127": "-22/93",
+          "1128": "-49/186",
+          "1148": "4/93",
+          "1149": "85/186",
+          "772": "22/93",
+          "773": "49/186",
+          "793": "-4/93",
+          "794": "-85/186"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": false
+    },
+    {
+      "candidate_end_ms": 125327,
+      "candidate_interval_id": "SENSITIVITY_B_E3_later",
+      "candidate_rate_g_s": "173223411/44650000",
+      "candidate_start_ms": 123327,
+      "comparison_id": "SENSITIVITY_B_E3_E0",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "4559/124000",
+      "dP_min_bar": "-42423/380000",
+      "delta_q_g_s": "3392828687/1660980000",
+      "design": "SENSITIVITY_B",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "A"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CROSSING",
+      "reference_end_ms": 74363,
+      "reference_interval_id": "SENSITIVITY_B_E0_later",
+      "reference_rate_g_s": "17083327/9300000",
+      "reference_start_ms": 72363,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": null,
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": null,
+        "pressure_boundary_reason": "CROSSING_NO_ORDER_RESERVE",
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1317": "-11/47",
+          "1318": "-25/94",
+          "1338": "4/95",
+          "1339": "87/190",
+          "772": "22/93",
+          "773": "49/186",
+          "793": "-4/93",
+          "794": "-85/186"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": false
+    },
+    {
+      "candidate_end_ms": 143094,
+      "candidate_interval_id": "SENSITIVITY_B_E4_later",
+      "candidate_rate_g_s": "2664087/620000",
+      "candidate_start_ms": 141094,
+      "comparison_id": "SENSITIVITY_B_E4_E0",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "-27/2000",
+      "dP_min_bar": "-387/4000",
+      "delta_q_g_s": "11438989/4650000",
+      "design": "SENSITIVITY_B",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "A"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CANDIDATE_WEAKLY_HIGHER",
+      "reference_end_ms": 74363,
+      "reference_interval_id": "SENSITIVITY_B_E0_later",
+      "reference_rate_g_s": "17083327/9300000",
+      "reference_start_ms": 72363,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": "27/4000",
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": "27/2000",
+        "pressure_boundary_reason": null,
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1507": "-22/93",
+          "1508": "-49/186",
+          "1528": "4/93",
+          "1529": "85/186",
+          "772": "22/93",
+          "773": "49/186",
+          "793": "-4/93",
+          "794": "-85/186"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": true
+    },
+    {
+      "candidate_end_ms": 164319,
+      "candidate_interval_id": "SENSITIVITY_B_E5_later",
+      "candidate_rate_g_s": "768812583/178600000",
+      "candidate_start_ms": 162319,
+      "comparison_id": "SENSITIVITY_B_E5_E0",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "8249/1000000",
+      "dP_min_bar": "-183743/2945000",
+      "delta_q_g_s": "40988748197/16609800000",
+      "design": "SENSITIVITY_B",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "A"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CROSSING",
+      "reference_end_ms": 74363,
+      "reference_interval_id": "SENSITIVITY_B_E0_later",
+      "reference_rate_g_s": "17083327/9300000",
+      "reference_start_ms": 72363,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": null,
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": null,
+        "pressure_boundary_reason": "CROSSING_NO_ORDER_RESERVE",
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1734": "-45/188",
+          "1735": "-49/188",
+          "1755": "9/190",
+          "1756": "43/95",
+          "772": "22/93",
+          "773": "49/186",
+          "793": "-4/93",
+          "794": "-85/186"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": false
+    },
+    {
+      "candidate_end_ms": 107559,
+      "candidate_interval_id": "SENSITIVITY_B_E2_later",
+      "candidate_rate_g_s": "6567767/1860000",
+      "candidate_start_ms": 105559,
+      "comparison_id": "SENSITIVITY_B_E2_E1",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "-686999/11625000",
+      "dP_min_bar": "-1551/10000",
+      "delta_q_g_s": "567971/1860000",
+      "design": "SENSITIVITY_B",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "B"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CANDIDATE_WEAKLY_HIGHER",
+      "reference_end_ms": 90913,
+      "reference_interval_id": "SENSITIVITY_B_E1_later",
+      "reference_rate_g_s": "499983/155000",
+      "reference_start_ms": 88913,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": "686999/23250000",
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": "686999/11625000",
+        "pressure_boundary_reason": null,
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1127": "-22/93",
+          "1128": "-49/186",
+          "1148": "4/93",
+          "1149": "85/186",
+          "949": "22/93",
+          "950": "49/186",
+          "970": "-4/93",
+          "971": "-85/186"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": true
+    },
+    {
+      "candidate_end_ms": 125327,
+      "candidate_interval_id": "SENSITIVITY_B_E3_later",
+      "candidate_rate_g_s": "173223411/44650000",
+      "candidate_start_ms": 123327,
+      "comparison_id": "SENSITIVITY_B_E3_E2",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "33/500",
+      "dP_min_bar": "-12765919/220875000",
+      "delta_q_g_s": "2894474791/8304900000",
+      "design": "SENSITIVITY_B",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "B"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CROSSING",
+      "reference_end_ms": 107559,
+      "reference_interval_id": "SENSITIVITY_B_E2_later",
+      "reference_rate_g_s": "6567767/1860000",
+      "reference_start_ms": 105559,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": null,
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": null,
+        "pressure_boundary_reason": "CROSSING_NO_ORDER_RESERVE",
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1127": "22/93",
+          "1128": "49/186",
+          "1148": "-4/93",
+          "1149": "-85/186",
+          "1317": "-11/47",
+          "1318": "-25/94",
+          "1338": "4/95",
+          "1339": "87/190"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": false
+    },
+    {
+      "candidate_end_ms": 143094,
+      "candidate_interval_id": "SENSITIVITY_B_E4_later",
+      "candidate_rate_g_s": "2664087/620000",
+      "candidate_start_ms": 141094,
+      "comparison_id": "SENSITIVITY_B_E4_E3",
+      "contradiction_status": "NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST",
+      "dP_max_bar": "2829/190000",
+      "dP_min_bar": "-297/4000",
+      "delta_q_g_s": "1155296973/2768300000",
+      "design": "SENSITIVITY_B",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "B"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CROSSING",
+      "reference_end_ms": 125327,
+      "reference_interval_id": "SENSITIVITY_B_E3_later",
+      "reference_rate_g_s": "173223411/44650000",
+      "reference_start_ms": 123327,
+      "robustness": {
+        "adverse_rate_boundary_g_s": null,
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": "NO_CONTRARY_DELIVERY_SIGN",
+        "equal_per_trajectory_pressure_boundary_bar": null,
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": null,
+        "ordered_margin_bar": null,
+        "pressure_boundary_reason": "CROSSING_NO_ORDER_RESERVE",
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1317": "11/47",
+          "1318": "25/94",
+          "1338": "-4/95",
+          "1339": "-87/190",
+          "1507": "-22/93",
+          "1508": "-49/186",
+          "1528": "4/93",
+          "1529": "85/186"
+        },
+        "raw_sample_eta_critical_g": null,
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": false
+    },
+    {
+      "candidate_end_ms": 164319,
+      "candidate_interval_id": "SENSITIVITY_B_E5_later",
+      "candidate_rate_g_s": "768812583/178600000",
+      "candidate_start_ms": 162319,
+      "comparison_id": "SENSITIVITY_B_E5_E4",
+      "contradiction_status": "CONTRADICTS_COMMON_NONDECREASING_RESPONSE",
+      "dP_max_bar": "17631/380000",
+      "dP_min_bar": "8999/1000000",
+      "delta_q_g_s": "42893163/5536600000",
+      "design": "SENSITIVITY_B",
+      "duration_s": "2",
+      "failure_reason": null,
+      "family_membership": [
+        "B"
+      ],
+      "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+      "pressure_class": "CANDIDATE_WEAKLY_LOWER",
+      "reference_end_ms": 143094,
+      "reference_interval_id": "SENSITIVITY_B_E4_later",
+      "reference_rate_g_s": "2664087/620000",
+      "reference_start_ms": 141094,
+      "robustness": {
+        "adverse_rate_boundary_g_s": "42893163/5536600000",
+        "assumptions": "fixed timing/interpolation; separately bounded errors; no independence required",
+        "delivery_boundary_reason": null,
+        "equal_per_trajectory_pressure_boundary_bar": "8999/2000000",
+        "generic_bound": "ATTAINED",
+        "generic_endpoint_l1_per_s": "2",
+        "mass_endpoint_eta_critical_g": "42893163/11073200000",
+        "ordered_margin_bar": "8999/1000000",
+        "pressure_boundary_reason": null,
+        "pressure_rule": "E_P<mP: strict; E_P=mP: weak; E_P>mP: certificate can fail; not an F existence test",
+        "raw_sample_coefficients_per_s": {
+          "1507": "22/93",
+          "1508": "49/186",
+          "1528": "-4/93",
+          "1529": "-85/186",
+          "1734": "-45/188",
+          "1735": "-49/188",
+          "1755": "9/190",
+          "1756": "43/95"
+        },
+        "raw_sample_eta_critical_g": "42893163/11073200000",
+        "raw_sample_l1_per_s": "2"
+      },
+      "strict_separation": true
+    }
+  ],
+  "declaration": "NO_GOVERNING_PHYSICS_CHANGE",
+  "duplicate_rows": 3,
+  "evidence_class": [
+    "RESEARCH_ONLY",
+    "RETROSPECTIVE",
+    "SOURCE_INTERNAL",
+    "TARGET_EXPOSED",
+    "NONSCORING"
+  ],
+  "failure_reason": null,
+  "family_pressure_counts": {
+    "A": {
+      "CANDIDATE_WEAKLY_HIGHER": 4,
+      "CANDIDATE_WEAKLY_LOWER": 3,
+      "CROSSING": 8,
+      "IDENTICAL_PRESSURE": 0,
+      "NUMERICALLY_UNRESOLVED": 0,
+      "UNSUPPORTED": 0
+    },
+    "B": {
+      "CANDIDATE_WEAKLY_HIGHER": 3,
+      "CANDIDATE_WEAKLY_LOWER": 6,
+      "CROSSING": 6,
+      "IDENTICAL_PRESSURE": 0,
+      "NUMERICALLY_UNRESOLVED": 0,
+      "UNSUPPORTED": 0
+    }
+  },
+  "governance_class": "G1",
+  "max_abs_rate_arithmetic_discrepancy_g_s": "24849/1457000000000000000",
+  "physical_applicability": "joint response/interpolant/observation assumptions; measurement uncertainty unestablished",
+  "physical_puck_count": 1,
+  "physical_validation": "NOT_ESTABLISHED",
+  "reporting_contradictions": 9,
+  "reporting_rows": 30,
+  "retained_interval_reconciliation": [
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "13/4700000000000000",
+          "weight_exact_minus_old_serialized": "6613/587500000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "37/3100000000000000",
+          "weight_exact_minus_old_serialized": "1/77500000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "-7/4700000000000000",
+          "weight_exact_minus_old_serialized": "6613/587500000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "-39/31000000000000000",
+          "weight_exact_minus_old_serialized": "1/77500000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "12891/14570000000000000000",
+      "exact_rate_g_s": "1062846513/582800000",
+      "interval_id": "PRIMARY_E0_later",
+      "retained_rate_g_s": 1.8236899673987637,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "71/4650000000000000",
+          "weight_exact_minus_old_serialized": "47351/930000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "-9/3100000000000000",
+          "weight_exact_minus_old_serialized": "1/77500000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "7/7750000000000000",
+          "weight_exact_minus_old_serialized": "47351/930000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "0",
+          "weight_exact_minus_old_serialized": "1/77500000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "-377/58125000000000000",
+      "exact_rate_g_s": "3006577/930000",
+      "interval_id": "PRIMARY_E1_later",
+      "retained_rate_g_s": 3.2328784946236624,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "-19/2350000000000000",
+          "weight_exact_minus_old_serialized": "6613/587500000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "33/1175000000000000",
+          "weight_exact_minus_old_serialized": "14361/470000000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "3/4700000000000000",
+          "weight_exact_minus_old_serialized": "6613/587500000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "-1/1880000000000000",
+          "weight_exact_minus_old_serialized": "14361/470000000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "189/11750000000000000",
+      "exact_rate_g_s": "1660241/470000",
+      "interval_id": "PRIMARY_E2_later",
+      "retained_rate_g_s": 3.532427659574452,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "-1/235000000000000",
+          "weight_exact_minus_old_serialized": "6613/587500000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "-3/155000000000000",
+          "weight_exact_minus_old_serialized": "1/77500000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "1/2937500000000000",
+          "weight_exact_minus_old_serialized": "6613/587500000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "-23/31000000000000000",
+          "weight_exact_minus_old_serialized": "1/77500000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "-6957/728500000000000000",
+      "exact_rate_g_s": "226438031/58280000",
+      "interval_id": "PRIMARY_E3_later",
+      "retained_rate_g_s": 3.885347134523002,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "117/2350000000000000",
+          "weight_exact_minus_old_serialized": "151171/1175000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "3/310000000000000",
+          "weight_exact_minus_old_serialized": "4589/77500000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "-3/2350000000000000",
+          "weight_exact_minus_old_serialized": "151171/1175000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "11/31000000000000000",
+          "weight_exact_minus_old_serialized": "4589/77500000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "-24849/1457000000000000000",
+      "exact_rate_g_s": "3080367/728500",
+      "interval_id": "PRIMARY_E4_later",
+      "retained_rate_g_s": 4.228369251887457,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "13/190000000000000",
+          "weight_exact_minus_old_serialized": "3291/23750000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "29/587500000000000",
+          "weight_exact_minus_old_serialized": "42373/470000000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "23/9500000000000000",
+          "weight_exact_minus_old_serialized": "3291/23750000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "-67/47000000000000000",
+          "weight_exact_minus_old_serialized": "42373/470000000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "-851/89300000000000000",
+      "exact_rate_g_s": "768935597/178600000",
+      "interval_id": "PRIMARY_E5_later",
+      "retained_rate_g_s": 4.30535048712207,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "-1/96875000000000",
+          "weight_exact_minus_old_serialized": "-9481/186000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "37/3100000000000000",
+          "weight_exact_minus_old_serialized": "1/77500000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "-41/31000000000000000",
+          "weight_exact_minus_old_serialized": "-9481/186000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "-39/31000000000000000",
+          "weight_exact_minus_old_serialized": "1/77500000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "327/77500000000000000",
+      "exact_rate_g_s": "568309/310000",
+      "interval_id": "SENSITIVITY_A_E0_later",
+      "retained_rate_g_s": 1.8332548387096732,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "17/4650000000000000",
+          "weight_exact_minus_old_serialized": "9917/465000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "-9/3100000000000000",
+          "weight_exact_minus_old_serialized": "1/77500000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "1/93000000000000000",
+          "weight_exact_minus_old_serialized": "9917/465000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "0",
+          "weight_exact_minus_old_serialized": "1/77500000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "-1313/558000000000000000",
+      "exact_rate_g_s": "4474537/1395000",
+      "interval_id": "SENSITIVITY_A_E1_later",
+      "retained_rate_g_s": 3.2075534050179235,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "11/9300000000000000",
+          "weight_exact_minus_old_serialized": "9917/465000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "33/1175000000000000",
+          "weight_exact_minus_old_serialized": "14361/470000000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "0",
+          "weight_exact_minus_old_serialized": "9917/465000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "-1/1880000000000000",
+          "weight_exact_minus_old_serialized": "14361/470000000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "1171529/131130000000000000000",
+      "exact_rate_g_s": "37216729/10490400",
+      "interval_id": "SENSITIVITY_A_E2_later",
+      "retained_rate_g_s": 3.5476939868832367,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "17/1175000000000000",
+          "weight_exact_minus_old_serialized": "-303/94000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "-3/155000000000000",
+          "weight_exact_minus_old_serialized": "1/77500000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "7/4700000000000000",
+          "weight_exact_minus_old_serialized": "-303/94000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "-23/31000000000000000",
+          "weight_exact_minus_old_serialized": "1/77500000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "-33253/4371000000000000000",
+      "exact_rate_g_s": "42421499/10927500",
+      "interval_id": "SENSITIVITY_A_E3_later",
+      "retained_rate_g_s": 3.882086387554343,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "1/96875000000000",
+          "weight_exact_minus_old_serialized": "1373/46500000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "3/310000000000000",
+          "weight_exact_minus_old_serialized": "4589/77500000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "1/6200000000000000",
+          "weight_exact_minus_old_serialized": "1373/46500000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "11/31000000000000000",
+          "weight_exact_minus_old_serialized": "4589/77500000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "29/9300000000000000",
+      "exact_rate_g_s": "3969593/930000",
+      "interval_id": "SENSITIVITY_A_E4_later",
+      "retained_rate_g_s": 4.26837956989247,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "139/2350000000000000",
+          "weight_exact_minus_old_serialized": "46871/235000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "29/587500000000000",
+          "weight_exact_minus_old_serialized": "42373/470000000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "-53/11750000000000000",
+          "weight_exact_minus_old_serialized": "46871/235000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "-67/47000000000000000",
+          "weight_exact_minus_old_serialized": "42373/470000000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "-601/141000000000000000",
+      "exact_rate_g_s": "304027/70500",
+      "interval_id": "SENSITIVITY_A_E5_later",
+      "retained_rate_g_s": 4.312439716312061,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "-1/96875000000000",
+          "weight_exact_minus_old_serialized": "-9481/186000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "-1/9300000000000000",
+          "weight_exact_minus_old_serialized": "-35141/930000000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "-41/31000000000000000",
+          "weight_exact_minus_old_serialized": "-9481/186000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "-3/7750000000000000",
+          "weight_exact_minus_old_serialized": "-35141/930000000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "2983/930000000000000000",
+      "exact_rate_g_s": "17083327/9300000",
+      "interval_id": "SENSITIVITY_B_E0_later",
+      "retained_rate_g_s": 1.8369168817204269,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "17/4650000000000000",
+          "weight_exact_minus_old_serialized": "9917/465000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "283/9300000000000000",
+          "weight_exact_minus_old_serialized": "94687/930000000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "1/93000000000000000",
+          "weight_exact_minus_old_serialized": "9917/465000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "13/3100000000000000",
+          "weight_exact_minus_old_serialized": "94687/930000000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "353/31000000000000000",
+      "exact_rate_g_s": "499983/155000",
+      "interval_id": "SENSITIVITY_B_E1_later",
+      "retained_rate_g_s": 3.225696774193537,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "11/9300000000000000",
+          "weight_exact_minus_old_serialized": "9917/465000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "-37/4650000000000000",
+          "weight_exact_minus_old_serialized": "-35141/930000000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "0",
+          "weight_exact_minus_old_serialized": "9917/465000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "7/5812500000000000",
+          "weight_exact_minus_old_serialized": "-35141/930000000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "-1939/465000000000000000",
+      "exact_rate_g_s": "6567767/1860000",
+      "interval_id": "SENSITIVITY_B_E2_later",
+      "retained_rate_g_s": 3.5310575268817246,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "17/1175000000000000",
+          "weight_exact_minus_old_serialized": "-303/94000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "1/95000000000000",
+          "weight_exact_minus_old_serialized": "-4339/95000000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "7/4700000000000000",
+          "weight_exact_minus_old_serialized": "-303/94000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "17/19000000000000000",
+          "weight_exact_minus_old_serialized": "-4339/95000000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "-11/5581250000000000",
+      "exact_rate_g_s": "173223411/44650000",
+      "interval_id": "SENSITIVITY_B_E3_later",
+      "retained_rate_g_s": 3.87958367301232,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "1/96875000000000",
+          "weight_exact_minus_old_serialized": "1373/46500000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "77/3100000000000000",
+          "weight_exact_minus_old_serialized": "10313/116250000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "1/6200000000000000",
+          "weight_exact_minus_old_serialized": "1373/46500000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "1/1937500000000000",
+          "weight_exact_minus_old_serialized": "10313/116250000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "349/31000000000000000",
+      "exact_rate_g_s": "2664087/620000",
+      "interval_id": "SENSITIVITY_B_E4_later",
+      "retained_rate_g_s": 4.296914516129021,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    },
+    {
+      "endpoint_arithmetic_differences": [
+        {
+          "endpoint": 0,
+          "field": "m",
+          "value_exact_minus_old_serialized": "139/2350000000000000",
+          "weight_exact_minus_old_serialized": "46871/235000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "m",
+          "value_exact_minus_old_serialized": "3/47500000000000",
+          "weight_exact_minus_old_serialized": "14653/95000000000000000"
+        },
+        {
+          "endpoint": 0,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "-53/11750000000000000",
+          "weight_exact_minus_old_serialized": "46871/235000000000000000"
+        },
+        {
+          "endpoint": 1,
+          "field": "p2",
+          "value_exact_minus_old_serialized": "43/19000000000000000",
+          "weight_exact_minus_old_serialized": "14653/95000000000000000"
+        }
+      ],
+      "exact_minus_old_serialized_g_s": "4467/446500000000000000",
+      "exact_rate_g_s": "768812583/178600000",
+      "interval_id": "SENSITIVITY_B_E5_later",
+      "retained_rate_g_s": 4.304661718924962,
+      "support_and_bracket_identity": "MATCH",
+      "supported": true
+    }
+  ],
+  "status": "CONTRADICTS_COMMON_NONDECREASING_RESPONSE",
+  "task_id": "SCI-MD-WASZ-RESTART-PRESSURE-ORDER-001",
+  "unique_comparisons": 27,
+  "unique_contradictions": [
+    "PRIMARY_E1_E0",
+    "PRIMARY_E5_E4",
+    "SENSITIVITY_A_E1_E0",
+    "SENSITIVITY_A_E5_E4",
+    "SENSITIVITY_B_E1_E0",
+    "SENSITIVITY_B_E5_E4"
+  ],
+  "units": {
+    "duration_s": "s",
+    "mass": "g",
+    "pressure": "bar line p2/100",
+    "rate": "g/s",
+    "time_ms": "ms original clock"
+  }
+}

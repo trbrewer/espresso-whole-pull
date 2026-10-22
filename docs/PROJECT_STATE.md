@@ -1,5 +1,20 @@
 # Project State
 
+## SCI-MD-WASZ-RESTART-PRESSURE-ORDER-001 (2026-10-22)
+
+Completed G1 / NO_GOVERNING_PHYSICS_CHANGE, RESEARCH_ONLY / RETROSPECTIVE /
+SOURCE_INTERNAL / TARGET_EXPOSED / NONSCORING. Under retained pressure
+interpolation and interval mass mapping, no common time-independent nondecreasing
+pressure-to-delivery response reproduces the identified comparisons. Six unique
+nominal contradictions (E1/E0 and E5/E4, three designs) from one puck; 30 reporting
+rows, 27 unique keys, three duplicates. Conditional error requirements are not
+known instrument uncertainty. [Result](analysis/sci_md_wasz_restart_pressure_order_001/RESULT.md).
+A reproducing model must account for response shape, evolving state/conditions
+or supported observation contributions; no mechanism or interruption causality
+is identified. #211's unrestricted-F conclusion and #207/#209/#213 remain intact.
+Accepted cohort, solver/defaults and production lock unchanged; Puckworks read-only.
+PHYSICAL_VALIDATION=NOT_ESTABLISHED. Issue #214; no automatic successor.
+
 ## SCI-MD-MO-SPATIAL-PRESSURE-FEASIBILITY-001 (2026-10-21)
 
 Completed G1 / `NO_GOVERNING_PHYSICS_CHANGE`, RESEARCH_ONLY, retrospective,

@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1140" height="740" viewBox="0 0 1140 740">
+<rect width="100%" height="100%" fill="white"/>
+<g font-family="sans-serif" fill="#182b3a" font-size="13">
+<text x="35" y="30" font-size="20">Recorded/interpolant pressure order and delivery · one physical puck</text>
+<text x="35" y="53">All 27 unique comparisons; A/B E1/E0 duplicates counted once. No physical error bars inferred.</text>
+<text x="180" y="82" font-size="13">dP range [min,max], bar (R−C)</text>
+<text x="620" y="82" font-size="13">delta q, g/s (C−R)</text>
+<line x1="180.000" y1="94.000" x2="180.000" y2="625.000" stroke="#ccd4da" stroke-width="1"/>
+<text x="168.0" y="649" font-size="13">-0.2</text>
+<line x1="267.500" y1="94.000" x2="267.500" y2="625.000" stroke="#ccd4da" stroke-width="1"/>
+<text x="255.5" y="649" font-size="13">-0.1</text>
+<line x1="355.000" y1="94.000" x2="355.000" y2="625.000" stroke="#ccd4da" stroke-width="1"/>
+<text x="343.0" y="649" font-size="13">0</text>
+<line x1="442.500" y1="94.000" x2="442.500" y2="625.000" stroke="#ccd4da" stroke-width="1"/>
+<text x="430.50000000000006" y="649" font-size="13">0.1</text>
+<line x1="530.000" y1="94.000" x2="530.000" y2="625.000" stroke="#ccd4da" stroke-width="1"/>
+<text x="518.0" y="649" font-size="13">0.2</text>
+<line x1="620.000" y1="94.000" x2="620.000" y2="625.000" stroke="#ccd4da" stroke-width="1"/>
+<text x="616.0" y="649" font-size="13">0</text>
+<line x1="688.333" y1="94.000" x2="688.333" y2="625.000" stroke="#ccd4da" stroke-width="1"/>
+<text x="684.3333333333334" y="649" font-size="13">1</text>
+<line x1="756.667" y1="94.000" x2="756.667" y2="625.000" stroke="#ccd4da" stroke-width="1"/>
+<text x="752.6666666666666" y="649" font-size="13">2</text>
+<line x1="825.000" y1="94.000" x2="825.000" y2="625.000" stroke="#ccd4da" stroke-width="1"/>
+<text x="821.0" y="649" font-size="13">3</text>
+<text x="20" y="108" font-size="12">P_E1_E0</text>
+<line x1="362.219" y1="104.000" x2="437.798" y2="104.000" stroke="#bd3e25" stroke-width="3"/>
+<circle cx="716.295" cy="104.000" r="3" fill="#bd3e25"/>
+<text x="20" y="127" font-size="12">P_E2_E0</text>
+<line x1="287.407" y1="123.000" x2="349.673" y2="123.000" stroke="#2b607d" stroke-width="3"/>
+<circle cx="736.764" cy="123.000" r="3" fill="#2b607d"/>
+<text x="20" y="146" font-size="12">P_E3_E0</text>
+<line x1="212.636" y1="142.000" x2="375.958" y2="142.000" stroke="#8b949b" stroke-width="3"/>
+<circle cx="760.880" cy="142.000" r="3" fill="#8b949b"/>
+<text x="20" y="165" font-size="12">P_E4_E0</text>
+<line x1="267.719" y1="161.000" x2="343.188" y2="161.000" stroke="#2b607d" stroke-width="3"/>
+<circle cx="784.320" cy="161.000" r="3" fill="#2b607d"/>
+<text x="20" y="184" font-size="12">P_E5_E0</text>
+<line x1="278.219" y1="180.000" x2="362.218" y2="180.000" stroke="#8b949b" stroke-width="3"/>
+<circle cx="789.580" cy="180.000" r="3" fill="#8b949b"/>
+<text x="20" y="203" font-size="12">P_E2_E1</text>
+<line x1="225.720" y1="199.000" x2="325.469" y2="199.000" stroke="#2b607d" stroke-width="3"/>
+<circle cx="640.469" cy="199.000" r="3" fill="#2b607d"/>
+<text x="20" y="222" font-size="12">P_E3_E2</text>
+<line x1="263.507" y1="218.000" x2="400.860" y2="218.000" stroke="#8b949b" stroke-width="3"/>
+<circle cx="644.116" cy="218.000" r="3" fill="#8b949b"/>
+<text x="20" y="241" font-size="12">P_E4_E3</text>
+<line x1="290.031" y1="237.000" x2="438.958" y2="237.000" stroke="#8b949b" stroke-width="3"/>
+<circle cx="643.440" cy="237.000" r="3" fill="#8b949b"/>
+<text x="20" y="260" font-size="12">P_E5_E4</text>
+<line x1="355.642" y1="256.000" x2="406.386" y2="256.000" stroke="#bd3e25" stroke-width="3"/>
+<circle cx="625.260" cy="256.000" r="3" fill="#bd3e25"/>
+<text x="20" y="279" font-size="12">SA_E1_E0</text>
+<line x1="362.219" y1="275.000" x2="453.022" y2="275.000" stroke="#bd3e25" stroke-width="3"/>
+<circle cx="713.910" cy="275.000" r="3" fill="#bd3e25"/>
+<text x="20" y="298" font-size="12">SA_E2_E0</text>
+<line x1="287.407" y1="294.000" x2="364.188" y2="294.000" stroke="#8b949b" stroke-width="3"/>
+<circle cx="737.153" cy="294.000" r="3" fill="#8b949b"/>
+<text x="20" y="317" font-size="12">SA_E3_E0</text>
+<line x1="212.636" y1="313.000" x2="387.170" y2="313.000" stroke="#8b949b" stroke-width="3"/>
+<circle cx="760.003" cy="313.000" r="3" fill="#8b949b"/>
+<text x="20" y="336" font-size="12">SA_E4_E0</text>
+<line x1="267.719" y1="332.000" x2="343.188" y2="332.000" stroke="#2b607d" stroke-width="3"/>
+<circle cx="786.400" cy="332.000" r="3" fill="#2b607d"/>
+<text x="20" y="355" font-size="12">SA_E5_E0</text>
+<line x1="278.219" y1="351.000" x2="362.218" y2="351.000" stroke="#8b949b" stroke-width="3"/>
+<circle cx="789.411" cy="351.000" r="3" fill="#8b949b"/>
+<text x="20" y="374" font-size="12">SA_E2_E1</text>
+<line x1="219.288" y1="370.000" x2="325.469" y2="370.000" stroke="#2b607d" stroke-width="3"/>
+<circle cx="643.243" cy="370.000" r="3" fill="#2b607d"/>
+<text x="20" y="393" font-size="12">SA_E3_E2</text>
+<line x1="263.507" y1="389.000" x2="412.750" y2="389.000" stroke="#8b949b" stroke-width="3"/>
+<circle cx="642.850" cy="389.000" r="3" fill="#8b949b"/>
+<text x="20" y="412" font-size="12">SA_E4_E3</text>
+<line x1="290.031" y1="408.000" x2="438.958" y2="408.000" stroke="#8b949b" stroke-width="3"/>
+<circle cx="646.397" cy="408.000" r="3" fill="#8b949b"/>
+<text x="20" y="431" font-size="12">SA_E5_E4</text>
+<line x1="355.642" y1="427.000" x2="406.386" y2="427.000" stroke="#bd3e25" stroke-width="3"/>
+<circle cx="623.011" cy="427.000" r="3" fill="#bd3e25"/>
+<text x="20" y="450" font-size="12">SB_E1_E0</text>
+<line x1="373.904" y1="446.000" x2="453.022" y2="446.000" stroke="#bd3e25" stroke-width="3"/>
+<circle cx="714.900" cy="446.000" r="3" fill="#bd3e25"/>
+<text x="20" y="469" font-size="12">SB_E2_E0</text>
+<line x1="287.407" y1="465.000" x2="364.188" y2="465.000" stroke="#8b949b" stroke-width="3"/>
+<circle cx="735.766" cy="465.000" r="3" fill="#8b949b"/>
+<text x="20" y="488" font-size="12">SB_E3_E0</text>
+<line x1="257.315" y1="484.000" x2="387.170" y2="484.000" stroke="#8b949b" stroke-width="3"/>
+<circle cx="759.582" cy="484.000" r="3" fill="#8b949b"/>
+<text x="20" y="507" font-size="12">SB_E4_E0</text>
+<line x1="270.344" y1="503.000" x2="343.188" y2="503.000" stroke="#2b607d" stroke-width="3"/>
+<circle cx="788.100" cy="503.000" r="3" fill="#2b607d"/>
+<text x="20" y="526" font-size="12">SB_E5_E0</text>
+<line x1="300.407" y1="522.000" x2="362.218" y2="522.000" stroke="#8b949b" stroke-width="3"/>
+<circle cx="788.629" cy="522.000" r="3" fill="#8b949b"/>
+<text x="20" y="545" font-size="12">SB_E2_E1</text>
+<line x1="219.288" y1="541.000" x2="303.290" y2="541.000" stroke="#2b607d" stroke-width="3"/>
+<circle cx="640.866" cy="541.000" r="3" fill="#2b607d"/>
+<text x="20" y="564" font-size="12">SB_E3_E2</text>
+<line x1="304.428" y1="560.000" x2="412.750" y2="560.000" stroke="#8b949b" stroke-width="3"/>
+<circle cx="643.816" cy="560.000" r="3" fill="#8b949b"/>
+<text x="20" y="583" font-size="12">SB_E4_E3</text>
+<line x1="290.031" y1="579.000" x2="368.028" y2="579.000" stroke="#8b949b" stroke-width="3"/>
+<circle cx="648.518" cy="579.000" r="3" fill="#8b949b"/>
+<text x="20" y="602" font-size="12">SB_E5_E4</text>
+<line x1="362.874" y1="598.000" x2="395.598" y2="598.000" stroke="#bd3e25" stroke-width="3"/>
+<circle cx="620.529" cy="598.000" r="3" fill="#bd3e25"/>
+<text x="855" y="100" font-size="17">E5/E4 detail</text>
+<text x="855" y="123" font-size="12">mP (bar) / delta q (g/s)</text>
+<text x="855" y="155" font-size="12">PRIMARY</text>
+<text x="855" y="175" font-size="12">0.000734043 / +0.076981235</text>
+<text x="855" y="195" font-size="11">epsilon P boundary: 0.000367021 bar</text>
+<text x="855" y="213" font-size="11">eta boundary: 0.038490618 g</text>
+<text x="855" y="260" font-size="12">SENSITIVITY_A</text>
+<text x="855" y="280" font-size="12">0.000734043 / +0.044060146</text>
+<text x="855" y="300" font-size="11">epsilon P boundary: 0.000367021 bar</text>
+<text x="855" y="318" font-size="11">eta boundary: 0.033045110 g</text>
+<text x="855" y="365" font-size="12">SENSITIVITY_B</text>
+<text x="855" y="385" font-size="12">0.008999000 / +0.007747203</text>
+<text x="855" y="405" font-size="11">epsilon P boundary: 0.004499500 bar</text>
+<text x="855" y="423" font-size="11">eta boundary: 0.003873601 g</text>
+<text x="855" y="495" font-size="12">Red: nominal contradiction</text>
+<text x="855" y="515" font-size="12">Blue: ordered, unexcluded</text>
+<text x="855" y="535" font-size="12">Gray: crossing, unexcluded</text>
+<text x="35" y="687" font-size="13">Pressure error at mP retains weak order; adverse delivery correction at |delta q| can remove the contrary sign.</text>
+<text x="35" y="710" font-size="13">Boundary values assume fixed timing/interpolation and separate worst-case error bounds; they are not known sensor accuracies.</text>
+</g></svg>

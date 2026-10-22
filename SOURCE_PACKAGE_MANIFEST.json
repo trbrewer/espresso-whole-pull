@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1454,
-  "total_uncompressed_bytes_excluding_manifest": 25850582,
-  "aggregate_source_sha256": "63894df7e4aa005cfcc46b7fe0313cdaef7b134c456d2081bb9e911be08dc299",
-  "aggregate_sha256": "63894df7e4aa005cfcc46b7fe0313cdaef7b134c456d2081bb9e911be08dc299",
+  "file_count": 1463,
+  "total_uncompressed_bytes_excluding_manifest": 26871275,
+  "aggregate_source_sha256": "96b1701b25b5bb1885faa70bc5a054837eb3dc9e74b9186d2df9991d2ca4af8f",
+  "aggregate_sha256": "96b1701b25b5bb1885faa70bc5a054837eb3dc9e74b9186d2df9991d2ca4af8f",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -799,8 +799,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/DATA_LEVERAGE_LEDGER.csv": {
-      "sha256": "f5cc641ed9a787231fff957f8bf9ab637ac61e06dfd28bb2a2c3a83fda8d559b",
-      "bytes": 33191,
+      "sha256": "fe514a01eaf2a5c218d806c5c83150f1fbabc0d7ca80c65ba617938b653b4f1e",
+      "bytes": 34179,
       "git_mode": "100644"
     },
     "docs/analysis/data_leverage/LOCAL_CORPUS_OPPORTUNITY_MATRIX.csv": {
@@ -3948,6 +3948,46 @@
       "bytes": 5344,
       "git_mode": "100644"
     },
+    "docs/analysis/sci_md_wasz_restart_pressure_order_001/COMPARISONS.csv": {
+      "sha256": "be69cbf0492a178068be9271bb1fc2fe2c1c4f1f0a0460b9236a8b68780f97dc",
+      "bytes": 11041,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_pressure_order_001/PLAN.md": {
+      "sha256": "0dca355a15ff15a28a32bff68d4cbc466f5f202e54755b3f8f6a58f629cf2994",
+      "bytes": 10747,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_pressure_order_001/PRESSURE_ORDER.svg": {
+      "sha256": "d6b7197a4eb593f21c28925ae677d3ae28799c12b762adec8be74c95093906bb",
+      "bytes": 8868,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_pressure_order_001/PRESSURE_ORDER_WITNESSES.json": {
+      "sha256": "e2308e03c319a3f7871a132eb3d516eff76472a0d7353eb79a7ec662360c7d07",
+      "bytes": 866628,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_pressure_order_001/RESULT.json": {
+      "sha256": "b435e7ab3158bc2fc03402915d83eca0adfbc961eff05e56d6c9f209053d7404",
+      "bytes": 73163,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_pressure_order_001/RESULT.md": {
+      "sha256": "05f66d8f4bedd9951136129929d36036f2ed01a690bbb60c6a5048401455ba17",
+      "bytes": 15273,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_pressure_order_001/REVIEW.md": {
+      "sha256": "9abc958c4cb68fd7dfb895fb5cae1eedc1c71b0e7bd7f598b33ff223fd018ab2",
+      "bytes": 16607,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_pressure_order_001/SOURCE_MANIFEST.json": {
+      "sha256": "ab8960726b41fc73301a4b105ff66b38ab7957dc0536730921171431e277227e",
+      "bytes": 4073,
+      "git_mode": "100644"
+    },
     "docs/analysis/sci_md_wasz_restart_response_001/CHECKS.json": {
       "sha256": "e42ed6bac99fab5026be7d30e1a724481ff61b9993f81a1ff9a63de025fd016f",
       "bytes": 11410,
@@ -4549,8 +4589,8 @@
       "git_mode": "100644"
     },
     "docs/strategy/EXISTING_DATA_LEVERAGE_PROGRAMME.md": {
-      "sha256": "a1b708cd988adbceceabad4f87af9f8ecc4bc67f565aa739622ab85e3fbe2fb3",
-      "bytes": 15171,
+      "sha256": "a99a0aa3df196b4eeda0a841d4f9fada5d36ad2674ef34cbe8574bc4ee0316d7",
+      "bytes": 16200,
       "git_mode": "100644"
     },
     "docs/strategy/PARALLEL_SCIENTIFIC_WORKING_PROTOCOL.md": {
@@ -6641,6 +6681,11 @@
     "tests/test_sci_md_rheology_011.py": {
       "sha256": "a6ec5c708333766045a6266fb33702a5a88d1dedec2683fa1c64c52ba08b8bb4",
       "bytes": 8955,
+      "git_mode": "100644"
+    },
+    "tests/test_sci_md_wasz_restart_pressure_order_001.py": {
+      "sha256": "535a27b103d0e1e923e33020796ac1f680e85a834587f5f9a87af46876daec0f",
+      "bytes": 12276,
       "git_mode": "100644"
     },
     "tests/test_sci_md_wasz_restart_response_001.py": {
