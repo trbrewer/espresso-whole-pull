@@ -1189,6 +1189,37 @@
       "exhaustion_decision": null,
       "review_trigger": "Separate owner disposition; no automatic follow-on",
       "notes": "No physical validation, empirical fitting, production adoption, line-pressure witness, general family exclusion or successor. 24 guard-rejected pairs and 47 unvisited candidates remain unresolved."
+    },
+    {
+      "opportunity_id": "SCI-MD-WASZ-RESTART-PRESSURE-ORDER-001",
+      "task_id": "SCI-MD-WASZ-RESTART-PRESSURE-ORDER-001",
+      "title": "Retained restart pressure-order test",
+      "data_families": [
+        "waszkiewicz2025"
+      ],
+      "scientific_question": "Can one common time-independent nondecreasing response to recorded line pressure reproduce retained later interval delivery?",
+      "model_component": "recorded-interpolant order restriction on joint response and observation mapping",
+      "status": "COMPLETE_NEGATIVE",
+      "priority": 1,
+      "prerequisites": [
+        "Authenticated original source and unchanged retained 18 later intervals; exposed non-scoring plan"
+      ],
+      "current_evidence": "Six unique nominal contradictions: E1/E0 and E5/E4 under three designs; 30 reporting rows; 27 unique keys; one puck",
+      "expected_information": "Nondecreasing restriction allows exact pressure-order implication without fitted slopes or pressure equivalence",
+      "positive_action": "Exclude declared common nondecreasing response under retained observation mapping; retain conditional error requirements",
+      "negative_action": "If no contrary pair exists report NOT_EXCLUDED_BY_PAIRWISE_ORDER_TEST without existence claim",
+      "null_action": "Retain crossing/order-consistent cases as unexcluded; no automatic successor",
+      "blocked_action": "Close unsupported comparisons with source/support diagnostics; no replacement trace or window",
+      "claim_ceiling": "RESEARCH_ONLY;RETROSPECTIVE;SOURCE_INTERNAL;TARGET_EXPOSED;NONSCORING;PHYSICAL_VALIDATION_NOT_ESTABLISHED",
+      "home_lab_effect": "NO_OPERATION_AUTHORIZED",
+      "completion_evidence": [
+        "docs/analysis/sci_md_wasz_restart_pressure_order_001/RESULT.md",
+        "docs/analysis/sci_md_wasz_restart_pressure_order_001/RESULT.json"
+      ],
+      "exhausted_for_decision": false,
+      "exhaustion_decision": null,
+      "review_trigger": "Separate owner disposition; no automatic follow-on",
+      "notes": "COMPLETE_NEGATIVE refers to the specified joint monotone-response/observation hypothesis. Physical measurement applicability unestablished; nonmonotone F and memory models remain outside exclusion. Preserve #207/#209/#211/#213, cohort and production lock."
     }
   ],
   "laboratory_gate": {

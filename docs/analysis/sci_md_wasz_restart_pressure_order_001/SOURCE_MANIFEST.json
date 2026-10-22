@@ -1,0 +1,66 @@
+{
+  "acquisition": "reused external Git cache; no network in producer",
+  "attribution": "Waszkiewicz, Myck, Bia\u0142as, Puciata-Mroczynska, Dzikowski, Szymczak and Lisicki (2025)",
+  "base_commit": "aace2cc6b6c2a393d2dbfb0274104192ca6c7203",
+  "base_tree": "cb713f8229075fe4f3f1e05d1eca77868e5692ae",
+  "deposit": "https://zenodo.org/records/18046315",
+  "fields": {
+    "m": "recorded cup mass in grams",
+    "other": "U, v1, v2, p1 uninterpreted; p1 not asserted independent puck pressure",
+    "p2": "recorded pressure; line pressure=p2/100 bar",
+    "t": "milliseconds; analysis time=t/1000 seconds; original clock"
+  },
+  "full_logs": "external task evidence root; relative locators/hashes in REVIEW.md",
+  "implementation_sha256": "97d0eb83b48b5be30a2b43fa54388a12eb96c5eb2178a4b9cafe605ef1b0f8a2",
+  "inspected": "restart acquisition and plotting script (lineage only); retained bundle; PLAN preflight",
+  "original_source": {
+    "authenticated": true,
+    "expected_revision": "fbc33d3380a9c8cff2467bae70fec7137a6ed46f",
+    "files": {
+      "measurements_brew_restarting/brew_restarting.txt": {
+        "authenticated": true,
+        "bytes": 163514,
+        "expected_git_blob_id": "7940d6aa008e7cae37bb1bf8ceece44fa07d0bff",
+        "git_blob_id": "7940d6aa008e7cae37bb1bf8ceece44fa07d0bff",
+        "pinned_tree_blob_id": "7940d6aa008e7cae37bb1bf8ceece44fa07d0bff",
+        "sha256": "e82430cde25574140d2026882a883fba21a0f0ac6d9588b15df22571836f68e9",
+        "source_root_relative_locator": "measurements_brew_restarting/brew_restarting.txt",
+        "url": "https://github.com/RadostW/espresso/blob/fbc33d3380a9c8cff2467bae70fec7137a6ed46f/measurements_brew_restarting/brew_restarting.txt"
+      },
+      "plot_singlepanel_brew_restarting.py": {
+        "authenticated": true,
+        "bytes": 1783,
+        "expected_git_blob_id": "f93c4c2abb6847d70b21df669bd6940089c226b3",
+        "git_blob_id": "f93c4c2abb6847d70b21df669bd6940089c226b3",
+        "pinned_tree_blob_id": "f93c4c2abb6847d70b21df669bd6940089c226b3",
+        "sha256": "aa35ade18cc8b6946164279d6e2e82337435c3165698be932ff3d0f32b47cd74",
+        "source_root_relative_locator": "plot_singlepanel_brew_restarting.py",
+        "url": "https://github.com/RadostW/espresso/blob/fbc33d3380a9c8cff2467bae70fec7137a6ed46f/plot_singlepanel_brew_restarting.py"
+      }
+    },
+    "revision": "fbc33d3380a9c8cff2467bae70fec7137a6ed46f"
+  },
+  "physical_puck_id": "waszkiewicz2025_fig10_restart_puck_01",
+  "plan_sha256": "0dca355a15ff15a28a32bff68d4cbc466f5f202e54755b3f8f6a58f629cf2994",
+  "production_puckworks_lock": "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+  "puckworks_read_only_research_commit": "d4eb54ce4bd0eb21a0968d3c37f43ad4ef8ccd16",
+  "raw_payloads": "external; locators relative to --source-root",
+  "retained_bundle_sha256": {
+    "CHECKS.json": "e42ed6bac99fab5026be7d30e1a724481ff61b9993f81a1ff9a63de025fd016f",
+    "CONTRASTS.csv": "44864f9f51087a5fdd181d26a33593d6918e029ee1f0cc7536e69d5de9690f92",
+    "EPISODES.csv": "5462c85b5cf4b2551f8cd4539ede6c3c7c05a26cebf892848a329ecf3d992c8b",
+    "INTERVALS.csv": "3becf285badd55f88847f6e77904c87aba0edb667e040ae6c0c3d43fa43a3654",
+    "PLAN.md": "0ad18c251b5473a9a9c7f81250d620661abec1d6cb8b41f117960da53896b97c",
+    "RAW_CLOCK.svg": "33bfc8dff6cbe620794fcef925ff0103ed0b8e5f617bdcc9ab95da71ae46eff3",
+    "RESULT.json": "776fd5ad639461f2071a45f20ef1fb27d5dcb6d5f78cb2ec554382a6ccb6419a",
+    "RESULT.md": "b2fb19af5d183b9c2f5e8a1f00658389f25ccdc10c042eb66f6f5638ee4f3626",
+    "REVIEW.md": "e0816799f6535d0735b7bddda3b2379bf537a0f8248534f4289168a362d648d3",
+    "SOURCE_MANIFEST.json": "65d7a5fe077a28a650a770477f7a104b44077a48d0156b4d97b83457d9cc5f61"
+  },
+  "retained_helper_sha256": "dbb974b93741128b7b5ae0ae8fce46000cbbf65c30ece748913c8693b3ace5f4",
+  "rights": {
+    "data": "CC-BY-4.0 deposit data per accepted Puckworks provenance and Zenodo metadata",
+    "software": "GPLv3; inspected only; independently implemented mathematics; no upstream execution/copying"
+  },
+  "task_id": "SCI-MD-WASZ-RESTART-PRESSURE-ORDER-001"
+}

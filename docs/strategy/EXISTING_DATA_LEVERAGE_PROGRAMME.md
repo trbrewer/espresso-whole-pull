@@ -1,5 +1,20 @@
 # Existing Data Leverage Programme
 
+## SCI-MD-WASZ-RESTART-PRESSURE-ORDER-001 (2026-10-22)
+
+Completed G1 / NO_GOVERNING_PHYSICS_CHANGE, RESEARCH_ONLY / RETROSPECTIVE /
+SOURCE_INTERNAL / TARGET_EXPOSED / NONSCORING. Under retained pressure
+interpolation and interval mass mapping, no common time-independent nondecreasing
+pressure-to-delivery response reproduces the identified comparisons. Six unique
+nominal contradictions (E1/E0 and E5/E4, three designs) from one puck; 30 reporting
+rows, 27 unique keys, three duplicates. Conditional error requirements are not
+known instrument uncertainty. [Result](../analysis/sci_md_wasz_restart_pressure_order_001/RESULT.md).
+A reproducing model must account for response shape, evolving state/conditions
+or supported observation contributions; no mechanism or interruption causality
+is identified. #211's unrestricted-F conclusion and #207/#209/#213 remain intact.
+Accepted cohort, solver/defaults and production lock unchanged; Puckworks read-only.
+PHYSICAL_VALIDATION=NOT_ESTABLISHED. Issue #214; no automatic successor.
+
 SCI-MD-MASS-DELIVERY-008 completed one independently approved score: **ADAPTATION_ADEQUATE_INCREMENT_NOT_ESTABLISHED**. Fixed A2; adequacy F2/A2/A0/M = FAIL/PASS/FAIL/FAIL; I_CAL/I_CHEM/I_LOCAL = FAIL/FAIL/FAIL. Source/coverage/calibration/numerics qualify. 13 original shots, 11 eligible, 98 prefix assays forming 22 summaries, 55 unique suffix observations; 110 ordered pairs, 550 slots per arm. Exactly 22 scalars and 88 MASS starts; no extra fit, prediction family or rescore. G1 / NO_GOVERNING_PHYSICS_CHANGE; RESEARCH_ONLY / TARGET_EXPOSED / retrospective one-calibration-shot adaptation. 007's failed zero-shot conclusion remains unchanged. PHYSICAL_VALIDATION=NOT_ESTABLISHED. Draft PRs Puckworks #294 / EWP #200 remain open/unmerged; no merge, production adoption/default/lock change, native run, laboratory operation or successor. [Result](../analysis/sci_md_mass_delivery_008/RESULT.md).
 
 SCI-MD-MASS-DELIVERY-007 completed one independently approved frozen cross-source score: **FROZEN_CONDITIONAL_TRANSFER_INADEQUATE_ON_DECLARED_COHORT**. C2 adequacy=FAIL; I0/I1=PASS/PASS; coverage/numerics=PASS/PASS. 11/13 qualified shots, 55/55 later vials per arm, 98 original assays summarized into 22 pooled inputs. Zero new fits, optimizer calls or native runs. Retrospective, target-exposed and conditional on collected beverage mass; PHYSICAL_VALIDATION=NOT_ESTABLISHED. No production adoption, lock/default change, merge, laboratory work or successor. Parent 006 and GRUDEVA-CLOCK-001 PRs verified merged at intake; their artifacts remain unchanged. Linked draft PRs Puckworks #292 / EWP #198 remain open/unmerged. [Result](../analysis/sci_md_mass_delivery_007/RESULT.md).
