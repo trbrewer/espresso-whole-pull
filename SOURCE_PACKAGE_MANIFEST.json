@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1462,
-  "total_uncompressed_bytes_excluding_manifest": 26854668,
-  "aggregate_source_sha256": "f1a067e318938d96fc10a2c9256d9e3b733d6abc5f33a34bdde625785b7a744d",
-  "aggregate_sha256": "f1a067e318938d96fc10a2c9256d9e3b733d6abc5f33a34bdde625785b7a744d",
+  "file_count": 1463,
+  "total_uncompressed_bytes_excluding_manifest": 26871275,
+  "aggregate_source_sha256": "96b1701b25b5bb1885faa70bc5a054837eb3dc9e74b9186d2df9991d2ca4af8f",
+  "aggregate_sha256": "96b1701b25b5bb1885faa70bc5a054837eb3dc9e74b9186d2df9991d2ca4af8f",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -3976,6 +3976,11 @@
     "docs/analysis/sci_md_wasz_restart_pressure_order_001/RESULT.md": {
       "sha256": "05f66d8f4bedd9951136129929d36036f2ed01a690bbb60c6a5048401455ba17",
       "bytes": 15273,
+      "git_mode": "100644"
+    },
+    "docs/analysis/sci_md_wasz_restart_pressure_order_001/REVIEW.md": {
+      "sha256": "9abc958c4cb68fd7dfb895fb5cae1eedc1c71b0e7bd7f598b33ff223fd018ab2",
+      "bytes": 16607,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_wasz_restart_pressure_order_001/SOURCE_MANIFEST.json": {
