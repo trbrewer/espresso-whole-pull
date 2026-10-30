@@ -7,6 +7,7 @@ import hashlib
 import json
 import subprocess
 from pathlib import Path
+from puckworks_historical_lock import historical_lock
 
 BASELINE = "89b9ab16dc9c1871815873522733c9101b713bfc"
 IMPACT_PATH = Path(
@@ -88,6 +89,7 @@ def evaluate(
     changed_paths: set[str] | None,
     frozen_hashes: dict[str, str],
 ) -> dict[str, bool]:
+    lock = historical_lock(lock)
     changed_cards = alignment["delta_inventory"]["all_changed_model_card_paths"]
     represented = [
         item["path"] for item in impact["artifacts"]

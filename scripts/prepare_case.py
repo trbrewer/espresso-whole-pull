@@ -459,7 +459,36 @@ functions
 '''
 
 
+def render_e1(scenario: dict) -> str:
+    """Optional lumped E1; an absent/disabled dictionary preserves old bytes."""
+    e = scenario.get("e1_whole_bed_closure", {})
+    if not e.get("enabled", False):
+        return ""
+    hydraulic = scenario["hydraulics"]
+    if (scenario.get("effective_permeability_evolution") is not None
+            or scenario.get("bedMechanicsModel", "none") != "none"
+            or scenario.get("flowResistanceModel", "darcy") != "darcy"
+            or hydraulic.get("permeability_profile", {}).get("type", "uniform") != "uniform"
+            or scenario.get("aggregate_viscosity", {}).get("mode", "off") != "off"
+            or hydraulic.get("pressure_boundary_model", "prescribedPressure") not in
+                ("prescribedPressure", "prescribedPressureHistory")
+            or scenario.get("pressureBoundaryModel", "prescribedPressure") not in
+                ("prescribedPressure", "prescribedPressureHistory")
+            or float(hydraulic["outlet_pressure_gauge_Pa"]) != 0
+            or float(scenario["time"]["start_s"]) != 0):
+        raise ValueError("E1 requires a fresh uniform prescribed-pressure Darcy case")
+    keys = ("aGPerSBar", "pstarBar", "tauS", "mcG", "onsetCS", "onsetN", "earlyPressureBar")
+    if set(e) != {"enabled", *keys}:
+        raise ValueError("E1 requires exactly its saved parameters and pressure input; no measured onset")
+    values = {k: float(e[k]) for k in keys}
+    if any(not math.isfinite(x) or (k != "onsetN" and x <= 0) for k,x in values.items()):
+        raise ValueError("invalid E1 parameter")
+    return "e1WholeBedClosure\n{\n    enabled true;\n" + "".join(
+        f"    {k} {x:.17g};\n" for k,x in values.items()) + "}\n"
+
+
 def render_properties(scenario: dict) -> str:
+    e1_dictionary = render_e1(scenario)
     radial_mesh_contract(scenario)
     geometry = scenario["geometry"]
     bed = scenario["coffee_bed"]
@@ -875,7 +904,7 @@ targetBeverageMass         {float(time_cfg['target_beverage_mass_kg']):.16g};
 {fraction_dictionary}
 {machine_dictionary}
 {mechanics_dictionary}
-{closure_dictionary}
+{closure_dictionary}{e1_dictionary}
 '''
 
 
@@ -1380,6 +1409,7 @@ def main() -> None:
     scenario = json.loads(config_path.read_text(encoding="utf-8"))
     # Validate optional observers before creating or copying any case path.
     fraction_collection_contract(scenario)
+    render_e1(scenario)
     aggregate_viscosity_contract(scenario)
     if args.nprocs < 1:
         raise SystemExit("nprocs must be positive")
@@ -1473,7 +1503,8 @@ def main() -> None:
         }
     history = pressure_history_contract(scenario)
     aggregate_coupled = scenario.get("aggregate_viscosity", {}).get("mode", "off") in ("coupled", "bulkCoupled")
-    preview = ({"status": "NOT_APPLICABLE", "reason": "Legacy scalar-ramp preview does not support pressure history"}
+    preview = ({"status": "NOT_APPLICABLE", "reason": "E1 requires its Python definition, not the static Darcy preview"}
+               if scenario.get("e1_whole_bed_closure", {}).get("enabled", False) else {"status": "NOT_APPLICABLE", "reason": "Legacy scalar-ramp preview does not support pressure history"}
                if history else {"status": "NOT_APPLICABLE", "reason": "Scalar-viscosity analytical preview is inapplicable to aggregate-viscosity feedback; use topology-specific native interval diagnostics"}
                if aggregate_coupled else analytical_preview(preview_scenario))
     if r1:
@@ -1499,7 +1530,7 @@ def main() -> None:
     )
 
     b0 = None
-    if history is None and not aggregate_coupled and (str(scenario["scenario_id"]).startswith("reference_R0") or r1):
+    if not scenario.get("e1_whole_bed_closure", {}).get("enabled", False) and history is None and not aggregate_coupled and (str(scenario["scenario_id"]).startswith("reference_R0") or r1):
         b0 = b0_reduced_simulation(scenario)
         (preflight_dir / "B0_REDUCED_TWIN_V0_1_4.json").write_text(
             canonical_json(b0) if r1 else json.dumps(b0, indent=2) + "\n",

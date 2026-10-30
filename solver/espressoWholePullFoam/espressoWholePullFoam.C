@@ -35,6 +35,7 @@
 #include "machineBoundaryModel.H"
 #include "forchheimerResistance.H"
 #include "poroelasticCompaction.H"
+#include "e1EffectivePermeability.H"
 #include "prescribedFlowBoundaryModel.H"
 #include "prescribedPressureBoundaryModel.H"
 
@@ -914,6 +915,45 @@ int main(int argc, char *argv[])
             << "Compaction requires uniform Darcy flow with WP02 evolution disabled"
             << exit(FatalError);
     }
+    // Optional E1: all state/fields/output are absent on the historical off path.
+    const bool e1Enabled = modelProperties.found("e1WholeBedClosure")
+        && modelProperties.subDict("e1WholeBedClosure").lookupOrDefault<Switch>("enabled", false);
+    espresso::E1Parameters e1Parameters{};
+    scalar e1MassG = 0.0;
+    scalar e1BasePermeability = 0.0;
+    std::unique_ptr<IOdictionary> e1State;
+    std::unique_ptr<volScalarField> e1Multiplier;
+    if (e1Enabled)
+    {
+        if (poroelasticCompaction || effectivePermeabilityEnabled || darcyForchheimer
+            || prescribedFlow || lumpedMachine || aggregateDiagnostics
+            || permeabilityProfile != "uniform" || outletPressure != 0.0
+            || runTime.value() != 0.0)
+            FatalErrorInFunction << "E1 requires a fresh, uniform, prescribed-pressure Darcy case; "
+                << "other hydraulic closures and nonzero outlet pressure are incompatible"
+                << exit(FatalError);
+        const dictionary& e = modelProperties.subDict("e1WholeBedClosure");
+        e1Parameters = {readScalar(e.lookup("aGPerSBar")), readScalar(e.lookup("pstarBar")),
+            readScalar(e.lookup("tauS")), readScalar(e.lookup("mcG")),
+            readScalar(e.lookup("onsetCS")), readScalar(e.lookup("onsetN")),
+            readScalar(e.lookup("earlyPressureBar"))};
+        try { e1Parameters.validate(); e1Parameters.delay(); }
+        catch (const std::exception& error)
+        { FatalErrorInFunction << error.what() << exit(FatalError); }
+        const scalar area = constant::mathematical::pi*sqr(basketRadius);
+        e1BasePermeability = e1Parameters.basePermeability
+            (dynamicViscosity, bedDepth, liquidDensity, area);
+        e1State.reset(new IOdictionary(IOobject("e1State", runTime.name(), mesh,
+            IOobject::NO_READ, IOobject::AUTO_WRITE)));
+        e1State->add("cumulativeOutletLiquidMassG", e1MassG);
+        e1State->add("predictedDelayS", e1Parameters.delay());
+        e1State->add("swellingMultiplier", e1Parameters.swelling());
+        e1State->add("pressureBasis", word("rawLineEquivalentInletGauge"));
+        e1Multiplier.reset(new volScalarField(IOobject("e1WholeBedMultiplier",
+            runTime.name(), mesh, IOobject::NO_READ, IOobject::AUTO_WRITE),
+            mesh, dimensionedScalar("one", dimless, 1.0)));
+    }
+
     const scalar maximumBoundaryPressure = lumpedMachine
         ? machineParameters.shutoffPressure
         : (prescribedPressureHistory ? prescribedPressureParameters.maximumPressure()
@@ -2415,6 +2455,28 @@ int main(int argc, char *argv[])
             effectivePermeabilityMultiplier.correctBoundaryConditions();
         }
 
+        if (e1Enabled && saturatedAtStepStart)
+        {
+            // One inlet-boundary pressure and one globally accumulated mass;
+            // never use a cell's local pressure/stress to evaluate the closure.
+            scalar multiplier = 0.0;
+            try { multiplier = e1Parameters.multiplier(inletPressure, e1MassG); }
+            catch (const std::exception& error)
+            { FatalErrorInFunction << error.what() << exit(FatalError); }
+            const scalar k = e1BasePermeability*multiplier;
+            permeability = dimensionedScalar("e1Permeability", permeability.dimensions(), k);
+            permeability.correctBoundaryConditions();
+            hydraulicMobility = permeability/dynamicViscosityCoefficient;
+            hydraulicMobility.correctBoundaryConditions();
+            *e1Multiplier = dimensionedScalar("e1Multiplier", dimless, multiplier);
+            e1Multiplier->correctBoundaryConditions();
+            currentDarcyIntegral = bedDepth/k;
+            e1State->set("inletGaugePressurePa", inletPressure);
+            e1State->set("massAtStepStartG", e1MassG);
+            e1State->set("resistanceAtStepStart", e1Parameters.resistance(e1MassG));
+            e1State->set("appliedMultiplier", multiplier);
+        }
+
         if (!saturatedAtStepStart)
         {
             const scalar frontSquared =
@@ -3171,6 +3233,7 @@ int main(int argc, char *argv[])
             probe2Volume > VSMALL ? probe2WeightedPressure/probe2Volume : 0.0;
 
         const scalar effectiveContinuumResistance =
+            e1Enabled && saturatedAtStepStart ? currentDarcyIntegral :
             effectivePermeabilityEnabled && saturatedAtStepStart
           ? bedDepth/(saturatedPermeability*effectiveMultiplier)
           : continuumResistance;
@@ -3680,6 +3743,12 @@ int main(int argc, char *argv[])
             stepWaterMass = liquidDensity*outletVolumeFlow*deltaT;
             stepSoluteMass = Foam::max(outletSoluteRate, 0.0)*deltaT;
             cupWaterMass += stepWaterMass;
+            if (e1Enabled)
+            {
+                // stepWaterMass uses the globally reduced actual outlet flux.
+                e1MassG += 1000.0*stepWaterMass;
+                e1State->set("cumulativeOutletLiquidMassG", e1MassG);
+            }
             cupSoluteMass += stepSoluteMass;
             forAll(speciesParameters, speciesi)
             {

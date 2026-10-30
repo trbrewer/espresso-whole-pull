@@ -13,6 +13,8 @@ import statistics
 import subprocess
 from pathlib import Path
 
+from puckworks_historical_lock import historical_lock
+
 REQUIRED_TRACE = {
     "time_s", "outlet_flow_m3_s", "cup_beverage_mass_kg", "min_saturation",
     "max_saturation", "min_concentration_kg_m3", "max_concentration_kg_m3",
@@ -103,7 +105,7 @@ def aggregate(shots: list[dict], gates: dict) -> dict:
 def authorities(root: Path) -> tuple[dict, dict, dict]:
     contract = read_json(root / "validation/contracts/R1_CALIBRATION_AND_COMPARISON_CONTRACT.json")
     scenario = read_json(root / "config/reconstruction_R1_waszkiewicz_9bar.json")
-    lock = read_json(root / "dependencies/puckworks.lock.json")
+    lock = historical_lock(read_json(root / "dependencies/puckworks.lock.json"))
     if contract["contract_status"] != "FROZEN_FOR_WP01R_004":
         raise ValueError("contract is not frozen")
     if lock["checkout_commit"] != contract["source_dependency"]["commit"]:
