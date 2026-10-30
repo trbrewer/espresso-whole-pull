@@ -1,35 +1,43 @@
 # E1 solver capability plan
 
-Plan only; G0 / NO_GOVERNING_PHYSICS_CHANGE. Implementation and runs require owner approval of this plan. This asks whether the saved pressure-peak E1 capability survives the EWP spatial solver. A favourable result supports a bounded demonstration; a shortfall ends this transfer without retuning. This is distinct from the older SCI-MD-010 model also named E1.
+Plan only; G0 / NO_GOVERNING_PHYSICS_CHANGE. Owner approval is required before implementation or runs. Test whether saved PRESSURE-PEAK B0c E1 capability survives the EWP spatial solver; this differs from the older SCI-MD-010 E1.
 
 ## Mechanism and transfer
 
 Python B0c E1 is whole-bed compaction plus delivered-mass evolution with one predicted-delay multiplier:
 `d = c(Pearly/bar)^(-n)`, `S = exp(-d/tau)`,
 `q = a S P exp(-P/Pstar) / exp(exp(-M/Mc))`, `dM/dt = q`, `M(0)=0`.
-Here P is nonnegative raw line pressure in bar, mass is g and flow is g/s. The three fitted hydraulic parameters are `a_g_s_bar`, `Pstar_bar`, `tau_s`; the three fixed, training-fold nuisance inputs are `Mc_fixed_g`, `onset_c_fixed_s`, `onset_n_fixed`. S is applied once inside both flow and mass evolution, not as a delayed opening gate.
+P is nonnegative raw line pressure (bar), M is g and q is g/s. Fit three hydraulic parameters: a (conductance), Pstar (compaction pressure), tau (time). Fix training-fold nuisance inputs Mc (mass scale), c (onset scale), n (pressure exponent). Apply S once inside flow and mass evolution, never as an opening gate.
 
-Transfer the componentwise medians of the eleven saved RAW PRIMARY / T4 REFIT E1 fold records, at their full stored precision, unchanged. No solver-side refitting, geometry calibration or per-pressure adjustment. The displayed medians are a=3.1943760786055893, Pstar=7.198042583618237, tau=10.000000000000073, Mc=28.796822720157447, c=16.27460753496898, n=0.055467406876812564.
+Transfer componentwise medians of the eleven saved RAW PRIMARY / T4 REFIT E1 fold records unchanged, at full stored precision. No solver-side refitting, geometry calibration or per-pressure adjustment.
 
 ## Solver mapping
 
-Add an opt-in E1 branch in `solver/espressoWholePullFoam/espressoWholePullFoam.C`: dictionary validation, state initialization, the WP02 permeability/mobility update locations, and outlet-flux accumulation. Put its equations in a small new `e1EffectivePermeability.H`; add case preparation and verification support in `scripts/prepare_case.py` and tests. Keep `poroelasticCompaction.H` unchanged and mutually exclusive with E1: its local stress law is a different closure.
+Add opt-in E1 to `solver/espressoWholePullFoam/espressoWholePullFoam.C`: dictionary validation, initialization, WP02 permeability/mobility blocks and outlet-flux accumulation. Add `e1EffectivePermeability.H`, case preparation in `scripts/prepare_case.py` and tests. Keep `poroelasticCompaction.H` unchanged and mutually exclusive with E1; its local stress law differs.
 
-Each cell carries the derived E1 permeability multiplier; shared checkpointed state holds M, predicted d and S. Broadcast whole-bed P and M, rather than inventing local swelling or local-pressure compaction. Convert a to SI permeability by `Ka = a*1e-3*mu*H/(rho*A*1e5)`; update M from the globally summed hydraulic outlet mass flux. Keep liquid storage and solute bookkeeping separate.
+Each cell carries the derived E1 multiplier; shared checkpointed state holds M, predicted d and S. Broadcast whole-bed P and M. Convert a to SI permeability by `Ka = a*1e-3*mu*H/(rho*A*1e5)`; advance M from globally summed hydraulic outlet mass flux. Keep liquid storage and solute bookkeeping separate.
 
-Retain the existing wetting-front integration and saturation-transition bookkeeping; activate E1 mobility in the saturated branch. Predicted d modifies conductance only and never sets first-drip time. **Measured onset is never an input.** Use B0c's pressure-only stable clock: Pearly is each history's median pressure at 0–2 s. Constant curves use the median of the eleven saved training-fold input interpolations, labelled INTERPOLATED_INPUTS. Raw pressure is an explicit capability forcing at the inlet, without an additional machine-loss correction; it is not a claim of line/bed pressure equivalence.
+Retain wetting-front integration and saturation-transition bookkeeping; activate E1 mobility after saturation. Predicted d modifies conductance, never first-drip time. **Measured onset is never an input.** Use B0c's pressure-only stable clock: Pearly is median pressure at 0–2 s. Constant curves use median saved training-fold input interpolations, labelled INTERPOLATED_INPUTS. Prescribe raw inlet pressure without extra machine-loss correction; line/bed pressure equivalence remains unestablished.
 
-## Verification before data comparison
+## Hard gates — implementation PR 1
 
-The scorecard's E1 replay was checked only at aggregate level; complete these checks before any data comparison.
+Complete G1, then G2, in implementation PR 1. The scorecard's E1 replay was checked only at aggregate level.
 
-1. Collapse to the fully saturated, uniform 1D Python setting, with M=0, the same fixed parameters, early-pressure inputs and 100-s clock. At all eleven nominal pressures require endpoint differences within max(0.02 g/s, 5% of Python flow).
-2. Preserve existing liquid residual ≤max(1e-9 kg, 1e-8 cumulative inlet water) and solute residual ≤max(1e-10 kg, 1e-8 initial extractable mass), plus boundedness and unchanged off-mode regression checks.
-3. Retain time steps 0.020, 0.010 and 0.005 s: coarse/fine differences ≤0.5%, intermediate/fine ≤0.25% for declared primary outputs; first-drip difference ≤1e-8 s. Check endpoint flow and inventories before scoring; keep applicable mesh/MPI checks.
+**G1 — 1D-limit reproduction.** Use the fully saturated, uniform 1D Python setting, M=0, unchanged parameters, matching early-pressure inputs and the 100-s clock. At all 11 nominal pressures, reproduce Python E1 endpoint flow within max(0.02 g/s, 5% of Python flow). **If G1 fails: stop and report. Do not tune parameters to make it pass.**
+
+**G2 — mass/liquid balance and time-step refinement.** Use the 100-s dry-front synthetic R0 verification fixture with E1 enabled. Retain liquid residual ≤max(1e-9 kg, 1e-8 cumulative inlet water), solute residual ≤max(1e-10 kg, 1e-8 initial extractable mass), and boundedness checks. At time steps 0.020, 0.010 and 0.005 s, coarse/fine differences must be ≤0.5% and intermediate/fine ≤0.25% for endpoint flow and declared primary inventory outputs; first-drip difference must be ≤1e-8 s. Include an unchanged off-mode control. Retain applicable existing mesh/MPI qualification.
+
+**No demonstration run (constant-pressure sweep or measured histories) may start until G1 and G2 pass in a merged PR.** A G2 failure also blocks demonstration; report it without relaxing tolerances.
 
 ## Demonstration
 
-Use R0 geometry and the existing 100-s endpoint observer, stable-pressure alignment and duplicate exclusion. Run constant raw pressure at 1, 2, 3.5, 4, 5, 6, 7, 8, 9, 11 and 13 bar, then all 56 saved brew pressure histories within those eleven conditions; do not average histories before nonlinear evolution. Preserve the R0 dry-front initialization separately from the saturated 1D verification limit. Sample the constant-pressure solver curve on the 0.05-bar grid from 1 to 13 bar.
+Use R0 geometry/dry-front initialization, the existing 100-s endpoint observer, stable-pressure alignment and duplicate exclusion. After the merged gates:
+
+1. Run the 11 nominal pressures: 1, 2, 3.5, 4, 5, 6, 7, 8, 9, 11 and 13 bar.
+2. Add 0.25-bar spacing from 5.0 to 8.0 bar, skipping nominal duplicates: 9 new runs, 20 distinct pressures total.
+3. Only if the window's sampled peak lies within 0.25 bar of either end, extend once by 1 bar in that direction at the same spacing. This adds 3 new runs (4 or 9 bar is already nominal); maximum 23 pressures.
+
+Report the continuous solver peak by quadratic interpolation through the highest point and its two neighbours. Require a concave, bracketed vertex; otherwise report unresolved, without extrapolation or further automatic sweeps. Grades use the nominal grid. Keep all 56 measured-history runs in the same 11 conditions; never average histories before evolution.
 
 ## Acceptance
 
@@ -41,13 +49,23 @@ This is a **capability demonstration, not validation**. Retain the scorecard ban
 
 Report all criteria separately, trace RMSE on common time support, percentage change versus B1 and continuous solver peak versus observed 6.1 [5.9, 6.3] bar. Reconstruct B0c B1 from its saved fold coefficients; its accuracy grade is N/A (reference). Use condition-balanced paired whole-brew resampling of fixed predictions; no refitting or reuse of old refit intervals as solver uncertainty. Label zero-width constant-forcing intervals and target exposure explicitly. PHYSICAL_VALIDATION=NOT_ESTABLISHED.
 
-## Delivery, housekeeping and estimates
+## Delivery and housekeeping
 
-Target two implementation PRs after this plan: (1) optional closure, pin compatibility and verification; (2) demonstration and capability report. First update `dependencies/puckworks.lock.json` from fc61c4670ec7bf801e40bb391aab16048b8da26b to **ba35a3bf1f832cd651fe98eebd59860849c0e850** and its tree.
+Target two implementation PRs after this plan: (1) optional closure, pin compatibility and verification; (2) demonstration and capability report. In implementation PR 1, update `dependencies/puckworks.lock.json` from fc61c4670ec7bf801e40bb391aab16048b8da26b to current Puckworks main, **ba35a3bf1f832cd651fe98eebd59860849c0e850**, and its tree.
 
-Static review identifies lock conflicts in `scripts/{r1_contract_bridge,wp02_contract_bridge,analyze_r1,verify_wp03_evidence_review,validate_sci_md_011,sci_md_011_execute,val_case_001}.py`, and runtime-lock assertions in `tests/{test_reference_case,test_r1_bridge,test_r1_analysis}.py`. Route historical consumers to their original pinned authorities; preserve their results. The Waszkiewicz runtime module and numerical CSV bytes are unchanged across the pin update. A pre-existing environment conflict also remains: EWP's historical NumPy/SciPy pins cannot install Puckworks' declared dependencies; use a separate compatible environment. First-PR CI must enumerate any further breakage; this plan performs no execution audit.
+Static lock conflicts: `scripts/{r1_contract_bridge,wp02_contract_bridge,analyze_r1,verify_wp03_evidence_review,validate_sci_md_011,sci_md_011_execute,val_case_001}.py` and `tests/{test_reference_case,test_r1_bridge,test_r1_analysis}.py`. Historical consumers retain their original pins/results. Waszkiewicz runtime code and numerical CSVs are unchanged across the update. EWP's historical NumPy/SciPy pins conflict with Puckworks' declared dependencies; use a separate compatible environment. PR 1 CI must list further breakage; no execution audit occurs here.
 
-**Estimates (planning allowances, not measurements):** 250–450 changed/new C++ lines, plus adapters/tests. Allow 2–6 minutes per 100-s R0 case on 32 CPU ranks, scaling an existing 30-s full-mesh run of about 30 seconds with contingency. Budget roughly 400 base-case equivalents including 241 constant-pressure points, 56 histories, 1D checks and refinement: 13–40 node-hours, about 430–1,280 core-hours; around 7–20 hours with two concurrent 32-rank cases. Measure one verification case before scheduling the batch. Two implementation PRs; no solver runs in this plan PR.
+## Estimates
+
+Planning allowances: 250–450 changed/new C++ lines, plus adapters/tests; 2–6 minutes per 100-s base case at 0.020 s on 32 ranks, based on existing full-mesh timings with contingency.
+
+Schedule 15 verification/control runs: 11 G1, 3 G2 time-step cases and 1 off-mode control. Add 20–23 constant-pressure cases and 56 histories: 76–79 demonstration runs, **91–94 total runs**. Assume applicable mesh/MPI qualification is reusable; PR 1 must identify additional required runs before scheduling.
+
+Weight refinement at 1×, 2× and 4× base runtime; conservatively charge each 1D case as a full base case: **95–98 base-case equivalents**, **3.2–9.8 node-hours (32-core equivalents)**, **101–314 core-hours**. Wall-clock: **3.2–9.8 hours with one 32-rank case at a time**, or **1.6–5.0 hours with two concurrent 32-rank cases** (64 cores), excluding review/merge waits and additional qualification runs.
+
+Hardware: state the machine and rank count actually available before the first verification run; estimates assume 32 ranks.
+
+Measure one verification case before scheduling the batch. Two implementation PRs; no solver runs in this plan PR.
 
 ## Limits and sources
 
@@ -59,7 +77,7 @@ Out of scope: refitting, new mechanisms, restart effects, chemistry/extraction c
 - Raw-line forcing, hydraulic mass-flow mapping and R0 geometry remain conditional.
 - Dependency adoption must not relabel historical evidence.
 
-Inspected code, saved scorecard/stage CSVs and summaries, EWP specification and data guides; no new raw-source audit or runs. Use only attributed Waszkiewicz CC-BY-4.0 aggregates ([Zenodo 18046315](https://doi.org/10.5281/zenodo.18046315)); relevant datasets are `waszkiewicz2025/traces_per_brew` and `equilibrium_windows`. Sources: Puckworks [scorecard][scorecard], [B0c][b0c] and [Python E1][python]; EWP [model specification](../MODEL_SPECIFICATION.md), [numerical tolerances](../NUMERICAL_HARDENING_SPECIFICATION_V0_1_3.md), [balance implementation](../../scripts/postprocess.py) and [runtime precedent](../../validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.json).
+Inspected saved artifacts, code and data guides; no raw-source audit/runs. Use Waszkiewicz CC-BY-4.0 aggregates ([Zenodo 18046315](https://doi.org/10.5281/zenodo.18046315)): `waszkiewicz2025/traces_per_brew` and `equilibrium_windows`. Sources: [scorecard][scorecard], [B0c][b0c], [Python E1][python], [EWP specification](../MODEL_SPECIFICATION.md), [numerical tolerances](../NUMERICAL_HARDENING_SPECIFICATION_V0_1_3.md), [balances](../../scripts/postprocess.py) and [runtime precedent](../../validation/wp02/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.json).
 
 [scorecard]: https://github.com/trbrewer/puckworks/blob/ba35a3bf1f832cd651fe98eebd59860849c0e850/docs/research/PRESSURE_PEAK_SCORECARD/SUMMARY.md
 [b0c]: https://github.com/trbrewer/puckworks/blob/ba35a3bf1f832cd651fe98eebd59860849c0e850/docs/research/PRESSURE_PEAK_STAGE_B0C/RESULT_TABLE.csv

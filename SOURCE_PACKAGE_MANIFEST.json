@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1463,
-  "total_uncompressed_bytes_excluding_manifest": 26871275,
-  "aggregate_source_sha256": "96b1701b25b5bb1885faa70bc5a054837eb3dc9e74b9186d2df9991d2ca4af8f",
-  "aggregate_sha256": "96b1701b25b5bb1885faa70bc5a054837eb3dc9e74b9186d2df9991d2ca4af8f",
+  "file_count": 1464,
+  "total_uncompressed_bytes_excluding_manifest": 26880313,
+  "aggregate_source_sha256": "db748d67b778d9db5a3cc15bc75519e15cb04d44e8b8c7ba7967cea8e90080d5",
+  "aggregate_sha256": "db748d67b778d9db5a3cc15bc75519e15cb04d44e8b8c7ba7967cea8e90080d5",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -4541,6 +4541,11 @@
     "docs/governance/MINIMUM_NECESSARY_GOVERNANCE_STANDARD.md": {
       "sha256": "58c33923f02ca733d611ddc41173fce0e2f33a20d2908312b572f57822edc364",
       "bytes": 14688,
+      "git_mode": "100644"
+    },
+    "docs/plans/E1_SOLVER_CAPABILITY_PLAN.md": {
+      "sha256": "265c81d9ebeae31edef44e140856386e7baa8aaa8d508cddd6f51e13cd6e23f5",
+      "bytes": 9038,
       "git_mode": "100644"
     },
     "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md": {
