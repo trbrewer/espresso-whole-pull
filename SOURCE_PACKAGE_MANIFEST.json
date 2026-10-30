@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 1464,
-  "total_uncompressed_bytes_excluding_manifest": 26880313,
-  "aggregate_source_sha256": "db748d67b778d9db5a3cc15bc75519e15cb04d44e8b8c7ba7967cea8e90080d5",
-  "aggregate_sha256": "db748d67b778d9db5a3cc15bc75519e15cb04d44e8b8c7ba7967cea8e90080d5",
+  "total_uncompressed_bytes_excluding_manifest": 26881775,
+  "aggregate_source_sha256": "897218fc7a2024d74c27151ac450ef0d0fdc030327acfaa7fcfd4a63326364aa",
+  "aggregate_sha256": "897218fc7a2024d74c27151ac450ef0d0fdc030327acfaa7fcfd4a63326364aa",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -4544,8 +4544,8 @@
       "git_mode": "100644"
     },
     "docs/plans/E1_SOLVER_CAPABILITY_PLAN.md": {
-      "sha256": "265c81d9ebeae31edef44e140856386e7baa8aaa8d508cddd6f51e13cd6e23f5",
-      "bytes": 9038,
+      "sha256": "96e883f81bdda0aa67062e17baaca0547bc105801da57999bd3d27930b5ce4bb",
+      "bytes": 10500,
       "git_mode": "100644"
     },
     "docs/reports/WP02_002_MACHINE_PUCK_COUPLING_RESULTS.md": {

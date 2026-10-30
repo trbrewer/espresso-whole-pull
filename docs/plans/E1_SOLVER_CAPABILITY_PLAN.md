@@ -23,9 +23,22 @@ Retain wetting-front integration and saturation-transition bookkeeping; activate
 
 Complete G1, then G2, in implementation PR 1. The scorecard's E1 replay was checked only at aggregate level.
 
-**G1 — 1D-limit reproduction.** Use the fully saturated, uniform 1D Python setting, M=0, unchanged parameters, matching early-pressure inputs and the 100-s clock. At all 11 nominal pressures, reproduce Python E1 endpoint flow within max(0.02 g/s, 5% of Python flow). **If G1 fails: stop and report. Do not tune parameters to make it pass.**
+**G1 — 1D-limit reproduction.** At all 11 nominal pressures, reproduce Python E1 endpoint flow within max(0.02 g/s, 5% of Python flow), using unchanged parameters, matching early-pressure inputs and the 100-s clock. **If G1 fails: stop and report. Do not tune parameters to make it pass.**
 
-**G2 — mass/liquid balance and time-step refinement.** Use the 100-s dry-front synthetic R0 verification fixture with E1 enabled. Retain liquid residual ≤max(1e-9 kg, 1e-8 cumulative inlet water), solute residual ≤max(1e-10 kg, 1e-8 initial extractable mass), and boundedness checks. At time steps 0.020, 0.010 and 0.005 s, coarse/fine differences must be ≤0.5% and intermediate/fine ≤0.25% for endpoint flow and declared primary inventory outputs; first-drip difference must be ≤1e-8 s. Include an unchanged off-mode control. Retain applicable existing mesh/MPI qualification.
+G1 must exercise every term active in the Python E1 definition (puckworks/analysis/pressure_peak_stage_b0.py), including the predictive onset law and the swelling/percolation closure. List each E1 term and confirm it is active in the G1 setting. If any 'fully saturated' or 'M=0' simplification disables or bypasses an E1 term relative to the Python E1, redefine the G1 setting so it matches the Python E1 exactly. Say what M denotes.
+
+Use a uniform 1D setting. M denotes cumulative model-delivered outlet mass in g: M(0)=0 only initially, then integrate dM/dt=q without resets. Full saturation removes front propagation only; it must not set S or the mass-dependent resistance to unity. ACTIVE below is required behavior, not a completed-run claim; verify it in PR 1 against `predict_swelling`, `_swell_course`, `_course_derivative` and `_state_derivative`:
+
+| E1 term | G1 status |
+|---|---|
+| Raw-pressure guard P=max(Praw,0) and driving conductance aP | ACTIVE |
+| Whole-bed compaction exp(-P/Pstar) | ACTIVE |
+| Predictive onset d=c(Pearly/bar)^(-n), fixed c,n | ACTIVE; measured onset never an input |
+| Swelling/percolation conductance multiplier S=exp(-d/tau) | ACTIVE once inside q and dM/dt; no opening gate |
+| Delivered-mass resistance R=exp(exp(-M/Mc)), fixed Mc | ACTIVE; q=aSP exp(-P/Pstar)/R |
+| Mass evolution dM/dt=q, M(0)=0 | ACTIVE throughout the integration |
+
+**G2 — mass/liquid balance and time-step refinement.** Use the 100-s dry-front synthetic R0 verification fixture with E1 enabled. Retain liquid residual ≤max(1e-9 kg, 1e-8 cumulative inlet water), solute residual ≤max(1e-10 kg, 1e-8 initial extractable mass), and boundedness checks. At time steps 0.020, 0.010 and 0.005 s, coarse/fine differences must be ≤0.5% and intermediate/fine ≤0.25% for endpoint flow and declared primary inventory outputs. First-drip time: off-mode control ≤1e-8 s (unchanged code). E1-enabled runs: coarse/fine and intermediate/fine differences ≤ max(0.005 s, 0.1% of the fine-step value). Include an unchanged off-mode control. Retain applicable existing mesh/MPI qualification.
 
 **No demonstration run (constant-pressure sweep or measured histories) may start until G1 and G2 pass in a merged PR.** A G2 failure also blocks demonstration; report it without relaxing tolerances.
 
