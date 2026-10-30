@@ -7,6 +7,7 @@ CC-BY-4.0, through the locked Puckworks aggregates. No fitting is performed.
 import argparse
 import csv
 import hashlib
+import importlib.metadata
 import json
 from pathlib import Path
 import random
@@ -298,7 +299,8 @@ def output_index(case):
           for p in sorted(case.rglob("*")) if p.is_file()]
     path=case.parent/(case.name+".files.sha256.json")
     path.write_text(json.dumps(rows,indent=2)+"\n")
-    return dict(native_file_count=len(rows),native_checksum_index_sha256=digest(path))
+    return dict(native_file_count=len(rows),native_checksum_index_file=path.name,
+                native_checksum_index_sha256=digest(path))
 
 
 def generate_report(args):
@@ -370,7 +372,13 @@ def generate_report(args):
         solver_merge_commit="734b15e8c4631c0dda30b6cd67cef00d2eeaed90",puckworks_commit=V.PIN,
         executable_sha256=digest(args.exe),parameters=params,delta_t_s=.0025,ranks=32,scheduling="sequential",
         hardware="AMD Ryzen Threadripper 3990X; 64 physical cores; 251 GiB RAM; 32 MPI ranks per case",
+        numerical_environment=dict(python=sys.version.split()[0],**{name:importlib.metadata.version(name)
+            for name in ("numpy","scipy","numba","matplotlib")}),
         bootstrap=dict(resamples=1000,seed=20261103,unit="whole brew, paired, equal condition weight; fixed predictions"),
+        pressure_conventions=dict(primary="raw line mapped to inlet gauge pressure",
+            constant_early_input="INTERPOLATED_INPUTS: median of saved training-fold pressure interpolants",
+            history_early_input="median measured raw pressure over stable-clock 0–2 s; never observed onset",
+            slope="nominal pressure for constant forcing; actual endpoint raw pressure for measured histories"),
         source_datasets=["waszkiewicz2025/traces_per_brew","waszkiewicz2025/equilibrium_windows"],
         data_availability="FILES_INSPECTED: pinned aggregates, saved coefficients and original pressure/mass traces; duplicate alias excluded",
         source_attribution="Waszkiewicz et al. (2025), Zenodo 18046315, CC-BY-4.0",
@@ -396,7 +404,7 @@ def plot_report(args,parameters,early,constant,observed):
     import matplotlib.pyplot as plt
     grid=np.arange(1.,13.0001,.05);times=np.linspace(0,100,1000)
     curve=[python_e1(parameters,times,np.full(1000,p),V.early_input(p,early))[-1] for p in grid]
-    fig,ax=plt.subplots(figsize=(7.2,3.8),layout="constrained")
+    fig,ax=plt.subplots(figsize=(7.2,3.2),layout="constrained")
     means=np.asarray(observed["means"]); intervals=np.asarray(observed["intervals"])
     ax.axvspan(5,7,color="#b4cdbb",alpha=.35,label="5–7 bar target band")
     ax.errorbar(V.NOMINAL,means,yerr=np.array([means-intervals[:,0],intervals[:,1]-means]),
@@ -405,7 +413,7 @@ def plot_report(args,parameters,early,constant,observed):
     ax.plot(p,[constant[x]["endpoint_flow_g_s"] for x in p],"o-",color="#276997",markersize=3,label="EWP E1 constant-pressure sweep")
     ax.plot(grid,curve,color="#d47c31",linestyle="--",label="Python E1; unchanged transferred medians")
     ax.set(xlabel="Nominal raw / inlet gauge pressure (bar)",ylabel="100-s endpoint flow (g/s)",xlim=(.7,13.3))
-    ax.grid(alpha=.18);ax.legend(fontsize=8,loc="lower center")
+    ax.grid(alpha=.18);ax.legend(fontsize=7,loc="lower center",title="Constant curves: INTERPOLATED_INPUTS",title_fontsize=7)
     ax.set_title("Capability demonstration, not validation",fontsize=11)
     fig.savefig(args.out/"FIGURE.png",dpi=180);plt.close(fig)
 
@@ -431,7 +439,7 @@ def write_summary(args,constant,history,python,manifest,differences):
 **capability demonstration, not validation. PHYSICAL_VALIDATION=NOT_ESTABLISHED.**
 SOURCE_SCENARIO_CHANGE_ONLY; retrospective, TARGET_EXPOSED: transferred componentwise medians combine saved fits exposed to these brews. No refitting, parameter/tolerance changes or solver changes.
 
-{len(manifest['constant_pressures_bar'])} constant-pressure cases and 56 separate measured histories; dry R0 geometry, raw line pressure mapped to inlet gauge pressure, 100-s stable-pressure clock, 0.0025 s, 32 ranks, sequential. Flow is the G1 hydraulic proxy, ρQ×1000 in g/s. All retained balance/boundedness checks meet the existing limits.
+{len(manifest['constant_pressures_bar'])} constant-pressure cases + 56 individual histories; dry R0 geometry, raw line → inlet gauge pressure, 100-s stable clock, 0.0025 s, 32 ranks, sequential. Flow is ρQ×1000 g/s. Balance/boundedness checks meet existing limits.
 
 | Forcing | Endpoint RMSE (% vs B1) / trace RMSE, g/s | Accuracy | Nominal peak [95%], bar | Slope ≥9 bar [95%], g/s/bar |
 |---|---|---|---|---|
@@ -439,19 +447,19 @@ SOURCE_SCENARIO_CHANGE_ONLY; retrospective, TARGET_EXPOSED: transferred componen
 {row('Measured histories',history)}
 | B0c B1 reference | {history['b1_endpoint_rmse_g_s']:.3f} / {history['b1_trace_rmse_g_s']:.3f} | N/A (reference) | — | — |
 
-Accuracy uses the existing paired ±0.25-g/s band; slope uses the wholly negative observed interval [−0.0880, −0.0403]; peak uses 5–7 bar, with 4 or 8 bar NEAR. Fixed-prediction, condition-balanced paired whole-brew resampling: 1,000 draws, seed 20261103. Constant-forcing peak/slope intervals have zero width; they exclude parameter/model uncertainty. Trace scores use common observed support from 5 to 100 s. [Full scores](GRADES.csv).
-
-Continuous solver peak: **{peak_text}**, from the highest sweep point and its two neighbors, versus observed **6.1 [5.9, 6.3] bar**. This is descriptive; grades use nominal pressures.
+Unchanged bands: accuracy ±0.25 g/s; slope wholly negative, overlapping [−0.0880, −0.0403]; peak 5–7 bar, or 4/8 bar NEAR. Paired, condition-balanced whole-brew resampling of fixed predictions: 1,000 draws, seed 20261103. Constant-forcing response intervals have zero width, excluding parameter/model uncertainty. Trace support: 5–100 s. [Full scores](GRADES.csv).
 
 ![Observed endpoint flow, solver sweep, Python E1 and the 5–7 bar band](FIGURE.png)
 
-The CFD reproduces the saved E1 whole-bed response under the declared capability bands, with the criterion outcomes shown separately above. Its continuous peak remains above the observed estimate, so numerical reproduction does not resolve the peak-location discrepancy. Measured pressure histories change the endpoint RMSE from {constant['endpoint_rmse_g_s']:.3f} to {history['endpoint_rmse_g_s']:.3f} g/s, while the constant-case geometry/discretisation remainder is at most {np.max(np.abs(remainder)):.5f} g/s.
+After accounting for wetting, constant-case CFD and Python differ by at most {np.max(np.abs(remainder)):.5f} g/s (geometry/discretisation remainder). The continuous solver peak is **{peak_text}**, versus observed **6.1 [5.9, 6.3] bar**, using a quadratic through the highest sweep point and its neighbors; this descriptive comparison leaves nominal grades unchanged. Measured histories change endpoint RMSE from {constant['endpoint_rmse_g_s']:.3f} to {history['endpoint_rmse_g_s']:.3f} g/s.
 
-Before saturation the solver uses R0's wetting permeability (1.77e-15 m²); E1 activates only in `e1Enabled && saturatedAtStepStart`. First drip and full saturation are the same sharp-front crossing; the completed time step is also recorded. Delaying Python E1 with M=0 and zero flow until that crossing accounts for {fraction:.1f}% of the summed absolute nominal-pressure Python–solver difference (offset {offsets.min():+.5f} to {offsets.max():+.5f} g/s); the remainder includes geometry/discretisation and the transition-step convention. The largest 4–8 bar offset is {largest['startup_offset_g_s']:+.5f} g/s at {largest['pressure_bar']:g} bar. [Every run, saturation and M(100)](ENDPOINTS.csv); [constant/history decomposition](PYTHON_SOLVER_DIFFERENCES.csv).
+Wetting uses R0 permeability (1.77e-15 m²); E1 starts only at `e1Enabled && saturatedAtStepStart`. First drip equals full saturation in this sharp-front model. Delaying Python with M=0/zero flow until saturation explains {fraction:.1f}% of the summed absolute nominal-pressure difference (offset {offsets.min():+.5f} to {offsets.max():+.5f} g/s); the largest 4–8 bar offset is {largest['startup_offset_g_s']:+.5f} g/s at {largest['pressure_bar']:g} bar. [Every run, saturation and M(100)](ENDPOINTS.csv); [decomposition](PYTHON_SOLVER_DIFFERENCES.csv).
+
+Early-pressure inputs: saved training-fold interpolants for constant cases (**INTERPOLATED_INPUTS**), measured 0–2-s pressure medians for histories. Measured onset is never an input.
 
 **Recommended next step:** {next_step}
 
-Native compute: {manifest['native_wall_seconds']/3600:.3f} h sequential, {manifest['native_core_hours']:.2f} core-hours; preparation/analysis excluded. [Run manifest and external-output checksum indices](RUN_MANIFEST.json). Source: Waszkiewicz et al. (2025), [Zenodo 18046315](https://doi.org/10.5281/zenodo.18046315), CC-BY-4.0; Puckworks `{V.PIN[:8]}` [B0c saved folds](https://github.com/trbrewer/puckworks/blob/{V.PIN}/{V.CSV}) and [scorecard](https://github.com/trbrewer/puckworks/blob/{V.PIN}/docs/research/PRESSURE_PEAK_SCORECARD/SUMMARY.md). Native fields, meshes, logs and original source files remain outside Git.
+Native compute: {manifest['native_wall_seconds']/3600:.3f} h sequential / {manifest['native_core_hours']:.2f} core-hours (preparation/analysis excluded). [Manifest; native evidence retained outside Git](RUN_MANIFEST.json). Waszkiewicz et al. (2025), [Zenodo 18046315](https://doi.org/10.5281/zenodo.18046315), CC-BY-4.0; Puckworks `{V.PIN[:8]}` [B0c folds](https://github.com/trbrewer/puckworks/blob/{V.PIN}/{V.CSV}) / [scorecard](https://github.com/trbrewer/puckworks/blob/{V.PIN}/docs/research/PRESSURE_PEAK_SCORECARD/SUMMARY.md).
 '''
     (args.out/"SUMMARY.md").write_text(text)
 
