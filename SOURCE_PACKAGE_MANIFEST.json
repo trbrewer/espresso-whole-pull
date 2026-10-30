@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1473,
-  "total_uncompressed_bytes_excluding_manifest": 26948908,
-  "aggregate_source_sha256": "9dcc6e62b7b3e6f10ffe263b1808fc99ae229c4c6f08206e1c92560176d91f9d",
-  "aggregate_sha256": "9dcc6e62b7b3e6f10ffe263b1808fc99ae229c4c6f08206e1c92560176d91f9d",
+  "file_count": 1475,
+  "total_uncompressed_bytes_excluding_manifest": 26983118,
+  "aggregate_source_sha256": "049ea9822cb6da5265f2879ca05dc532dd91376fbfce6c38909aa15b630ef450",
+  "aggregate_sha256": "049ea9822cb6da5265f2879ca05dc532dd91376fbfce6c38909aa15b630ef450",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -5558,6 +5558,11 @@
       "bytes": 21900,
       "git_mode": "100755"
     },
+    "scripts/e1_demonstration.py": {
+      "sha256": "4b26a334653bdfd7e14cf839ca633e56e32d1d3c7d1cd9bf4230b8d2ba03f8d9",
+      "bytes": 29480,
+      "git_mode": "100755"
+    },
     "scripts/e1_verification.py": {
       "sha256": "b9c0740908299525634b2dde35f6007e1196670d11cc39756f7cfd5cf494ecb2",
       "bytes": 13613,
@@ -5969,8 +5974,8 @@
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
-      "sha256": "194050a94b31eb6e5b3fa62e22a105593e5fba9de38a8fac3ec117d1e8f472d7",
-      "bytes": 32782,
+      "sha256": "06681030775b69328640f387d106d65bb30f42f9762a37331f6c0e3e467c72da",
+      "bytes": 32813,
       "git_mode": "100755"
     },
     "scripts/val_case_001.py": {
@@ -6411,6 +6416,11 @@
     "tests/test_current_authority_consistency.py": {
       "sha256": "ba1862d71d50a5f9eb6e66cfe7c0148c687fd137a7379ef0eb609ac1cc2dbe58",
       "bytes": 16954,
+      "git_mode": "100644"
+    },
+    "tests/test_e1_demonstration.py": {
+      "sha256": "a22365434e3d2639b4fb635270bce790d04b96aef94330ca4a96799977a582f4",
+      "bytes": 4699,
       "git_mode": "100644"
     },
     "tests/test_e1_whole_bed.py": {
