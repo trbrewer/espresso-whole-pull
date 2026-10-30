@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 1468,
-  "total_uncompressed_bytes_excluding_manifest": 26910452,
-  "aggregate_source_sha256": "be2a8e709edffbab411938eb482af4a2594dab0a0bc0f3b3a952d40cd804ec24",
-  "aggregate_sha256": "be2a8e709edffbab411938eb482af4a2594dab0a0bc0f3b3a952d40cd804ec24",
+  "total_uncompressed_bytes_excluding_manifest": 26910482,
+  "aggregate_source_sha256": "07b243fff1221982bc32e6936474b929f06c2e640375bb8c23e3bbf8472dca7b",
+  "aggregate_sha256": "07b243fff1221982bc32e6936474b929f06c2e640375bb8c23e3bbf8472dca7b",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -5536,7 +5536,7 @@
     "scripts/e1_verification.py": {
       "sha256": "a6ffafd1f946fe47cafc52892f04acdb9f079a89977a25c1f825acd3426511fc",
       "bytes": 11281,
-      "git_mode": "100644"
+      "git_mode": "100755"
     },
     "scripts/espresso_reference_math.py": {
       "sha256": "c5331b8fc11bc4f04c939206e4b1e227cf46be16264b403b845af5294164f1d0",
@@ -5646,7 +5646,7 @@
     "scripts/puckworks_historical_lock.py": {
       "sha256": "94a10233ba98173ba56ad52a09a662182a160204e6a138337e5dbd9baa6b9bff",
       "bytes": 811,
-      "git_mode": "100644"
+      "git_mode": "100755"
     },
     "scripts/r1_contract_bridge.py": {
       "sha256": "50aedcf85a59d8c05b84143fdfcdea46c9e810641093f124a8a5dc9333f72e66",
@@ -5944,8 +5944,8 @@
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
-      "sha256": "7f264125f0c4b170a464ed2d775ddc9b779618847b889c4a2ca0c37cc724fc3f",
-      "bytes": 32752,
+      "sha256": "194050a94b31eb6e5b3fa62e22a105593e5fba9de38a8fac3ec117d1e8f472d7",
+      "bytes": 32782,
       "git_mode": "100755"
     },
     "scripts/val_case_001.py": {
