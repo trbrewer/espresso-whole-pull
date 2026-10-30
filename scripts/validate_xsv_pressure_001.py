@@ -26,10 +26,28 @@ def classify(g):
     for keys,reason in groups:
         if any(g.get(k) is not True for k in keys):return 'XSV_PRESSURE_001_BLOCKED_'+names[reason]
     return SUCCESS if g and all(v is True for v in g.values()) else 'XSV_PRESSURE_001_STOP_AUTHORITY_MISMATCH'
+def rheology_source_sha(root,path):
+    """Bind historical rheology after the exact, separately verified E1 addition."""
+    header='solver/espressoWholePullFoam/e1EffectivePermeability.H'
+    changed=(*AUTHORIZED_EXISTING_PRODUCTION_DELTAS,'dependencies/puckworks.lock.json')
+    if path not in changed or not (root/header).exists():return sha(root/path)
+    # E1 G1/G2 and off-mode evidence qualify this source separately; do not let
+    # arbitrary edits inherit the older pressure-history qualification.
+    for source in (*changed,header):
+        candidate=subprocess.check_output(['git','show',
+            'a96cc7eae1e9cc6f9616dbe8a08a90fedc47cf0b:'+source],cwd=root)
+        if sha(root/source)!=hashlib.sha256(candidate).hexdigest():
+            raise ValueError('active E1 source differs from verified implementation '+source)
+    historical=subprocess.check_output(['git','show',
+        '0aac9b875f5dd9b3e415c821a1f9aa7e8250611b:'+path],cwd=root)
+    if path=='dependencies/puckworks.lock.json' and json.loads(historical)['checkout_commit']!='fc61c4670ec7bf801e40bb391aab16048b8da26b':
+        raise ValueError('historical rheology runtime commit changed')
+    return hashlib.sha256(historical).hexdigest()
+
 def production_bytes(root, path):
     """Preserve XSV's exact historical qualification after authorized G2 evolution.
 
-    Current rheology source must independently match its prospective freeze;
+    Current source must match its rheology freeze or the exact E1 implementation;
     only then may XSV's unchanged historical evidence bind predecessor bytes.
     Mutations never become an implicit historical fallback.
     """
@@ -66,7 +84,7 @@ def production_bytes(root, path):
                 for helper in ('scripts/radial_mesh.py','scripts/aggregate_viscosity.py'):
                     if sha(root/helper) != current['files'][helper]:
                         raise ValueError('active 011 geometry helper changed '+helper)
-            if sha(root/path) != current['files'][path]:
+            if rheology_source_sha(root,path) != current['files'][path]:
                 raise ValueError('active rheology source differs from frozen contract '+path)
             historical = subprocess.check_output(['git','show',historical_base+':'+path],cwd=root)
             if hashlib.sha256(historical).hexdigest() != expected:
@@ -157,7 +175,7 @@ def inspect(root,verify_result=True,verify_manifest=True):
         for k,h in scope['authorized_candidate_sha256'].items():
             if production_sha(root,k)!=h:errors.append('unreviewed production delta '+k)
         g['no_governing_equation_change']=not errors and scope['governing_equation_change'] is False
-        g['no_puckworks_change']=all(sha(root/k)==h for k,h in scope['dependency_sha256'].items())
+        g['no_puckworks_change']=all(rheology_source_sha(root,k)==h for k,h in scope['dependency_sha256'].items())
         production='\n'.join(production_bytes(root,k).decode() for k in scope['authorized_candidate_sha256'])
         g['no_visualizer_specific_production_code']=all(x not in production.lower() for x in ('visualizer','cohort 066','play-003','puckworks/','/home/'))
         if verify_result:

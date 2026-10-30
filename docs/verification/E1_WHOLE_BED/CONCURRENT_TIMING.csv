@@ -1,0 +1,3 @@
+case,wall_seconds,core_range,slowdown_percent,trace_byte_identical_to_single
+concurrent-a,300.81649745698087,0-31,72.2808482741418,True
+concurrent-b,288.86109881289303,32-63,65.43386269565461,True

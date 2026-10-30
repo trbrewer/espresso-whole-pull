@@ -7,6 +7,8 @@ import json
 import re
 import subprocess
 from pathlib import Path
+
+from puckworks_historical_lock import historical_lock
 from typing import Any
 
 LOCK_PATH = Path("dependencies/puckworks.lock.json")
@@ -63,6 +65,7 @@ def require_identity(lock: dict[str, Any], dossier: dict[str, Any], contract: di
         raise SystemExit("unsupported R1 contract schema")
     if contract.get("contract_status") != "FROZEN_FOR_WP01R_004":
         raise SystemExit("R1 contract is not frozen for WP01R-004")
+    lock = historical_lock(lock)
     commit = lock.get("checkout_commit")
     tree = lock.get("checkout_tree_sha")
     if not isinstance(commit, str) or not HEX40.fullmatch(commit):
@@ -485,7 +488,7 @@ def main() -> None:
     root = args.root.resolve()
     output = args.output if args.output.is_absolute() else root / args.output
     scenario, provenance = build(root)
-    lock = load_json(root / LOCK_PATH)
+    lock = historical_lock(load_json(root / LOCK_PATH))
     if args.verify_puckworks_checkout:
         verify_checkout(
             args.verify_puckworks_checkout.resolve(),

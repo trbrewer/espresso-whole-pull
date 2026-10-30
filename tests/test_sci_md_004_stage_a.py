@@ -37,7 +37,8 @@ class StageA(unittest.TestCase):
   self.assertEqual(historical,STAGE_A_ALLOWED)
   frozen_lock=object_bytes(ROOT,STAGE_A_CANDIDATE,RUNTIME_LOCK)
   self.assertEqual(hashlib.sha256(frozen_lock).hexdigest(),'52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10')
-  self.assertEqual((ROOT/RUNTIME_LOCK).read_bytes(),frozen_lock)
+  # SCI-MD-004 Stage A's historical runtime pin; current adoption is tested separately.
+  self.assertEqual(json.loads(frozen_lock)['checkout_commit'],'fc61c4670ec7bf801e40bb391aab16048b8da26b')
   for path in ACCEPTED_EVIDENCE:
    with self.subTest(path=path):
     self.assertEqual((ROOT/path).read_bytes(),object_bytes(ROOT,STAGE_A_CANDIDATE,path))

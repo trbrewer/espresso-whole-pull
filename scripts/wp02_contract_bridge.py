@@ -7,6 +7,8 @@ import hashlib
 import json
 from pathlib import Path
 
+from puckworks_historical_lock import historical_lock
+
 from espresso_reference_math import analytical_preview
 
 CONTRACT = Path("validation/wp02/WP02_001_CLOSURE_CONTRACT.json")
@@ -37,7 +39,7 @@ def load(path: Path) -> dict:
 def scenario(root: Path, pressure: str) -> dict:
     contract = load(root / CONTRACT)
     base = load(root / BASE)
-    lock = load(root / LOCK)
+    lock = historical_lock(load(root / LOCK))
     if contract["contract_status"] != "FROZEN_BEFORE_SCIENTIFIC_EXECUTION":
         raise ValueError("closure contract is not frozen")
     source = contract["source_dependency"]

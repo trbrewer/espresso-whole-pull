@@ -91,11 +91,11 @@ class R1BridgeTests(unittest.TestCase):
         self.assertEqual(contract["contract_status"], "FROZEN_FOR_WP01R_004")
         self.assertEqual(
             lock["checkout_commit"],
-            "fc61c4670ec7bf801e40bb391aab16048b8da26b",
+            "ba35a3bf1f832cd651fe98eebd59860849c0e850",
         )
         self.assertEqual(
             lock["checkout_tree_sha"],
-            "1d553e44ee2f7480a5df521560801b478618cc84",
+            "a5e2362992ed8f6bd3a38a340b7624de310a642b",
         )
         self.assertEqual(
             dossier["dossier_disposition"],

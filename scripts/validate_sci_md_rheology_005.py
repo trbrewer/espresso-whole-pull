@@ -4,12 +4,16 @@ import argparse,hashlib,json,subprocess,sys
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from tools.sci_md_rheology_002.authority import expected
+from scripts.validate_xsv_pressure_001 import rheology_source_sha
 
 def inspect(root):
     base='ab29a805217010f8c441047aaa04e6b4adaca3fe';errors=[]
     def blob(p):return subprocess.check_output(['git','show',base+':'+p],cwd=root)
     def sha(b):return hashlib.sha256(b).hexdigest()
     freeze=json.loads((root/'docs/analysis/sci_md_rheology_005/FREEZE.json').read_text())
+    # SCI-MD-RHEOLOGY-005's contemporaneous runtime record, never the live lock.
+    historical_pin=json.loads(blob('dependencies/puckworks.lock.json'))['checkout_commit']
+    if historical_pin!='fc61c4670ec7bf801e40bb391aab16048b8da26b':errors.append('historical 005 runtime commit changed')
     successor = root/'docs/analysis/sci_md_rheology_006/FREEZE.json'
     accepted005 = 'db705b644bbc2c3f719690448657e845f2a8f65b'
     if successor.exists():
@@ -28,7 +32,7 @@ def inspect(root):
         if (root/p).read_bytes()!=blob(p):errors.append('historical evidence modified: '+p)
     controls=subprocess.check_output(['git','ls-tree','-r','--name-only',base,'config','dependencies/puckworks.lock.json'],cwd=root,text=True).splitlines()
     for p in controls:
-        if (root/p).read_bytes()!=blob(p):errors.append('default/lock changed: '+p)
+        if rheology_source_sha(root,p)!=sha(blob(p)):errors.append('default/lock changed: '+p)
     if subprocess.run(['git','merge-base','--is-ancestor',base,'HEAD'],cwd=root).returncode:errors.append('accepted base not ancestor')
     return dict(status='PASS' if not errors else 'FAIL',errors=errors,active_frozen_files=len(freeze['files']),historical_files=len(historical),unchanged_controls=len(controls))
 def main():

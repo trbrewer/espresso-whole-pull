@@ -1,5 +1,75 @@
 # WP-0.1 model specification — v0.1.4 frozen-candidate release
 
+## Optional PRESSURE-PEAK B0c E1 whole-bed closure
+
+Implementation authority: [merged E1 plan](plans/E1_SOLVER_CAPABILITY_PLAN.md),
+plus the owner's whole-bed-pressure decision. `GOVERNING_PHYSICS_CHANGE`, opt-in;
+R0 defaults and the disabled path remain unchanged. This is a capability
+demonstration, not validation; `PHYSICAL_VALIDATION=NOT_ESTABLISHED`.
+
+E1 is lumped, not a local stress law. Stage A showed local quasi-static
+compaction cannot turn over. Once per saturated time step, use the single
+inlet-boundary **gauge pressure** as the equivalent of the Python fits' **raw
+line pressure**, in bar. This is an explicit transfer assumption: line pressure
+is not established as bed-inlet pressure. No basket-pressure correction or cell
+pressure/stress enters E1. Apply the resulting permeability uniformly to every
+cell, including the same multiplier at every radius and axial position:
+
+```text
+d = c (Pearly/bar)^(-n); S = exp(-d/tau)
+R(M) = exp(exp(-M/Mc))
+Ka = a*1e-3*mu*H/(rho*A*1e5)
+K(t) = Ka * S * exp(-max(Pin_gauge/1e5,0)/Pstar) / R(M)
+```
+
+`M` is cumulative outlet **liquid** mass in g, advanced each time step using
+`1000*rho*Qout*dt` from the globally reduced actual outlet flux. It is neither
+solute mass nor stored pore water. `M(0)=0` only initializes the state; mass
+evolution and its resistance stay active in the fully saturated G1 limit.
+The permeability uses beginning-of-step M and the prescribed pressure at the
+step endpoint, consistent with the solver's existing time ordering. The
+predictive multiplier S enters once through K; it is never an opening gate.
+The dry-front rule and saturation-transition bookkeeping are retained.
+
+The three hydraulic parameters (a, Pstar, tau) and three fixed nuisance inputs
+(Mc, c, n) are componentwise medians of the eleven saved RAW PRIMARY / T4 REFIT
+E1 folds, transferred unchanged from Puckworks `ba35a3bf`. No fitting is called.
+The 100-s G1 fixture uses each nominal pressure, median saved training-fold
+early-pressure interpolants, and the actual pinned Python `predict_swelling`.
+`Pearly` refers to median raw pressure in stable-clock 0–2 s; constant-forcing
+fixtures retain the scorecard's `INTERPOLATED_INPUTS` convention. **Measured
+onset is never an input.** The case dictionary rejects extra E1 parameters.
+
+`e1WholeBedMultiplier` stores the uniform cell field. `e1State` checkpoints M,
+predicted d, S, inlet pressure and the applied step-start resistance/multiplier.
+These are inspection checkpoints; fresh starts only are supported because the
+baseline solver does not resume complete cup/inventory bookkeeping. E1 rejects
+nonzero start time, nonzero outlet gauge pressure, other permeability/mechanics
+closures, variable-viscosity coupling, prescribed flow and machine compliance.
+There are no E1 outputs or dictionary changes when it is disabled.
+
+Verification only in implementation PR 1: G1 first, then G2 at the plan's fixed
+tolerances. G1 is a 64-axial-cell, one-radial-cell saturated R0-geometry limit;
+the 11 pressures are code-verification cases, not a demonstration sweep. G2
+uses the dry R0 geometry, 256 × 512 mesh, 32 ranks and 100 s. The initial
+dt 0.020/0.010/0.005-s triple failed extraction-inventory refinement; the
+owner-authorized 0.005/0.0025/0.00125-s triple meets the unchanged limits in
+both E1-on and E1-off modes. The demonstration setting is 0.0025 s, subject
+to owner review and merge. Both triples and the pre-existing off-mode R0
+extraction error are retained in the [verification report](verification/E1_WHOLE_BED/RESULT.md).
+Declared refinement outputs are endpoint flow, cup water/solute/beverage,
+retained water, remaining extractable solid, retained dissolved solute and
+inlet-backdiffusion inventory. Balance, boundedness, monotonicity and first-drip
+checks retain the merged plan's tolerances. Compare the off-mode control's trace
+and final numerical fields byte-for-byte with merged main. Stop on G1 or G2
+failure without parameter/tolerance changes; owner review is still required.
+
+The selected closure adds no spatial heterogeneity or nonlinear pressure solve;
+the existing uniform-Darcy mesh/MPI qualification is reused provisionally.
+The new 1D reproduction, full-mesh refinement and off-mode comparison bound that
+reuse. No constant-pressure demonstration sweep or measured-history runs are
+authorized in this PR. `scripts/e1_verification.py` prepares only these gates.
+
 ## Indexed passive-species extension
 
 For each configured species, Stage C applies

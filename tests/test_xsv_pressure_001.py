@@ -70,6 +70,12 @@ class PressureHistory(unittest.TestCase):
                     self.assertNotIn(forbidden,text)
     def test_validator(self):
         d=validator.inspect(ROOT);self.assertTrue(d['pass'],d)
+    def test_e1_source_mutation_cannot_inherit_historical_qualification(self):
+        original=validator.sha
+        for name in ('espressoWholePullFoam.C','e1EffectivePermeability.H','prepare_case.py','puckworks.lock.json'):
+            with self.subTest(source=name), patch.object(validator,'sha',side_effect=lambda p:
+                    '0'*64 if Path(p).name==name else original(p)):
+                self.assertFalse(validator.inspect(ROOT)['pass'])
     def test_success_requires_every_gate(self):
         gates=load('RESULT.json')['gates'];self.assertEqual(validator.classify(gates),validator.SUCCESS)
         for key in gates:

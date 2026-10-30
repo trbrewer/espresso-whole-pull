@@ -11,6 +11,7 @@ import json
 import math
 import os
 import pathlib
+from puckworks_historical_lock import historical_lock
 import shutil
 import subprocess
 import time
@@ -106,7 +107,7 @@ def verify_root(root: pathlib.Path) -> None:
         actual = sha256(root / rel)
         if actual != expected:
             raise SystemExit(f"parent hash mismatch: {rel}: {actual}")
-    lock = load_json(root / "dependencies/puckworks.lock.json")
+    lock = historical_lock(load_json(root / "dependencies/puckworks.lock.json"))
     if (lock["checkout_commit"], lock["checkout_tree_sha"]) != (
         "fc61c4670ec7bf801e40bb391aab16048b8da26b",
         "1d553e44ee2f7480a5df521560801b478618cc84",
