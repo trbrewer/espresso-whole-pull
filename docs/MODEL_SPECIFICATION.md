@@ -51,7 +51,12 @@ There are no E1 outputs or dictionary changes when it is disabled.
 Verification only in implementation PR 1: G1 first, then G2 at the plan's fixed
 tolerances. G1 is a 64-axial-cell, one-radial-cell saturated R0-geometry limit;
 the 11 pressures are code-verification cases, not a demonstration sweep. G2
-uses the dry R0 geometry, 256 × 512 mesh, 32 ranks, 100 s and dt 0.020/0.010/0.005 s.
+uses the dry R0 geometry, 256 × 512 mesh, 32 ranks and 100 s. The initial
+dt 0.020/0.010/0.005-s triple failed extraction-inventory refinement; the
+owner-authorized 0.005/0.0025/0.00125-s triple meets the unchanged limits in
+both E1-on and E1-off modes. The demonstration setting is 0.0025 s, subject
+to owner review and merge. Both triples and the pre-existing off-mode R0
+extraction error are retained in the [verification report](verification/E1_WHOLE_BED/RESULT.md).
 Declared refinement outputs are endpoint flow, cup water/solute/beverage,
 retained water, remaining extractable solid, retained dissolved solute and
 inlet-backdiffusion inventory. Balance, boundedness, monotonicity and first-drip

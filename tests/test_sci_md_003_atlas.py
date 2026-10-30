@@ -57,6 +57,10 @@ class Tests(unittest.TestCase):
   a=fixture();a['decision']['selected_outcome']='ALTERED';self.assertNotEqual(build(a)['decision']['selected_outcome'],'ALTERED')
  def test_sci_lc_excluded(self):self.assertEqual(retained_export()['excluded_families'],['SCI-LC-001A'])
  def test_runtime_lock_and_no_solver_diff(self):
-  self.assertEqual(hashlib.sha256((ROOT/'dependencies/puckworks.lock.json').read_bytes()).hexdigest(),'52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10');changed=set(subprocess.check_output(['git','diff','--name-only','origin/main...HEAD'],cwd=ROOT,text=True).split());self.assertFalse(any(x.startswith(('src/','applications/','cases/')) for x in changed))
+  # SCI-MD-003 atlas consumer's historical runtime pin, not the live dependency.
+  frozen=subprocess.check_output(['git','show','b7ad27048f1d88ea9780ae52c0010660def314d5:dependencies/puckworks.lock.json'],cwd=ROOT)
+  self.assertEqual(hashlib.sha256(frozen).hexdigest(),'52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10')
+  self.assertEqual(json.loads(frozen)['checkout_commit'],'fc61c4670ec7bf801e40bb391aab16048b8da26b')
+  changed=set(subprocess.check_output(['git','diff','--name-only','origin/main...HEAD'],cwd=ROOT,text=True).split());self.assertFalse(any(x.startswith(('src/','applications/','cases/')) for x in changed))
  def test_determinism(self):self.assertEqual(canonical(build(fixture())),canonical(build(fixture())))
 if __name__=='__main__':unittest.main()

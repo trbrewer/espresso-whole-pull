@@ -1,6 +1,6 @@
 # E1 solver capability plan
 
-Plan only; G0 / NO_GOVERNING_PHYSICS_CHANGE. Owner approval is required before implementation or runs. Test whether saved PRESSURE-PEAK B0c E1 capability survives the EWP spatial solver; this differs from the older SCI-MD-010 E1.
+Owner-approved plan; the original plan PR was G0 / NO_GOVERNING_PHYSICS_CHANGE. Implementation PR 1 adds opt-in E1 and numerical verification; demonstration still requires its reviewed merge. Test whether saved PRESSURE-PEAK B0c E1 capability survives the EWP spatial solver; this differs from the older SCI-MD-010 E1.
 
 ## Mechanism and transfer
 
@@ -38,7 +38,7 @@ Use a uniform 1D setting. M denotes cumulative model-delivered outlet mass in g:
 | Delivered-mass resistance R=exp(exp(-M/Mc)), fixed Mc | ACTIVE; q=aSP exp(-P/Pstar)/R |
 | Mass evolution dM/dt=q, M(0)=0 | ACTIVE throughout the integration |
 
-**G2 — mass/liquid balance and time-step refinement.** Use the 100-s dry-front synthetic R0 verification fixture with E1 enabled. Retain liquid residual ≤max(1e-9 kg, 1e-8 cumulative inlet water), solute residual ≤max(1e-10 kg, 1e-8 initial extractable mass), and boundedness checks. At time steps 0.020, 0.010 and 0.005 s, coarse/fine differences must be ≤0.5% and intermediate/fine ≤0.25% for endpoint flow and declared primary inventory outputs. First-drip time: off-mode control ≤1e-8 s (unchanged code). E1-enabled runs: coarse/fine and intermediate/fine differences ≤ max(0.005 s, 0.1% of the fine-step value). Include an unchanged off-mode control. Retain applicable existing mesh/MPI qualification.
+**G2 — mass/liquid balance and time-step refinement.** Use the 100-s dry-front synthetic R0 verification fixture with E1 enabled. Retain liquid residual ≤max(1e-9 kg, 1e-8 cumulative inlet water), solute residual ≤max(1e-10 kg, 1e-8 initial extractable mass), and boundedness checks. The initial 0.020/0.010/0.005-s triple failed extraction-inventory refinement; the owner authorized 0.005/0.0025/0.00125 s with unchanged tolerances. Coarse/fine differences must be ≤0.5% and intermediate/fine ≤0.25% for endpoint flow and declared primary inventory outputs, in both E1-on and E1-off modes. First-drip time: off-mode control ≤1e-8 s (unchanged code). E1-enabled runs: coarse/fine and intermediate/fine differences ≤ max(0.005 s, 0.1% of the fine-step value). Include an unchanged off-mode control. Retain applicable existing mesh/MPI qualification. Both triples and the pre-existing R0 extraction error are retained in the [verification report](../verification/E1_WHOLE_BED/RESULT.md).
 
 **No demonstration run (constant-pressure sweep or measured histories) may start until G1 and G2 pass in a merged PR.** A G2 failure also blocks demonstration; report it without relaxing tolerances.
 
@@ -70,15 +70,22 @@ Static lock conflicts: `scripts/{r1_contract_bridge,wp02_contract_bridge,analyze
 
 ## Estimates
 
-Planning allowances: 250–450 changed/new C++ lines, plus adapters/tests; 2–6 minutes per 100-s base case at 0.020 s on 32 ranks, based on existing full-mesh timings with contingency.
+Implementation PR 1 adds **122 C++ lines** (69 solver, 53 header), plus adapters/tests. Record the demonstration step as **0.0025 s**, conditional on owner review and merge. The measured 100-s full-mesh E1-on verification case takes **174.608 s (2.910 minutes) on 32 ranks**.
 
-Schedule 15 verification/control runs: 11 G1, 3 G2 time-step cases and 1 off-mode control. Add 20–23 constant-pressure cases and 56 histories: 76–79 demonstration runs, **91–94 total runs**. Assume applicable mesh/MPI qualification is reusable; PR 1 must identify additional required runs before scheduling.
+Completed verification/control runs: 11 G1, 11 G2/off-mode cases and two concurrent timing copies, **24 runs**; reused 0.005-s cases count once. Add 20–23 constant-pressure cases and 56 histories: **76–79 demonstration runs, 100–103 total runs**. Existing uniform-Darcy mesh/MPI qualification is provisionally reused as bounded in the verification report.
 
-Weight refinement at 1×, 2× and 4× base runtime; conservatively charge each 1D case as a full base case: **95–98 base-case equivalents**, **3.2–9.8 node-hours (32-core equivalents)**, **101–314 core-hours**. Wall-clock: **3.2–9.8 hours with one 32-rank case at a time**, or **1.6–5.0 hours with two concurrent 32-rank cases** (64 cores), excluding review/merge waits and additional qualification runs.
+Two concurrent copies, on disjoint sets of 32 cores, took **300.816 and 288.861 s**: **72.28% and 65.43% slower** than the isolated case. Pair completion was 300.817 s, giving 1.161× throughput. Both traces are byte-identical to the isolated run. This measurement replaces the no-contention assumption and provisional 10–30% allowance.
+
+| Demonstration scheduling | Wall-clock | Node-hours (32-core equivalents) | Core-hours |
+|---|---|---|---|
+| One 32-rank case at a time | 3.686–3.832 h | 3.686–3.832 | 117.96–122.61 |
+| Two concurrent 32-rank cases on 64 cores | 3.175–3.307 h | 6.224–6.437 | 199.18–205.97 |
+
+The concurrent estimate uses 38–39 pairs plus one isolated case for an odd total. These demonstration-only estimates extrapolate measured solver wall time, including field output, and exclude preparation and review waits. One measured pair does not establish performance for every history; pressure histories may require additional pressure iterations.
 
 Hardware: state the machine and rank count actually available before the first verification run; estimates assume 32 ranks.
 
-Measure one verification case before scheduling the batch. Two implementation PRs; no solver runs in this plan PR.
+Measure one verification case before scheduling the batch: completed in implementation PR 1; no demonstration batch is scheduled. Two implementation PRs remain the delivery target. The original plan PR contained no solver runs.
 
 ## Limits and sources
 

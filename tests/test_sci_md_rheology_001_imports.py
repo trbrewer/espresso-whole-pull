@@ -45,8 +45,14 @@ assert report.compare is expected.compare
             data = subprocess.check_output(['git', 'show',
                 '14fc4c8a4a94ffa54ffafd5c2c99037c1af680b9:' + path], cwd=analysis.ROOT)
             self.assertEqual(hashlib.sha256(data).hexdigest(), digest)
-        with self.assertRaisesRegex(ValueError, 'solver source changed'):
-            analysis.check_freeze(analysis.DOC/'AUDIT.json')
+        # Isolate the solver-source guard from the separately tested runtime-pin guard.
+        original_sha = analysis.sha
+        with patch.object(analysis, 'sha', side_effect=lambda path:
+                authority['runtime_lock_sha256']
+                if Path(path) == analysis.ROOT/'dependencies/puckworks.lock.json'
+                else original_sha(path)):
+            with self.assertRaisesRegex(ValueError, 'solver source changed'):
+                analysis.check_freeze(analysis.DOC/'AUDIT.json')
 
     def test_unlisted_scientific_change_rejected(self):
         original = analysis.sha
