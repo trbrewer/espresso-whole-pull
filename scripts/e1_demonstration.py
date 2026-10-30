@@ -465,7 +465,9 @@ def write_summary(args,constant,history,python,manifest,differences):
     offsets=np.array([r["startup_offset_g_s"] for r in nominal]); remainder=np.array([r["remainder_g_s"] for r in nominal])
     total=np.array([r["total_difference_g_s"] for r in nominal])
     fraction=100*np.sum(np.abs(offsets))/np.sum(np.abs(total))
-    largest=max((r for r in nominal if 4<=r["pressure_bar"]<=8),key=lambda r:abs(r["startup_offset_g_s"]))
+    peak_region=[dict(pressure_bar=r["nominal_pressure_bar"],startup_offset_g_s=r["startup_offset_g_s"])
+        for r in manifest["runs"] if r["forcing"] == "constant" and 4<=r["nominal_pressure_bar"]<=8]
+    largest=max(peak_region,key=lambda r:abs(r["startup_offset_g_s"]))
     peak=manifest["continuous_solver_peak_bar"]
     peak_text="unresolved (no bracketed concave maximum)" if peak is None else f"{peak:.3f} bar"
     next_step=("Owner: consider **use the E1 permeability (M=0) during wetting**; the start-up offset exceeds 0.05 g/s in the 4–8 bar region. This is a candidate change only, not implemented here."
