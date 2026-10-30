@@ -1,5 +1,6 @@
 """Demonstration protocol arithmetic; no native runs or fitted models in CI."""
 import json
+import math
 from pathlib import Path
 import sys
 import unittest
@@ -87,6 +88,26 @@ class DemonstrationTests(unittest.TestCase):
         self.assertAlmostEqual(result["slope_interval"][0],result["slope_interval"][1],places=14)
         for low,high in result["intervals"]:
             self.assertAlmostEqual(low,high,places=14)
+
+    def test_trace_masks_are_separate_and_cannot_change_endpoint_grades(self):
+        rows=[];traces=[];pressure=[]
+        for p in D.V.NOMINAL:
+            for _ in range(2):
+                rows.append(dict(nominal_pressure_bar=p,observed_endpoint_g_s=1.,b1_endpoint_g_s=1.2,
+                    trace_times_s=[0.,5.,10.,20.,50.,100.],trace_mask=[False,False,False,True,True,True],
+                    observed_trace_g_s=[0.,0.,0.,1.,1.,1.],b1_trace_g_s=[10.,10.,10.,1.2,1.2,1.2]))
+                traces.append([0.,0.,0.,1.1,1.1,1.1]);pressure.append(p)
+        first=D.score_predictions(rows,[1.1]*len(rows),traces,pressure)
+        self.assertAlmostEqual(first["trace_rmse_g_s"],.1,places=12)
+        self.assertAlmostEqual(first["b1_trace_rmse_g_s"],.2,places=12)
+        self.assertAlmostEqual(first["startup_inclusive_trace_rmse_g_s"],math.sqrt(.03/5),places=12)
+        self.assertAlmostEqual(first["b1_startup_inclusive_trace_rmse_g_s"],math.sqrt(200.12/5),places=12)
+        for row in rows:row["trace_mask"]=[False,True,True,True,True,True]
+        second=D.score_predictions(rows,[1.1]*len(rows),traces,pressure)
+        self.assertAlmostEqual(first["endpoint_rmse_g_s"],second["endpoint_rmse_g_s"],places=12)
+        self.assertEqual(first["accuracy_grade"],second["accuracy_grade"])
+        self.assertEqual(first["peak_grade"],second["peak_grade"])
+        self.assertEqual(first["slope_grade"],second["slope_grade"])
 
 
 if __name__ == "__main__":

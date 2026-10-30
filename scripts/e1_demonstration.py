@@ -122,35 +122,56 @@ def source_inputs(puckworks, raw):
     brews = A.load_brews(puckworks/"puckworks/data/waszkiewicz2025", V.ROOT)
     source = S.select_stage("B0c", root=puckworks)["B1"][0]
     bank = S.fold_bank("B0c", source)
-    course = B.load_course(brews, raw, step=.5)
+    course = B.load_course(brews, raw, step=.1)
     use = course.t <= 100.
     early_saved = S.onset_inputs(puckworks)
+    onset_saved = {float(r["pressure condition bar"]):float(r["delay mean s"])
+        for r in V.records(puckworks/V.ONSET) if r["check"] == "condition onset"
+        and r["pressure view"] == "RAW PRIMARY" and float(r["threshold scale"]) == 1.}
     rows = []
+    reference_trace_se = []
     for i, name in enumerate(brews.ids):
         original = raw/"measurements_time_dependent"/(name+".txt")
-        t, p, _, _ = B.clean_course(*B.raw_trace(original)[:3])
+        t0,p0,m0,_ = B.raw_trace(original)
+        t, p, observed_flow, _ = B.clean_course(t0,p0,m0)
         if t[-1] < 100.:
             raise ValueError("Insufficient observed support: "+name)
         early = float(np.median(p[t <= 2.]))
+        # Reconstruct B0c's existing observation mask, never a model input.
+        pre = (t0 >= -2.) & (t0 <= 0.)
+        baseline = np.median(m0[pre]) if pre.any() else m0[0]
+        onset = B.sustained_onset(t,np.interp(t,t0,m0)-baseline,observed_flow)
+        if not np.isfinite(onset):
+            raise ValueError("Saved B0c observation-mask onset not reproduced: "+name)
+        score_mask = (course.t >= onset+2.) & (course.t <= course.ends[i])
         coef = bank[brews.fold[i]]["free"]
         b1 = float(A.predict("B1", coef, brews.pressure[i:i+1], brews.t)[0])
-        b1_trace = B.predict_course("B1", coef, course.pressure[i:i+1, use], course.t[use])[0][0]
+        b1_full = B.predict_course("B1",coef,course.pressure[i:i+1],course.t)[0][0]
+        reference_trace_se.append(float(np.mean((b1_full[score_mask]-course.flow[i,score_mask])**2)))
+        b1_trace = b1_full[use]
         rows.append(dict(brew=name, nominal_pressure_bar=float(brews.condition[i]),
             times_s=brews.t.tolist(), pressure_bar=brews.pressure[i].tolist(),
             early_pressure_bar=early, observed_endpoint_g_s=float(brews.target[i]),
             trace_times_s=course.t[use].tolist(), observed_trace_g_s=course.flow[i,use].tolist(),
-            trace_mask=course.mask[i,use].tolist(), b1_endpoint_g_s=b1,
+            trace_mask=score_mask[use].tolist(), observed_onset_for_scoring_only_s=float(onset), b1_endpoint_g_s=b1,
             b1_trace_g_s=b1_trace.tolist(), b1_coefficients=coef, fold=brews.fold[i],
             original_sha256=digest(original)))
     for pressure in V.NOMINAL:
         actual = np.mean([r["early_pressure_bar"] for r in rows if r["nominal_pressure_bar"] == pressure])
         if not np.isclose(actual, early_saved[pressure], atol=1e-12, rtol=0):
             raise ValueError("Pressure-only early input differs from saved B0c: "+str(pressure))
+        onset = np.mean([r["observed_onset_for_scoring_only_s"] for r in rows if r["nominal_pressure_bar"] == pressure])
+        if not np.isclose(onset,onset_saved[pressure],atol=1e-12,rtol=0):
+            raise ValueError("B0c observation mask differs from saved onset aggregate: "+str(pressure))
     reproduced = np.mean([np.sqrt(np.mean([(r["b1_endpoint_g_s"]-r["observed_endpoint_g_s"])**2
         for r in rows if r["nominal_pressure_bar"] == p])) for p in V.NOMINAL])
     if not np.isclose(reproduced, float(source["endpoint RMSE g/s"]), atol=1e-12, rtol=0):
         raise ValueError("Saved B0c B1 endpoint score not reproduced")
+    trace_reproduced = np.mean([np.sqrt(np.mean(np.array(reference_trace_se)[g])) for g in brews.groups])
+    if not np.isclose(trace_reproduced,float(source["full-trace RMSE g/s"]),atol=1e-12,rtol=0):
+        raise ValueError("Saved B0c B1 trace score not reproduced")
     print("B1_REPRODUCED", reproduced, "BREWS",len(rows),flush=True)
+    print("B1_TRACE_REPRODUCED",trace_reproduced,flush=True)
     return rows
 
 
@@ -276,13 +297,17 @@ def score_predictions(inputs, endpoints, traces, pressure_end):
     response=response_draws(np.asarray(endpoints),np.asarray(pressure_end),conditions)
     rmse,base=loss(squared[1]),loss(squared[0])
     label,accuracy,peak,slope=grades(rmse,base,delta,response["peak_interval"],response["slope_interval"])
-    trace_squared=[]; b1_trace_squared=[]
+    trace_squared=[]; b1_trace_squared=[]; full_squared=[]; b1_full_squared=[]
     for r,q in zip(inputs,traces):
         mask=np.array(r["trace_mask"],dtype=bool)
         observed=np.array(r["observed_trace_g_s"])
         trace_squared.append(np.mean((np.asarray(q)[mask]-observed[mask])**2))
         b1_trace_squared.append(np.mean((np.array(r["b1_trace_g_s"])[mask]-observed[mask])**2))
+        full = np.asarray(r["trace_times_s"]) >= 5.
+        full_squared.append(np.mean((np.asarray(q)[full]-observed[full])**2))
+        b1_full_squared.append(np.mean((np.array(r["b1_trace_g_s"])[full]-observed[full])**2))
     td=paired_rmse_draws(np.array([b1_trace_squared,trace_squared]),groups)
+    fd=paired_rmse_draws(np.array([b1_full_squared,full_squared]),groups)
     return dict(endpoint_rmse_g_s=rmse, endpoint_rmse_interval_g_s=np.quantile(draws[:,1],[.025,.975]).tolist(),
         b1_endpoint_rmse_g_s=base, endpoint_change_percent=100*(rmse/base-1),
         paired_difference_g_s=rmse-base, paired_interval_g_s=delta, comparison=label,
@@ -290,7 +315,10 @@ def score_predictions(inputs, endpoints, traces, pressure_end):
         trace_rmse_g_s=loss(np.array(trace_squared)),
         trace_rmse_interval_g_s=np.quantile(td[:,1],[.025,.975]).tolist(),
         b1_trace_rmse_g_s=loss(np.array(b1_trace_squared)),
-        trace_change_percent=100*(loss(np.array(trace_squared))/loss(np.array(b1_trace_squared))-1), **response)
+        trace_change_percent=100*(loss(np.array(trace_squared))/loss(np.array(b1_trace_squared))-1),
+        startup_inclusive_trace_rmse_g_s=loss(np.array(full_squared)),
+        startup_inclusive_trace_interval_g_s=np.quantile(fd[:,1],[.025,.975]).tolist(),
+        b1_startup_inclusive_trace_rmse_g_s=loss(np.array(b1_full_squared)), **response)
 
 
 def output_index(case):
@@ -324,7 +352,8 @@ def generate_report(args):
         delayed=python_e1(params,times,pressure,r["early_pressure_bar"],r["full_saturation_s"])
         constant_predictions[p]=original[-1]
         constant_traces[p]=trace_flow(args.work/r["run"]/"postProcessing/wholePull/0/traces.csv",density)
-        r.update(python_original_endpoint_g_s=float(original[-1]),python_delayed_endpoint_g_s=float(delayed[-1]),
+        r.update(pressure_basis="RAW_LINE_AS_INLET_GAUGE",prescribed_pressure_at_100_bar=p,
+            python_original_endpoint_g_s=float(original[-1]),python_delayed_endpoint_g_s=float(delayed[-1]),
             startup_offset_g_s=float(delayed[-1]-original[-1]),
             remainder_g_s=float(r["endpoint_flow_g_s"]-delayed[-1]))
     endpoint=[]; actual_pressure=[]; solver_traces=[]; python_traces=[]; python_endpoints=[]
@@ -337,7 +366,8 @@ def generate_report(args):
         solver_traces.append(np.interp(row["trace_times_s"],native_t,native_q))
         python_traces.append(np.interp(row["trace_times_s"],times,original))
         endpoint.append(r["endpoint_flow_g_s"]); actual_pressure.append(pressure[-1]);python_endpoints.append(original[-1])
-        r.update(python_original_endpoint_g_s=float(original[-1]),python_delayed_endpoint_g_s=float(delayed[-1]),
+        r.update(pressure_basis="RAW_LINE_AS_INLET_GAUGE",prescribed_pressure_at_100_bar=float(pressure[-1]),
+            python_original_endpoint_g_s=float(original[-1]),python_delayed_endpoint_g_s=float(delayed[-1]),
             startup_offset_g_s=float(delayed[-1]-original[-1]),
             remainder_g_s=float(r["endpoint_flow_g_s"]-delayed[-1]))
     for forcing in ("constant","measured_history"):
@@ -345,6 +375,7 @@ def generate_report(args):
             group=[r for r in records if r["forcing"]==forcing and r["nominal_pressure_bar"]==p]
             mean=lambda key:float(np.mean([r[key] for r in group]))
             differences.append(dict(forcing=forcing,pressure_bar=p,brews_or_cases=len(group),
+                mean_prescribed_pressure_at_100_bar=mean("prescribed_pressure_at_100_bar"),
                 python_original_g_s=mean("python_original_endpoint_g_s"),
                 python_delayed_g_s=mean("python_delayed_endpoint_g_s"),solver_g_s=mean("endpoint_flow_g_s"),
                 startup_offset_g_s=mean("startup_offset_g_s"),remainder_g_s=mean("remainder_g_s"),
@@ -363,7 +394,8 @@ def generate_report(args):
     score_rows=[constant_score,history_score,python_score]
     V.write_csv(args.out/"GRADES.csv",[{k:json.dumps(v) if isinstance(v,list) else v for k,v in s.items()} for s in score_rows])
     V.write_csv(args.out/"PYTHON_SOLVER_DIFFERENCES.csv",differences)
-    endpoint_fields=("run","forcing","brew","nominal_pressure_bar","endpoint_flow_g_s","first_drip_s", "full_saturation_s",
+    endpoint_fields=("run","forcing","brew","nominal_pressure_bar","pressure_basis","prescribed_pressure_at_100_bar",
+        "endpoint_flow_g_s","first_drip_s", "full_saturation_s",
         "saturation_completed_step_s","cumulative_outlet_liquid_mass_g","early_pressure_bar",
         "python_original_endpoint_g_s","python_delayed_endpoint_g_s","startup_offset_g_s","remainder_g_s",
         "wall_seconds","ranks","delta_t_s","balances_and_bounds_qualified")
@@ -371,6 +403,10 @@ def generate_report(args):
     manifest=dict(schema="ewp.e1_capability.fixed_prediction_runs.v1",change_class="SOURCE_SCENARIO_CHANGE_ONLY",
         solver_merge_commit="734b15e8c4631c0dda30b6cd67cef00d2eeaed90",puckworks_commit=V.PIN,
         executable_sha256=digest(args.exe),parameters=params,delta_t_s=.0025,ranks=32,scheduling="sequential",
+        native_software="OpenFOAM Foundation 12; espressoWholePullFoam",
+        unchanged_source_sha256={name:digest(V.ROOT/name) for name in
+            ("solver/espressoWholePullFoam/espressoWholePullFoam.C","solver/espressoWholePullFoam/e1EffectivePermeability.H",
+             "scripts/prepare_case.py","config/reference_R0.json","dependencies/puckworks.lock.json")},
         hardware="AMD Ryzen Threadripper 3990X; 64 physical cores; 251 GiB RAM; 32 MPI ranks per case",
         numerical_environment=dict(python=sys.version.split()[0],**{name:importlib.metadata.version(name)
             for name in ("numpy","scipy","numba","matplotlib")}),
@@ -379,6 +415,7 @@ def generate_report(args):
             constant_early_input="INTERPOLATED_INPUTS: median of saved training-fold pressure interpolants",
             history_early_input="median measured raw pressure over stable-clock 0–2 s; never observed onset",
             slope="nominal pressure for constant forcing; actual endpoint raw pressure for measured histories"),
+        trace_observer="B0c 0.1-s observation grid; primary mask observed onset+2 s through 100 s, scoring only; secondary 5–100 s",
         source_datasets=["waszkiewicz2025/traces_per_brew","waszkiewicz2025/equilibrium_windows"],
         data_availability="FILES_INSPECTED: pinned aggregates, saved coefficients and original pressure/mass traces; duplicate alias excluded",
         source_attribution="Waszkiewicz et al. (2025), Zenodo 18046315, CC-BY-4.0",
@@ -414,7 +451,7 @@ def plot_report(args,parameters,early,constant,observed):
     ax.plot(grid,curve,color="#d47c31",linestyle="--",label="Python E1; unchanged transferred medians")
     ax.set(xlabel="Nominal raw / inlet gauge pressure (bar)",ylabel="100-s endpoint flow (g/s)",xlim=(.7,13.3))
     ax.grid(alpha=.18);ax.legend(fontsize=7,loc="lower center",title="Constant curves: INTERPOLATED_INPUTS",title_fontsize=7)
-    ax.set_title("Capability demonstration, not validation",fontsize=11)
+    ax.set_title("capability demonstration, not validation",fontsize=11)
     fig.savefig(args.out/"FIGURE.png",dpi=180);plt.close(fig)
 
 
@@ -447,7 +484,7 @@ SOURCE_SCENARIO_CHANGE_ONLY; retrospective, TARGET_EXPOSED: transferred componen
 {row('Measured histories',history)}
 | B0c B1 reference | {history['b1_endpoint_rmse_g_s']:.3f} / {history['b1_trace_rmse_g_s']:.3f} | N/A (reference) | — | — |
 
-Unchanged bands: accuracy ±0.25 g/s; slope wholly negative, overlapping [−0.0880, −0.0403]; peak 5–7 bar, or 4/8 bar NEAR. Paired, condition-balanced whole-brew resampling of fixed predictions: 1,000 draws, seed 20261103. Constant-forcing response intervals have zero width, excluding parameter/model uncertainty. Trace support: 5–100 s. [Full scores](GRADES.csv).
+Unchanged bands: accuracy ±0.25 g/s; slope wholly negative, overlapping [−0.0880, −0.0403]; peak 5–7 bar, or 4/8 bar NEAR. Paired, condition-balanced whole-brew resampling of fixed predictions: 1,000 draws, seed 20261103. Constant-forcing response intervals have zero width, excluding parameter/model uncertainty. Trace support: observed onset+2 to 100 s, as a scoring mask only; the full 5–100 s score is separate. [Full scores](GRADES.csv).
 
 ![Observed endpoint flow, solver sweep, Python E1 and the 5–7 bar band](FIGURE.png)
 
