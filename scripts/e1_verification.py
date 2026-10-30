@@ -159,27 +159,45 @@ def balance_bounds(rows, cfg):
         status="PASS" if water<=water_limit and solute<=solute_limit and bounded and monotonic else "FAIL")
 
 
-def refinement(work):
-    rows = {name:records(work/name/"postProcessing/wholePull/0/traces.csv")[-1]
-            for name in ("g2-base","g2-mid","g2-fine")}
+def observed_order(coarse, middle, fine):
+    """Signed consecutive differences; no absolute-value rescue of oscillation."""
+    denominator = middle-fine
+    if denominator == 0:
+        return "NOT_AVAILABLE"
+    ratio = (coarse-middle)/denominator
+    return math.log2(ratio) if ratio > 0 and math.isfinite(ratio) else "NOT_AVAILABLE"
+
+
+def refinement_table(rows, names, graded=True, enabled=True):
     result=[]
-    for name,limit in (("g2-base",.005),("g2-mid",.0025)):
+    for name,limit in ((names[0],.005),(names[1],.0025)):
         for key in PRIMARY:
-            fine=float(rows["g2-fine"][key]); error=abs(float(rows[name][key])-fine)
+            fine=float(rows[names[2]][key]); error=abs(float(rows[name][key])-fine)
             relative=error/abs(fine) if fine else (0. if error==0 else math.inf)
             result.append(dict(case=name,metric=key,deviation=relative,tolerance=limit,
-                               status="PASS" if relative<=limit else "FAIL"))
-        fine=float(rows["g2-fine"]["first_drip_s"])
-        error=abs(float(rows[name]["first_drip_s"])-fine); tolerance=max(.005,.001*abs(fine))
+                status=("PASS" if relative<=limit else "FAIL") if graded else "DESCRIPTIVE"))
+        fine=float(rows[names[2]]["first_drip_s"])
+        error=abs(float(rows[name]["first_drip_s"])-fine)
+        tolerance=max(.005,.001*abs(fine)) if enabled else 1e-8
         result.append(dict(case=name,metric="first_drip_s",deviation=error,tolerance=tolerance,
-                           status="PASS" if error<=tolerance else "FAIL"))
-    write_csv(work/"G2_REFINEMENT.csv",result)
-    if any(x["status"]!="PASS" for x in result): raise SystemExit("G2 FAILED: stop; do not tune")
+            status=("PASS" if error<=tolerance else "FAIL") if graded else "DESCRIPTIVE"))
+    return result
+
+
+def refinement(work, names=("g2-base","g2-mid","g2-fine"),
+               output="G2_REFINEMENT.csv", graded=True, enabled=True):
+    rows = {name:records(work/name/"postProcessing/wholePull/0/traces.csv")[-1] for name in names}
+    result=refinement_table(rows,names,graded,enabled)
+    write_csv(work/output,result)
+    if graded and any(x["status"]!="PASS" for x in result):
+        raise SystemExit("G2 FAILED: stop; do not tune")
+    return result
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument("phase",choices=("g1","g2-base","g2-refine","off-baseline","off-candidate"))
+    p.add_argument("phase",choices=("g1","g2-base","g2-refine","off-baseline","off-candidate",
+                                               "off-diagnostic","finer-on","finer-off"))
     p.add_argument("--work",type=Path,required=True);p.add_argument("--puckworks",type=Path,required=True)
     p.add_argument("--executable",type=Path,required=True);p.add_argument("--ranks",type=int,default=32)
     a=p.parse_args();a.work=a.work.resolve();a.work.mkdir(parents=True,exist_ok=True)
@@ -199,7 +217,13 @@ def main():
     else:
         require_g1(a.work)
         choices={"g2-base":[(.02,"g2-base",True)],"g2-refine":[(.01,"g2-mid",True),(.005,"g2-fine",True)],
-                 "off-baseline":[(.02,"off-baseline",False)],"off-candidate":[(.02,"off-candidate",False)]}
+                 "off-baseline":[(.02,"off-baseline",False)],"off-candidate":[(.02,"off-candidate",False)],
+                 "off-diagnostic":[(.01,"off-mid",False),(.005,"off-fine",False)],
+                 "finer-on":[(.0025,"on-finer-mid",True),(.00125,"on-finer-fine",True)],
+                 "finer-off":[(.0025,"off-finer-mid",False),(.00125,"off-finer-fine",False)]}
+        if a.phase in ("off-diagnostic","finer-on","finer-off"):
+            identity=json.loads((a.work/"OFF_BYTE_IDENTITY.json").read_text())
+            if identity["status"]!="PASS": raise SystemExit("STOP: off-mode byte identity required")
         for dt,name,enabled in choices[a.phase]:
             cfg=scenario(parameters,early,dt=dt,enabled=enabled)
             rows,wall=run_case(a.work,name,cfg,a.executable,a.ranks)
@@ -208,6 +232,21 @@ def main():
             print(dict(case=name,wall_seconds=wall,checks=audit),flush=True)
             if audit["status"]!="PASS": raise SystemExit("G2 FAILED: stop; do not tune")
         if a.phase=="g2-refine":refinement(a.work)
+        elif a.phase=="off-diagnostic":
+            refinement(a.work,("off-candidate","off-mid","off-fine"),"OFF_DIAGNOSTIC_REFINEMENT.csv",False,False)
+            orders=[]
+            for mode,names in (("E1_ON",("g2-base","g2-mid","g2-fine")),
+                               ("E1_OFF",("off-candidate","off-mid","off-fine"))):
+                end=[records(a.work/name/"postProcessing/wholePull/0/traces.csv")[-1] for name in names]
+                for key in ("remaining_extractable_mass_kg","dissolved_in_puck_mass_kg"):
+                    values=[float(row[key]) for row in end]
+                    orders.append(dict(mode=mode,metric=key,coarse=values[0],middle=values[1],fine=values[2],
+                                       observed_order=observed_order(*values)))
+            write_csv(a.work/"OBSERVED_ORDERS.csv",orders)
+        elif a.phase=="finer-on":
+            refinement(a.work,("g2-fine","on-finer-mid","on-finer-fine"),"G2_FINER_ON.csv")
+        elif a.phase=="finer-off":
+            refinement(a.work,("off-fine","off-finer-mid","off-finer-fine"),"G2_FINER_OFF.csv",True,False)
 
 
 if __name__=="__main__":main()

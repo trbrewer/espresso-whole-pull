@@ -10,7 +10,7 @@ import unittest
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"scripts"))
 from prepare_case import render_properties, render_e1
-from e1_verification import early_input, balance_bounds
+from e1_verification import early_input, balance_bounds, observed_order, refinement_table, PRIMARY
 from puckworks_historical_lock import historical_lock, OLD_COMMIT, OLD_TREE, RUNTIME_COMMIT, RUNTIME_TREE
 
 
@@ -47,6 +47,24 @@ class E1Tests(unittest.TestCase):
 
     def test_early_input_uses_training_pressure_only(self):
         self.assertEqual(early_input(6.,{1.:1.,2.:2.,3.5:3.5,4.:4.,5.:5.,6.:6.,7.:7.,8.:8.,9.:9.,11.:11.,13.:13.}),6.)
+
+    def test_convergence_order_requires_same_signed_differences(self):
+        self.assertAlmostEqual(observed_order(1.04,1.02,1.01),1.,places=12)
+        self.assertAlmostEqual(observed_order(1.16,1.04,1.01),2.,places=12)
+        self.assertEqual(observed_order(1.,1.,1.),"NOT_AVAILABLE")
+        self.assertEqual(observed_order(1.,2.,1.),"NOT_AVAILABLE")
+
+    def test_refinement_bands_unchanged_and_diagnostic_ungraded(self):
+        names=("coarse","middle","fine")
+        rows={n:dict.fromkeys(PRIMARY,1.)|{"first_drip_s":4.} for n in names}
+        rows["coarse"]["cup_water_mass_kg"]=1.006
+        rows["middle"]["cup_water_mass_kg"]=1.003
+        table=refinement_table(rows,names)
+        failed=[r for r in table if r["status"]=="FAIL"]
+        self.assertEqual([r["tolerance"] for r in failed],[.005,.0025])
+        self.assertTrue(all(r["status"]=="DESCRIPTIVE" for r in refinement_table(rows,names,False,False)))
+        first=[r for r in refinement_table(rows,names,True,False) if r["metric"]=="first_drip_s"]
+        self.assertEqual([r["tolerance"] for r in first],[1e-8,1e-8])
 
     def test_runtime_and_historical_authorities_are_distinct(self):
         lock=json.loads((ROOT/"dependencies/puckworks.lock.json").read_text())
