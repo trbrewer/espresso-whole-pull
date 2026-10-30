@@ -29,10 +29,11 @@ def classify(g):
 def rheology_source_sha(root,path):
     """Bind historical rheology after the exact, separately verified E1 addition."""
     header='solver/espressoWholePullFoam/e1EffectivePermeability.H'
-    if not (root/header).exists():return sha(root/path)
+    changed=(*AUTHORIZED_EXISTING_PRODUCTION_DELTAS,'dependencies/puckworks.lock.json')
+    if path not in changed or not (root/header).exists():return sha(root/path)
     # E1 G1/G2 and off-mode evidence qualify this source separately; do not let
     # arbitrary edits inherit the older pressure-history qualification.
-    for source in (*AUTHORIZED_EXISTING_PRODUCTION_DELTAS,header,'dependencies/puckworks.lock.json'):
+    for source in (*changed,header):
         candidate=subprocess.check_output(['git','show',
             'a96cc7eae1e9cc6f9616dbe8a08a90fedc47cf0b:'+source],cwd=root)
         if sha(root/source)!=hashlib.sha256(candidate).hexdigest():

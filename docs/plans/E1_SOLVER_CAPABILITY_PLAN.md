@@ -79,9 +79,9 @@ Two concurrent copies, on disjoint sets of 32 cores, took **300.816 and 288.861 
 | Demonstration scheduling | Wall-clock | Node-hours (32-core equivalents) | Core-hours |
 |---|---|---|---|
 | One 32-rank case at a time | 3.686–3.832 h | 3.686–3.832 | 117.96–122.61 |
-| Two concurrent 32-rank cases on 64 cores | 3.175–3.307 h | 6.224–6.437 | 199.18–205.97 |
+| Two concurrent 32-rank cases on 64 cores | 3.175–3.301 h | 6.224–6.470 | 199.18–207.04 |
 
-The concurrent estimate uses 38–39 pairs plus one isolated case for an odd total. These demonstration-only estimates extrapolate measured solver wall time, including field output, and exclude preparation and review waits. One measured pair does not establish performance for every history; pressure histories may require additional pressure iterations.
+Arithmetic, using measured times rounded to 0.01 s: sequential `76 × 174.61 = 13,270.36 s` through `79 × 174.61 = 13,794.19 s`; concurrent `(76/2) × 300.82 = 11,431.16 s` through `(79/2) × 300.82 = 11,882.39 s`, the owner-requested proportional-pair estimate. This is about 14% less elapsed time (16% higher throughput). **Recommend sequential runs unless the owner asks otherwise; the throughput gain is marginal.** These demonstration-only estimates include solver field output and exclude preparation/review waits. One measured pair does not establish performance for every history; pressure histories may require additional pressure iterations.
 
 Hardware: state the machine and rank count actually available before the first verification run; estimates assume 32 ranks.
 

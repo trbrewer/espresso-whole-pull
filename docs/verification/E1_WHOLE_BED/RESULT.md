@@ -158,12 +158,17 @@ the provisional no-contention assumption and 10–30% slowdown allowance.
 
 For 76–79 demonstration cases (20–23 constant-pressure cases plus 56 histories):
 one 32-rank case at a time takes **3.686–3.832 hours**; two concurrent
-32-rank cases on 64 cores take **3.175–3.307 hours** (38–39 pairs,
-plus one isolated case for an odd total). Serial scheduling consumes
+32-rank cases on 64 cores take **3.175–3.301 hours**, using the
+owner-requested proportional-pair estimate and measured times rounded to 0.01 s:
+`76 × 174.61 = 13,270.36 s`, `79 × 174.61 = 13,794.19 s` sequentially;
+`(76/2) × 300.82 = 11,431.16 s`, `(79/2) × 300.82 = 11,882.39 s` concurrently.
+This is about 14% less elapsed time, or 16% higher throughput
+(`2 × 174.61 / 300.82 = 1.161`). **Recommend sequential runs unless the owner
+asks otherwise: the throughput gain is marginal.** Serial scheduling consumes
 **3.686–3.832 node-hours in 32-core equivalents**, or
-**117.96–122.61 core-hours**; concurrent scheduling consumes
-**6.224–6.437 such node-hours**, or
-**199.18–205.97 core-hours**. These are solver-wall extrapolations,
+**117.96–122.62 core-hours**; concurrent scheduling consumes
+**6.224–6.470 such node-hours**, or
+**199.18–207.04 core-hours**. These are solver-wall extrapolations,
 including solver field output but excluding mesh preparation and review waits.
 The concurrency measurement is one pair; measured histories may require more
 pressure iterations. No demonstration batch has been scheduled or run.
@@ -185,6 +190,9 @@ change. No historical numerical result is rewritten. The newer Puckworks
 numerical dependencies use a separate environment from EWP's pinned CI stack.
 The new verification entrypoints have executable modes and an explicit
 numerical dependency allowlist entry; source manifest and package QA are synced.
+The standalone SCI-MD-RHEOLOGY-005/006 validators use the same exact E1 source
+and pin check before projecting their historical source identities. Their frozen
+evidence and default-configuration comparisons remain exact and unchanged.
 
 The first complete Python suite ran 1704 tests, with four failures and 21 skips.
 All four tests pass on main `0aac9b8`: category (a), caused by this branch.
