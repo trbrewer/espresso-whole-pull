@@ -40,6 +40,8 @@ def rheology_source_sha(root,path):
             raise ValueError('active E1 source differs from verified implementation '+source)
     historical=subprocess.check_output(['git','show',
         '0aac9b875f5dd9b3e415c821a1f9aa7e8250611b:'+path],cwd=root)
+    if path=='dependencies/puckworks.lock.json' and json.loads(historical)['checkout_commit']!='fc61c4670ec7bf801e40bb391aab16048b8da26b':
+        raise ValueError('historical rheology runtime commit changed')
     return hashlib.sha256(historical).hexdigest()
 
 def production_bytes(root, path):

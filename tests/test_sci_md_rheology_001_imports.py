@@ -41,6 +41,11 @@ assert report.compare is expected.compare
         # Its immutable evidence binds its accepted historical source, not future G2 work.
         authority = json.loads((analysis.DOC/'AUTHORITY.json').read_text())
         import hashlib
+        historical_lock = subprocess.check_output(['git', 'show',
+            authority['ewp_base_commit']+':dependencies/puckworks.lock.json'], cwd=analysis.ROOT)
+        self.assertEqual(hashlib.sha256(historical_lock).hexdigest(), authority['runtime_lock_sha256'])
+        self.assertEqual(json.loads(historical_lock)['checkout_commit'],
+                         'fc61c4670ec7bf801e40bb391aab16048b8da26b')
         for path, digest in authority['solver_source_hashes'].items():
             data = subprocess.check_output(['git', 'show',
                 '14fc4c8a4a94ffa54ffafd5c2c99037c1af680b9:' + path], cwd=analysis.ROOT)

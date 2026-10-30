@@ -197,12 +197,34 @@ evidence and default-configuration comparisons remain exact and unchanged.
 The first complete Python suite ran 1704 tests, with four failures and 21 skips.
 All four tests pass on main `0aac9b8`: category (a), caused by this branch.
 
-| Test | Traceback summary and cause | Minimal correction |
-|---|---|---|
-| `test_sci_md_003_atlas.Tests.test_runtime_lock_and_no_solver_diff` | AssertionError: live lock hash `9ecfe284…` != historical `52b15cee…`; runtime pin adoption | Read the atlas result's lock at its historical commit; keep the original hash and exact full fc61c46 commit assertion |
-| `test_sci_md_004_stage_a.StageA.test_allowed_paths_and_immutable_runtime_lock` | AssertionError: live lock bytes != frozen lock bytes; runtime pin adoption | Read the already bound Stage A historical lock; assert its exact full fc61c46 commit |
-| `test_sci_md_rheology_001_imports.RheologyImportTests.test_original_audit_and_amended_hashes` | `"solver source changed" does not match "runtime lock changed"`; the pin guard now fires first | Isolate the solver-source guard with the recorded historical lock hash; the separate runtime-lock rejection test remains unchanged |
-| `test_xsv_pressure_001.PressureHistory.test_validator` | `active rheology source differs from frozen contract solver/espressoWholePullFoam/espressoWholePullFoam.C`; E1 extends historical source | Verify the exact E1 implementation source and adopted lock, then check the historical source/lock at the merged plan base against unchanged historical hashes; mutation tests reject unrecognized edits |
+All six items below assert historical Puckworks commit **H =
+`fc61c4670ec7bf801e40bb391aab16048b8da26b`**, with full 40-character equality.
+Historical record hashes are retained in addition to that assertion.
+
+| Test or validator | Traceback summary and cause | Change | Historical SHA asserted; source | Evidence diff |
+|---|---|---|---|---|
+| `test_sci_md_003_atlas.Tests.test_runtime_lock_and_no_solver_diff` | AssertionError: live lock hash `9ecfe284…` != historical `52b15cee…`; runtime pin adoption | Read the result's historical lock, retain its exact hash and assert full H | H; atlas commit `b7ad27048f1d88ea9780ae52c0010660def314d5` | None |
+| `test_sci_md_004_stage_a.StageA.test_allowed_paths_and_immutable_runtime_lock` | AssertionError: live lock bytes != frozen lock bytes; runtime pin adoption | Read the already bound Stage A historical lock; retain its exact hash and assert full H | H; Stage A commit `9f5f66bb911adfde535b10b9a787e3357673d976` | None |
+| `test_sci_md_rheology_001_imports.RheologyImportTests.test_original_audit_and_amended_hashes` | `"solver source changed" does not match "runtime lock changed"`; pin guard now fires first | Assert historical H/hash, then isolate the solver guard; separate runtime rejection test unchanged | H; AUTHORITY.json's `ewp_base_commit`, `ac49fe939f9e7fb38ba4eabc95d65e2fa47ee666` | None |
+| `test_xsv_pressure_001.PressureHistory.test_validator` | `active rheology source differs from frozen contract solver/espressoWholePullFoam/espressoWholePullFoam.C`; E1 extends historical source | Keep historical source/lock hashes and full H; additionally bind exact E1 source and live lock; mutations rejected | H; pre-E1 main `0aac9b875f5dd9b3e415c821a1f9aa7e8250611b`, lock hash matches PRODUCTION_SCOPE.json | None |
+| `validate_sci_md_rheology_005.inspect` | Current lock, preparation and solver differ from old freeze | Preserve frozen evidence checks; explicitly assert historical H; apply additional exact E1 check for only the three changed source/lock paths | H; contemporaneous EWP base `ab29a805217010f8c441047aaa04e6b4adaca3fe` | None |
+| `validate_sci_md_rheology_006.inspect` | Current lock, preparation and solver differ from old freeze | Preserve frozen evidence checks; explicitly assert historical H; apply additional exact E1 check for only the three changed source/lock paths | H; FREEZE.json's `starting_commit`, `db705b644bbc2c3f719690448657e845f2a8f65b` | None |
+
+Before this change, 005 checked its accepted frozen source at `db705b6`, its
+001–004 evidence and default/runtime bytes against `ab29a80`, and delegated to
+006. Validator 006 checked accepted source at `3960b4a`, current paths against
+the 009/011 freezes, and accepted evidence/default/runtime bytes against its
+recorded starting commit. Those historical checks remain. The three changed
+paths (solver, preparation, runtime lock) now use identical pre-E1 bytes **only
+after** all current E1 source/header/lock bytes match implementation commit
+`a96cc7eae1e9cc6f9616dbe8a08a90fedc47cf0b` exactly. Other paths are checked live.
+This additional current identity includes runtime pin
+`ba35a3bf1f832cd651fe98eebd59860849c0e850`; it never replaces historical H.
+Both frozen runtime-record SHA-256 values remain
+`52b15ceef87d503a3e77c6e3c1cbed785185d2dde0b79647e5fbe309395d2f10`.
+
+Evidence diff against main is empty for `docs/analysis`, `validation`,
+`baseline_evidence`, `provenance` and `config/reference_R0.json`.
 
 The two historical-pin tests never read the live runtime lock. They assert
 `fc61c4670ec7bf801e40bb391aab16048b8da26b` exactly. The separate test

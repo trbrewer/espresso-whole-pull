@@ -8,6 +8,10 @@ from scripts.validate_xsv_pressure_001 import rheology_source_sha
 def inspect(root):
     errors=[];freeze=json.loads((root/'docs/analysis/sci_md_rheology_006/FREEZE.json').read_text())
     def sha(b):return hashlib.sha256(b).hexdigest()
+    # SCI-MD-RHEOLOGY-006's recorded starting commit supplies its historical pin.
+    base=freeze['starting_commit']
+    historical_pin=json.loads(subprocess.check_output(['git','show',base+':dependencies/puckworks.lock.json'],cwd=root))['checkout_commit']
+    if historical_pin!='fc61c4670ec7bf801e40bb391aab16048b8da26b':errors.append('historical 006 runtime commit changed')
     amendment_path=root/'docs/analysis/sci_md_rheology_006/POST_EXECUTION_CORRECTION.json'
     amendments={}
     if amendment_path.exists():
@@ -38,7 +42,6 @@ def inspect(root):
                 if sha((root/helper).read_bytes())!=current['files'][helper]:errors.append('active geometry helper changed')
             if rheology_source_sha(root,path)!=expected:errors.append('active frozen file changed: '+path)
     if freeze['governance']!='G2' or freeze['change_declaration']!='GOVERNING_PHYSICS_CHANGE':errors.append('declaration')
-    base=freeze['starting_commit']
     paths=subprocess.check_output(['git','ls-tree','-r','--name-only',base,'docs/analysis','config','dependencies/puckworks.lock.json'],cwd=root,text=True).splitlines()
     protected=[p for p in paths if p.startswith(('config/','dependencies/')) or any('/sci_md_rheology_'+n+'/' in p for n in ('001','002','003','004','005'))]
     for path in protected:

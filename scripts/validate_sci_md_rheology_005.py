@@ -11,6 +11,9 @@ def inspect(root):
     def blob(p):return subprocess.check_output(['git','show',base+':'+p],cwd=root)
     def sha(b):return hashlib.sha256(b).hexdigest()
     freeze=json.loads((root/'docs/analysis/sci_md_rheology_005/FREEZE.json').read_text())
+    # SCI-MD-RHEOLOGY-005's contemporaneous runtime record, never the live lock.
+    historical_pin=json.loads(blob('dependencies/puckworks.lock.json'))['checkout_commit']
+    if historical_pin!='fc61c4670ec7bf801e40bb391aab16048b8da26b':errors.append('historical 005 runtime commit changed')
     successor = root/'docs/analysis/sci_md_rheology_006/FREEZE.json'
     accepted005 = 'db705b644bbc2c3f719690448657e845f2a8f65b'
     if successor.exists():
