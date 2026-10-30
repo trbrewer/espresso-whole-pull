@@ -3,6 +3,8 @@ import json
 import math
 from pathlib import Path
 import sys
+import struct
+import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -108,6 +110,46 @@ class DemonstrationTests(unittest.TestCase):
         self.assertEqual(first["accuracy_grade"],second["accuracy_grade"])
         self.assertEqual(first["peak_grade"],second["peak_grade"])
         self.assertEqual(first["slope_grade"],second["slope_grade"])
+
+    def test_first_drip_clocks_do_not_subtract_stable_offset_twice(self):
+        row=D.onset_clocks("sample",6.,8.,12.,15.)
+        self.assertEqual(row["solver_first_drip_source_elapsed_s"],20.)
+        self.assertEqual(row["observed_onset_source_elapsed_s"],23.)
+        self.assertEqual(row["solver_first_drip_stable_s"],12.)
+        self.assertEqual(row["solver_minus_observed_s"],-3.)
+        rows=[row,D.onset_clocks("other",6.,2.,10.,11.),D.onset_clocks("third",6.,4.,30.,22.)]
+        summary=D.summarize_first_drip(rows)[0]
+        self.assertEqual((summary["solver_median_s"],summary["solver_min_s"],summary["solver_max_s"]),(12.,10.,30.))
+        self.assertEqual((summary["difference_median_s"],summary["difference_min_s"],summary["difference_max_s"]),(-1.,-3.,8.))
+
+    def test_sanity_uses_only_numerical_limits(self):
+        cfg=D.case_config(self.params,self.early,6.)
+        c=dict(outlet_flow_m3_s=D.np.array([0.,10/965000,10/965000]),
+            cup_water_mass_kg=D.np.array([0.,.001,.002]),inlet_pressure_Pa=D.np.full(3,6e5),
+            min_saturation=D.np.ones(3),cumulative_inlet_water_mass_kg=D.np.full(3,.01),
+            liquid_balance_residual_kg=D.np.zeros(3),solute_balance_residual_kg=D.np.zeros(3),
+            first_drip_s=D.np.array([-1.,35.,35.]))
+        keys=("finite_values","nonnegative_outlet_flow","positive_e1_multiplier","liquid_balance","solute_balance")
+        self.assertTrue(all(D.numerical_values(c,cfg)[k] for k in keys))
+        for column,value,key in (("outlet_flow_m3_s",-1e-9,"nonnegative_outlet_flow"),
+                                 ("cup_water_mass_kg",float("nan"),"finite_values"),
+                                 ("inlet_pressure_Pa",1e20,"positive_e1_multiplier"),
+                                 ("liquid_balance_residual_kg",2e-9,"liquid_balance"),
+                                 ("solute_balance_residual_kg",2e-10,"solute_balance")):
+            bad={k:v.copy() for k,v in c.items()};bad[column][-1]=value
+            self.assertFalse(D.numerical_values(bad,cfg)[key])
+
+    def test_binary_field_checks_decode_values_before_searching_for_nan(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root=Path(temporary);folder=root/"processor0/100";folder.mkdir(parents=True)
+            field=folder/"permeability"
+            finite_bytes=b"nan\x00\x00\x00\xf0?"
+            self.assertTrue(math.isfinite(struct.unpack("<d",finite_bytes)[0]))
+            field.write_bytes(b"internalField nonuniform List<scalar>\n1\n("+finite_bytes+b");")
+            (folder/"e1WholeBedMultiplier").write_text("internalField uniform 0.2;")
+            self.assertTrue(D.final_field_sanity(root)["finite_values"])
+            field.write_bytes(b"internalField nonuniform List<scalar>\n1\n("+struct.pack("<d",float("nan"))+b");")
+            self.assertFalse(D.final_field_sanity(root)["finite_values"])
 
 
 if __name__ == "__main__":

@@ -8,9 +8,11 @@ import argparse
 import csv
 import hashlib
 import importlib.metadata
+import io
 import json
 from pathlib import Path
 import random
+import re
 import sys
 
 import numpy as np
@@ -285,6 +287,74 @@ def trace_flow(path, density):
     return values[:,0],values[:,1]
 
 
+def numerical_values(columns,cfg):
+    """Owner's numerical checks only; no first-drip or endpoint plausibility limits."""
+    p=cfg["e1_whole_bed_closure"]
+    mass=np.r_[0.,columns["cup_water_mass_kg"][:-1]]*1000.
+    with np.errstate(over="ignore",under="ignore",invalid="ignore"):
+        multiplier=(np.exp(-p["onsetCS"]*p["earlyPressureBar"]**(-p["onsetN"])/p["tauS"])
+            *np.exp(-np.maximum(columns["inlet_pressure_Pa"]/1e5,0.)/p["pstarBar"])
+            /np.exp(np.exp(-mass/p["mcG"])))
+    active=np.r_[False,columns["min_saturation"][:-1]>=1.]
+    water_limit=max(1e-9,1e-8*columns["cumulative_inlet_water_mass_kg"][-1])
+    initial=cfg["coffee_bed"]["dry_dose_kg"]*cfg["coffee_bed"]["initial_extractable_fraction_dry_basis"]
+    solute_limit=max(1e-10,1e-8*initial)
+    return dict(finite_values=bool(all(np.isfinite(v).all() for v in columns.values())),
+        nonnegative_outlet_flow=bool((columns["outlet_flow_m3_s"]>=0.).all()),
+        positive_e1_multiplier=bool(np.isfinite(multiplier[active]).all() and (multiplier[active]>0.).all()),
+        liquid_balance=bool(np.max(np.abs(columns["liquid_balance_residual_kg"]))<=water_limit),
+        solute_balance=bool(np.max(np.abs(columns["solute_balance_residual_kg"]))<=solute_limit),
+        minimum_active_e1_multiplier=float(multiplier[active].min()) if active.any() else None)
+
+
+def final_field_sanity(case):
+    """Decode saved binary fields before checking finiteness; bytes are not text."""
+    finite=True;positive=True;files=0;values=0
+    for proc in case.glob("processor[0-9]*"):
+        times=[p for p in proc.iterdir() if p.is_dir() and p.name.replace(".","",1).isdigit()]
+        final=max(times,key=lambda p:float(p.name))
+        for path in final.iterdir():
+            if not path.is_file():continue
+            raw=path.read_bytes();files+=1;position=0;ascii_parts=[]
+            for match in re.finditer(rb"nonuniform List<(scalar|vector)>\s+(\d+)\s*\(",raw):
+                count=int(match[2])*(3 if match[1]==b"vector" else 1)
+                data=np.frombuffer(raw,dtype="<f8",count=count,offset=match.end());values+=count
+                finite=finite and bool(np.isfinite(data).all())
+                if path.name=="e1WholeBedMultiplier":positive=positive and bool((data>0.).all())
+                ascii_parts.append(raw[position:match.end()]);position=match.end()+count*8
+            ascii_parts.append(raw[position:]);ascii_data=b"".join(ascii_parts)
+            finite=finite and re.search(rb"\b(?:nan|inf)\b",ascii_data,re.I) is None
+            if path.name=="e1WholeBedMultiplier":
+                match=re.search(rb"internalField\s+uniform\s+([^;]+);",ascii_data)
+                if match:positive=positive and float(match[1])>0.
+    return dict(finite_values=finite,positive_e1_multiplier=positive,
+                final_field_files=files,decoded_scalar_values=values)
+
+
+def numerical_sanity(work,record):
+    case=work/record["run"];path=case/"postProcessing/wholePull/0/traces.csv"
+    raw=path.read_bytes();header,first=raw.splitlines()[:2]
+    names=header.decode().split(",");indices=[]
+    for i,value in enumerate(first.decode().split(",")):
+        try:float(value)
+        except ValueError:continue  # Named model/closure columns.
+        indices.append(i)
+    data=np.loadtxt(io.BytesIO(raw),delimiter=",",skiprows=1,usecols=indices)
+    columns=dict(zip((names[i] for i in indices),data.T))
+    config=work/(record["run"]+".json")
+    checks=numerical_values(columns,json.loads(config.read_text()))
+    fields=final_field_sanity(case)
+    checks["finite_values"]=checks["finite_values"] and fields["finite_values"]
+    checks["positive_e1_multiplier"]=checks["positive_e1_multiplier"] and fields["positive_e1_multiplier"]
+    checks["trace_hash"]=hashlib.sha256(raw).hexdigest()==record["trace_sha256"]
+    checks["config_hash"]=digest(config)==record["config_sha256"]
+    checks.update({k:fields[k] for k in ("final_field_files","decoded_scalar_values")})
+    if not all(checks[k] for k in ("finite_values","nonnegative_outlet_flow","positive_e1_multiplier",
+                                   "liquid_balance","solute_balance","trace_hash","config_hash")):
+        raise ValueError("Numerical sanity failure: "+record["run"]+" "+json.dumps(checks))
+    return checks
+
+
 def score_predictions(inputs, endpoints, traces, pressure_end):
     conditions=np.array([r["nominal_pressure_bar"] for r in inputs])
     target=np.array([r["observed_endpoint_g_s"] for r in inputs])
@@ -331,6 +401,64 @@ def output_index(case):
                 native_checksum_index_sha256=digest(path))
 
 
+def onset_clocks(brew, pressure, stable_elapsed, solver_first_drip, observed_onset):
+    """The prescribed source histories already start on B0c's stable clock."""
+    return dict(brew=brew,nominal_pressure_bar=pressure,
+        stable_pressure_elapsed_from_first_record_s=stable_elapsed,
+        solver_clock="seconds since stable pressure",observed_clock="seconds since stable pressure",
+        solver_first_drip_simulation_s=solver_first_drip,
+        solver_first_drip_source_elapsed_s=stable_elapsed+solver_first_drip,
+        observed_onset_source_elapsed_s=stable_elapsed+observed_onset,
+        solver_first_drip_stable_s=solver_first_drip,observed_onset_stable_s=observed_onset,
+        solver_minus_observed_s=solver_first_drip-observed_onset,
+        disposition="DESCRIPTIVE_UNGRADED")
+
+
+def summarize_first_drip(rows):
+    summary=[]
+    for pressure in sorted({r["nominal_pressure_bar"] for r in rows}):
+        group=[r for r in rows if r["nominal_pressure_bar"]==pressure]
+        record=dict(nominal_pressure_bar=pressure,brews=len(group),clock="seconds since stable pressure",
+                    disposition="DESCRIPTIVE_UNGRADED")
+        for label,key in (("solver","solver_first_drip_stable_s"),
+                          ("observed","observed_onset_stable_s"),("difference","solver_minus_observed_s")):
+            values=[r[key] for r in group]
+            record.update({label+"_median_s":float(np.median(values)),
+                           label+"_min_s":float(min(values)),label+"_max_s":float(max(values))})
+        summary.append(record)
+    return summary
+
+
+def first_drip_comparison(inputs,histories,puckworks,raw):
+    """Read the original timestamps; no onset or clock enters a model input."""
+    if raw is None:
+        raise ValueError("Report requires --raw to verify the descriptive onset clocks")
+    from puckworks.analysis import pressure_peak_stage_b0 as B
+    rows=[]
+    for source in inputs:
+        original=raw/"measurements_time_dependent"/(source["brew"]+".txt")
+        if digest(original)!=source["original_sha256"]:
+            raise ValueError("Original trace identity changed: "+source["brew"])
+        t,p,_,_=B.raw_trace(original)
+        use=(t>=0)&(t<=100)
+        # The documented export truncates before interpolation and writes five decimals.
+        reproduced=np.round(np.interp(source["times_s"],t[use],p[use]),5)
+        if not np.array_equal(reproduced,np.asarray(source["pressure_bar"])):
+            raise ValueError("Prescribed-history stable clock not reproduced: "+source["brew"])
+        rows.append(onset_clocks(source["brew"],source["nominal_pressure_bar"],float(-t[0]),
+            histories[source["brew"]]["first_drip_s"],source["observed_onset_for_scoring_only_s"]))
+    saved=[r for r in V.records(puckworks/V.ONSET) if r["check"]=="condition onset"
+           and r["pressure view"]=="RAW PRIMARY" and float(r["threshold scale"])==1.]
+    for ref in saved:
+        group=[r for r in rows if r["nominal_pressure_bar"]==float(ref["pressure condition bar"])]
+        for key,column in (("stable_pressure_elapsed_from_first_record_s","stable elapsed mean s"),
+                           ("observed_onset_source_elapsed_s","outflow elapsed mean s"),
+                           ("observed_onset_stable_s","delay mean s")):
+            if not np.isclose(np.mean([r[key] for r in group]),float(ref[column]),atol=1e-12,rtol=0):
+                raise ValueError("B0c onset-clock aggregate differs: "+column)
+    return rows,summarize_first_drip(rows)
+
+
 def generate_report(args):
     params, early=V.saved_inputs(args.puckworks)
     sys.path.insert(0,str(args.puckworks))
@@ -343,7 +471,13 @@ def generate_report(args):
         raise ValueError("Demonstration run set incomplete or differs from declared sweep")
     if not all(r["balances_and_bounds_qualified"] for r in records):
         raise ValueError("A native run exceeds existing balance/boundedness limits")
+    for record in records:
+        record["numerical_sanity"]=numerical_sanity(args.work,record)
+        print("NUMERICAL_SANITY",record["run"],"qualified",flush=True)
+    onset_rows,onset_summary=first_drip_comparison(inputs,histories,args.puckworks,args.raw)
     args.out.mkdir(parents=True,exist_ok=True)
+    V.write_csv(args.out/"FIRST_DRIP_BY_BREW.csv",onset_rows)
+    V.write_csv(args.out/"FIRST_DRIP_BY_PRESSURE.csv",onset_summary)
     density=json.loads((V.ROOT/"config/reference_R0.json").read_text())["liquid"]["density_kg_m3"]
     constant_predictions={}; constant_traces={}; differences=[]
     for p,r in sorted(constant.items()):
@@ -410,12 +544,19 @@ def generate_report(args):
         hardware="AMD Ryzen Threadripper 3990X; 64 physical cores; 251 GiB RAM; 32 MPI ranks per case",
         numerical_environment=dict(python=sys.version.split()[0],**{name:importlib.metadata.version(name)
             for name in ("numpy","scipy","numba","matplotlib")}),
+        numerical_sanity_checks=["finite values","nonnegative outlet flow","positive E1 multiplier",
+            "liquid/solute balances at existing G2 tolerances","trace/config integrity hashes"],
         bootstrap=dict(resamples=1000,seed=20261103,unit="whole brew, paired, equal condition weight; fixed predictions"),
         pressure_conventions=dict(primary="raw line mapped to inlet gauge pressure",
             constant_early_input="INTERPOLATED_INPUTS: median of saved training-fold pressure interpolants",
             history_early_input="median measured raw pressure over stable-clock 0–2 s; never observed onset",
             slope="nominal pressure for constant forcing; actual endpoint raw pressure for measured histories"),
         trace_observer="B0c 0.1-s observation grid; primary mask observed onset+2 s through 100 s, scoring only; secondary 5–100 s",
+        first_drip_comparison=dict(disposition="DESCRIPTIVE_UNGRADED",
+            observed_definition="B0c primary: mass above 0.5 g and flow above 0.1 g/s sustained for 2 s; interval start",
+            clock="Both native histories and B0c start at stable pressure; source elapsed = recorded stable elapsed + native time",
+            conversion="native stable time = (native time + recorded stable elapsed) - recorded stable elapsed; no second shift",
+            verification="All 56 source pressure exports reproduced exactly after documented truncation/rounding; all B0c onset-clock condition means reproduced"),
         source_datasets=["waszkiewicz2025/traces_per_brew","waszkiewicz2025/equilibrium_windows"],
         data_availability="FILES_INSPECTED: pinned aggregates, saved coefficients and original pressure/mass traces; duplicate alias excluded",
         source_attribution="Waszkiewicz et al. (2025), Zenodo 18046315, CC-BY-4.0",
@@ -430,7 +571,7 @@ def generate_report(args):
         runs=[dict(r,**output_index(args.work/r["run"])) for r in records])
     (args.out/"RUN_MANIFEST.json").write_text(json.dumps(manifest,indent=2)+"\n")
     plot_report(args,params,early,constant,observed)
-    write_summary(args,constant_score,history_score,python_score,manifest,differences)
+    write_summary(args,constant_score,history_score,python_score,manifest,differences,onset_summary)
     print("REPORT",json.dumps({k:v for k,v in manifest.items() if k in
         {"native_wall_seconds","native_core_hours","continuous_solver_peak_bar"}}),flush=True)
 
@@ -455,7 +596,7 @@ def plot_report(args,parameters,early,constant,observed):
     fig.savefig(args.out/"FIGURE.png",dpi=180);plt.close(fig)
 
 
-def write_summary(args,constant,history,python,manifest,differences):
+def write_summary(args,constant,history,python,manifest,differences,onsets):
     def band(v):return f"[{v[0]:.4f}, {v[1]:.4f}]"
     def row(name,s):
         return (f"| {name} | {s['endpoint_rmse_g_s']:.3f} ({s['endpoint_change_percent']:+.1f}%) | "
@@ -478,12 +619,17 @@ def write_summary(args,constant,history,python,manifest,differences):
     next_step=("Owner: consider **use the E1 permeability (M=0) during wetting**; the start-up offset exceeds 0.05 g/s in the 4–8 bar region. This is a candidate change only, not implemented here."
         if abs(largest["startup_offset_g_s"])>.05 else
         "Owner: review whether the retained peak-location limitation is acceptable for this capability use before authorizing any further solver work.")
+    pressures=lambda rows:", ".join(format(r["nominal_pressure_bar"],"g") for r in rows) or "none"
+    overlaps=[r for r in onsets if r["solver_min_s"]<=r["observed_max_s"] and r["solver_max_s"]>=r["observed_min_s"]]
+    earlier=[r for r in onsets if r["solver_max_s"]<r["observed_min_s"]]
+    middle=[r["observed_median_s"] for r in onsets if 3.5<=r["nominal_pressure_bar"]<=6]
+    highest=next(r["observed_median_s"] for r in onsets if r["nominal_pressure_bar"]==13)
     text=f'''# E1 capability demonstration
 
 **capability demonstration, not validation. PHYSICAL_VALIDATION=NOT_ESTABLISHED.**
-SOURCE_SCENARIO_CHANGE_ONLY; retrospective, TARGET_EXPOSED: transferred componentwise medians combine saved fits exposed to these brews. No refitting, parameter/tolerance changes or solver changes.
+SOURCE_SCENARIO_CHANGE_ONLY; TARGET_EXPOSED: transferred medians combine fits exposed to these brews. No refitting.
 
-{len(manifest['constant_pressures_bar'])} constant-pressure cases + 56 individual histories; dry R0 geometry, raw line → inlet gauge pressure, 100-s stable clock, 0.0025 s, 32 ranks, sequential. Flow is ρQ×1000 g/s. Balance/boundedness checks meet existing limits.
+{len(manifest['constant_pressures_bar'])} constant cases + 56 histories; R0, raw line → inlet gauge pressure, 100-s stable clock, 0.0025-s steps, 32 ranks sequentially. Numerical sanity checks qualify.
 
 | Forcing | Endpoint RMSE (% vs B1), g/s | Trace RMSE: primary / full window, g/s | Accuracy | Nominal peak [95%], bar | Slope ≥9 bar [95%], g/s/bar |
 |---|---|---|---|---|---|
@@ -491,20 +637,22 @@ SOURCE_SCENARIO_CHANGE_ONLY; retrospective, TARGET_EXPOSED: transferred componen
 {row('Measured histories',history)}
 | B0c B1 reference | {history['b1_endpoint_rmse_g_s']:.3f} | {history['b1_trace_rmse_g_s']:.3f} / {history['b1_startup_inclusive_trace_rmse_g_s']:.3f} | N/A (reference) | — | — |
 
-Unchanged bands: accuracy ±0.25 g/s; slope wholly negative, overlapping [−0.0880, −0.0403]; peak 5–7 bar, or 4/8 bar NEAR. Paired, condition-balanced whole-brew resampling of fixed predictions: 1,000 draws, seed 20261103. Constant-forcing response intervals have zero width, excluding parameter/model uncertainty. Primary trace support: observed onset+2 to 100 s. Secondary, ungraded 5–100 s score: **includes start-up; Python E1 has no wetting phase**. B1 uses the identical two masks. Observed onset defines the scoring window only; it is never a model input, parameter or endpoint-grade input. [Full scores](GRADES.csv).
+Owner’s bands unchanged. Intervals: 1,000 paired, condition-balanced whole-brew resamples, seed 20261103; fixed predictions, zero-width constant-forcing response intervals. Primary trace: observed onset+2 through 100 s; secondary 5–100 s, ungraded: **includes start-up; Python E1 has no wetting phase**. B1 uses identical masks. Observed onset defines the scoring window only; it is never a model input, parameter or endpoint-grade input. [Full scores](GRADES.csv).
 
 ![Observed endpoint flow, solver sweep, Python E1 and the 5–7 bar band](FIGURE.png)
 
-After accounting for wetting, constant-case CFD and Python differ by at most {np.max(np.abs(remainder)):.5f} g/s (geometry/discretisation remainder). The continuous solver peak is **{peak_text}**, versus observed **6.1 [5.9, 6.3] bar**, using a quadratic through the highest sweep point and its neighbors; this descriptive comparison leaves nominal grades unchanged. Measured histories change endpoint RMSE from {constant['endpoint_rmse_g_s']:.3f} to {history['endpoint_rmse_g_s']:.3f} g/s.
-Including start-up makes the solver-minus-B1 trace-RMSE difference {trace_gap_change(constant)} for constant forcing and {trace_gap_change(history)} for histories (larger means worse relative to B1); the endpoint wetting-offset analysis below isolates the remaining start-up effect at 100 s.
+After the wetting offset, CFD reproduces constant-pressure Python flow within {np.max(np.abs(remainder)):.5f} g/s. The solver peak remains late: three-point quadratic interpolation gives **{peak_text}**, versus observed **6.1 [5.9, 6.3] bar**. Measured histories change endpoint RMSE from {constant['endpoint_rmse_g_s']:.3f} to {history['endpoint_rmse_g_s']:.3f} g/s.
+Including start-up makes the solver-minus-B1 trace-RMSE gap {trace_gap_change(constant)} (constant) and {trace_gap_change(history)} (histories); the wetting-offset split below isolates its 100-s effect.
 
-Wetting uses R0 permeability (1.77e-15 m²); E1 starts only at `e1Enabled && saturatedAtStepStart`. First drip equals full saturation in this sharp-front model. Delaying Python with M=0/zero flow until saturation explains {fraction:.1f}% of the summed absolute nominal-pressure difference (offset {offsets.min():+.5f} to {offsets.max():+.5f} g/s); the largest 4–8 bar offset is {largest['startup_offset_g_s']:+.5f} g/s at {largest['pressure_bar']:g} bar. [Every run, saturation and M(100)](ENDPOINTS.csv); [decomposition](PYTHON_SOLVER_DIFFERENCES.csv).
+Wetting uses R0 permeability (1.77e-15 m²); E1 starts only at `e1Enabled && saturatedAtStepStart`. Delayed Python (M=0/zero flow until saturation) explains {fraction:.1f}% of the summed absolute nominal-pressure gap; the largest 4–8 bar offset is {largest['startup_offset_g_s']:+.5f} g/s at {largest['pressure_bar']:g} bar. [Endpoints, saturation and M(100)](ENDPOINTS.csv); [start-up split](PYTHON_SOLVER_DIFFERENCES.csv).
 
-Early-pressure inputs: saved training-fold interpolants for constant cases (**INTERPOLATED_INPUTS**), measured 0–2-s pressure medians for histories. Measured onset is never an input.
+On the common stable-pressure clock, sharp-front first-drip ranges overlap observed onset at {pressures(overlaps)} bar but are earlier at {pressures(earlier)} bar; observed medians are {min(middle):.1f}–{max(middle):.1f} s at 3.5–6 bar, rising to {highest:.1f} s at 13 bar ([ungraded comparison](FIRST_DRIP_BY_PRESSURE.csv); [clocks](FIRST_DRIP_BY_BREW.csv)).
+
+Early-pressure inputs: training-fold interpolants (**INTERPOLATED_INPUTS**) for constant cases; measured 0–2-s medians for histories.
 
 **Recommended next step:** {next_step}
 
-Native compute: {manifest['native_wall_seconds']/3600:.3f} h sequential / {manifest['native_core_hours']:.2f} core-hours (preparation/analysis excluded). [Manifest; native evidence retained outside Git](RUN_MANIFEST.json). Waszkiewicz et al. (2025), [Zenodo 18046315](https://doi.org/10.5281/zenodo.18046315), CC-BY-4.0; Puckworks `{V.PIN[:8]}` [B0c folds](https://github.com/trbrewer/puckworks/blob/{V.PIN}/{V.CSV}) / [scorecard](https://github.com/trbrewer/puckworks/blob/{V.PIN}/docs/research/PRESSURE_PEAK_SCORECARD/SUMMARY.md).
+Native compute: {manifest['native_wall_seconds']/3600:.3f} h / {manifest['native_core_hours']:.2f} core-hours. [Manifest; native outputs outside Git](RUN_MANIFEST.json). Waszkiewicz et al. (2025), [Zenodo 18046315](https://doi.org/10.5281/zenodo.18046315), CC-BY-4.0; Puckworks `{V.PIN[:8]}` [B0c](https://github.com/trbrewer/puckworks/blob/{V.PIN}/{V.CSV}) / [scorecard bands](https://github.com/trbrewer/puckworks/blob/{V.PIN}/docs/research/PRESSURE_PEAK_SCORECARD/SUMMARY.md).
 '''
     (args.out/"SUMMARY.md").write_text(text)
 
