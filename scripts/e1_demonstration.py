@@ -458,9 +458,14 @@ def plot_report(args,parameters,early,constant,observed):
 def write_summary(args,constant,history,python,manifest,differences):
     def band(v):return f"[{v[0]:.4f}, {v[1]:.4f}]"
     def row(name,s):
-        return (f"| {name} | {s['endpoint_rmse_g_s']:.3f} ({s['endpoint_change_percent']:+.1f}%) / {s['trace_rmse_g_s']:.3f} | "
+        return (f"| {name} | {s['endpoint_rmse_g_s']:.3f} ({s['endpoint_change_percent']:+.1f}%) | "
+            f"{s['trace_rmse_g_s']:.3f} / {s['startup_inclusive_trace_rmse_g_s']:.3f} | "
             f"{s['accuracy_grade']} ({s['comparison']}) | {s['peak']:g} {s['peak_interval']} — {s['peak_grade']} | "
             f"{s['slope']:.4f} {band(s['slope_interval'])} — {s['slope_grade']} |")
+    def trace_gap_change(s):
+        change=(s['startup_inclusive_trace_rmse_g_s']-s['b1_startup_inclusive_trace_rmse_g_s']
+                -s['trace_rmse_g_s']+s['b1_trace_rmse_g_s'])
+        return f"{abs(change):.3f} g/s {'larger' if change >= 0 else 'smaller'}"
     nominal=[r for r in differences if r["forcing"]=="constant"]
     offsets=np.array([r["startup_offset_g_s"] for r in nominal]); remainder=np.array([r["remainder_g_s"] for r in nominal])
     total=np.array([r["total_difference_g_s"] for r in nominal])
@@ -480,17 +485,18 @@ SOURCE_SCENARIO_CHANGE_ONLY; retrospective, TARGET_EXPOSED: transferred componen
 
 {len(manifest['constant_pressures_bar'])} constant-pressure cases + 56 individual histories; dry R0 geometry, raw line → inlet gauge pressure, 100-s stable clock, 0.0025 s, 32 ranks, sequential. Flow is ρQ×1000 g/s. Balance/boundedness checks meet existing limits.
 
-| Forcing | Endpoint RMSE (% vs B1) / trace RMSE, g/s | Accuracy | Nominal peak [95%], bar | Slope ≥9 bar [95%], g/s/bar |
-|---|---|---|---|---|
+| Forcing | Endpoint RMSE (% vs B1), g/s | Trace RMSE: primary / full window, g/s | Accuracy | Nominal peak [95%], bar | Slope ≥9 bar [95%], g/s/bar |
+|---|---|---|---|---|---|
 {row('Constant',constant)}
 {row('Measured histories',history)}
-| B0c B1 reference | {history['b1_endpoint_rmse_g_s']:.3f} / {history['b1_trace_rmse_g_s']:.3f} | N/A (reference) | — | — |
+| B0c B1 reference | {history['b1_endpoint_rmse_g_s']:.3f} | {history['b1_trace_rmse_g_s']:.3f} / {history['b1_startup_inclusive_trace_rmse_g_s']:.3f} | N/A (reference) | — | — |
 
-Unchanged bands: accuracy ±0.25 g/s; slope wholly negative, overlapping [−0.0880, −0.0403]; peak 5–7 bar, or 4/8 bar NEAR. Paired, condition-balanced whole-brew resampling of fixed predictions: 1,000 draws, seed 20261103. Constant-forcing response intervals have zero width, excluding parameter/model uncertainty. Trace support: observed onset+2 to 100 s, as a scoring mask only; the full 5–100 s score is separate. [Full scores](GRADES.csv).
+Unchanged bands: accuracy ±0.25 g/s; slope wholly negative, overlapping [−0.0880, −0.0403]; peak 5–7 bar, or 4/8 bar NEAR. Paired, condition-balanced whole-brew resampling of fixed predictions: 1,000 draws, seed 20261103. Constant-forcing response intervals have zero width, excluding parameter/model uncertainty. Primary trace support: observed onset+2 to 100 s. Secondary, ungraded 5–100 s score: **includes start-up; Python E1 has no wetting phase**. B1 uses the identical two masks. Observed onset defines the scoring window only; it is never a model input, parameter or endpoint-grade input. [Full scores](GRADES.csv).
 
 ![Observed endpoint flow, solver sweep, Python E1 and the 5–7 bar band](FIGURE.png)
 
 After accounting for wetting, constant-case CFD and Python differ by at most {np.max(np.abs(remainder)):.5f} g/s (geometry/discretisation remainder). The continuous solver peak is **{peak_text}**, versus observed **6.1 [5.9, 6.3] bar**, using a quadratic through the highest sweep point and its neighbors; this descriptive comparison leaves nominal grades unchanged. Measured histories change endpoint RMSE from {constant['endpoint_rmse_g_s']:.3f} to {history['endpoint_rmse_g_s']:.3f} g/s.
+Including start-up makes the solver-minus-B1 trace-RMSE difference {trace_gap_change(constant)} for constant forcing and {trace_gap_change(history)} for histories (larger means worse relative to B1); the endpoint wetting-offset analysis below isolates the remaining start-up effect at 100 s.
 
 Wetting uses R0 permeability (1.77e-15 m²); E1 starts only at `e1Enabled && saturatedAtStepStart`. First drip equals full saturation in this sharp-front model. Delaying Python with M=0/zero flow until saturation explains {fraction:.1f}% of the summed absolute nominal-pressure difference (offset {offsets.min():+.5f} to {offsets.max():+.5f} g/s); the largest 4–8 bar offset is {largest['startup_offset_g_s']:+.5f} g/s at {largest['pressure_bar']:g} bar. [Every run, saturation and M(100)](ENDPOINTS.csv); [decomposition](PYTHON_SOLVER_DIFFERENCES.csv).
 
