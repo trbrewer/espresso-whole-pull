@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1475,
-  "total_uncompressed_bytes_excluding_manifest": 27001009,
-  "aggregate_source_sha256": "4e3ef46f81704bcff3f51bbd0fc51ead75441e4362276e56238757d2ac120726",
-  "aggregate_sha256": "4e3ef46f81704bcff3f51bbd0fc51ead75441e4362276e56238757d2ac120726",
+  "file_count": 1483,
+  "total_uncompressed_bytes_excluding_manifest": 27306970,
+  "aggregate_source_sha256": "2a2b43caaeda15daaf4e10301e23dad2b789e48578d6d3583c57ef5f2eec479a",
+  "aggregate_sha256": "2a2b43caaeda15daaf4e10301e23dad2b789e48578d6d3583c57ef5f2eec479a",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -4513,6 +4513,46 @@
       "bytes": 1352,
       "git_mode": "100644"
     },
+    "docs/demonstrations/E1_CAPABILITY/ENDPOINTS.csv": {
+      "sha256": "85f50c7beae5081136839e575433306d51781f05cc9fea9aa6456e50dad6245a",
+      "bytes": 22542,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/E1_CAPABILITY/FIGURE.png": {
+      "sha256": "ae1e8b677da48971525c339b9b342543cce33f7f3cc760f99d875673022a4097",
+      "bytes": 98494,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/E1_CAPABILITY/FIRST_DRIP_BY_BREW.csv": {
+      "sha256": "e5fade6de0abb3ac48324604261867cdc51dd1a9bede26d418c6f278a96d8083",
+      "bytes": 10964,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/E1_CAPABILITY/FIRST_DRIP_BY_PRESSURE.csv": {
+      "sha256": "5eeb90a6b3b5a5f49cf618d476afc8829fd7461040dfea066b8632de1b4a1342",
+      "bytes": 2414,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/E1_CAPABILITY/GRADES.csv": {
+      "sha256": "89d3da83b515096b5faefcfefc83f598c67718f6b6fd67f9312ae81553468ac0",
+      "bytes": 3936,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/E1_CAPABILITY/PYTHON_SOLVER_DIFFERENCES.csv": {
+      "sha256": "a222ffc4f9ff613c8c94392bb6703ac3e369253e6343b0d5b8c96d9dc68d1a87",
+      "bytes": 3495,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/E1_CAPABILITY/RUN_MANIFEST.json": {
+      "sha256": "ed82efc5ad40ccc8cbc67008b63cf6687465e764ce7094e04695d607ef90df33",
+      "bytes": 160590,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/E1_CAPABILITY/SUMMARY.md": {
+      "sha256": "e8e59a8aff72f1c629a40f427aff6b586f72b2f57d1fd7d0ab00c5054fd9bce9",
+      "bytes": 3494,
+      "git_mode": "100644"
+    },
     "docs/evidence/puckworks_base_temporal_cv/figures/temporal_conservation_checks.png": {
       "sha256": "9336facc0d5a09b216904759c3942c70768d56f2f533d512a33096ce1822e778",
       "bytes": 47554,
@@ -5559,8 +5599,8 @@
       "git_mode": "100755"
     },
     "scripts/e1_demonstration.py": {
-      "sha256": "555dac9bd28804f33702adc3678f9acc574be86ce86d2f53e6adf063c2ec4922",
-      "bytes": 43008,
+      "sha256": "023a1609dd4a457a7131cffe139390d35b89b338498e8b1fdc609f90f5341087",
+      "bytes": 43040,
       "git_mode": "100755"
     },
     "scripts/e1_verification.py": {

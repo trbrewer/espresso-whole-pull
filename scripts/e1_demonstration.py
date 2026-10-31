@@ -641,10 +641,10 @@ Owner’s bands unchanged. Intervals: 1,000 paired, condition-balanced whole-bre
 
 ![Observed endpoint flow, solver sweep, Python E1 and the 5–7 bar band](FIGURE.png)
 
-After the wetting offset, CFD reproduces constant-pressure Python flow within {np.max(np.abs(remainder)):.5f} g/s. The solver peak remains late: three-point quadratic interpolation gives **{peak_text}**, versus observed **6.1 [5.9, 6.3] bar**. Measured histories change endpoint RMSE from {constant['endpoint_rmse_g_s']:.3f} to {history['endpoint_rmse_g_s']:.3f} g/s.
+After the wetting offset, the largest CFD–Python difference at nominal constant pressures is about {np.max(np.abs(remainder)):.2g} g/s. The solver peak remains late: three-point quadratic interpolation gives **{peak_text}**, versus observed **6.1 [5.9, 6.3] bar**. Measured histories change endpoint RMSE from {constant['endpoint_rmse_g_s']:.3f} to {history['endpoint_rmse_g_s']:.3f} g/s.
 Including start-up makes the solver-minus-B1 trace-RMSE gap {trace_gap_change(constant)} (constant) and {trace_gap_change(history)} (histories); the wetting-offset split below isolates its 100-s effect.
 
-Wetting uses R0 permeability (1.77e-15 m²); E1 starts only at `e1Enabled && saturatedAtStepStart`. Delayed Python (M=0/zero flow until saturation) explains {fraction:.1f}% of the summed absolute nominal-pressure gap; the largest 4–8 bar offset is {largest['startup_offset_g_s']:+.5f} g/s at {largest['pressure_bar']:g} bar. [Endpoints, saturation and M(100)](ENDPOINTS.csv); [start-up split](PYTHON_SOLVER_DIFFERENCES.csv).
+Wetting uses R0 permeability (1.77e-15 m²); E1 starts only at `e1Enabled && saturatedAtStepStart`. Delayed Python (M=0/zero flow until saturation) explains {fraction:.1f}% of the summed absolute nominal constant-pressure gap; the largest 4–8 bar offset is {largest['startup_offset_g_s']:+.5f} g/s at {largest['pressure_bar']:g} bar. [Endpoints, saturation and M(100)](ENDPOINTS.csv); [start-up split](PYTHON_SOLVER_DIFFERENCES.csv).
 
 On the common stable-pressure clock, sharp-front first-drip ranges overlap observed onset at {pressures(overlaps)} bar but are earlier at {pressures(earlier)} bar; observed medians are {min(middle):.1f}–{max(middle):.1f} s at 3.5–6 bar, rising to {highest:.1f} s at 13 bar ([ungraded comparison](FIRST_DRIP_BY_PRESSURE.csv); [clocks](FIRST_DRIP_BY_BREW.csv)).
 
