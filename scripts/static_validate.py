@@ -736,7 +736,7 @@ def main() -> None:
         # These scientific tests explicitly exercise numerical research arithmetic;
         # CI installs the pinned numerical environment. Production scripts retain
         # the standard-library entrypoint rule.
-        scientific_test = path.relative_to(root).as_posix() in ("scripts/e1_verification.py", "tests/test_sci_md_rheology_005.py", "tests/test_sci_md_rheology_006.py", "tests/test_sci_md_rheology_007.py", "tests/test_sci_md_rheology_008.py", "tests/test_sci_md_rheology_009.py", "tests/test_sci_md_rheology_010.py", "tests/test_sci_md_radial_obs_001.py", "tests/test_sci_md_rheology_011.py", "tests/test_sci_md_mo_spatial_pressure_feasibility_001.py")
+        scientific_test = path.relative_to(root).as_posix() in ("scripts/e1_verification.py", "scripts/e1_demonstration.py", "tests/test_sci_md_rheology_005.py", "tests/test_sci_md_rheology_006.py", "tests/test_sci_md_rheology_007.py", "tests/test_sci_md_rheology_008.py", "tests/test_sci_md_rheology_009.py", "tests/test_sci_md_rheology_010.py", "tests/test_sci_md_radial_obs_001.py", "tests/test_sci_md_rheology_011.py", "tests/test_sci_md_mo_spatial_pressure_feasibility_001.py")
         if third_party_re.search(text) and not scientific_test:
             third_party.append(str(path.relative_to(root)))
         if write_text_newline_re.search(text):
