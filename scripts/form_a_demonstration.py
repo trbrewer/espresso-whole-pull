@@ -117,7 +117,11 @@ def step_pair(args, bank):
 def normalize_xc(args, bank):
     values = []
     for pressure in [6., 9., 11.]:
-        result = run_constant(args, bank, pressure, args.dt, 'A1', forcing='xc-normalization')
+        # The completed step pair already supplies identical constant 6/11-bar runs.
+        # execute() verifies config, executable and trace hashes before reuse.
+        previous = args.work/(run_name('A1', 'step-study', pressure, args.dt)+'.result.json')
+        forcing = 'step-study' if previous.exists() else 'xc-normalization'
+        result = run_constant(args, bank, pressure, args.dt, 'A1', forcing=forcing)
         rows = E1.records(args.work/result['run']/'postProcessing/wholePull/0/traces.csv')
         values.append(dict(pressure_bar=pressure, xc=V.xc_at_mass(rows, bank['DESCRIPTIVE_ALL']['mcG']),
             run=result['run'], trace_sha256=result['trace_sha256'], config_sha256=result['config_sha256']))

@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1490,
-  "total_uncompressed_bytes_excluding_manifest": 27365926,
-  "aggregate_source_sha256": "6b2e08381cdb4f020c88005c1b1f1c4f74a09fb28cea8128c422683b0a3419dc",
-  "aggregate_sha256": "6b2e08381cdb4f020c88005c1b1f1c4f74a09fb28cea8128c422683b0a3419dc",
+  "file_count": 1492,
+  "total_uncompressed_bytes_excluding_manifest": 27400297,
+  "aggregate_source_sha256": "25d689bac20ed0fa5f2ba218d04c77226a441682dc77713fcc255047054a630c",
+  "aggregate_sha256": "25d689bac20ed0fa5f2ba218d04c77226a441682dc77713fcc255047054a630c",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -4554,8 +4554,8 @@
       "git_mode": "100644"
     },
     "docs/demonstrations/FORM_A/PLAN.md": {
-      "sha256": "c54d6c7c276d8995b69dcb22ac9205acce34fed495e6b8b4f8de1cdf1ebde38b",
-      "bytes": 5156,
+      "sha256": "5510f5dfaf8148b8041f215a3dd4c9deecff344ec46f9ece5a4b0df1c1f75f1b",
+      "bytes": 5189,
       "git_mode": "100644"
     },
     "docs/demonstrations/FORM_A/VERIFICATION.json": {
@@ -5634,8 +5634,13 @@
       "git_mode": "100755"
     },
     "scripts/form_a_demonstration.py": {
-      "sha256": "a3475207517deee4900e5c38ef9d9d3ebbbd7ff3b6b40e2cc6bec32198083bd4",
-      "bytes": 14102,
+      "sha256": "501861cdc704a252c61e25bbbfd23579460b568be2cfbf19483bfb8e4338921f",
+      "bytes": 14425,
+      "git_mode": "100755"
+    },
+    "scripts/form_a_report.py": {
+      "sha256": "be04ffa362749439ef16713496ef4464ad91762b3774fa570b2143a282f2e36c",
+      "bytes": 31181,
       "git_mode": "100755"
     },
     "scripts/form_a_verification.py": {
@@ -6034,8 +6039,8 @@
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
-      "sha256": "fe70f4c0f6fd63cef9c13554a48d5593d48ae21980b8b87b63339b3150347910",
-      "bytes": 32882,
+      "sha256": "9678c4d10c4b20c7863324f86e83b183d4ffacdcda41fae0cbb2a215c2cd24b5",
+      "bytes": 32941,
       "git_mode": "100755"
     },
     "scripts/val_case_001.py": {
@@ -6516,6 +6521,11 @@
     "tests/test_form_a_demonstration.py": {
       "sha256": "11dc433986858aac3bb6a7b77b5223da81268dca2f7370574991904b066972ff",
       "bytes": 2411,
+      "git_mode": "100644"
+    },
+    "tests/test_form_a_report.py": {
+      "sha256": "69c2b3a553fd49e87cef279b1e218dfcde1ae8ee5bfe13e1a045ceb8d3758509",
+      "bytes": 2775,
       "git_mode": "100644"
     },
     "tests/test_form_a_whole_bed.py": {

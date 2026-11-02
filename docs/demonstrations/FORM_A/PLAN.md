@@ -37,7 +37,7 @@ regardless.
 
 **Files/checks.** Add `solver/espressoWholePullFoam/formAWholeBedClosure.H`;
 wire `espressoWholePullFoam.C`, `scripts/prepare_case.py`; add
-`scripts/form_a_verification.py`, `scripts/form_a_demonstration.py`,
+`scripts/form_a_verification.py`, `scripts/form_a_demonstration.py`, `scripts/form_a_report.py`,
 `tests/test_form_a*.py`. Check A0/Python parity and byte-identical disabled
 outputs against main; preserve E1 code/results. Update source manifest,
 lock/historical-hash compatibility, QA metadata, scientific-script allowlist, `dependencies/puckworks.lock.json` to current
@@ -53,7 +53,7 @@ for every arm, without an inventory gate. A1/A2 each run 56 histories plus
 8.25/8.5/8.75, deduplicated. Authenticate Waszkiewicz
 `traces_per_brew`/`equilibrium_windows`: 56 distinct brews,
 [Zenodo 18046315](https://doi.org/10.5281/zenodo.18046315), CC-BY-4.0;
-saved evidence/code inspected, raw authentication pending. Keep E1 R0 geometry,
+saved evidence/code inspected; all 56 raw-file hashes match E1. Keep E1 R0 geometry,
 stable clock, 100-s endpoint, masks (onset+2–100 s primary; 5–100 s secondary),
 1,000 paired condition-balanced whole-brew resamples, seed 20261103.
 No runtime caps; record core-hours; native outputs stay outside Git.
