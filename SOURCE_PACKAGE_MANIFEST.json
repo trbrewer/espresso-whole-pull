@@ -27,9 +27,9 @@
     "deterministically generated case dictionaries and case/0 fields"
   ],
   "file_count": 1484,
-  "total_uncompressed_bytes_excluding_manifest": 27312116,
-  "aggregate_source_sha256": "94d44065099426d35031e102e1fbe35eddcca1691b72f35cc59db06875992f21",
-  "aggregate_sha256": "94d44065099426d35031e102e1fbe35eddcca1691b72f35cc59db06875992f21",
+  "total_uncompressed_bytes_excluding_manifest": 27312473,
+  "aggregate_source_sha256": "95e5fe159dcaf6235f4bc9e9b077178e6355d3df4eb6ba422544a8ba9ea60f47",
+  "aggregate_sha256": "95e5fe159dcaf6235f4bc9e9b077178e6355d3df4eb6ba422544a8ba9ea60f47",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -4554,8 +4554,8 @@
       "git_mode": "100644"
     },
     "docs/demonstrations/FORM_A/PLAN.md": {
-      "sha256": "57cef01b309d2a1a2d1e2a92cc2e5448e245b3aa9714082d51799c1ebed50eef",
-      "bytes": 5146,
+      "sha256": "7d4013c3efdd9eab19da12faa52c05114ca7e3355491b561a773f5e221c2b0bf",
+      "bytes": 5503,
       "git_mode": "100644"
     },
     "docs/evidence/puckworks_base_temporal_cv/figures/temporal_conservation_checks.png": {
