@@ -32,7 +32,8 @@ cell X and uniform-X equivalence to whole-bed recovery at equivalent mass
 **Pre-run expectation.** The saved descriptive parameters give
 `argmax C_A = 5.998561 bar` (capacity 2.103899 g/s), so `t_wet ∝ 1/C_A` predicts
 fastest wetting near 6.00 bar, close to observed peak flow at 6.1 bar but above
-fastest wetting near 4.5 bar. Little pressure separation is expected; continue
+[C0's onset-only fit][c0] minimum at 4.55 bar (observed nominal minimum: 3.5 bar).
+Little pressure separation is expected; continue
 regardless.
 
 **Files/checks.** Add `solver/espressoWholePullFoam/formAWholeBedClosure.H`;
@@ -75,3 +76,4 @@ thermal physics, restart ratchet or new data.
 
 [d0]: https://github.com/trbrewer/puckworks/blob/dce84b22b99f114225eabb76f29014a5fc3efe5d/docs/research/PRESSURE_PEAK_STAGE_D0/RESULT_TABLE.csv
 [bands]: https://github.com/trbrewer/puckworks/blob/dce84b22b99f114225eabb76f29014a5fc3efe5d/docs/research/PRESSURE_PEAK_SCORECARD/SUMMARY.md
+[c0]: https://github.com/trbrewer/puckworks/blob/dce84b22b99f114225eabb76f29014a5fc3efe5d/docs/research/PRESSURE_PEAK_STAGE_C0/SUMMARY.md

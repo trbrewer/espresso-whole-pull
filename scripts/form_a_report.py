@@ -320,9 +320,12 @@ def generate_report(args):
         source_sha256={name:D.digest(ROOT/name) for name in
             ('solver/espressoWholePullFoam/espressoWholePullFoam.C','solver/espressoWholePullFoam/formAWholeBedClosure.H',
              'scripts/prepare_case.py','scripts/form_a_demonstration.py','scripts/form_a_report.py',
+             'scripts/form_a_verification.py','scripts/e1_demonstration.py','scripts/e1_verification.py',
              'config/reference_R0.json','dependencies/puckworks.lock.json')},
         inputs_sha256={name:D.digest(args.puckworks/name) for name in
-            (V.TABLE,E1.ONSET,'puckworks/data/waszkiewicz2025/traces_per_brew.csv',
+            (V.TABLE,E1.ONSET,'docs/research/PRESSURE_PEAK_STAGE_C0/RESULT_TABLE.csv',
+             'docs/research/PRESSURE_PEAK_STAGE_C0/SUMMARY.md',
+             'puckworks/data/waszkiewicz2025/traces_per_brew.csv',
              'puckworks/data/waszkiewicz2025/equilibrium_windows.csv')},
         source_datasets=['waszkiewicz2025/traces_per_brew','waszkiewicz2025/equilibrium_windows'],
         source_attribution='Waszkiewicz et al. (2025), Zenodo 18046315, CC-BY-4.0',
@@ -331,6 +334,9 @@ def generate_report(args):
         trace_observer='B0c 0.1-s grid; primary onset+2 through 100 s; secondary 5 through 100 s; scoring masks only',
         bootstrap=dict(resamples=RESAMPLES,seed=SEED,unit='Paired condition-balanced whole brews; fixed predictions'),
         continuous_peak_definition='Three-point bracketed interpolation of nominal-condition means; fixed-prediction whole-brew interval. Dense constant sweeps are reported separately; no parameter uncertainty is inferred.',
+        onset_pressure_reference=dict(c0_onset_only_fit_minimum_bar=4.55,
+            observed_nominal_median_minimum_bar=3.5,
+            source='PW PRESSURE_PEAK_STAGE_C0/RESULT_TABLE.csv and SUMMARY.md'),
         censoring='No first drip by 100 s is right-censored; onset RMSE then reports a lower bound',
         resolved_late_trends='Not scored: original D0 windows can extend beyond the E1 native 100-s support',
         scores=scores, python_held_out_score=python_score,
@@ -371,25 +377,29 @@ def plot_report(args, bank, inputs, constants, onsets):
         xlim=(.7,13.3), title='Form A endpoint flow')
     ax.grid(alpha=.18); ax.legend(fontsize=8, loc='lower right')
     fig.savefig(args.out/'ENDPOINT_FLOW.png', dpi=180); plt.close(fig)
-    fig, ax = plt.subplots(figsize=(8, 4.4), layout='constrained')
+    fig, axes = plt.subplots(1, 2, figsize=(10, 4.4), layout='constrained')
     sample = sorted([r for r in onsets if r['arm'] == 'A1'], key=lambda r:r['nominal_pressure_bar'])
     med = np.array([r['observed_median_s'] for r in sample])
     lower = np.array([r['observed_min_s'] for r in sample]); upper = np.array([r['observed_max_s'] for r in sample])
-    ax.errorbar(NOMINAL, med, yerr=[med-lower, upper-med], fmt='o-', color='#222222', capsize=3,
-        markersize=4, linewidth=1.1, label='Observed median and brew range')
-    for arm in ('E1','A1','A2'):
-        rows = sorted([r for r in onsets if r['arm'] == arm], key=lambda r:r['nominal_pressure_bar'])
-        y = [r['solver_median_s'] if r['solver_median_s'] is not None else np.nan for r in rows]
-        ax.plot(NOMINAL, y, 'o-', color=colors[arm], linewidth=1.4, markersize=3,
-            label=arm+'; history median')
-        for p, row in zip(NOMINAL, rows):
-            if row['solver_median_s'] is None:
-                ax.plot(p, row['solver_median_lower_bound_s'], marker='^', color=colors[arm], markersize=7)
-                ax.annotate(f">{row['solver_median_lower_bound_s']:.1f} s", (p, row['solver_median_lower_bound_s']), xytext=(7,5),
-                    textcoords='offset points', fontsize=8, color=colors[arm])
-    ax.set(xlabel='Nominal raw / inlet gauge pressure (bar)', ylabel='First drip on stable clock (s)',
-        xlim=(.7,13.3), ylim=(0,None), title='First drip versus pressure')
-    ax.grid(alpha=.18); ax.legend(fontsize=8, loc='upper right')
+    for ax in axes:
+        ax.errorbar(NOMINAL, med, yerr=[med-lower, upper-med], fmt='o-', color='#222222', capsize=3,
+            markersize=4, linewidth=1.1, label='Observed median and brew range')
+        for arm in ('E1','A1','A2'):
+            rows = sorted([r for r in onsets if r['arm'] == arm], key=lambda r:r['nominal_pressure_bar'])
+            y = [r['solver_median_s'] if r['solver_median_s'] is not None else np.nan for r in rows]
+            ax.plot(NOMINAL, y, 'o-', color=colors[arm], linewidth=1.4, markersize=3,
+                label=arm+'; history median')
+            if ax is axes[0]:
+                for p, row in zip(NOMINAL, rows):
+                    if row['solver_median_s'] is None:
+                        ax.plot(p, row['solver_median_lower_bound_s'], marker='^', color=colors[arm], markersize=7)
+                        ax.annotate(f">{row['solver_median_lower_bound_s']:.1f} s", (p, row['solver_median_lower_bound_s']), xytext=(7,5),
+                            textcoords='offset points', fontsize=8, color=colors[arm])
+        ax.set(xlabel='Nominal raw / inlet gauge pressure (bar)', ylabel='First drip on stable clock (s)')
+        ax.grid(alpha=.18)
+    axes[0].set(xlim=(.7,13.3), ylim=(0,None), title='First drip: full pressure range')
+    axes[0].legend(fontsize=8, loc='upper right')
+    axes[1].set(xlim=(3.2,13.3), ylim=(0,23), title='3.5–13 bar detail')
     fig.savefig(args.out/'FIRST_DRIP.png', dpi=180); plt.close(fig)
 
 
@@ -427,7 +437,9 @@ def write_summary(args, manifest, onsets):
     lines = ['# Form A whole-bed closure', '',
         '**capability demonstration, not validation. PHYSICAL_VALIDATION=NOT_ESTABLISHED; TARGET_EXPOSED.**', '',
         f"B1 endpoint/primary-trace RMSE: **{scores['A1']['b1_endpoint_rmse_g_s']:.3f}/{scores['A1']['b1_trace_rmse_g_s']:.3f} g/s**. "
-        'Observed flow peak: **6.1 [5.9, 6.3] bar**; fastest wetting: **about 4.5 bar**.', '',
+        'Observed flow peak: **6.1 [5.9, 6.3] bar**; '
+        f'[C0 onset-fit](https://github.com/trbrewer/puckworks/blob/{V.RUNTIME_COMMIT}/docs/research/PRESSURE_PEAK_STAGE_C0/SUMMARY.md) minimum: **4.55 bar** '
+        '(lowest observed nominal median: **3.5 bar**).', '',
         '| Arm | Endpoint/trace RMSE, g/s | Continuous response peak [95%], bar | Slope ≥9 bar, g/s/bar | Residuals at 1/2/3.5 bar, g/s | First-drip medians, s | Fastest wetting/peak flow, bar |',
         '|---|---|---|---|---|---|---|', *table, '',
         'First-drip order: **1, 2, 3.5, 4, 5, 6, 7, 8, 9, 11, 13 bar**. Observed medians: **'+onset_vector('A1',True)+' s**. '
@@ -438,7 +450,7 @@ def write_summary(args, manifest, onsets):
         f"**A0.** Correcting its wetting delay leaves at most {parity:.2g} g/s nominal-point difference from Python A. "
         'It isolates the transferred flow law; R0 wetting still accelerates as pressure rises.', '',
         f"**A1.** Fastest wetting is {scores['A1']['fastest_wetting_bar']:.3f} bar and peak flow is "
-        f"{scores['A1']['continuous_sweep_peak_bar']:.3f} bar. Compare that separation directly with observed 4.5 versus 6.1 bar; "
+        f"{scores['A1']['continuous_sweep_peak_bar']:.3f} bar. Compare that separation with the reference 4.55 versus 6.1 bar; "
         'recovery remains exp(-1) before outflow.', '',
         f"**A2.** Xc at 6/9/11 bar is **{xc_text}**; the 9-bar value is used without fitting. "
         f"Because X cannot exceed one, its recovery ceiling is {ceiling:.3f}; the peak shifts "
