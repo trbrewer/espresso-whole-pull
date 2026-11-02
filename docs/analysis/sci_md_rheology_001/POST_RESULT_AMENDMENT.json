@@ -2,7 +2,7 @@
   "change_declaration": "NO_GOVERNING_PHYSICS_CHANGE",
   "files": {
     "tools/sci_md_rheology_001/analysis.py": {
-      "amended_sha256": "d44249324c17de8aae0db1fe10b1a17ff8cef6d2278b9c29e84bf4a62b49c81d",
+      "amended_sha256": "c293da7aa3a8467c869d19b704501fa5bfaea8b97ccbb527a0d3a6490b3859b6",
       "original_sha256": "96d58269e0e88058833bab26bff3b381ef1a254ffaccf357a19e897f2761ff8a"
     },
     "tools/sci_md_rheology_001/report.py": {
@@ -18,6 +18,6 @@
   "original_candidate": "1c4d5dff1732b73894e60a611817e64b6c314efe",
   "original_freeze_sha256": "5565e1dba7aa4b2ddd93bbfa51c88b7d536d45f16380684553f3d4a9332d659e",
   "original_pre_result_commit": "a024ba82e08dc3aca5fca6b0fe3516e568a10e6d",
-  "scope": "Qualified imports in report and runner; check_freeze accepts only the explicitly hash-bound post-result deltas. Scientific functions, cases, inputs and results unchanged.",
+  "scope": "Qualified imports in report and runner; check_freeze accepts only the explicitly hash-bound post-result deltas. Scientific functions, cases, inputs and results unchanged. EWP-FORM-A-001 replaces removed NumPy trapz with NumPy trapezoid (SciPy equivalent on NumPy 1.26); frozen cases, inputs, numerical definition and results remain unchanged.",
   "timing": "POST_RESULT"
 }

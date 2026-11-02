@@ -1,5 +1,8 @@
 # Project State
 
+- E1: [capability demonstration complete](demonstrations/E1_CAPABILITY/SUMMARY.md); historical results retained.
+- FORM_A: [Phase 1 implemented; verification recorded](demonstrations/FORM_A/PLAN.md); A2 uses extracted-solid fraction with A1-derived Xc; campaigns remain Phase 2.
+
 ## SCI-MD-WASZ-RESTART-PRESSURE-ORDER-001 (2026-10-22)
 
 Completed G1 / NO_GOVERNING_PHYSICS_CHANGE, RESEARCH_ONLY / RETROSPECTIVE /

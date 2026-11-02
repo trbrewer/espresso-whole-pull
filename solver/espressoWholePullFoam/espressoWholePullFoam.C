@@ -36,6 +36,7 @@
 #include "forchheimerResistance.H"
 #include "poroelasticCompaction.H"
 #include "e1EffectivePermeability.H"
+#include "formAWholeBedClosure.H"
 #include "prescribedFlowBoundaryModel.H"
 #include "prescribedPressureBoundaryModel.H"
 
@@ -952,6 +953,60 @@ int main(int argc, char *argv[])
         e1Multiplier.reset(new volScalarField(IOobject("e1WholeBedMultiplier",
             runTime.name(), mesh, IOobject::NO_READ, IOobject::AUTO_WRITE),
             mesh, dimensionedScalar("one", dimless, 1.0)));
+    }
+
+    // Form A is independent of solute extraction; competing hydraulic closures are exclusive.
+    const bool formAEnabled = modelProperties.found("formAWholeBedClosure")
+        && modelProperties.subDict("formAWholeBedClosure").lookupOrDefault<Switch>("enabled", false);
+    word formAArm("A0");
+    espresso::FormAParameters formAParameters{};
+    scalar formAMassG = 0.0, formABasePermeability = 0.0;
+    std::unique_ptr<IOdictionary> formAState;
+    std::unique_ptr<volScalarField> formAX, formARecovery;
+    scalarField formAAxialLo(mesh.nCells(), 0.0), formAAxialHi(mesh.nCells(), 0.0);
+    if (formAEnabled)
+    {
+        if (e1Enabled || effectivePermeabilityEnabled || poroelasticCompaction
+            || darcyForchheimer || prescribedFlow || lumpedMachine || aggregateDiagnostics
+            || permeabilityProfile != "uniform" || outletPressure != 0 || frontPressure != 0
+            || runTime.value() != 0)
+            FatalErrorInFunction << "Form A requires fresh uniform prescribed-pressure Darcy; "
+                << "E1/WP02 and other hydraulic closures are exclusive" << exit(FatalError);
+        const dictionary& f = modelProperties.subDict("formAWholeBedClosure");
+        f.lookup("arm") >> formAArm;
+        formAParameters = {readScalar(f.lookup("aGPerSBar")), readScalar(f.lookup("pstarBar")),
+            readScalar(f.lookup("n")), readScalar(f.lookup("pdBar")), readScalar(f.lookup("mcG")),
+            f.lookupOrDefault<scalar>("xc", 0.0)};
+        if (formAArm != "A0" && formAArm != "A1" && formAArm != "A2")
+            FatalErrorInFunction << "Unknown Form A arm" << exit(FatalError);
+        if (formAArm == "A2" && (extractableFraction <= 0 || extractionRateConstant <= 0))
+            FatalErrorInFunction << "A2 requires active extraction and positive inventory" << exit(FatalError);
+        try { formAParameters.validate(formAArm == "A2"); }
+        catch (const std::exception& error)
+        { FatalErrorInFunction << error.what() << exit(FatalError); }
+        formABasePermeability = formAParameters.basePermeability
+            (dynamicViscosity, bedDepth, liquidDensity, constant::mathematical::pi*sqr(basketRadius));
+        formAState.reset(new IOdictionary(IOobject("formAState", runTime.name(), mesh,
+            IOobject::NO_READ, IOobject::AUTO_WRITE)));
+        formAState->add("arm", formAArm);
+        formAState->add("xc", formAParameters.xc);
+        formAState->add("pressureBasis", word("rawLineEquivalentInletGauge"));
+        formAX.reset(new volScalarField(IOobject("formAExtractedFraction", runTime.name(), mesh,
+            IOobject::NO_READ, IOobject::AUTO_WRITE), mesh, dimensionedScalar("zero", dimless, 0.0)));
+        formARecovery.reset(new volScalarField(IOobject("formARecovery", runTime.name(), mesh,
+            IOobject::NO_READ, IOobject::AUTO_WRITE), mesh, dimensionedScalar("initial", dimless, std::exp(-1.0))));
+        forAll(mesh.cells(), celli)
+        {
+            formAAxialLo[celli] = GREAT;
+            formAAxialHi[celli] = -GREAT;
+            const labelList& vertices = mesh.cellPoints()[celli];
+            forAll(vertices, vi)
+            {
+                const scalar x = mesh.points()[vertices[vi]].x();
+                formAAxialLo[celli] = Foam::min(formAAxialLo[celli], x);
+                formAAxialHi[celli] = Foam::max(formAAxialHi[celli], x);
+            }
+        }
     }
 
     const scalar maximumBoundaryPressure = lumpedMachine
@@ -1921,6 +1976,8 @@ int main(int argc, char *argv[])
                   << "effective_permeability_multiplier,"
                   << "effective_permeability_m2";
         }
+        if (formAEnabled)
+            trace << ",form_a_mass_g,form_a_bed_mean_x,form_a_min_cell_x_increment,form_a_xc";
         trace << '\n';
         if (prescribedFlow)
         {
@@ -2201,6 +2258,7 @@ int main(int argc, char *argv[])
             targetInletPressure,
             pressureRampTime
         );
+        if (formAEnabled) inletPressure = Foam::max(inletPressure, 0.0);
         scalar prescribedTargetFlow = 0.0;
         if (prescribedFlow)
         {
@@ -2477,11 +2535,71 @@ int main(int argc, char *argv[])
             e1State->set("appliedMultiplier", multiplier);
         }
 
+        scalar formAWettingRecovery = std::exp(-1.0);
+        if (formAEnabled)
+        {
+            scalar inverseRecoveryVolume = 0.0, wetVolume = 0.0;
+            scalar inverseKVolume = 0.0;
+            const scalar pressureFactor = formAParameters.pressureMultiplier(inletPressure);
+            forAll(permeability, celli)
+            {
+                const scalar r = formAArm == "A2"
+                    ? formAParameters.localRecovery((*formAX)[celli])
+                    : formAParameters.recovery(formAMassG);
+                (*formARecovery)[celli] = r;
+                const scalar wetPart = clamp01((previousWetFront-formAAxialLo[celli])
+                    /(formAAxialHi[celli]-formAAxialLo[celli]));
+                wetVolume += wetPart*mesh.V()[celli];
+                inverseRecoveryVolume += wetPart*mesh.V()[celli]/r;
+                if (saturatedAtStepStart || formAArm != "A0")
+                {
+                    permeability[celli] = formABasePermeability*pressureFactor*r;
+                    if (permeability[celli] > 0)
+                        inverseKVolume += mesh.V()[celli]/permeability[celli];
+                }
+            }
+            const scalar totalWetVolume = globalSumValue(wetVolume);
+            const scalar totalInverseRecovery = globalSumValue(inverseRecoveryVolume);
+            formAWettingRecovery = totalWetVolume > VSMALL
+                ? totalWetVolume/totalInverseRecovery : std::exp(-1.0);
+            if (saturatedAtStepStart || formAArm != "A0")
+            {
+                permeability.correctBoundaryConditions();
+                hydraulicMobility = permeability/dynamicViscosityCoefficient;
+                hydraulicMobility.correctBoundaryConditions();
+                currentDarcyIntegral = pressureFactor > 0
+                    ? sectorScale*globalSumValue(inverseKVolume)/fullCrossSectionArea : GREAT;
+            }
+            formAState->set("inletGaugePressurePa", inletPressure);
+            formAState->set("massAtStepStartG", formAMassG);
+            formAState->set("wettingRecovery", formAWettingRecovery);
+        }
+        // Integrate k(P)*P across this step; the mass/X state is held at step start.
+        // Three-point Gauss quadrature also handles a varying prescribed line pressure.
+        auto formAWettingIntegral = [&](scalar begin, scalar end)
+        {
+            const scalar mid = 0.5*(begin+end), half = 0.5*(end-begin);
+            scalar integral = 0.0;
+            const scalar nodes[] = {-std::sqrt(3.0/5.0), 0.0, std::sqrt(3.0/5.0)};
+            const scalar weights[] = {5.0/9.0, 8.0/9.0, 5.0/9.0};
+            for (label j=0; j<3; ++j)
+            {
+                const scalar t = mid+half*nodes[j];
+                const scalar pressure = Foam::max(prescribedPressureHistory
+                    ? prescribedPressureParameters.target(t)
+                    : rampedPressure(t, targetInletPressure, pressureRampTime), 0.0);
+                integral += weights[j]*pressure*formAParameters.pressureMultiplier(pressure);
+            }
+            return half*integral*formABasePermeability*formAWettingRecovery;
+        };
+
         if (!saturatedAtStepStart)
         {
             const scalar frontSquared =
                 sqr(previousWetFront)
-              + 2.0*wettingPermeability*wettingPressureIntegral
+              + 2.0*(formAEnabled && formAArm != "A0"
+                    ? formAWettingIntegral(stepStartTime, timeValue)
+                    : wettingPermeability*wettingPressureIntegral)
                /(initialPorosity*dynamicViscosity);
             wetFront = Foam::min
             (
@@ -2496,7 +2614,19 @@ int main(int argc, char *argv[])
                     (sqr(bedDepth) - sqr(previousWetFront))
                    *initialPorosity*dynamicViscosity
                    /(2.0*wettingPermeability);
-                if (prescribedPressureHistory)
+                if (formAEnabled && formAArm != "A0")
+                {
+                    const scalar requiredKIntegral = requiredIntegral*wettingPermeability;
+                    scalar lo = stepStartTime, hi = timeValue;
+                    for (label j=0; j<48; ++j)
+                    {
+                        const scalar mid = 0.5*(lo+hi);
+                        if (formAWettingIntegral(stepStartTime, mid) < requiredKIntegral) lo = mid;
+                        else hi = mid;
+                    }
+                    firstDripTime = 0.5*(lo+hi);
+                }
+                else if (prescribedPressureHistory)
                 {
                     firstDripTime = prescribedPressureParameters.crossingTime
                     (stepStartTime, timeValue, requiredIntegral, frontPressure);
@@ -2891,6 +3021,14 @@ int main(int argc, char *argv[])
                         << exit(FatalError);
                 }
             }
+            else if (formAEnabled && inletPressure <= 0)
+            {
+                p = dimensionedScalar("zero", p.dimensions(), 0.0);
+                U = dimensionedVector("zero", U.dimensions(), vector::zero);
+                darcyFlux = dimensionedScalar("zero", darcyFlux.dimensions(), 0.0);
+                p.correctBoundaryConditions();
+                U.correctBoundaryConditions();
+            }
             else if (!darcyForchheimer)
             {
                 fvScalarMatrix pressureEquation
@@ -3233,6 +3371,7 @@ int main(int argc, char *argv[])
             probe2Volume > VSMALL ? probe2WeightedPressure/probe2Volume : 0.0;
 
         const scalar effectiveContinuumResistance =
+            formAEnabled && saturatedAtStepStart ? currentDarcyIntegral :
             e1Enabled && saturatedAtStepStart ? currentDarcyIntegral :
             effectivePermeabilityEnabled && saturatedAtStepStart
           ? bedDepth/(saturatedPermeability*effectiveMultiplier)
@@ -3852,6 +3991,30 @@ int main(int argc, char *argv[])
                     fractionOpen = nextFractionBoundary < fractionBoundaries.size();
                 }
             }
+        }
+
+        scalar formAMinXIncrement = 0.0;
+        if (formAEnabled)
+        {
+            formAMassG += 1000.0*stepWaterMass;
+            scalar localMinIncrement = 0.0;
+            forAll(remainingExtractable, celli)
+            {
+                scalar x = 0.0;
+                try
+                {
+                    if (initialExtractableDensity > 0)
+                        x = espresso::FormAParameters::extractedFraction
+                            (remainingExtractable[celli], initialExtractableDensity);
+                }
+                catch (const std::exception& error)
+                { FatalErrorInFunction << error.what() << exit(FatalError); }
+                localMinIncrement = Foam::min(localMinIncrement, x-(*formAX)[celli]);
+                (*formAX)[celli] = x;
+            }
+            formAMinXIncrement = globalMinValue(localMinIncrement);
+            formAState->set("cumulativeOutletLiquidMassG", formAMassG);
+            formAState->set("minimumCellXIncrement", formAMinXIncrement);
         }
 
         scalar localRemainingMass = 0.0;
@@ -4557,6 +4720,10 @@ int main(int argc, char *argv[])
                       << ',' << effectiveMultiplier
                       << ',' << saturatedPermeability*effectiveMultiplier;
             }
+            if (formAEnabled)
+                trace << ',' << formAMassG << ','
+                    << (initialExtractableMass > 0 ? 1.0-remainingMass/initialExtractableMass : 0.0)
+                    << ',' << formAMinXIncrement << ',' << formAParameters.xc;
             trace << '\n';
             forAll(speciesParameters, speciesi)
             {

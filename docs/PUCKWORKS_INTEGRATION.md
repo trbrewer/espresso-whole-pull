@@ -4,12 +4,15 @@ Puckworks is the external public evidence/model/data dependency. This
 repository uses a machine-readable full-commit lock and deterministic
 checkout-and-verification script, not a Git submodule.
 
-The reviewed `refs/heads/main` snapshot is
-`fc61c4670ec7bf801e40bb391aab16048b8da26b`. The lock means
-`REVIEWED_MAIN_AT_RECORDED_UTC_CUTOFF`; it does not claim permanent alignment
-with a moving upstream branch. See the
-[impact report](integration/PUCKWORKS_UPDATE_IMPACT.md) and its
-[machine-readable companion](../validation/integration/PUCKWORKS_UPDATE_IMPACT.json).
+The current runtime lock is PW main
+`dce84b22b99f114225eabb76f29014a5fc3efe5d`, tree
+`20e9cd3898053820c7c6df4852991d8115f4d059`, adopted for
+[FORM_A](demonstrations/FORM_A/PLAN.md), including D0 and PRs #409/#410.
+This is a recorded snapshot, not permanent alignment with moving main.
+E1's saved result and runner retain `ba35a3bf1f832cd651fe98eebd59860849c0e850`;
+R1/WP02 consumers retain `fc61c4670ec7bf801e40bb391aab16048b8da26b` through
+`scripts/puckworks_historical_lock.py`. The historical review and execution
+records below keep their original source identities.
 
 Puckworks is neither vendored nor a submodule. No rights-restricted material is
 copied, and per-artifact rights review remains required. Future adopted inputs

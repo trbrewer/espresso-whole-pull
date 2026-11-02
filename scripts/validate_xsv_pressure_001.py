@@ -6,6 +6,8 @@ from pathlib import Path
 TASK='XSV-PRESSURE-001'
 FROZEN_CONTRACT_SHA256={'MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.json': 'e1c3719da9e3a18ec32dec2c18f7d4167a3d03884b23250e08b4cfe4394cc070', 'MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.md': '6330a7369928008063ab76c166e6f50d31f77109b60565cf05701cb385a6ff2a'}
 AUTHORIZED_EXISTING_PRODUCTION_DELTAS={'solver/espressoWholePullFoam/espressoWholePullFoam.C': 'f0cfcf39bafe9a1c88f87f0a14678b7c427a10d4a38a3b8f6ff7eb7d1c518768', 'scripts/prepare_case.py': '9a10f3e32c9a433725ebab7ea7d58e470c7916e034189a7f367eab8d812074df'}
+# Form A has separate native parity, extraction and byte-identical off-path evidence.
+FORM_A_SOURCE_HASHES = {'solver/espressoWholePullFoam/espressoWholePullFoam.C': '30ebb473d368c93381b1e0accda672820e317c1d2f958c2f41cae225b877f93d', 'solver/espressoWholePullFoam/formAWholeBedClosure.H': 'e748c35a685662a704c6cb8c6e5e856a3e696d1b175374b6d4fe893e24f73b0d', 'solver/espressoWholePullFoam/e1EffectivePermeability.H': '2371ea22e53b323cf5ebd1f84759bcc30808b310feb3d5e805a68c375e01cefe', 'scripts/prepare_case.py': '0155f4b831018329b9845bce97b348a2f13ae885cf8584bc7540aa4a98caaede', 'dependencies/puckworks.lock.json': 'ea85db92a00c5f2f4eba3f5298c51f2a28e7f46b4a0929353ab6bc5479329914'}
 SUCCESS='XSV_PRESSURE_001_NATIVE_PIECEWISE_LINEAR_PRESCRIBED_PRESSURE_HISTORY_QUALIFIED_READY_FOR_EXACT_HEAD_REVIEW'
 FILES={'helper_reference_vectors_pass':'FUNCTION_LEVEL_VERIFICATION.json','legacy_constant_equivalence_pass':'LEGACY_CONSTANT_EQUIVALENCE.json',
 'legacy_ramp_equivalence_pass':'LEGACY_RAMP_EQUIVALENCE.json','synthetic_profile_pass':'SYNTHETIC_PROFILE_QUALIFICATION.json',
@@ -31,6 +33,14 @@ def rheology_source_sha(root,path):
     header='solver/espressoWholePullFoam/e1EffectivePermeability.H'
     changed=(*AUTHORIZED_EXISTING_PRODUCTION_DELTAS,'dependencies/puckworks.lock.json')
     if path not in changed or not (root/header).exists():return sha(root/path)
+    if (root/'solver/espressoWholePullFoam/formAWholeBedClosure.H').exists():
+        # Exact source binding, never an arbitrary fallback to historical qualification.
+        for source, expected in FORM_A_SOURCE_HASHES.items():
+            if sha(root/source) != expected:
+                raise ValueError('active Form A source differs from verified implementation '+source)
+        historical = subprocess.check_output(['git','show',
+            '0aac9b875f5dd9b3e415c821a1f9aa7e8250611b:'+path], cwd=root)
+        return hashlib.sha256(historical).hexdigest()
     # E1 G1/G2 and off-mode evidence qualify this source separately; do not let
     # arbitrary edits inherit the older pressure-history qualification.
     for source in (*changed,header):
