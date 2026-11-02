@@ -11,7 +11,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'scripts'))
-from prepare_case import render_properties, render_form_a
+from prepare_case import render_properties, render_form_a, form_a_fv_solution
 from form_a_verification import scenario, xc_at_mass, capacity_peak
 
 P = dict(aGPerSBar=.7757444238135915, pstarBar=24.396659674282887,
@@ -41,6 +41,20 @@ class FormATests(unittest.TestCase):
             other = copy.deepcopy(cfg); other['form_a_whole_bed_closure']['xc'] = xc
             with self.assertRaises((ValueError, TypeError)): render_form_a(other)
         with self.assertRaises(ValueError): scenario(P, 'A2')
+
+    def test_local_permeability_pressure_precision_preserves_other_solver_controls(self):
+        original = (ROOT/'cases/reference_R0_20g_58mm_9bar/system/fvSolution').read_text()
+        for arm in ('A0', 'A1'):
+            self.assertEqual(form_a_fv_solution(scenario(P, arm), original), original)
+        cfg = scenario(P, 'A2', xc=.5)
+        actual = form_a_fv_solution(cfg, original)
+        self.assertEqual(actual, original.replace('tolerance       1e-12;', 'tolerance       1e-14;', 1))
+        self.assertEqual(form_a_fv_solution(cfg, actual), actual)
+        cfg['form_a_whole_bed_closure']['enabled'] = False
+        self.assertEqual(form_a_fv_solution(cfg, original), original)
+        cfg['form_a_whole_bed_closure']['enabled'] = True
+        cfg['form_a_pressure_solver_tolerance'] = float('nan')
+        with self.assertRaises(ValueError): form_a_fv_solution(cfg, original)
 
     def test_raw_pressure_is_clamped_without_using_observed_onset(self):
         cfg = scenario(P, 'A1', history=([0., 50., 100.], [-.1, 6., 0.]))

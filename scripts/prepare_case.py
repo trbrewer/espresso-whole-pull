@@ -527,6 +527,23 @@ def render_form_a(scenario: dict) -> str:
         f"    {k} {v:.17g};\n" for k, v in values.items()) + "}\n"
 
 
+def form_a_fv_solution(scenario: dict, solution: str) -> str:
+    """Resolve A2's varying permeability accurately enough for local continuity."""
+    form = scenario.get("form_a_whole_bed_closure", {})
+    if not form.get("enabled", False) or form.get("arm") != "A2":
+        return solution
+    tolerance = float(scenario.get("form_a_pressure_solver_tolerance", 1e-14))
+    if not math.isfinite(tolerance) or tolerance <= 0:
+        raise ValueError("Invalid Form A pressure solver tolerance")
+    original = "tolerance       1e-12;"
+    replacement = f"tolerance       {tolerance:g};"
+    if original not in solution and solution.count(replacement) == 1:
+        return solution
+    if solution.count(original) != 1:
+        raise ValueError("Unexpected reference pressure solver controls")
+    return solution.replace(original, replacement, 1)
+
+
 def render_properties(scenario: dict) -> str:
     e1_dictionary = render_e1(scenario)
     form_a_dictionary = render_form_a(scenario)
@@ -1500,6 +1517,11 @@ def main() -> None:
             "tolerance       1e-12;", "tolerance       1e-14;", 1
         )
         solution_path.write_text(solution, encoding="utf-8")
+    solution_path = case / "system/fvSolution"
+    solution = solution_path.read_text(encoding="utf-8")
+    form_a_solution = form_a_fv_solution(scenario, solution)
+    if form_a_solution != solution:
+        solution_path.write_text(form_a_solution, encoding="utf-8")
     zero = case / "0"
     if zero.exists():
         shutil.rmtree(zero)

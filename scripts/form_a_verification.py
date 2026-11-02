@@ -59,6 +59,7 @@ def scenario(parameters, arm='A0', pressure=9., dt=.005, *, g1=False, xc=None,
         if xc is None:
             raise ValueError('A2 needs the measured A1 Xc; no default is permitted')
         cfg['form_a_whole_bed_closure']['xc'] = xc
+        cfg['form_a_pressure_solver_tolerance'] = 1e-14
     if g1:
         cfg['geometry'].update(axial_cells=64, radial_cells=1)
         cfg['wetting'].update(initial_saturation=1., initial_wet_front_m=cfg['coffee_bed']['bed_depth_m'])

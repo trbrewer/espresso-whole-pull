@@ -32,10 +32,13 @@ def execute(work, name, cfg, exe, pressure, forcing, brew='', ranks=32):
     identity = dict(config_sha256=hashlib.sha256((json.dumps(cfg, indent=2)+'\n').encode()).hexdigest(),
                     executable_sha256=D.digest(exe))
     trace = work/name/'postProcessing/wholePull/0/traces.csv'
+    solution = work/name/'system/fvSolution'
     if saved.exists():
         result = json.loads(saved.read_text())
         if any(result[k] != value for k, value in identity.items()) or result['trace_sha256'] != D.digest(trace):
             raise ValueError('Run reuse identity changed: '+name)
+        if result.get('fv_solution_sha256', D.digest(solution)) != D.digest(solution):
+            raise ValueError('Native linear-solver controls changed: '+name)
         return result
     rows, wall = V.run_case(work, name, cfg, exe, ranks)
     bounds = E1.balance_bounds(rows, cfg)
@@ -53,7 +56,8 @@ def execute(work, name, cfg, exe, pressure, forcing, brew='', ranks=32):
         cumulative_outlet_liquid_mass_g=float(end['cup_water_mass_kg'])*1000,
         final_bed_mean_x=float(end['form_a_bed_mean_x']),
         wall_seconds=wall, ranks=ranks, core_hours=wall*ranks/3600,
-        trace_sha256=D.digest(trace), balances_and_bounds_qualified=True, **identity)
+        trace_sha256=D.digest(trace), fv_solution_sha256=D.digest(solution),
+        balances_and_bounds_qualified=True, **identity)
     saved.write_text(json.dumps(result, indent=2)+'\n')
     print(json.dumps(result), flush=True)
     return result

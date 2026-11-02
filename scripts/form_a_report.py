@@ -14,6 +14,7 @@ import e1_demonstration as D
 import e1_verification as E1
 import form_a_demonstration as F
 import form_a_verification as V
+from prepare_case import form_a_fv_solution
 
 ROOT = V.ROOT
 NOMINAL = np.asarray(V.NOMINAL)
@@ -125,6 +126,14 @@ def read_native(work, record, density):
     config = work/(record['run']+'.json')
     if D.digest(config) != record['config_sha256']:
         raise ValueError('Native config changed: '+record['run'])
+    solution = work/record['run']/'system/fvSolution'
+    reference = ROOT/'cases/reference_R0_20g_58mm_9bar/system/fvSolution'
+    if solution.read_text() != form_a_fv_solution(json.loads(config.read_text()), reference.read_text()):
+        raise ValueError('Unexpected native linear-solver controls: '+record['run'])
+    solution_hash = D.digest(solution)
+    if record.get('fv_solution_sha256', solution_hash) != solution_hash:
+        raise ValueError('Native linear-solver controls changed: '+record['run'])
+    record['fv_solution_sha256'] = solution_hash
     with trace.open() as stream:
         header = next(csv.reader(stream))
     keys = ['time_s', 'outlet_flow_m3_s', 'min_saturation', 'form_a_bed_mean_x', 'form_a_min_cell_x_increment']
@@ -306,6 +315,16 @@ def generate_report(args):
     E1.write_csv(args.out/'FIRST_DRIP_BY_BREW.csv', csv_safe(onset_all))
     E1.write_csv(args.out/'FIRST_DRIP_BY_PRESSURE.csv', csv_safe(onset_summary))
     verification = json.loads((ROOT/'docs/demonstrations/FORM_A/VERIFICATION.json').read_text())
+    audit_path = args.work/'NUMERICAL_PRECISION_AUDIT.json'
+    precision_audit = json.loads(audit_path.read_text()) if audit_path.exists() else dict(runs=[],total_core_hours=0.)
+    for run in precision_audit['runs']:
+        case = args.work.parent/run['namespace']/run['run']
+        for path, key in ((case/'postProcessing/wholePull/0/traces.csv','trace_sha256'),
+                          (case.with_name(case.name+'.json'),'config_sha256'),
+                          (case/'system/fvSolution','fv_solution_sha256'),
+                          (case.parent/run['native_checksum_index_file'],'native_checksum_index_sha256')):
+            if D.digest(path) != run[key]:
+                raise ValueError('Changed retained numerical-precision evidence: '+run['run'])
     manifest = dict(schema='ewp.form_a.fixed_prediction_runs.v1', change_class='GOVERNING_PHYSICS_CHANGE',
         implementation_commit='5aa1f7fefb1d3a052fc7bb726c0eecb25e7ee6cf',
         report_source_commit=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),
@@ -313,6 +332,9 @@ def generate_report(args):
         parameters=bank, delta_t_s=selected['delta_t_s'], time_step_selection=selected,
         time_step_studies={arm:json.loads((args.work/f'{arm}-STEP_STUDY.json').read_text()) for arm in ('A0','A1','A2')},
         xc_normalization=xc, constant_pressures_bar=F.constant_pressures(),
+        linear_solver_controls=dict(A0_A1_pressure_tolerance=1e-12,A2_pressure_tolerance=1e-14,
+                                    concentration_tolerance=1e-11),
+        numerical_precision_audit=precision_audit,
         native_software='OpenFOAM Foundation 12; espressoWholePullFoam', ranks=32,
         scheduling='At most two cases concurrently, separate groups of 32 physical cores',
         numerical_environment=dict(python=sys.version.split()[0], **{name:importlib.metadata.version(name)
@@ -341,10 +363,11 @@ def generate_report(args):
         resolved_late_trends='Not scored: original D0 windows can extend beyond the E1 native 100-s support',
         scores=scores, python_held_out_score=python_score,
         campaign_runs=len(campaigns), auxiliary_native_runs=len(records)-len(campaigns),
+        additional_numerical_precision_runs=len(precision_audit['runs']),
         implementation_verification=verification['native_runs'],
-        native_wall_seconds=sum(r['wall_seconds'] for r in records),
-        native_wall_seconds_definition='Sum of per-case solver elapsed times',
-        native_core_hours=sum(r['core_hours'] for r in records)+verification['native_runs']['total_core_hours'],
+        native_wall_seconds=sum(r['wall_seconds'] for r in records+precision_audit['runs']),
+        native_wall_seconds_definition='Sum of campaign, auxiliary and superseded/diagnostic solver elapsed times; implementation verification is recorded separately',
+        native_core_hours=sum(r['core_hours'] for r in records)+precision_audit['total_core_hours']+verification['native_runs']['total_core_hours'],
         native_artifacts='External task run directory; full outputs and checksum indexes excluded from Git', runs=records)
     (args.out/'RUN_MANIFEST.json').write_text(json.dumps(manifest,indent=2,allow_nan=False)+'\n')
     plot_report(args, bank, inputs, constants, onset_summary)
@@ -460,13 +483,15 @@ def write_summary(args, manifest, onsets):
         f"Step pair 0.0025/0.005 s at 2/6/11 bar: maximum endpoint change {endpoint_change:.2g} g/s, "
         f"first-drip change {onset_change:.2g} s; bracketed peak change {peak_change:.2g} bar. "
         f"Chosen step **{step:g} s**: {manifest['time_step_selection']['reason']} No inventory metric enters that choice.", '',
+        'A2 uses a 1e−14 pressure-solve tolerance after a 1-bar concentration overshoot; '
+        'the existing bounds and all physical parameters are unchanged. Superseded runs and diagnostics are retained in the manifest.', '',
         'Existing MEETS/NEAR/MISSES bands are unchanged ([grades](GRADES.csv)); no overall gate. '
         'Primary trace mask is observed onset+2–100 s; secondary 5–100 s is retained. '
         'D0 late-trend windows extending beyond native 100-s support are not scored. '
         'Censored onset RMSE is a lower bound. '
         '[Endpoint figure](ENDPOINT_FLOW.png) · [First-drip figure](FIRST_DRIP.png) · '
         '[First-drip values](FIRST_DRIP_BY_PRESSURE.csv) · [Endpoints](ENDPOINTS.csv).', '',
-        f"181 campaign cases; {manifest['native_core_hours']:.2f} core-hours including auxiliary runs and implementation checks. "
+        f"181 campaign cases; {manifest['native_core_hours']:.2f} core-hours including auxiliary/superseded runs and implementation checks. "
         '[Manifest; native outputs outside Git](RUN_MANIFEST.json). '
         'Waszkiewicz et al. (2025), [Zenodo 18046315](https://doi.org/10.5281/zenodo.18046315), CC-BY-4.0; '
         f"PW {V.RUNTIME_COMMIT[:7]} saved D0 fits, no refitting."]
