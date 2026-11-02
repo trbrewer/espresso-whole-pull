@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1483,
-  "total_uncompressed_bytes_excluding_manifest": 27306970,
-  "aggregate_source_sha256": "2a2b43caaeda15daaf4e10301e23dad2b789e48578d6d3583c57ef5f2eec479a",
-  "aggregate_sha256": "2a2b43caaeda15daaf4e10301e23dad2b789e48578d6d3583c57ef5f2eec479a",
+  "file_count": 1484,
+  "total_uncompressed_bytes_excluding_manifest": 27312116,
+  "aggregate_source_sha256": "94d44065099426d35031e102e1fbe35eddcca1691b72f35cc59db06875992f21",
+  "aggregate_sha256": "94d44065099426d35031e102e1fbe35eddcca1691b72f35cc59db06875992f21",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -4551,6 +4551,11 @@
     "docs/demonstrations/E1_CAPABILITY/SUMMARY.md": {
       "sha256": "e8e59a8aff72f1c629a40f427aff6b586f72b2f57d1fd7d0ab00c5054fd9bce9",
       "bytes": 3494,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/PLAN.md": {
+      "sha256": "57cef01b309d2a1a2d1e2a92cc2e5448e245b3aa9714082d51799c1ebed50eef",
+      "bytes": 5146,
       "git_mode": "100644"
     },
     "docs/evidence/puckworks_base_temporal_cv/figures/temporal_conservation_checks.png": {
