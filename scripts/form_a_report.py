@@ -337,6 +337,7 @@ def generate_report(args):
         campaign_runs=len(campaigns), auxiliary_native_runs=len(records)-len(campaigns),
         implementation_verification=verification['native_runs'],
         native_wall_seconds=sum(r['wall_seconds'] for r in records),
+        native_wall_seconds_definition='Sum of per-case solver elapsed times',
         native_core_hours=sum(r['core_hours'] for r in records)+verification['native_runs']['total_core_hours'],
         native_artifacts='External task run directory; full outputs and checksum indexes excluded from Git', runs=records)
     (args.out/'RUN_MANIFEST.json').write_text(json.dumps(manifest,indent=2,allow_nan=False)+'\n')

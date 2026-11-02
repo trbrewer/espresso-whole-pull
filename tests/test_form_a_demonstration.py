@@ -12,6 +12,17 @@ import form_a_demonstration as D
 
 
 class FormADemonstrationTests(unittest.TestCase):
+    def test_parallel_partitions_cover_every_declared_case_once(self):
+        inputs = [dict(brew=f'brew-{i}', nominal_pressure_bar=D.V.NOMINAL[i % 11]) for i in range(56)]
+        jobs = D.campaign_matrix(inputs)
+        left, right = set(jobs[::2]), set(jobs[1::2])
+        self.assertEqual(len(jobs), 181)
+        self.assertFalse(left & right)
+        self.assertEqual(left | right, set(jobs))
+        self.assertEqual(sum(arm == 'A0' for arm, *_ in jobs), 23)
+        self.assertFalse(any(arm == 'A0' and forcing == 'measured_history' for arm, forcing, *_ in jobs))
+        with self.assertRaises(ValueError): D.campaign_matrix(inputs[:-1])
+
     def test_run_matrix_and_saved_fold_routing(self):
         pressures = D.constant_pressures()
         self.assertEqual(len(pressures), 23)
@@ -41,7 +52,7 @@ class FormADemonstrationTests(unittest.TestCase):
 
     def test_campaign_cannot_silently_choose_a_different_step(self):
         with tempfile.TemporaryDirectory() as td:
-            args = SimpleNamespace(work=Path(td), executable=Path(td)/'solver')
+            args = SimpleNamespace(work=Path(td), executable=Path(td)/'solver', arm='A1')
             args.executable.write_bytes(b'changed')
             (args.work/'STEP_SELECTION.json').write_text(json.dumps(dict(
                 studies={}, executable_sha256='old', delta_t_s=.005)))

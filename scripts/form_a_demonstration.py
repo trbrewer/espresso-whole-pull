@@ -146,7 +146,7 @@ def select_step(args):
     (args.work/'STEP_SELECTION.json').write_text(json.dumps(selected, indent=2)+'\n')
 
 
-def run_campaign(args, bank):
+def campaign_settings(args, needs_xc=False):
     selected = json.loads((args.work/'STEP_SELECTION.json').read_text())
     for name, digest in selected['studies'].items():
         if D.digest(args.work/name) != digest:
@@ -155,11 +155,16 @@ def run_campaign(args, bank):
         raise ValueError('Step selection used another executable')
     dt = selected['delta_t_s']
     xc = None
-    if args.arm == 'A2':
+    if needs_xc:
         record = read_xc(args)
         if record['delta_t_s'] != dt or record['executable_sha256'] != D.digest(args.executable):
             raise ValueError('Recompute Xc at the selected time step and executable')
         xc = record['xc_9bar']
+    return dt, xc
+
+
+def run_campaign(args, bank):
+    dt, xc = campaign_settings(args, args.arm == 'A2')
     if args.forcing == 'constant':
         for pressure in constant_pressures():
             run_constant(args, bank, pressure, dt, args.arm, xc)
@@ -173,6 +178,35 @@ def run_campaign(args, bank):
                 pressure, dt, xc=xc, history=(r['times_s'], r['pressure_bar']))
             execute(args.work, run_name(args.arm, 'history', pressure, dt, r['brew']), cfg,
                 args.executable, pressure, 'measured_history', r['brew'], args.ranks)
+
+
+def campaign_matrix(inputs):
+    """All declared cases, with no A0 histories; stable order permits disjoint workers."""
+    if len(inputs) != 56 or len({r['brew'] for r in inputs}) != 56:
+        raise ValueError('Expected the authenticated 56 distinct brews')
+    jobs = [(arm, 'constant', pressure, '') for arm in ('A0', 'A1', 'A2')
+            for pressure in constant_pressures()]
+    jobs += [(arm, 'measured_history', r['nominal_pressure_bar'], r['brew'])
+             for arm in ('A1', 'A2') for r in inputs]
+    return jobs
+
+
+def run_shard(args, bank):
+    """Deterministic disjoint portions; launch workers on separate CPU groups."""
+    if args.shards < 1 or not 0 <= args.shard < args.shards:
+        raise ValueError('Invalid campaign worker partition')
+    dt, xc = campaign_settings(args, needs_xc=True)
+    inputs = json.loads((args.work/'source_inputs.json').read_text())
+    sources = {r['brew']:r for r in inputs}
+    for arm, forcing, pressure, brew in campaign_matrix(inputs)[args.shard::args.shards]:
+        if forcing == 'constant':
+            run_constant(args, bank, pressure, dt, arm, xc if arm == 'A2' else None)
+        else:
+            source = sources[brew]
+            cfg = V.scenario(parameters_for(bank, forcing, pressure), arm, pressure, dt,
+                xc=xc if arm == 'A2' else None, history=(source['times_s'], source['pressure_bar']))
+            execute(args.work, run_name(arm, 'history', pressure, dt, brew), cfg,
+                args.executable, pressure, forcing, brew, args.ranks)
 
 
 # Retains E1's observer and mask checks; only the dependency identity is changed.
@@ -243,7 +277,7 @@ def source_inputs(puckworks, raw):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('phase', choices=['inputs', 'step-pair', 'normalize-xc', 'select-step', 'run'])
+    p.add_argument('phase', choices=['inputs', 'step-pair', 'normalize-xc', 'select-step', 'run', 'run-shard'])
     p.add_argument('--puckworks', type=Path, required=True)
     p.add_argument('--work', type=Path, required=True)
     p.add_argument('--executable', type=Path, required=True)
@@ -252,6 +286,8 @@ def main():
     p.add_argument('--dt', type=float, choices=[.0025, .005], default=.0025)
     p.add_argument('--xc-record', type=Path)
     p.add_argument('--ranks', type=int, default=32)
+    p.add_argument('--shards', type=int, default=1)
+    p.add_argument('--shard', type=int, default=0)
     p.add_argument('--reason')
     p.add_argument('--raw', type=Path)
     a = p.parse_args(); a.work = a.work.resolve()
@@ -266,6 +302,7 @@ def main():
     elif a.phase == 'step-pair': step_pair(a, bank)
     elif a.phase == 'normalize-xc': normalize_xc(a, bank)
     elif a.phase == 'select-step': select_step(a)
+    elif a.phase == 'run-shard': run_shard(a, bank)
     else: run_campaign(a, bank)
 
 

@@ -59,7 +59,8 @@ stable clock, 100-s endpoint, masks (onset+2–100 s primary; 5–100 s secondar
 No runtime caps; record core-hours; native outputs stay outside Git.
 
 **Grades/outputs.** Reuse [scorecard][bands] B1 accuracy, nominal peak,
-slope ≥9 bar and resolved trends; C0/D0 onset (3.51/4.53 s) and absolute
+slope ≥9 bar; D0 late trends lack native support beyond 100 s, so stay unscored.
+Reuse C0/D0 onset (3.51/4.53 s) and absolute
 low-bias (0.10/0.20 g/s). MEETS/NEAR/MISSES, no new gates; identical B1 masks.
 Under `docs/demonstrations/FORM_A/`: E1-format `GRADES.csv`, `ENDPOINTS.csv`,
 `FIRST_DRIP_BY_PRESSURE.csv`, `RUN_MANIFEST.json`; one-page numbers-first
