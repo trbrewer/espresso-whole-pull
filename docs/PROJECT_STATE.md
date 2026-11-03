@@ -1,7 +1,7 @@
 # Project State
 
 - E1: [capability demonstration complete](demonstrations/E1_CAPABILITY/SUMMARY.md); historical results retained.
-- FORM_A: [implementation verified; Phase 2 running](demonstrations/FORM_A/PLAN.md); A2 uses extracted-solid fraction with A1-derived Xc; all arms use the selected 0.005-s step.
+- FORM_A: [A0 complete; A1 campaign running](demonstrations/FORM_A/PLAN.md); A2 retired after partial execution; retained cases use the selected 0.005-s step.
 
 ## SCI-MD-WASZ-RESTART-PRESSURE-ORDER-001 (2026-10-22)
 

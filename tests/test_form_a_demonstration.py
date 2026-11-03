@@ -16,10 +16,12 @@ class FormADemonstrationTests(unittest.TestCase):
         inputs = [dict(brew=f'brew-{i}', nominal_pressure_bar=D.V.NOMINAL[i % 11]) for i in range(56)]
         jobs = D.campaign_matrix(inputs)
         left, right = set(jobs[::2]), set(jobs[1::2])
-        self.assertEqual(len(jobs), 181)
+        self.assertEqual(len(jobs), 102)
         self.assertFalse(left & right)
         self.assertEqual(left | right, set(jobs))
         self.assertEqual(sum(arm == 'A0' for arm, *_ in jobs), 23)
+        self.assertEqual(sum(arm == 'A1' for arm, *_ in jobs), 79)
+        self.assertFalse(any(arm == 'A2' for arm, *_ in jobs))
         self.assertFalse(any(arm == 'A0' and forcing == 'measured_history' for arm, forcing, *_ in jobs))
         with self.assertRaises(ValueError): D.campaign_matrix(inputs[:-1])
 
@@ -30,6 +32,8 @@ class FormADemonstrationTests(unittest.TestCase):
         bank = {'DESCRIPTIVE_ALL': {'a': 1}, 'HYD-LOCO-3.5': {'a': 2}}
         self.assertEqual(D.parameters_for(bank, 'constant', 3.5), {'a': 1})
         self.assertEqual(D.parameters_for(bank, 'measured_history', 3.5), {'a': 2})
+        with self.assertRaisesRegex(ValueError,'retired'):
+            D.run_campaign(SimpleNamespace(arm='A2'),{})
 
     def test_peak_pair_extends_until_both_steps_are_bracketed(self):
         calls = []
@@ -58,6 +62,30 @@ class FormADemonstrationTests(unittest.TestCase):
                 studies={}, executable_sha256='old', delta_t_s=.005)))
             with self.assertRaisesRegex(ValueError, 'another executable'):
                 D.run_campaign(args, {})
+
+    def test_recovery_preserves_completed_run_and_failed_qualification_without_execution(self):
+        with tempfile.TemporaryDirectory() as td:
+            work=Path(td);case=work/'retained';case.mkdir();(case/'system').mkdir()
+            (case/'system/fvSolution').write_text('retained controls')
+            trace=case/'postProcessing/wholePull/0/traces.csv';trace.parent.mkdir(parents=True)
+            trace.write_text('time_s,outlet_flow_m3_s,first_drip_s,cup_water_mass_kg,form_a_bed_mean_x,form_a_min_cell_x_increment,max_concentration_kg_m3\n'
+                '100,0.0000001,54,0.004,0.4,0,180.000000020847\n')
+            (case/'wall_seconds.txt').write_text('5\n');(case/'log.solver').write_text('End\n')
+            exe=work/'solver';exe.write_bytes(b'unchanged executable')
+            cfg=dict(form_a_whole_bed_closure=dict(arm='A1'),time=dict(delta_t_s=.005),
+                     liquid=dict(density_kg_m3=965),extraction=dict(saturation_concentration_kg_m3=180.))
+            (work/'retained.json').write_text(json.dumps(cfg,indent=2)+'\n')
+            with patch.object(D.V,'run_case') as execute,patch.object(D.E1,'balance_bounds',return_value=dict(status='FAIL',bounded=False)):
+                result=D.execute(work,'retained',cfg,exe,1.,'measured_history','1-2',32,recover_completed=True)
+            execute.assert_not_called()
+            self.assertTrue(result['native_completed'])
+            self.assertFalse(result['balances_and_bounds_qualified'])
+            self.assertEqual(result['numerical_balance_bounds']['status'],'FAIL')
+            self.assertEqual(result['maximum_concentration_kg_m3'],180.000000020847)
+            self.assertEqual(result['concentration_limit_kg_m3'],180.)
+            self.assertEqual(result['core_hours'],5*32/3600)
+            self.assertIn('log.solver',result['native_log_sha256'])
+            self.assertEqual(json.loads((work/'retained.result.json').read_text()),result)
 
 
 if __name__ == '__main__': unittest.main()

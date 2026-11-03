@@ -58,7 +58,7 @@ class FormAReportTests(unittest.TestCase):
         self.assertIsNone(summary[1]['solver_max_s'])
         self.assertTrue(all(r['solver_first_drip_stable_s'] is None for r in rows if r['right_censored']))
 
-    def test_censoring_gives_an_onset_rmse_lower_bound_without_using_minus_one(self):
+    def test_front_diagnostic_is_ungraded_and_retains_100_s_censoring(self):
         inputs = [dict(nominal_pressure_bar=float(p), observed_onset_for_scoring_only_s=10.) for p in R.NOMINAL]
         module = ModuleType('puckworks.analysis.pressure_peak_stage_c0')
         module.onset_grade = lambda value:'MISSES'
@@ -67,7 +67,43 @@ class FormAReportTests(unittest.TestCase):
         self.assertEqual(result['onset_rmse_s'], 90.)
         self.assertEqual(result['onset_censored_brews'], 11)
         self.assertTrue(result['onset_rmse_is_lower_bound'])
-        self.assertEqual(result['onset_grade'], 'MISSES')
+        self.assertNotIn('onset_grade',result)
+
+    def test_detector_nan_uses_actual_confirmable_bound_and_never_grades_a_small_bound(self):
+        inputs = [dict(nominal_pressure_bar=float(p), observed_onset_for_scoring_only_s=99.) for p in R.NOMINAL]
+        module = ModuleType('puckworks.analysis.pressure_peak_stage_c0')
+        module.onset_grade = lambda value:'MISSES' if value>4.53 else 'MEETS'
+        with patch.dict(sys.modules, {'puckworks.analysis.pressure_peak_stage_c0':module}):
+            result = R.onset_metrics(inputs,[float('nan')]*11,censor_bounds=[97.93]*11,observer='detector')
+            self.assertEqual(result['onset_rmse_s'],0.)
+            self.assertEqual(result['onset_grade'],'NOT_SCORED')
+            self.assertEqual(result['onset_censored_brews'],11)
+            for row in inputs:row['observed_onset_for_scoring_only_s']=10.
+            result = R.onset_metrics(inputs,[None]*11,censor_bounds=[97.93]*11,observer='detector')
+            self.assertAlmostEqual(result['onset_rmse_s'],87.93)
+            self.assertEqual(result['onset_grade'],'MISSES')
+            self.assertIn('Interval for the RMSE lower bound',result['onset_interval_definition'])
+            with self.assertRaises(ValueError):R.onset_metrics(inputs,[None]*11,observer='detector')
+
+    def test_detector_resamples_mass_before_the_reference_observer(self):
+        module = ModuleType('puckworks.analysis.pressure_peak_stage_b0')
+        observed_times=np.r_[[-1.,0.],np.linspace(.1,95.,300),[97.9,97.93,98.04,99.97,100.08]]
+        captured={}
+        def clean(time,pressure,mass):
+            captured.update(time=time.copy(),mass=mass.copy())
+            use=time>=0
+            return time[use],pressure[use],np.full(use.sum(),.02),0.
+        module.clean_course=clean
+        module.sustained_onset=lambda *args:float('nan')
+        parent=ModuleType('puckworks.analysis');parent.pressure_peak_stage_b0=module
+        with patch.dict(sys.modules,{'puckworks.analysis':parent,'puckworks.analysis.pressure_peak_stage_b0':module}):
+            result=R.detector_observation(np.linspace(.005,100.,20000),
+                .02*np.linspace(.005,100.,20000),dict(time=observed_times,pressure=np.ones(len(observed_times))))
+        np.testing.assert_array_equal(captured['time'],observed_times[1:-1])
+        np.testing.assert_allclose(captured['mass'],.02*observed_times[1:-1])
+        self.assertEqual(result['censor_bound_s'],97.93)
+        self.assertEqual(result['last_retained_timestamp_s'],99.97)
+        self.assertIsNone(result['onset_s'])
 
 
 if __name__ == '__main__':

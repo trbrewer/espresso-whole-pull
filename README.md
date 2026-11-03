@@ -29,7 +29,7 @@ OpenFOAM-based research solver for espresso-puck wetting, porous flow, extractio
 > Within SCI-ED-003, no solver, surrogate, or execution task is active;
 > execution of that contract requires separate owner authorization.
 > E1: [completed capability demonstration](docs/demonstrations/E1_CAPABILITY/SUMMARY.md).
-> FORM_A: [implementation verified; campaign running](docs/demonstrations/FORM_A/PLAN.md), with extraction-indexed A2.
+> FORM_A: [A0 complete; A1 campaign running](docs/demonstrations/FORM_A/PLAN.md); A2 retired after partial execution.
 > Physical validation remains **NOT_ESTABLISHED**.
 
 The approximately 40 g beverage endpoint at 30 s was used in the saturated-permeability calibration. It is not an independent prediction or validation target. The software does not yet predict taste.

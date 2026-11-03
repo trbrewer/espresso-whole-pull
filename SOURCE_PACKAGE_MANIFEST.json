@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1496,
-  "total_uncompressed_bytes_excluding_manifest": 27490689,
-  "aggregate_source_sha256": "b5b990a48f951b27a1897ac6b7b5835be0f9f97e6cf403051a23a1df18700820",
-  "aggregate_sha256": "b5b990a48f951b27a1897ac6b7b5835be0f9f97e6cf403051a23a1df18700820",
+  "file_count": 1502,
+  "total_uncompressed_bytes_excluding_manifest": 27850077,
+  "aggregate_source_sha256": "a4994bb7933b4977cca5ec06e4ab108bd2fb5258ec9db60daa734a1e36e8c799",
+  "aggregate_sha256": "a4994bb7933b4977cca5ec06e4ab108bd2fb5258ec9db60daa734a1e36e8c799",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -59,8 +59,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "7751b1be845f8159e4b1eff94277ac6b1c06efd8cd99c4a20ae7f7cf41c07d3b",
-      "bytes": 9685,
+      "sha256": "4d5ab3a8f26a77dcaac77de810fee9737a342f32a73b3e51407bdb537e566cb4",
+      "bytes": 9684,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -4564,23 +4564,43 @@
       "git_mode": "100644"
     },
     "docs/demonstrations/FORM_A/A2_PROBE.json": {
-      "sha256": "779f62b369b33058c54ff65e6388b00f45ba3d8f801a380f2e19f67c9754788a",
-      "bytes": 64859,
+      "sha256": "a988ec6c1b9387a546f9baf8e42a0d2edbfe3e3c18b3213e6d11fbd8078e1c90",
+      "bytes": 64960,
       "git_mode": "100644"
     },
     "docs/demonstrations/FORM_A/A2_PROBE.md": {
-      "sha256": "f6debf2423ac5f270799f9d247e3f51163495aad9d07e0fff36c2180daa0569f",
-      "bytes": 2042,
+      "sha256": "ca547234c08c848e05a95e0686975a6c99d376202fbb3ae597c4e1a5410bd563",
+      "bytes": 2088,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/DESCRIPTIVE_ONSET.csv": {
+      "sha256": "e0a5808ef84ae82f41bf4f3e7e08399ef3673a8d82710a974bb143c72a64d32d",
+      "bytes": 2834,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/DESCRIPTIVE_ONSET.json": {
+      "sha256": "3e66d4b3c283c81f58ad88661b942b1f77bbe6fcb4bc95e80d3fc66b8af31f69",
+      "bytes": 247206,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/DESCRIPTIVE_ONSET.md": {
+      "sha256": "32b57a53e866803038b5d255897ec9b4bbbaef00388738c0485e4c38fd4fe63c",
+      "bytes": 2232,
       "git_mode": "100644"
     },
     "docs/demonstrations/FORM_A/PLAN.md": {
-      "sha256": "f9a4f9bd19949fd8475b5d5beb822fb9c3c498abc32cf9552a7640f0627c1284",
-      "bytes": 4222,
+      "sha256": "3a21643388342313179c713086dc1b311112da63268e4bbcebab5685b39e2cf7",
+      "bytes": 4663,
       "git_mode": "100644"
     },
     "docs/demonstrations/FORM_A/VERIFICATION.json": {
       "sha256": "2c0426c282d7636aa038931f3b325e94d3c38385211d68b88c1243028c258d75",
       "bytes": 4202,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/VERIFICATION_FINAL.json": {
+      "sha256": "5ec190ea88f5a76ff2a7d6bd1c51e0ecda75afbccad4421b2dd86e73df6b450f",
+      "bytes": 47111,
       "git_mode": "100644"
     },
     "docs/evidence/puckworks_base_temporal_cv/figures/temporal_conservation_checks.png": {
@@ -5653,14 +5673,19 @@
       "bytes": 8143,
       "git_mode": "100755"
     },
+    "scripts/form_a_closeout.py": {
+      "sha256": "6bdcd2170a0987b0ac4d775348e08a90609dcde75dc2866254992c496b2e7756",
+      "bytes": 61742,
+      "git_mode": "100755"
+    },
     "scripts/form_a_demonstration.py": {
-      "sha256": "c840297f49bce660c2a522daf05d6e70bb867ec40f865270d38c48a87d836706",
-      "bytes": 16495,
+      "sha256": "c8bb9e5a6aba74cb770fde90afc88d5f8b7851a0c2b262bf1af630e2ac419629",
+      "bytes": 18041,
       "git_mode": "100755"
     },
     "scripts/form_a_report.py": {
-      "sha256": "ee321e4c26122463c2b5c02eb4eac3bf0e4c1871598a719682021bcb1334cfb8",
-      "bytes": 46898,
+      "sha256": "cd54b476d13034ae84305020e1e5e26be06eb50c8f83f5ce860a56fb17834a67",
+      "bytes": 35002,
       "git_mode": "100755"
     },
     "scripts/form_a_verification.py": {
@@ -6059,8 +6084,8 @@
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
-      "sha256": "9678c4d10c4b20c7863324f86e83b183d4ffacdcda41fae0cbb2a215c2cd24b5",
-      "bytes": 32941,
+      "sha256": "fdc87558d25541bb7e3e4e328c4ba14295b68c7e17d54656dfad35fc376f4d13",
+      "bytes": 33004,
       "git_mode": "100755"
     },
     "scripts/val_case_001.py": {
@@ -6538,14 +6563,19 @@
       "bytes": 6219,
       "git_mode": "100644"
     },
+    "tests/test_form_a_closeout.py": {
+      "sha256": "25b2ce39fdf389a43b15f2263ab1cc5b7747616c7cf79727a5e593d277584796",
+      "bytes": 3290,
+      "git_mode": "100644"
+    },
     "tests/test_form_a_demonstration.py": {
-      "sha256": "0f7d3be750408fd7dcf5dc2b74a8b24c2c650b668852fdd6389608224f9d0501",
-      "bytes": 3069,
+      "sha256": "f63751d118b657f18547313d82b2d358845479d70e2634f4be581076c7f424d1",
+      "bytes": 5253,
       "git_mode": "100644"
     },
     "tests/test_form_a_report.py": {
-      "sha256": "b2843af97523d28f9043531d320880e1c7c36cdb0c1df3ce7c8de89c6147e22d",
-      "bytes": 3910,
+      "sha256": "87b98b1d7ad5dcbd17bef11cce184c30fcade72011fbe6edfe3062a2ae3147ee",
+      "bytes": 6399,
       "git_mode": "100644"
     },
     "tests/test_form_a_whole_bed.py": {

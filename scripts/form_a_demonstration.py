@@ -23,7 +23,7 @@ def parameters_for(bank, forcing, pressure):
     return bank[f'HYD-LOCO-{pressure:.1f}']
 
 
-def execute(work, name, cfg, exe, pressure, forcing, brew='', ranks=32):
+def execute(work, name, cfg, exe, pressure, forcing, brew='', ranks=32, *, recover_completed=False):
     work = work.resolve()
     if work == V.ROOT or V.ROOT in work.parents:
         raise ValueError('Native runs must remain outside Git')
@@ -39,11 +39,22 @@ def execute(work, name, cfg, exe, pressure, forcing, brew='', ranks=32):
             raise ValueError('Run reuse identity changed: '+name)
         if result.get('fv_solution_sha256', D.digest(solution)) != D.digest(solution):
             raise ValueError('Native linear-solver controls changed: '+name)
-        return result
-    rows, wall = V.run_case(work, name, cfg, exe, ranks)
+        if not recover_completed:
+            return result
+    if recover_completed:
+        if D.digest(work/(name+'.json')) != identity['config_sha256']:
+            raise ValueError('Retained config differs from the requested reporting identity')
+        rows = E1.records(trace)
+        if abs(float(rows[-1]['time_s'])-100.) > 1e-8:
+            raise ValueError('Retained run did not complete the existing 100-s case')
+        wall = float((work/name/'wall_seconds.txt').read_text())
+        if not (work/name/'log.solver').is_file():
+            raise ValueError('Retained solver log is unavailable')
+    else:
+        rows, wall = V.run_case(work, name, cfg, exe, ranks)
     bounds = E1.balance_bounds(rows, cfg)
-    if bounds['status'] != 'PASS':
-        raise ValueError('Existing numerical balance/bounds checks exceeded: '+name)
+    # Completion and numerical qualification are separate. Preserve failed
+    # checks and the full hydraulic cohort; do not rerun or change tolerances.
     if min(float(r['form_a_min_cell_x_increment']) for r in rows) < 0:
         raise ValueError('Extracted cell fraction decreased: '+name)
     end = rows[-1]
@@ -57,7 +68,17 @@ def execute(work, name, cfg, exe, pressure, forcing, brew='', ranks=32):
         final_bed_mean_x=float(end['form_a_bed_mean_x']),
         wall_seconds=wall, ranks=ranks, core_hours=wall*ranks/3600,
         trace_sha256=D.digest(trace), fv_solution_sha256=D.digest(solution),
-        balances_and_bounds_qualified=True, **identity)
+        native_completed=True, native_last_time_s=float(end['time_s']),
+        balances_and_bounds_qualified=bounds['status']=='PASS', numerical_balance_bounds=bounds,
+        maximum_concentration_kg_m3=max(float(r['max_concentration_kg_m3']) for r in rows),
+        concentration_limit_kg_m3=cfg['extraction']['saturation_concentration_kg_m3'],
+        original_concentration_check_roundoff_allowance_kg_m3=1e-8,
+        recovered_reporting_record=recover_completed,
+        native_log_sha256={p.name:D.digest(p) for p in sorted((work/name).glob('log.*'))},
+        runtime_file_sha256=D.digest(work/name/'wall_seconds.txt'), **identity)
+    if bounds['status'] != 'PASS':
+        result['qualification_failure_preserved'] = True
+        result['qualification_note'] = 'Completed run retained with the original failed check; no rerun, clipping or relaxed bound'
     saved.write_text(json.dumps(result, indent=2)+'\n')
     print(json.dumps(result), flush=True)
     return result
@@ -168,6 +189,8 @@ def campaign_settings(args, needs_xc=False):
 
 
 def run_campaign(args, bank):
+    if args.arm == 'A2':
+        raise ValueError('A2 is retired for this campaign; retained evidence is reporting only')
     dt, xc = campaign_settings(args, args.arm == 'A2')
     if args.forcing == 'constant':
         for pressure in constant_pressures():
@@ -185,13 +208,12 @@ def run_campaign(args, bank):
 
 
 def campaign_matrix(inputs):
-    """All declared cases, with no A0 histories; stable order permits disjoint workers."""
+    """The 102 A0/A1 primary cases; retired A2 evidence is enumerated separately."""
     if len(inputs) != 56 or len({r['brew'] for r in inputs}) != 56:
         raise ValueError('Expected the authenticated 56 distinct brews')
-    jobs = [(arm, 'constant', pressure, '') for arm in ('A0', 'A1', 'A2')
+    jobs = [(arm, 'constant', pressure, '') for arm in ('A0', 'A1')
             for pressure in constant_pressures()]
-    jobs += [(arm, 'measured_history', r['nominal_pressure_bar'], r['brew'])
-             for arm in ('A1', 'A2') for r in inputs]
+    jobs += [('A1', 'measured_history', r['nominal_pressure_bar'], r['brew']) for r in inputs]
     return jobs
 
 
@@ -199,7 +221,7 @@ def run_shard(args, bank):
     """Deterministic disjoint portions; launch workers on separate CPU groups."""
     if args.shards < 1 or not 0 <= args.shard < args.shards:
         raise ValueError('Invalid campaign worker partition')
-    dt, xc = campaign_settings(args, needs_xc=True)
+    dt, xc = campaign_settings(args, needs_xc=False)
     inputs = json.loads((args.work/'source_inputs.json').read_text())
     sources = {r['brew']:r for r in inputs}
     for arm, forcing, pressure, brew in campaign_matrix(inputs)[args.shard::args.shards]:

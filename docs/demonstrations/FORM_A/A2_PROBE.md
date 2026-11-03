@@ -1,6 +1,6 @@
-# A2 design closure and 9-bar probe
+# A2 retirement and retained 9-bar probe
 
-A2 is closed for this campaign for design reasons, not results. With R ≥ R(0), increasing local washout can only advance front arrival (t_A2 ≤ t_A1). Throughput-driven memory supplies no constant-pressure optimum separate from A1. Extraction indexing under R0 (0.15/s) also caps recovery at exp[-exp(-1/Xc)].
+A2 was retired after partial execution. Its increasing recovery factor cannot delay physical front arrival relative to A1 under the same prescribed pressure history. Extraction indexing under R0 (0.15/s) also caps recovery at exp[-exp(-1/Xc)]. The full capability campaign was not completed; no A2 grade is assigned.
 
 Xc from A1 at outlet M=Mc is **0.8294438807 / 0.8422833432 / 0.8524326302** at **6 / 9 / 11 bar**. The unchanged 9-bar value gives a recovery ceiling of **0.737080**. The single DESCRIPTIVE_ALL probe uses the existing 0.005-s step and solver; only field-output cadence changed to retain the requested snapshots.
 
@@ -14,6 +14,6 @@ Xc from A1 at outlet M=Mc is **0.8294438807 / 0.8422833432 / 0.8524326302** at *
 
 Means are cell-volume weighted, equivalent to initial-solid weighting for this uniform R0 inventory. R_cell is evaluated from snapshot X; the [CSV](A2_PROBE.csv) also records the preceding-step recovery actually used and global R evaluated at A2’s own outlet mass. Global R in the table uses A1’s cumulative outlet mass on the same stable-pressure clock.
 
-At 100 s the flow ratio is 0.742525 while X exceeds 0.999963 in every cell. This illustrates the coupling ceiling; the design closure was recorded before interpreting these results. Ten completed A2 campaign cases, including both cases active when the hold arrived, are retained. All 69 unstarted cases remain blocked; no outputs were deleted.
+At 100 s the flow ratio is 0.742525 while X exceeds 0.999963 in every cell. This is a numerical probe observation, distinct from the algebraic recovery cap and its approximately 1.551 g/s descriptive liquid-flow bound. Ten completed A2 campaign cases, including both cases active when the hold arrived, are retained. All 69 unstarted cases remain blocked; no outputs were deleted.
 
 [Parameters, hashes, native accounting and retained-case records](A2_PROBE.json). A0 and A1 remain unchanged.

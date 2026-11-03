@@ -628,7 +628,8 @@
     "note": "Parent dispatchers were briefly stopped while installing hold sentinels; native children continued and both remained active at resume. Subsequent refusal to enter an unstarted held case is intentional; no solver was interrupted.",
     "both_native_solvers_still_running_at_resume": true,
     "disposition": "Closed for this campaign by owner, for design reasons; no A2 resumption",
-    "closed_before_probe_results": true
+    "closed_before_probe_results": true,
+    "historical_hold_metadata_note": "Records the earlier hold decision; the final disposition supersedes its wording"
   },
   "retained_completed_A2_campaign_runs": [
     {
@@ -965,5 +966,5 @@
     "native_checksum_index_file": "A2-probe-9-dt0.005.files.sha256.json",
     "native_checksum_index_sha256": "ba1417399bc5eadc2a05d9207259702ab93772475eee1d9669bf73dc7afe3c36"
   },
-  "campaign_disposition": "Closed by owner for design reasons before interpreting the probe; retain all completed native records; do not run the 69 held cases"
+  "campaign_disposition": "Retired after partial execution; retain every completed run and probe; no A2 grade; do not run the 69 held cases"
 }
