@@ -26,8 +26,10 @@ OpenFOAM-based research solver for espresso-puck wetting, porous flow, extractio
 > SCI-ED-003 is complete with status
 > `CLOSURE_CONTRACT_DEFINED_EXECUTION_NOT_AUTHORIZED`; the bounded
 > `OWNER_DECISION_PENDING` remains, neither Stage F nor Stage D is authorized,
-> and no solver, surrogate, or execution task is active.
-> Execution requires separate owner authorization.
+> Within SCI-ED-003, no solver, surrogate, or execution task is active;
+> execution of that contract requires separate owner authorization.
+> E1: [completed capability demonstration](docs/demonstrations/E1_CAPABILITY/SUMMARY.md).
+> FORM_A: [A0/A1 capability campaign complete](docs/demonstrations/FORM_A/SUMMARY.md); A2 retired after partial execution.
 > Physical validation remains **NOT_ESTABLISHED**.
 
 The approximately 40 g beverage endpoint at 30 s was used in the saturated-permeability calibration. It is not an independent prediction or validation target. The software does not yet predict taste.
@@ -76,7 +78,7 @@ The current target is OpenFOAM Foundation 12 on 64-bit Linux. Full OpenFOAM exec
 
 See `docs/ONBOARDING.md` before running or changing the model.
 
-[Puckworks](https://github.com/trbrewer/puckworks) is the public evidence/model/data dependency. It is reviewed and locked at `fc61c4670ec7bf801e40bb391aab16048b8da26b`, checked out with `tools/checkout_puckworks.sh`, and is not a submodule. WP02-001 implements the optional source-linked saturated dissolution-indexed effective-permeability branch selected by WP01R-006. Its governed 9-bar reconstruction and predeclared 8-bar no-retuning same-campaign comparison passed their frozen flow-shape gates without fitting or post-result adjustment. Neither comparison is independent validation, and physical validation remains **NOT_ESTABLISHED**.
+[Puckworks](https://github.com/trbrewer/puckworks) is the public evidence/model/data dependency. It is reviewed and locked at `dce84b22b99f114225eabb76f29014a5fc3efe5d` (D0 form A, PRs #409/#410), checked out with `tools/checkout_puckworks.sh`, and is not a submodule. WP02-001 implements the optional source-linked saturated dissolution-indexed effective-permeability branch selected by WP01R-006. Its governed 9-bar reconstruction and predeclared 8-bar no-retuning same-campaign comparison passed their frozen flow-shape gates without fitting or post-result adjustment. Neither comparison is independent validation, and physical validation remains **NOT_ESTABLISHED**.
 
 WP-0.3A reviewed moving-upstream evidence without advancing the runtime
 dependency lock. Its lock disposition is `RETAIN_EXISTING_LOCK`; selected

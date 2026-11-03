@@ -29,7 +29,7 @@ def inspect(root):
     paths=subprocess.check_output(['git','ls-tree','-r','--name-only',base,'docs/analysis'],cwd=root,text=True).splitlines()
     historical=[p for p in paths if any('/sci_md_rheology_'+n+'/' in p for n in ('001','002','003','004'))]
     for p in historical:
-        if (root/p).read_bytes()!=blob(p):errors.append('historical evidence modified: '+p)
+        if rheology_source_sha(root,p)!=sha(blob(p)):errors.append('historical evidence modified: '+p)
     controls=subprocess.check_output(['git','ls-tree','-r','--name-only',base,'config','dependencies/puckworks.lock.json'],cwd=root,text=True).splitlines()
     for p in controls:
         if rheology_source_sha(root,p)!=sha(blob(p)):errors.append('default/lock changed: '+p)

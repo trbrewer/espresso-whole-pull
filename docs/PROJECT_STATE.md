@@ -1,5 +1,8 @@
 # Project State
 
+- E1: [capability demonstration complete](demonstrations/E1_CAPABILITY/SUMMARY.md); historical results retained.
+- FORM_A: [A0/A1 capability campaign complete](demonstrations/FORM_A/SUMMARY.md); A2 retired after partial execution; the primary campaign uses the selected 0.005-s step.
+
 ## SCI-MD-WASZ-RESTART-PRESSURE-ORDER-001 (2026-10-22)
 
 Completed G1 / NO_GOVERNING_PHYSICS_CHANGE, RESEARCH_ONLY / RETROSPECTIVE /

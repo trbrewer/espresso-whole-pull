@@ -6,6 +6,13 @@ from pathlib import Path
 TASK='XSV-PRESSURE-001'
 FROZEN_CONTRACT_SHA256={'MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.json': 'e1c3719da9e3a18ec32dec2c18f7d4167a3d03884b23250e08b4cfe4394cc070', 'MATHEMATICAL_AND_COMPATIBILITY_CONTRACT.md': '6330a7369928008063ab76c166e6f50d31f77109b60565cf05701cb385a6ff2a'}
 AUTHORIZED_EXISTING_PRODUCTION_DELTAS={'solver/espressoWholePullFoam/espressoWholePullFoam.C': 'f0cfcf39bafe9a1c88f87f0a14678b7c427a10d4a38a3b8f6ff7eb7d1c518768', 'scripts/prepare_case.py': '9a10f3e32c9a433725ebab7ea7d58e470c7916e034189a7f367eab8d812074df'}
+# Form A has separate native parity, extraction and byte-identical off-path evidence.
+FORM_A_SOURCE_HASHES = {'solver/espressoWholePullFoam/espressoWholePullFoam.C': '30ebb473d368c93381b1e0accda672820e317c1d2f958c2f41cae225b877f93d', 'solver/espressoWholePullFoam/formAWholeBedClosure.H': 'e748c35a685662a704c6cb8c6e5e856a3e696d1b175374b6d4fe893e24f73b0d', 'solver/espressoWholePullFoam/e1EffectivePermeability.H': '2371ea22e53b323cf5ebd1f84759bcc30808b310feb3d5e805a68c375e01cefe', 'scripts/prepare_case.py': 'e9fa78d8466d5ccc53cdf0257ce091db502d1083655f162424b32d5d26db0280', 'dependencies/puckworks.lock.json': 'ea85db92a00c5f2f4eba3f5298c51f2a28e7f46b4a0929353ab6bc5479329914'}
+# Owner-requested NumPy API compatibility only; historical numerical results stay frozen.
+FORM_A_HOUSEKEEPING_HASHES = {
+    'tools/sci_md_rheology_001/analysis.py': 'c293da7aa3a8467c869d19b704501fa5bfaea8b97ccbb527a0d3a6490b3859b6',
+    'docs/analysis/sci_md_rheology_001/POST_RESULT_AMENDMENT.json': 'a0269ae8347af7918c62200c10af4322e9e86bcd017826884870f583f550b172',
+}
 SUCCESS='XSV_PRESSURE_001_NATIVE_PIECEWISE_LINEAR_PRESCRIBED_PRESSURE_HISTORY_QUALIFIED_READY_FOR_EXACT_HEAD_REVIEW'
 FILES={'helper_reference_vectors_pass':'FUNCTION_LEVEL_VERIFICATION.json','legacy_constant_equivalence_pass':'LEGACY_CONSTANT_EQUIVALENCE.json',
 'legacy_ramp_equivalence_pass':'LEGACY_RAMP_EQUIVALENCE.json','synthetic_profile_pass':'SYNTHETIC_PROFILE_QUALIFICATION.json',
@@ -27,10 +34,20 @@ def classify(g):
         if any(g.get(k) is not True for k in keys):return 'XSV_PRESSURE_001_BLOCKED_'+names[reason]
     return SUCCESS if g and all(v is True for v in g.values()) else 'XSV_PRESSURE_001_STOP_AUTHORITY_MISMATCH'
 def rheology_source_sha(root,path):
-    """Bind historical rheology after the exact, separately verified E1 addition."""
+    """Bind historical rheology after exact E1/Form A additions and API compatibility."""
     header='solver/espressoWholePullFoam/e1EffectivePermeability.H'
     changed=(*AUTHORIZED_EXISTING_PRODUCTION_DELTAS,'dependencies/puckworks.lock.json')
-    if path not in changed or not (root/header).exists():return sha(root/path)
+    form_a = (root/'solver/espressoWholePullFoam/formAWholeBedClosure.H').exists()
+    applicable = (*changed, *FORM_A_HOUSEKEEPING_HASHES) if form_a else changed
+    if path not in applicable or not (root/header).exists():return sha(root/path)
+    if form_a:
+        # Exact source binding, never an arbitrary fallback to historical qualification.
+        for source, expected in {**FORM_A_SOURCE_HASHES, **FORM_A_HOUSEKEEPING_HASHES}.items():
+            if sha(root/source) != expected:
+                raise ValueError('active Form A source differs from verified implementation '+source)
+        historical = subprocess.check_output(['git','show',
+            '0aac9b875f5dd9b3e415c821a1f9aa7e8250611b:'+path], cwd=root)
+        return hashlib.sha256(historical).hexdigest()
     # E1 G1/G2 and off-mode evidence qualify this source separately; do not let
     # arbitrary edits inherit the older pressure-history qualification.
     for source in (*changed,header):

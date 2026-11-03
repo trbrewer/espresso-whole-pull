@@ -487,8 +487,66 @@ def render_e1(scenario: dict) -> str:
         f"    {k} {x:.17g};\n" for k,x in values.items()) + "}\n"
 
 
+
+def render_form_a(scenario: dict) -> str:
+    """Opt-in form A; extraction is independent of WP02 permeability evolution."""
+    f = scenario.get("form_a_whole_bed_closure", {})
+    if not f.get("enabled", False):
+        return ""
+    h = scenario["hydraulics"]
+    if (scenario.get("effective_permeability_evolution") is not None
+            or scenario.get("e1_whole_bed_closure", {}).get("enabled", False)
+            or scenario.get("bedMechanicsModel", "none") != "none"
+            or scenario.get("flowResistanceModel", "darcy") != "darcy"
+            or h.get("permeability_profile", {}).get("type", "uniform") != "uniform"
+            or scenario.get("aggregate_viscosity", {}).get("mode", "off") != "off"
+            or h.get("pressure_boundary_model", "prescribedPressure") not in
+                ("prescribedPressure", "prescribedPressureHistory")
+            or scenario.get("pressureBoundaryModel", "prescribedPressure") not in
+                ("prescribedPressure", "prescribedPressureHistory")
+            or float(h["outlet_pressure_gauge_Pa"]) != 0
+            or float(h["front_pressure_gauge_Pa"]) != 0
+            or float(scenario["time"]["start_s"]) != 0):
+        raise ValueError("Form A requires fresh uniform prescribed-pressure Darcy; E1/WP02 are exclusive")
+    arm = f.get("arm")
+    keys = ("aGPerSBar", "pstarBar", "n", "pdBar", "mcG")
+    expected = {"enabled", "arm", *keys} | ({"xc"} if arm == "A2" else set())
+    if arm not in ("A0", "A1", "A2") or set(f) != expected:
+        raise ValueError("Form A requires exactly saved parameters, arm, and measured Xc for A2")
+    values = {k: float(f[k]) for k in keys}
+    if any(not math.isfinite(v) or v <= 0 for v in values.values()) or values["n"] < 1:
+        raise ValueError("Invalid Form A parameters")
+    if arm == "A2":
+        values["xc"] = float(f["xc"])
+        if not math.isfinite(values["xc"]) or not 0 < values["xc"] <= 1:
+            raise ValueError("A2 requires 0 < Xc <= 1 from A1 inventory")
+        if (float(scenario["coffee_bed"]["initial_extractable_fraction_dry_basis"]) <= 0
+                or float(scenario["extraction"]["rate_constant_1_s"]) <= 0):
+            raise ValueError("A2 requires active extraction and positive initial inventory")
+    return "formAWholeBedClosure\n{\n    enabled true;\n    arm " + arm + ";\n" + "".join(
+        f"    {k} {v:.17g};\n" for k, v in values.items()) + "}\n"
+
+
+def form_a_fv_solution(scenario: dict, solution: str) -> str:
+    """Resolve A2's varying permeability accurately enough for local continuity."""
+    form = scenario.get("form_a_whole_bed_closure", {})
+    if not form.get("enabled", False) or form.get("arm") != "A2":
+        return solution
+    tolerance = float(scenario.get("form_a_pressure_solver_tolerance", 1e-14))
+    if not math.isfinite(tolerance) or tolerance <= 0:
+        raise ValueError("Invalid Form A pressure solver tolerance")
+    original = "tolerance       1e-12;"
+    replacement = f"tolerance       {tolerance:g};"
+    if original not in solution and solution.count(replacement) == 1:
+        return solution
+    if solution.count(original) != 1:
+        raise ValueError("Unexpected reference pressure solver controls")
+    return solution.replace(original, replacement, 1)
+
+
 def render_properties(scenario: dict) -> str:
     e1_dictionary = render_e1(scenario)
+    form_a_dictionary = render_form_a(scenario)
     radial_mesh_contract(scenario)
     geometry = scenario["geometry"]
     bed = scenario["coffee_bed"]
@@ -904,7 +962,7 @@ targetBeverageMass         {float(time_cfg['target_beverage_mass_kg']):.16g};
 {fraction_dictionary}
 {machine_dictionary}
 {mechanics_dictionary}
-{closure_dictionary}{e1_dictionary}
+{closure_dictionary}{e1_dictionary}{form_a_dictionary}
 '''
 
 
@@ -1459,6 +1517,11 @@ def main() -> None:
             "tolerance       1e-12;", "tolerance       1e-14;", 1
         )
         solution_path.write_text(solution, encoding="utf-8")
+    solution_path = case / "system/fvSolution"
+    solution = solution_path.read_text(encoding="utf-8")
+    form_a_solution = form_a_fv_solution(scenario, solution)
+    if form_a_solution != solution:
+        solution_path.write_text(form_a_solution, encoding="utf-8")
     zero = case / "0"
     if zero.exists():
         shutil.rmtree(zero)
@@ -1503,7 +1566,8 @@ def main() -> None:
         }
     history = pressure_history_contract(scenario)
     aggregate_coupled = scenario.get("aggregate_viscosity", {}).get("mode", "off") in ("coupled", "bulkCoupled")
-    preview = ({"status": "NOT_APPLICABLE", "reason": "E1 requires its Python definition, not the static Darcy preview"}
+    preview = ({"status": "NOT_APPLICABLE", "reason": "Form A requires its dynamic closure reference"}
+               if scenario.get("form_a_whole_bed_closure", {}).get("enabled", False) else {"status": "NOT_APPLICABLE", "reason": "E1 requires its Python definition, not the static Darcy preview"}
                if scenario.get("e1_whole_bed_closure", {}).get("enabled", False) else {"status": "NOT_APPLICABLE", "reason": "Legacy scalar-ramp preview does not support pressure history"}
                if history else {"status": "NOT_APPLICABLE", "reason": "Scalar-viscosity analytical preview is inapplicable to aggregate-viscosity feedback; use topology-specific native interval diagnostics"}
                if aggregate_coupled else analytical_preview(preview_scenario))
@@ -1530,7 +1594,7 @@ def main() -> None:
     )
 
     b0 = None
-    if not scenario.get("e1_whole_bed_closure", {}).get("enabled", False) and history is None and not aggregate_coupled and (str(scenario["scenario_id"]).startswith("reference_R0") or r1):
+    if not scenario.get("form_a_whole_bed_closure", {}).get("enabled", False) and not scenario.get("e1_whole_bed_closure", {}).get("enabled", False) and history is None and not aggregate_coupled and (str(scenario["scenario_id"]).startswith("reference_R0") or r1):
         b0 = b0_reduced_simulation(scenario)
         (preflight_dir / "B0_REDUCED_TWIN_V0_1_4.json").write_text(
             canonical_json(b0) if r1 else json.dumps(b0, indent=2) + "\n",

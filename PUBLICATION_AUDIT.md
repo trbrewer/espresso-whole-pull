@@ -1,4 +1,6 @@
-# Publication Audit
+# Publication Audit — historical v0.1.4 snapshot
+
+This audit records the v0.1.4 publication decision; it is not an audit of current development.
 
 Overall disposition: **PASS**
 

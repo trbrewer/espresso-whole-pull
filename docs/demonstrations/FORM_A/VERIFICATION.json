@@ -1,0 +1,90 @@
+{
+  "schema": "ewp.form_a.implementation_verification.v1",
+  "base_main_commit": "569f3579ffa5ad607e05ec11b405a4771cd3f130",
+  "puckworks_commit": "dce84b22b99f114225eabb76f29014a5fc3efe5d",
+  "solver_executable_sha256": "c9871970a45573f14dbebed3f86f21a0a86c3ade3ecba3fb9d4294ab91e9ef54",
+  "source_sha256": {
+    "solver/espressoWholePullFoam/espressoWholePullFoam.C": "30ebb473d368c93381b1e0accda672820e317c1d2f958c2f41cae225b877f93d",
+    "solver/espressoWholePullFoam/formAWholeBedClosure.H": "e748c35a685662a704c6cb8c6e5e856a3e696d1b175374b6d4fe893e24f73b0d",
+    "scripts/prepare_case.py": "0155f4b831018329b9845bce97b348a2f13ae885cf8584bc7540aa4a98caaede"
+  },
+  "native_1d_parity": {
+    "pressures_bar": [
+      1.0,
+      2.0,
+      3.5,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      11.0,
+      13.0
+    ],
+    "delta_t_s": 0.005,
+    "axial_cells": 64,
+    "radial_cells": 1,
+    "largest_endpoint_difference_g_s": 1.1949409709388625e-05,
+    "all_within_existing_e1_g1_band": true,
+    "band": "max(0.02 g/s, 5% of Python endpoint); unchanged E1 G1"
+  },
+  "closure_aware_wetting": {
+    "expected_first_drip_s": 5.937144070475256,
+    "native_first_drip_s": 5.93714407047519,
+    "absolute_difference_s": 6.572520305780927e-14,
+    "wall_seconds": 3.599463284946978,
+    "core_hours": 0.0009998509124852716,
+    "mass_before_outflow_g": 0.0
+  },
+  "extraction_path": {
+    "synthetic_xc": 0.4,
+    "min_cell_x_increment": 0.0,
+    "final_bed_mean_x": 0.999996807972784,
+    "final_cup_solute_mass_kg": 0.00559901744999943,
+    "wall_seconds": 3.7081256872043014,
+    "core_hours": 0.001030034913112306,
+    "balance_checks": {
+      "max_liquid_residual_kg": 5.82867087928207e-16,
+      "liquid_limit_kg": 1.8518449239907201e-09,
+      "max_solute_residual_kg": 1.62568068951202e-16,
+      "solute_limit_kg": 1e-10,
+      "bounded": true,
+      "monotonic": true,
+      "status": "PASS"
+    }
+  },
+  "disabled_path": {
+    "main_commit": "569f3579ffa5ad607e05ec11b405a4771cd3f130",
+    "byte_identical_file_count": 14,
+    "file_sha256": {
+      "postProcessing/wholePull/0/traces.csv": "21f9aeff46366cea6c39042f436ab00d97cd272bec353d682d5850ab19365a1d",
+      "constant/espressoModelProperties": "82a0369ffe1b5c7aeba79b755c3007cc8f4910b6908511d983c1a94629ab7950",
+      "99.999999999982/U": "9bd3f54b0cb9d386fce18f100178a0e31de0665d4cc9f0630421492240de4754",
+      "99.999999999982/darcyFlux": "fe92d7c45728c31a668213e461dbfe90562c544e485090c35d1454ab1fd918ef",
+      "99.999999999982/dissolvedConcentration": "d705967c6954d0bc0485156dfc153eb911dd8a1f67188245ce4d58aab1ff8bf6",
+      "99.999999999982/hydraulicMobility": "822a03c9001cce727aaba90248ac00de2e87418e2fee04107ba99058596550e3",
+      "99.999999999982/localExtractionRate": "aebbc51af5ffb9e3af15619f8b978496f109321b628310372f0c393f9aa09ebe",
+      "99.999999999982/p": "bfc244c2fb06f090a18ed1d252c7dbc86d02433e7c1025b400386ab96fcb0e37",
+      "99.999999999982/permeability": "e113255599a0551a207128721c03d9c8eb3c9c822011eaec13485bf289004bfb",
+      "99.999999999982/permeabilityZoneId": "a57c537270d3bac5d7dd7ebacdf370d79592ce3b208de0fd8901e5a55faa591e",
+      "99.999999999982/porosity": "03122e5bf02186f08d496246168dbb339cad4cd96f857492c29bb7bbe1af0dcb",
+      "99.999999999982/remainingExtractable": "54d362cbe0fd7fde04a06c666de235a573475b289ae1e5c11cb6bb03d63d7415",
+      "99.999999999982/saturation": "7e50aeed3ca2165556c566504916545da3e419d43dc1fa868ed407a7f943fa45",
+      "99.999999999982/wetMask": "4eda0556b38f1ddde2d0cbf78bc0643e795c2f9e9fb324df9585ed3ae142e54d"
+    }
+  },
+  "native_runs": {
+    "retained_verification_runs": 15,
+    "additional_completed_runs": 2,
+    "additional_run_reason": "Initial off-report wrapper expected directory 100; actual final time is 99.999999999982. Native runs completed; corrected wrapper rerun retained separately.",
+    "total_core_hours": 0.016664641856008935,
+    "ranks": 1
+  },
+  "scientific_xc": {
+    "value": null,
+    "reason": "Determined by Phase 2 A1 normalization; 0.4 above is a synthetic coupling fixture only."
+  },
+  "campaign_runs": 0,
+  "native_artifacts": "External EWP-FORM-A-001 run directory; full outputs excluded from Git"
+}

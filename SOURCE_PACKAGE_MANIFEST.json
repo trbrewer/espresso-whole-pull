@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1483,
-  "total_uncompressed_bytes_excluding_manifest": 27306970,
-  "aggregate_source_sha256": "2a2b43caaeda15daaf4e10301e23dad2b789e48578d6d3583c57ef5f2eec479a",
-  "aggregate_sha256": "2a2b43caaeda15daaf4e10301e23dad2b789e48578d6d3583c57ef5f2eec479a",
+  "file_count": 1516,
+  "total_uncompressed_bytes_excluding_manifest": 29341761,
+  "aggregate_source_sha256": "abca2cbab2f76faa98c6ded21e77d6aaea89acecbf4ba7efc4760791ca2436cd",
+  "aggregate_sha256": "abca2cbab2f76faa98c6ded21e77d6aaea89acecbf4ba7efc4760791ca2436cd",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -59,8 +59,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "5c9bacec3776aa830d29f0f50d834c696814f01d7cd32f843372711193f20b52",
-      "bytes": 9417,
+      "sha256": "a371888427d6a2b346f24a44fba982aee7d36740c6bd2ab18271621ba217b4a3",
+      "bytes": 9689,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -2899,8 +2899,8 @@
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_001/POST_RESULT_AMENDMENT.json": {
-      "sha256": "402326695cc96d0c154721e494751ff9d7d0f8caf54a7af80c50f808f792ebb3",
-      "bytes": 1265,
+      "sha256": "a0269ae8347af7918c62200c10af4322e9e86bcd017826884870f583f550b172",
+      "bytes": 1437,
       "git_mode": "100644"
     },
     "docs/analysis/sci_md_rheology_001/PROTOCOL.md": {
@@ -4553,6 +4553,126 @@
       "bytes": 3494,
       "git_mode": "100644"
     },
+    "docs/demonstrations/FORM_A/A0_FIRST_DRIP_COMPARISON.csv": {
+      "sha256": "d0464b1ed102da35196e855df02c8337e33d97150f2279fdc77433473c0cd358",
+      "bytes": 740,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/A2_PROBE.csv": {
+      "sha256": "783c5e25c027ab07df99ffe404755b6d38b7c14b64e2cd51b0b3763a82bc4578",
+      "bytes": 1465,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/A2_PROBE.json": {
+      "sha256": "a988ec6c1b9387a546f9baf8e42a0d2edbfe3e3c18b3213e6d11fbd8078e1c90",
+      "bytes": 64960,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/A2_PROBE.md": {
+      "sha256": "ca547234c08c848e05a95e0686975a6c99d376202fbb3ae597c4e1a5410bd563",
+      "bytes": 2088,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/CONSTANT_COMPARISONS.csv": {
+      "sha256": "79e773fcd92d11b816b664c9609db86d7bca78b79fdfb1da25d84a088928f137",
+      "bytes": 3349,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/DESCRIPTIVE_ONSET.csv": {
+      "sha256": "e0a5808ef84ae82f41bf4f3e7e08399ef3673a8d82710a974bb143c72a64d32d",
+      "bytes": 2834,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/DESCRIPTIVE_ONSET.json": {
+      "sha256": "c9130954f860bc70b3c79d2f4c6b1bdf5e9ca6b4239fccf86d19f7a2de8e2f5e",
+      "bytes": 247206,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/DESCRIPTIVE_ONSET.md": {
+      "sha256": "32b57a53e866803038b5d255897ec9b4bbbaef00388738c0485e4c38fd4fe63c",
+      "bytes": 2232,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/DETECTOR_SIGNED_ERRORS.csv": {
+      "sha256": "a0b362381816df80b4e9d5fa4fc5fbac5a1c2d6444ed4452cbe1b7be3035112d",
+      "bytes": 5097,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/ENDPOINTS.csv": {
+      "sha256": "e457637a03fd40f5395e0002040e096551137dfcfc6a9c6c97a6628a77b41cac",
+      "bytes": 74969,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/ENDPOINT_FLOW.png": {
+      "sha256": "1db2d2b3524d9163a26ec9a1f0c616d3833e0514a4e6cdb2d146f06eae486d82",
+      "bytes": 125379,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/FIRST_DRIP.png": {
+      "sha256": "51085f27dbcfaca375e50930813eec96c71e967bc65c0d76284930d1d9c7f049",
+      "bytes": 236021,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/FIRST_DRIP_BY_BREW.csv": {
+      "sha256": "a37e807797efeb8219cf584c756b788dfbe866bb038a863c6b47dc56ec97c510",
+      "bytes": 246575,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/FIRST_DRIP_BY_PRESSURE.csv": {
+      "sha256": "d23ec52356de578c1a22175a95850c79c35b19e9699d547bddb52ad46638cbe9",
+      "bytes": 6191,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/GRADES.csv": {
+      "sha256": "5a6e93b8a50c485d5f103de34f9e400665a76ddc286dc29df81c92e8d11f67aa",
+      "bytes": 20820,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/METHODS.md": {
+      "sha256": "52975cef4bf7f9fbf5d99ad860785d6c65a6e6fad3b8fec2a731f3bc37f05ef5",
+      "bytes": 10662,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/PAIRED_COMPARISONS.csv": {
+      "sha256": "185ebafaeb2eb34ffe05377009df405613f70d09fef7bcefc9e3254e60f3a1d1",
+      "bytes": 1815,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/PLAN.md": {
+      "sha256": "e266fcb3faec69c0feb346989883e745369dd501e63f46b3bd3b85a5674149c0",
+      "bytes": 4831,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/PYTHON_PREDICTIONS.csv": {
+      "sha256": "27205122bf246891e5e7e330ba05cc776b6b1d0bc397a9137ce6fad42e7bc48a",
+      "bytes": 19917,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/QUALIFICATION_FAILURES.json": {
+      "sha256": "e75e02d2d4d1917f8f6dd9b26df62c533b6ea9171e508302fe1d4cb9d3df791a",
+      "bytes": 76895,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/RUN_MANIFEST.json": {
+      "sha256": "aae7f9c9d1720eb07dd25659281de00fdeaa4b038acc293deacbaebbe3a4e2ff",
+      "bytes": 656315,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/SUMMARY.md": {
+      "sha256": "91ce9f15e975735e561d3c2388d18231a4228e194b59329048e18956d24a5042",
+      "bytes": 4558,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/VERIFICATION.json": {
+      "sha256": "2c0426c282d7636aa038931f3b325e94d3c38385211d68b88c1243028c258d75",
+      "bytes": 4202,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/VERIFICATION_FINAL.json": {
+      "sha256": "5ec190ea88f5a76ff2a7d6bd1c51e0ecda75afbccad4421b2dd86e73df6b450f",
+      "bytes": 47111,
+      "git_mode": "100644"
+    },
     "docs/evidence/puckworks_base_temporal_cv/figures/temporal_conservation_checks.png": {
       "sha256": "9336facc0d5a09b216904759c3942c70768d56f2f533d512a33096ce1822e778",
       "bytes": 47554,
@@ -5623,6 +5743,26 @@
       "bytes": 8143,
       "git_mode": "100755"
     },
+    "scripts/form_a_closeout.py": {
+      "sha256": "5ee6c6807577236278298f5cca2b9b103efb96d90ce2f22906b191f5855506eb",
+      "bytes": 64690,
+      "git_mode": "100755"
+    },
+    "scripts/form_a_demonstration.py": {
+      "sha256": "c8bb9e5a6aba74cb770fde90afc88d5f8b7851a0c2b262bf1af630e2ac419629",
+      "bytes": 18041,
+      "git_mode": "100755"
+    },
+    "scripts/form_a_report.py": {
+      "sha256": "cd54b476d13034ae84305020e1e5e26be06eb50c8f83f5ce860a56fb17834a67",
+      "bytes": 35002,
+      "git_mode": "100755"
+    },
+    "scripts/form_a_verification.py": {
+      "sha256": "ec21917853399e6c8cfd00740debd981dc038aed34787b943752d1847d4104ce",
+      "bytes": 11629,
+      "git_mode": "100755"
+    },
     "scripts/freeze_contract.py": {
       "sha256": "113d847feb13d6ead25f0330d132fe0086ba615450b4695780088b5c011e7233",
       "bytes": 10778,
@@ -5709,13 +5849,13 @@
       "git_mode": "100755"
     },
     "scripts/prepare_case.py": {
-      "sha256": "32bd9c520897f2e0a0e775244dac147fe2cbd29c40d51e844b4160985a0f59b4",
-      "bytes": 73347,
+      "sha256": "e9fa78d8466d5ccc53cdf0257ce091db502d1083655f162424b32d5d26db0280",
+      "bytes": 77201,
       "git_mode": "100755"
     },
     "scripts/puckworks_historical_lock.py": {
-      "sha256": "94a10233ba98173ba56ad52a09a662182a160204e6a138337e5dbd9baa6b9bff",
-      "bytes": 811,
+      "sha256": "166c1e869bca6cec490a5fd07861b9740e21379c1fad905be53ce5ecf429e5ac",
+      "bytes": 943,
       "git_mode": "100755"
     },
     "scripts/r1_contract_bridge.py": {
@@ -6014,8 +6154,8 @@
       "git_mode": "100755"
     },
     "scripts/static_validate.py": {
-      "sha256": "06681030775b69328640f387d106d65bb30f42f9762a37331f6c0e3e467c72da",
-      "bytes": 32813,
+      "sha256": "fdc87558d25541bb7e3e4e328c4ba14295b68c7e17d54656dfad35fc376f4d13",
+      "bytes": 33004,
       "git_mode": "100755"
     },
     "scripts/val_case_001.py": {
@@ -6124,8 +6264,8 @@
       "git_mode": "100755"
     },
     "scripts/validate_sci_md_rheology_005.py": {
-      "sha256": "06c665ea1d763dd562f1f35757d65b3384e0b016034d680ddbc622bfe87848c9",
-      "bytes": 3016,
+      "sha256": "34264b4a69d628e895b0bd96169b9485afb8edac7e5b90d846deeab3fe6e1a2f",
+      "bytes": 3027,
       "git_mode": "100755"
     },
     "scripts/validate_sci_md_rheology_006.py": {
@@ -6134,8 +6274,8 @@
       "git_mode": "100755"
     },
     "scripts/validate_xsv_pressure_001.py": {
-      "sha256": "10bc26cba7799eae9cf87872ba7668aaa2c56a9a04c5a7cf2c155cd2f760f629",
-      "bytes": 18676,
+      "sha256": "2d1c667b76d9eaa7a5a37484eba980450113a85eb1dd0d5ef07a7d25a805d0d6",
+      "bytes": 20435,
       "git_mode": "100755"
     },
     "scripts/validate_xsv_waszkiewicz_dynamic_hyd_001.py": {
@@ -6344,13 +6484,18 @@
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/espressoWholePullFoam.C": {
-      "sha256": "021f24b21b70626575c51f73bd411f7a55f356f39a0478621de88f9da5c9b069",
-      "bytes": 201009,
+      "sha256": "30ebb473d368c93381b1e0accda672820e317c1d2f958c2f41cae225b877f93d",
+      "bytes": 210221,
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/forchheimerResistance.H": {
       "sha256": "0a035b0799ecc91cd5100da99801526df19e4a721d51afaa53e2a02eaf5af124",
       "bytes": 1731,
+      "git_mode": "100644"
+    },
+    "solver/espressoWholePullFoam/formAWholeBedClosure.H": {
+      "sha256": "e748c35a685662a704c6cb8c6e5e856a3e696d1b175374b6d4fe893e24f73b0d",
+      "bytes": 2669,
       "git_mode": "100644"
     },
     "solver/espressoWholePullFoam/machineBoundaryModel.H": {
@@ -6488,6 +6633,26 @@
       "bytes": 6219,
       "git_mode": "100644"
     },
+    "tests/test_form_a_closeout.py": {
+      "sha256": "25b2ce39fdf389a43b15f2263ab1cc5b7747616c7cf79727a5e593d277584796",
+      "bytes": 3290,
+      "git_mode": "100644"
+    },
+    "tests/test_form_a_demonstration.py": {
+      "sha256": "f63751d118b657f18547313d82b2d358845479d70e2634f4be581076c7f424d1",
+      "bytes": 5253,
+      "git_mode": "100644"
+    },
+    "tests/test_form_a_report.py": {
+      "sha256": "87b98b1d7ad5dcbd17bef11cce184c30fcade72011fbe6edfe3062a2ae3147ee",
+      "bytes": 6399,
+      "git_mode": "100644"
+    },
+    "tests/test_form_a_whole_bed.py": {
+      "sha256": "dda0ca909d8fbbe990ad643c5a1743aeeb4b5de8147415999cb95f9101ef92a9",
+      "bytes": 5915,
+      "git_mode": "100644"
+    },
     "tests/test_git_object_authority.py": {
       "sha256": "8be5237cf525382bf32ac4242d15b56820dfb5924f3ce40846fd45939010ff43",
       "bytes": 3157,
@@ -6504,12 +6669,12 @@
       "git_mode": "100644"
     },
     "tests/test_r1_bridge.py": {
-      "sha256": "bbe81a50b277e0bf80315bb3f1447d328cb29d698d60ace68805a072c5e6cd81",
+      "sha256": "b3a6e925284046ffaec7f84d32db9def0e5b75cfc2b185c4797cae01ca67118c",
       "bytes": 18939,
       "git_mode": "100644"
     },
     "tests/test_reference_case.py": {
-      "sha256": "a04724b39a8d701c8d79e23e5e6a970e832fa3eab5f24fd47c3d0b4299161bac",
+      "sha256": "1126e435108452d53e9668618cf04faf4803b3bc2291a9c0d1fed89fd5206366",
       "bytes": 67098,
       "git_mode": "100644"
     },
@@ -6954,8 +7119,8 @@
       "git_mode": "100644"
     },
     "tests/test_xsv_pressure_001.py": {
-      "sha256": "b8f4fcc9508a042bbb932abedbdf0374ff5935ad8e89490ff411233defb0c15e",
-      "bytes": 8455,
+      "sha256": "8fd5c756bee2243a6ac40e73d551df8d3f3808bfae808de4db7badffb17c110f",
+      "bytes": 8523,
       "git_mode": "100644"
     },
     "tests/test_xsv_taichi_001.py": {

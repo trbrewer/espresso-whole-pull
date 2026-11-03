@@ -13,6 +13,12 @@ import sys
 
 import numpy as np
 
+# NumPy 2 renamed this API; the pinned NumPy 1.26 CI uses SciPy's equivalent.
+try:
+    trapezoid = np.trapezoid
+except AttributeError:
+    from scipy.integrate import trapezoid
+
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 from tools.sci_md_004_stage_c.compare import scalar_internal_values, internal_numeric_values
@@ -91,14 +97,14 @@ def errors(t, q, reference):
         raise ValueError('time/flow shape mismatch')
     if not all(np.all(np.isfinite(x)) for x in (t,q,reference)) or np.any(np.diff(t)<=0) or np.any(reference<=0) or np.any(q<=0):
         raise ValueError('positive-flow window required')
-    return dict(integrated=float(np.trapz(abs(q-reference), t)/np.trapz(reference,t)),
+    return dict(integrated=float(trapezoid(abs(q-reference), t)/trapezoid(reference,t)),
                 peak=float(np.max(abs(q-reference)/reference)))
 
 
 def compare(profiles):
     """Estimate alpha from REF once; never refit on pressure or layer conditions."""
     r = profiles[REF]
-    alpha = float(np.trapz(r['q'], r['t'])/np.trapz(r['q0'], r['t']))
+    alpha = float(trapezoid(r['q'], r['t'])/trapezoid(r['q0'], r['t']))
     return alpha, {name: dict(absolute=errors(p['t'],p['q'],p['q0']),
                              residual=errors(p['t'],p['q'],alpha*p['q0']))
                    for name,p in profiles.items()}
