@@ -5,6 +5,7 @@ import csv
 import importlib.metadata
 import json
 from pathlib import Path
+import re
 import subprocess
 import sys
 
@@ -46,6 +47,18 @@ def continuous_response(values, conditions):
         continuous_peak_interval_bar=None if unresolved else np.quantile(peaks, [.025, .975]).tolist(),
         continuous_peak_unresolved_draws=unresolved,
         continuous_peak_uncertainty='1000 within-condition whole-brew resamples; fixed predictions; nominal-pressure response')
+
+
+def detector_onset(trace, density):
+    """Apply the unchanged B0c detector to native stable-clock mass and flow."""
+    from puckworks.analysis.pressure_peak_stage_b0 import sustained_onset
+    with trace.open() as stream:
+        header = next(csv.reader(stream))
+    keys = ['time_s','cup_water_mass_kg','outlet_flow_m3_s']
+    values = np.loadtxt(trace,delimiter=',',skiprows=1,usecols=[header.index(k) for k in keys]).T
+    time,mass,flow = values
+    value = sustained_onset(time,mass*1000.,flow*density*1000.)
+    return -1. if not np.isfinite(value) else float(value)
 
 
 def onset_metrics(inputs, first_drips):
@@ -325,6 +338,10 @@ def generate_report(args):
                           (case.parent/run['native_checksum_index_file'],'native_checksum_index_sha256')):
             if D.digest(path) != run[key]:
                 raise ValueError('Changed retained numerical-precision evidence: '+run['run'])
+    trace_times = [10., 20., 30., 50., 100.]
+    descriptive_trace = dict(pressure_bar=6., times_s=trace_times,
+        flow_g_s={arm:np.interp(trace_times, *native_traces[constants[arm][6.]['run']]).tolist()
+                  for arm in ('A0', 'A1', 'A2')})
     manifest = dict(schema='ewp.form_a.fixed_prediction_runs.v1', change_class='GOVERNING_PHYSICS_CHANGE',
         implementation_commit='5aa1f7fefb1d3a052fc7bb726c0eecb25e7ee6cf',
         report_source_commit=subprocess.check_output(['git','-C',str(ROOT),'rev-parse','HEAD'],text=True).strip(),
@@ -362,6 +379,7 @@ def generate_report(args):
         censoring='No first drip by 100 s is right-censored; onset RMSE then reports a lower bound',
         resolved_late_trends='Not scored: original D0 windows can extend beyond the E1 native 100-s support',
         scores=scores, python_held_out_score=python_score,
+        descriptive_trace_comparison=descriptive_trace,
         campaign_runs=len(campaigns), auxiliary_native_runs=len(records)-len(campaigns),
         additional_numerical_precision_runs=len(precision_audit['runs']),
         implementation_verification=verification['native_runs'],
@@ -447,6 +465,7 @@ def write_summary(args, manifest, onsets):
     xc = manifest['xc_normalization']
     xc_text = '/'.join(f"{r['xc']:.6f}" for r in xc['sensitivity'])
     ceiling = float(np.exp(-np.exp(-1/xc['xc_9bar'])))
+    traces = manifest['descriptive_trace_comparison']['flow_g_s']
     a0 = [r for r in manifest['runs'] if r['arm'] == 'A0' and r['forcing'] == 'constant'
           and r['nominal_pressure_bar'] in V.NOMINAL]
     parity = max(abs(r['remainder_g_s']) for r in a0)
@@ -473,13 +492,15 @@ def write_summary(args, manifest, onsets):
         f"**A0.** Correcting its wetting delay leaves at most {parity:.2g} g/s nominal-point difference from Python A. "
         'It isolates the transferred flow law; R0 wetting still accelerates as pressure rises.', '',
         f"**A1.** Fastest wetting is {scores['A1']['fastest_wetting_bar']:.3f} bar and peak flow is "
-        f"{scores['A1']['continuous_sweep_peak_bar']:.3f} bar. Compare that separation with the reference 4.55 versus 6.1 bar; "
-        'recovery remains exp(-1) before outflow.', '',
+        f"{scores['A1']['continuous_sweep_peak_bar']:.3f} bar, leaving the observed pressure separation unexplained. "
+        'Recovery remains exp(-1) before outflow, so wetting follows the same pressure capacity.', '',
         f"**A2.** Xc at 6/9/11 bar is **{xc_text}**; the 9-bar value is used without fitting. "
         f"Because X cannot exceed one, its recovery ceiling is {ceiling:.3f}; the peak shifts "
         f"{scores['A2']['continuous_sweep_peak_bar']-scores['A1']['continuous_sweep_peak_bar']:+.3f} bar from A1, "
-        'so the comparison tests both spatial variation and a bounded extraction coordinate.', '',
-        '**E1.** Its saved results are unchanged. Fixed R0 wetting and the late constant-flow peak remain the reference limitations.', '',
+        'testing both spatial variation and a bounded extraction coordinate. '
+        f"At 6 bar it changes 10-s flow from {traces['A1'][0]:.3f} to {traces['A2'][0]:.3f} g/s, "
+        f"but 100-s flow from {traces['A1'][-1]:.3f} to {traces['A2'][-1]:.3f} g/s.", '',
+        '**E1.** Fixed R0 wetting accelerates with pressure. Its saturated flow law retains the late 7.714-bar constant-sweep peak.', '',
         f"Step pair 0.0025/0.005 s at 2/6/11 bar: maximum endpoint change {endpoint_change:.2g} g/s, "
         f"first-drip change {onset_change:.2g} s; bracketed peak change {peak_change:.2g} bar. "
         f"Chosen step **{step:g} s**: {manifest['time_step_selection']['reason']} No inventory metric enters that choice.", '',
@@ -498,12 +519,174 @@ def write_summary(args, manifest, onsets):
     (args.out/'SUMMARY.md').write_text('\n'.join(lines)+'\n')
 
 
+def internal_scalars(path, count=None):
+    """Read Foundation 12 scalar internal fields; boundary values are excluded."""
+    raw = path.read_bytes()
+    match = re.search(rb'internalField\s+nonuniform\s+List<scalar>\s+(\d+)\s*\(', raw)
+    if match:
+        size = int(match[1])
+        if b'format      binary;' in raw or re.search(rb'format\s+binary;', raw):
+            arch = re.search(rb'\barch\s+"([^"]+)"',raw)
+            if (arch and arch[1] != b'LSB;label=32;scalar=64') or (not arch and sys.byteorder != 'little'):
+                raise ValueError('Unsupported binary field architecture')
+            if not re.match(rb'\s*\)',raw[match.end()+8*size:]):
+                raise ValueError('Expected native 64-bit scalar field')
+            values = np.frombuffer(raw, dtype='<f8', count=size, offset=match.end()).copy()
+        else:
+            values = np.fromstring(raw[match.end():raw.index(b')',match.end())].decode(), sep=' ')
+        if len(values) != size or (count is not None and size != count):
+            raise ValueError('Field size mismatch')
+    else:
+        match = re.search(rb'internalField\s+uniform\s+([^;]+);', raw)
+        if match is None or count is None:
+            raise ValueError('Missing scalar internal field or uniform field size')
+        values = np.full(count, float(match[1]))
+    if not np.isfinite(values).all():
+        raise ValueError('Nonfinite internal field')
+    return values
+
+
+def a0_owner_review(args, bank, inputs, density):
+    """Propagate saved D0 draws through the verified A0 limit, without refitting."""
+    from scipy.optimize import brentq
+    from scipy.special import expi
+    records = {p:json.loads((args.work/f'A0-constant-{p:g}-dt0.005.result.json').read_text())
+               for p in F.constant_pressures()}
+    if any(r['executable_sha256'] != D.digest(args.executable)
+           or any(r['parameters'][key] != value for key,value in bank['DESCRIPTIVE_ALL'].items())
+           for r in records.values()):
+        raise ValueError('A0 saved-fit or executable identity mismatch')
+    native = {p:read_native(args.work,r,density) for p,r in records.items()}
+    chosen = [records[r['nominal_pressure_bar']] for r in inputs]
+    score = grade(inputs,[r['endpoint_flow_g_s'] for r in chosen],
+        [np.interp(r['trace_times_s'],*native[r['nominal_pressure_bar']]) for r in inputs],
+        [r['nominal_pressure_bar'] for r in inputs],[r['first_drip_s'] for r in chosen],
+        'A0','in_sample_DESCRIPTIVE_ALL_constant')
+    pressure = np.array(sorted(records))
+    delay = np.array([records[p]['first_drip_s'] for p in pressure])
+    table = E1.records(args.puckworks/V.TABLE)
+    point = json.loads(next(r['parameters'] for r in table if r['record_type']=='point_replay'
+                            and r['candidate']=='A' and r['fold']=='DESCRIPTIVE_ALL'))
+    saved = [r for r in table if r['record_type']=='refit' and r['candidate']=='A' and r['fold']=='DESCRIPTIVE_ALL']
+    def evaluate(parameters):
+        p = parameters
+        capacity = p['a_g_s_bar']*p['Pd_bar']*(-np.expm1(-(pressure/p['Pd_bar'])**p['n']))*np.exp(-pressure/p['Pstar_bar'])
+        tau = capacity*(100-delay)/p['Mc_fixed_g']
+        # Integral of dz/dtau=exp(-exp(-z)): Ei(1)-Ei(exp(-z))=tau.
+        z = [brentq(lambda x:expi(1.)-expi(np.exp(-x))-t,t*np.exp(-1.),t,xtol=1e-13)
+             if t>0 else 0. for t in tau]
+        flow = capacity*np.exp(-np.exp(-np.array(z)))
+        return D.quadratic_peak(pressure,flow),flow
+    peaks = [dict(draw=int(r['draw']),peak_bar=evaluate(json.loads(r['parameters']))[0]) for r in saved]
+    predicted_peak, predicted_flow = evaluate(point)
+    saved_e1 = json.loads((ROOT/'docs/demonstrations/E1_CAPABILITY/RUN_MANIFEST.json').read_text())
+    e1_constants = {r['nominal_pressure_bar']:r for r in saved_e1['runs'] if r['forcing']=='constant'}
+    drip = [dict(nominal_pressure_bar=p,A0_first_drip_s=records[p]['first_drip_s'],
+                 E1_first_drip_s=e1_constants[p]['first_drip_s'],
+                 difference_s=records[p]['first_drip_s']-e1_constants[p]['first_drip_s']) for p in V.NOMINAL]
+    actual_flow = np.array([records[p]['endpoint_flow_g_s'] for p in pressure])
+    result = dict(score=score, scope='In-sample DESCRIPTIVE_ALL; not a like-for-like gain over held-out B1',
+        comparable_held_out_python_A_endpoint_rmse_g_s=.1530012355513247,
+        native_dense_sweep_peak_bar=D.quadratic_peak(pressure,actual_flow),
+        propagated_peak_interval_bar=np.quantile([r['peak_bar'] for r in peaks],[.025,.975]).tolist(),
+        delayed_python_point_peak_bar=predicted_peak,
+        maximum_native_vs_analytic_endpoint_difference_g_s=float(max(abs(actual_flow-predicted_flow))),
+        saved_D0_draw_count=len(peaks),saved_D0_seed=int(next(r['seed'] for r in table if r['record_type']=='pairing')),
+        interval_method='Propagate saved D0 DESCRIPTIVE_ALL parameter draws through exact separable Form A with existing A0 R0 wetting delays and the same 23-point quadratic peak estimator; no new fits or native runs',
+        interval_scope='Parameter propagation through the verified uniform limit; distinct from unchanged 1000-resample fixed-prediction grades',
+        D0_python_peak_bar=5.9985611853692165,D0_python_peak_interval_bar=[5.769910854571623,6.272472184514531],
+        source_table_sha256=D.digest(args.puckworks/V.TABLE),draws=peaks,first_drip_comparison=drip,
+        maximum_first_drip_difference_s=max(abs(r['difference_s']) for r in drip),
+        native_records=list(records.values()))
+    return result
+
+
+def write_owner_review(args):
+    """Owner-requested A0 review and one A2 probe; never dispatch native runs."""
+    bank = V.saved_inputs(args.puckworks)
+    sys.path.insert(0,str(args.puckworks))
+    inputs = json.loads((args.work/'source_inputs.json').read_text())
+    e1 = json.loads((ROOT/'docs/demonstrations/E1_CAPABILITY/RUN_MANIFEST.json').read_text())
+    if {r['brew']:r['original_sha256'] for r in inputs} != {r['brew']:r['sha256'] for r in e1['originals']}:
+        raise ValueError('Raw cohort differs from E1')
+    density = json.loads((ROOT/'config/reference_R0.json').read_text())['liquid']['density_kg_m3']
+    a0 = a0_owner_review(args,bank,inputs,density)
+    xc = json.loads((args.work/'XC-dt0.005.json').read_text())
+    case = args.owner_probe.resolve()
+    record = json.loads(case.with_name(case.name+'.result.json').read_text())
+    cfg = json.loads(case.with_name(case.name+'.json').read_text())
+    expected = V.scenario(bank['DESCRIPTIVE_ALL'],'A2',9.,.005,xc=xc['xc_9bar'])
+    expected['time']['field_write_interval_s'] = 10.
+    if cfg != expected or record['executable_sha256'] != D.digest(args.executable):
+        raise ValueError('Probe differs from the unchanged closure apart from field-output cadence')
+    t2,q2 = read_native(case.parent,record,density)
+    a1_record = json.loads((args.work/'A1-constant-9-dt0.005.result.json').read_text())
+    t1,q1 = read_native(args.work,a1_record,density)
+    def mass_trace(directory):
+        rows = E1.records(directory/'postProcessing/wholePull/0/traces.csv')
+        return tuple(np.array([float(r[key])*factor for r in rows]) for key,factor in
+                     [('time_s',1),('cup_water_mass_kg',1000),('form_a_bed_mean_x',1)])
+    mt1,m1,_ = mass_trace(args.work/a1_record['run']); mt2,m2,x2 = mass_trace(case)
+    processors = sorted(case.glob('processor[0-9]*'),key=lambda p:int(p.name[9:]))
+    if len(processors) != record['ranks']:
+        raise ValueError('Incomplete probe decomposition')
+    volumes = [internal_scalars(p/'10/Vc') for p in processors]
+    weight = np.concatenate(volumes)
+    if (weight<=0).any():raise ValueError('Nonpositive cell volume')
+    field_hashes = {str(p/'10/Vc'):D.digest(p/'10/Vc') for p in processors}
+    rows = []
+    for time in [10.,20.,40.,60.,100.]:
+        fields=[]; recoveries=[]
+        for p,v in zip(processors,volumes):
+            directory=min((d for d in p.iterdir() if d.is_dir() and re.fullmatch(r'[0-9.eE+-]+',d.name)),key=lambda d:abs(float(d.name)-time))
+            if not np.isclose(float(directory.name),time,rtol=0,atol=1e-8):raise ValueError('Missing requested snapshot')
+            for name,target in [('formAExtractedFraction',fields),('formARecovery',recoveries)]:
+                path=directory/name; target.append(internal_scalars(path,len(v)))
+                field_hashes[str(path)]=D.digest(path)
+        x=np.concatenate(fields); used=np.concatenate(recoveries)
+        recovery=np.exp(-np.exp(-x/xc['xc_9bar']))
+        mass1=float(np.interp(time,mt1,m1));mass2=float(np.interp(time,mt2,m2))
+        flow1=float(np.interp(time,t1,q1));flow2=float(np.interp(time,t2,q2))
+        rows.append(dict(time_s=time,A2_over_A1_flow_ratio=flow2/flow1,A1_flow_g_s=flow1,A2_flow_g_s=flow2,
+            mean_x=float(np.average(x,weights=weight)),min_cell_x=float(x.min()),max_cell_x=float(x.max()),
+            trace_bed_mean_x=float(np.interp(time,mt2,x2)),
+            mean_R_cell=float(np.average(recovery,weights=weight)),mean_R_cell_used=float(np.average(used,weights=weight)),
+            global_R_at_A1_outlet_mass=float(np.exp(-np.exp(-mass1/bank['DESCRIPTIVE_ALL']['mcG']))),
+            global_R_at_A2_outlet_mass=float(np.exp(-np.exp(-mass2/bank['DESCRIPTIVE_ALL']['mcG']))),
+            A1_outlet_mass_g=mass1,A2_outlet_mass_g=mass2))
+    hold=json.loads((args.work/'A2_OWNER_HOLD.json').read_text())
+    completed=[json.loads(p.read_text()) for p in sorted(args.work.glob('A2-constant-*.result.json'))]
+    probe=dict(definition='Single owner-requested A2 DESCRIPTIVE_ALL 9-bar constant probe',
+        xc_normalization=xc,rows=rows,run=record,A1_reference_run=a1_record,
+        recovery_ceiling=float(np.exp(-np.exp(-1/xc['xc_9bar']))),
+        averaging='Cell-volume weighted; initial extractable density is uniform, so this equals initial-solid-weighted averaging',
+        recovery_definition='R_cell recomputed from snapshot X; mean_R_cell_used retains the actual preceding-step recovery field. Global R uses A1 outlet mass; the A2-mass counterfactual is also recorded.',
+        field_encoding='Foundation 12 DP/Int32 native little-endian scalar64; absent arch headers use the native build encoding, with payload length checked',
+        snapshot_sha256={str(Path(p).relative_to(case)):v for p,v in field_hashes.items()},
+        hold=hold,retained_completed_A2_campaign_runs=completed,
+        source_sha256={p:D.digest(ROOT/p) for p in ['scripts/form_a_report.py','scripts/form_a_verification.py','scripts/form_a_demonstration.py','solver/espressoWholePullFoam/formAWholeBedClosure.H','solver/espressoWholePullFoam/espressoWholePullFoam.C']},
+        native_outputs='External task run directory; no native files deleted',
+        native_index=D.output_index(case))
+    args.out.mkdir(parents=True,exist_ok=True)
+    (args.out/'A0_REVIEW.json').write_text(json.dumps(a0,indent=2,allow_nan=False)+'\n')
+    (args.out/'A2_PROBE.json').write_text(json.dumps(probe,indent=2,allow_nan=False)+'\n')
+    E1.write_csv(args.out/'A0_FIRST_DRIP_COMPARISON.csv',a0['first_drip_comparison'])
+    E1.write_csv(args.out/'A2_PROBE.csv',rows)
+    print(json.dumps(dict(A0_peak=a0['native_dense_sweep_peak_bar'],A0_interval=a0['propagated_peak_interval_bar'],probe=rows),indent=2))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     for name in ('puckworks', 'work', 'raw', 'executable'):
         parser.add_argument('--'+name, type=Path, required=True)
     parser.add_argument('--out', type=Path, default=ROOT/'docs/demonstrations/FORM_A')
-    generate_report(parser.parse_args())
+    parser.add_argument('--owner-probe', type=Path,
+                        help='Completed single 9-bar probe directory; report the owner review without new runs')
+    args = parser.parse_args()
+    if args.owner_probe:
+        write_owner_review(args)
+    else:
+        generate_report(args)
 
 
 if __name__ == '__main__':

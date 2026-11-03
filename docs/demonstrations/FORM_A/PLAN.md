@@ -1,64 +1,59 @@
 # EWP-FORM-A-001 — Form A whole-bed closure
 
-**Transfer and conversion.** Use [D0 saved A fits][d0] from PW
-`dce84b22b99f114225eabb76f29014a5fc3efe5d` (#409/#410): `DESCRIPTIVE_ALL` for
-constants; ordinary `HYD-LOCO-<bar>` for histories, with each fold's fixed-bank
-`Mc_fixed_g`. No refits or averaging. Keep E1's raw-line → inlet-gauge convention:
-`P=max(Praw,0)` bar, `P0=0`, `M` = outlet liquid grams;
+**Transfer.** Use [D0 saved A fits][d0] from PW
+`dce84b22b99f114225eabb76f29014a5fc3efe5d` (#409/#410): DESCRIPTIVE_ALL for
+constants, ordinary HYD-LOCO-<bar> tuples for held-out histories, each with its
+fixed-bank Mc. No refits. Form A is the selected four-parameter primary candidate
+(accuracy vs B1: NEAR). Keep E1's raw-line → inlet-gauge convention:
+`P=max(Praw,0)` bar, P0=0, M=outlet liquid grams;
 `H=1-exp[-(P/Pd)^n]`, `R(M)=exp[-exp(-M/Mc)]`.
-For viscosity mu, depth L, density rho and gross area A,
+With viscosity mu, depth L, density rho and gross area A,
 `k_a=a*1e-3*mu*L/(rho*A*1e5)` and
-`k=k_a*(Pd/P)*H*exp(-P/Pstar)*R` recover
-`q=a*Pd*H*exp(-P/Pstar)*R`, `dM/dt=q`. Handle zero P analytically;
-compaction always uses whole-bed inlet pressure, never local stress.
+`k=k_a*(Pd/P)*H*exp(-P/Pstar)*R` recover the imposed q-law.
+Handle zero P analytically; compaction uses whole-bed inlet pressure, never local stress.
 
-| Arm | Mechanism and question |
+| Arm | Scope |
 |---|---|
-| A0 | After-saturation form A; R0 wetting. Run 23 constants and G1-style Python parity; no histories. |
-| A1 | Apply converted permeability during wetting. R uses outlet mass only: `R=exp(-1)` until first outflow. Does high-pressure first drip slow? Compare fastest wetting with peak flow. |
-| A2, exploratory | Keep A1's pressure factor; use `R_cell=exp[-exp(-X_cell/Xc)]`, where `X_cell=1-remainingExtractable/initialExtractableDensity`. Use wetted-column series resistance during filling. Does depth-varying extraction alter the peak, 1/2/3.5-bar endpoints or traces? |
+| A0 | Saturated-only closure, R0 wetting: 23 constants and G1 parity, no histories. Metrics are in-sample DESCRIPTIVE_ALL. |
+| A1 | Converted permeability also during wetting; outlet-mass recovery is exp(-1) until outflow. All 56 histories and 23 constants continue unchanged. |
+| A2 | Extraction-indexed `R_cell=exp[-exp(-X_cell/Xc)]`, with A1's pressure factor. Closed by owner for design reasons: retain completed cases and the single 9-bar probe; do not run the 69 held cases. |
 
-**Compatibility and Xc.** R0 extraction (0.15/s), inventory and transport are
-independent of WP02 permeability. Form A excludes `effectivePermeabilityEvolution`
-and E1: no conflict/fix. Xc is the initial-solid-weighted bed-mean X at outlet
-`M=Mc` in A1 DESCRIPTIVE_ALL at 9 bar; report the same definition at 6/9/11 bar,
-without fitting. Test non-decreasing cell X, uniform-X equivalence at whole-bed
-mass `Mc*X/Xc` (actual X–M need not be linear), and byte-identical disabled outputs.
+**Compatibility.** R0 extraction (0.15/s), inventory and transport operate independently
+of WP02 permeability. Form A excludes E1 and effectivePermeabilityEvolution;
+no competing hydraulic branch is active. X is one minus remaining/initial
+extractable solid. Xc is A1's initial-solid-weighted mean X at outlet M=Mc:
+**0.829443881 / 0.842283343 / 0.852432630** at 6/9/11 bar; use 9 bar without fitting.
+Uniform-X equivalence uses whole-bed mass Mc*X/Xc; actual X–M need not be linear.
+Tests cover this equivalence, non-decreasing X and byte-identical disabled outputs.
 
-**Pre-run expectation.** The descriptive fit gives `argmax C_A=5.998561 bar`
-(capacity 2.103899 g/s), predicting fastest wetting near 6.00 bar versus observed
-peak flow 6.1 bar and [C0's onset-fit minimum][c0] 4.55 bar (observed nominal
-minimum: 3.5 bar). Little pressure separation is expected; continue regardless.
+**Expectation and peaks.** The descriptive capacity maximum is **5.998561 bar**
+(2.103899 g/s), predicting fastest A1 wetting near peak flow.
+Observed fastest onset is at nominal **3.5 bar**; C0's **4.55 bar is a fitted-curve median**.
+Report D0 capacity with its parameter-refit interval separately from finite-time
+solver sweep peaks and their step/interpolation qualification; retain the nominal
+peak grade. Label resample intervals “conditional on transferred fits.”
 
-**Files.** Add `solver/espressoWholePullFoam/formAWholeBedClosure.H`; wire
-`espressoWholePullFoam.C` and `scripts/prepare_case.py`; add
-`scripts/form_a_{verification,demonstration,report}.py` and `tests/test_form_a*.py`.
-Update source manifest, QA metadata, historical-hash guards and script allowlist;
-`dependencies/puckworks.lock.json`, `README.md`, `docs/PUCKWORKS_INTEGRATION.md`,
-`docs/PROJECT_STATE.md` (one E1/FORM_A status line each).
-Replace `np.trapz` in `tools/sci_md_rheology_001/analysis.py`; label
-`PUBLICATION_AUDIT.md` historical v0.1.4. Preserve E1 code/results; PW stays read-only.
-
-**Runs.** Before campaigns, pair 0.0025/0.005 s at 2/6/11 bar and peak-bracketing
-neighbors; report endpoint, peak and first-drip changes, then choose one step
-for all arms without an inventory gate. A2 uses a 1e−14 pressure solve for local continuity; existing bounds stay unchanged. A1/A2 each run 56 histories plus
-23 constants: nominal 1/2/3.5/4/5/6/7/8/9/11/13, 5–8 every 0.25 bar, and
-8.25/8.5/8.75, deduplicated. Reuse E1 R0 geometry, stable clock, 100-s endpoint,
-onset+2–100-s primary and 5–100-s secondary masks, and 1,000 paired,
-condition-balanced whole-brew resamples (seed 20261103). Waszkiewicz et al.
-(2025), [Zenodo 18046315](https://doi.org/10.5281/zenodo.18046315), CC-BY-4.0:
-Raw hashes match E1.
+**Runs and observers.** The pre-campaign 0.0025/0.005-s pairs at 2/6/11 bar plus
+peak neighbors selected **0.005 s** for all new arms, without an inventory gate.
+Constants: nominal 1/2/3.5/4/5/6/7/8/9/11/13, 5–8 every 0.25 bar, and
+8.25/8.5/8.75, deduplicated. Keep E1 R0 geometry, stable clock and 100-s endpoint.
+Apply B0c sustained_onset to native cup mass/flow: >0.5 g and >0.1 g/s for 2 s,
+reported at interval start; right-censor non-detections at 100 s. Grade detector
+onset; retain sharp-front breakthrough as descriptive. Re-evaluate delayed Python A
+with matching tuples on E1's exact onset+2–100-s primary and 5–100-s companion masks.
+Use unchanged 1,000 paired condition-balanced whole-brew resamples, seed 20261103,
+including A1-minus-A0 differences. The ≥9-bar slope regresses 9/11/13 condition means.
+Waszkiewicz (2025), Zenodo 18046315, CC-BY-4.0; all 56 raw hashes match E1.
 No runtime caps; record core-hours; native outputs stay outside Git.
 
-**Grades and outputs.** Reuse [D0/E1 bands][bands] for B1 accuracy, nominal peak
-and slope ≥9 bar; C0/D0 onset 3.51/4.53 s and absolute low-bias 0.10/0.20 g/s.
-No new gates. D0 late windows beyond native 100-s support remain unscored.
-Publish the requested E1-format CSVs/manifest, both figures and one-page,
-numbers-first `SUMMARY.md` in `docs/demonstrations/FORM_A/`: E1/A0/A1/A2 rows,
-requested metrics, explicit uncertainty and 2–3 physical sentences per arm,
-including nulls. Label A0 descriptive and E1 transferred-median; keep status
-tags to SUMMARY's single header.
+**Files and outputs.** Solver header/wiring, prepare_case, form_a verification/run/report
+scripts and tests; source/QA metadata and historical guards; PW lock, README,
+PUCKWORKS_INTEGRATION and PROJECT_STATE; NumPy trapezoid compatibility and historical
+PUBLICATION_AUDIT label. Preserve E1 and PW. Publish one-page SUMMARY, E1-format CSVs
+and manifest, endpoint/onset figures and the retained probe. Keep individual 1/2/3.5-bar
+residuals visible; put all eleven onset medians in CSV/figure, not the summary table.
+Reuse [D0/E1 bands][bands], including C0/D0 onset 3.51/4.53 s and low-bias
+0.10/0.20 g/s; no new gates. D0 late windows beyond 100 s stay unscored.
 
 [d0]: https://github.com/trbrewer/puckworks/blob/dce84b22b99f114225eabb76f29014a5fc3efe5d/docs/research/PRESSURE_PEAK_STAGE_D0/RESULT_TABLE.csv
 [bands]: https://github.com/trbrewer/puckworks/blob/dce84b22b99f114225eabb76f29014a5fc3efe5d/docs/research/PRESSURE_PEAK_SCORECARD/SUMMARY.md
-[c0]: https://github.com/trbrewer/puckworks/blob/dce84b22b99f114225eabb76f29014a5fc3efe5d/docs/research/PRESSURE_PEAK_STAGE_C0/SUMMARY.md

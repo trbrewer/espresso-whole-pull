@@ -2,6 +2,7 @@ import sys
 from pathlib import Path
 from types import ModuleType
 import unittest
+import tempfile
 from unittest.mock import patch
 
 import numpy as np
@@ -12,6 +13,21 @@ import form_a_report as R
 
 
 class FormAReportTests(unittest.TestCase):
+    def test_probe_reader_uses_internal_cells_and_checks_binary_layout(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/'X'
+            path.write_bytes(b'format binary; arch "LSB;label=32;scalar=64";\n'
+                b'internalField nonuniform List<scalar> 3\n('
+                +np.array([.2,.5,.9],dtype='<f8').tobytes()+b');\nboundaryField { value uniform 99; }')
+            np.testing.assert_array_equal(R.internal_scalars(path),[.2,.5,.9])
+            with self.assertRaises(ValueError):R.internal_scalars(path,4)
+            path.write_bytes(path.read_bytes().replace(b' arch "LSB;label=32;scalar=64";',b''))
+            np.testing.assert_array_equal(R.internal_scalars(path),[.2,.5,.9])
+            path.write_text('format ascii; internalField uniform 0.4; boundaryField { value uniform 99; }')
+            np.testing.assert_array_equal(R.internal_scalars(path,3),[.4,.4,.4])
+            path.write_text('format ascii; internalField nonuniform List<scalar> 3 (0.2 0.5 0.9);')
+            np.testing.assert_array_equal(R.internal_scalars(path,3),[.2,.5,.9])
+
     def test_response_draws_are_paired_and_uniform_curves_have_no_sampling_spread(self):
         conditions = np.repeat(R.NOMINAL, 3)
         values = 3-(conditions-6.3)**2
