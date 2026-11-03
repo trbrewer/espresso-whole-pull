@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1515,
-  "total_uncompressed_bytes_excluding_manifest": 29336342,
-  "aggregate_source_sha256": "9e185c233e8eb76627feb27d279a4e9b2a193ea86f8dab6ae2d5b315460baae3",
-  "aggregate_sha256": "9e185c233e8eb76627feb27d279a4e9b2a193ea86f8dab6ae2d5b315460baae3",
+  "file_count": 1516,
+  "total_uncompressed_bytes_excluding_manifest": 29341761,
+  "aggregate_source_sha256": "abca2cbab2f76faa98c6ded21e77d6aaea89acecbf4ba7efc4760791ca2436cd",
+  "aggregate_sha256": "abca2cbab2f76faa98c6ded21e77d6aaea89acecbf4ba7efc4760791ca2436cd",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -4593,6 +4593,11 @@
       "bytes": 2232,
       "git_mode": "100644"
     },
+    "docs/demonstrations/FORM_A/DETECTOR_SIGNED_ERRORS.csv": {
+      "sha256": "a0b362381816df80b4e9d5fa4fc5fbac5a1c2d6444ed4452cbe1b7be3035112d",
+      "bytes": 5097,
+      "git_mode": "100644"
+    },
     "docs/demonstrations/FORM_A/ENDPOINTS.csv": {
       "sha256": "e457637a03fd40f5395e0002040e096551137dfcfc6a9c6c97a6628a77b41cac",
       "bytes": 74969,
@@ -4654,8 +4659,8 @@
       "git_mode": "100644"
     },
     "docs/demonstrations/FORM_A/SUMMARY.md": {
-      "sha256": "58ea9c70bd70d0d354fb6c4a362d099e79882485f5731ebe13e72c89376edd69",
-      "bytes": 4236,
+      "sha256": "91ce9f15e975735e561d3c2388d18231a4228e194b59329048e18956d24a5042",
+      "bytes": 4558,
       "git_mode": "100644"
     },
     "docs/demonstrations/FORM_A/VERIFICATION.json": {

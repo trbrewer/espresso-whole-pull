@@ -22,6 +22,8 @@ A0 is DESCRIPTIVE_ALL in-sample; its score is not a like-for-like gain over B1. 
 
 **Detector onset:** A0: ≥14.41 s (51/56 detected; MISSES); A1: ≥16.29 s (52/56 detected; MISSES); E1: 8.57 s (56/56 detected; MISSES). Observed 6→13-bar onset increases **41.6%**; A1 measured-history detector medians are **6.73→8.59 s (27.7%)**. Censor bounds use actual last confirmable timestamps, not 100 s. Old A0 front RMSE 8.63 s is superseded and ungraded; [all eleven medians](FIRST_DRIP_BY_PRESSURE.csv).
 
+A1's onset RMSE bound is dominated by 1–2 bar, where the flow-fitted opening term slows wetting (2-bar held-out detector median 52.5 s vs observed 13.9 s); at 3.5–13 bar A1's signed errors are smaller than E1's at every pressure above 5 bar. [Signed detector errors and detection counts](DETECTOR_SIGNED_ERRORS.csv).
+
 **Native descriptive onset:** RMSE bounds A0/A1 **14.415/13.435 s**; paired bound difference **−0.980 [−2.634, +1.279] s**, conditional on transferred fits. Detector grid minima: **13/6 bar** ([table](DESCRIPTIVE_ONSET.md)); no grading change.
 
 The uniform saturated solver reproduced the imposed lumped law. A0 retains pressure-accelerated R0 wetting; A1 leaves recovery at exp(−1) until outflow. The 6.57e−14 s analytic/native first-drip match verifies the implemented relation, not agreement with measured onset.
