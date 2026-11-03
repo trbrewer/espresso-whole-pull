@@ -26,10 +26,10 @@
     "Make/linux*/ build products",
     "deterministically generated case dictionaries and case/0 fields"
   ],
-  "file_count": 1502,
-  "total_uncompressed_bytes_excluding_manifest": 27850077,
-  "aggregate_source_sha256": "a4994bb7933b4977cca5ec06e4ab108bd2fb5258ec9db60daa734a1e36e8c799",
-  "aggregate_sha256": "a4994bb7933b4977cca5ec06e4ab108bd2fb5258ec9db60daa734a1e36e8c799",
+  "file_count": 1515,
+  "total_uncompressed_bytes_excluding_manifest": 29336342,
+  "aggregate_source_sha256": "9e185c233e8eb76627feb27d279a4e9b2a193ea86f8dab6ae2d5b315460baae3",
+  "aggregate_sha256": "9e185c233e8eb76627feb27d279a4e9b2a193ea86f8dab6ae2d5b315460baae3",
   "strategy_source_path": "docs/source_strategy/espresso_puck_modeling_and_simulation_strategy_v1_4.md",
   "strategy_source_sha256": "3e3b96b39f81c5e2df5c2dbe42103a4a5a58f928b9e5409bbcaeb861761377b9",
   "files": {
@@ -59,8 +59,8 @@
       "git_mode": "100644"
     },
     "README.md": {
-      "sha256": "4d5ab3a8f26a77dcaac77de810fee9737a342f32a73b3e51407bdb537e566cb4",
-      "bytes": 9684,
+      "sha256": "a371888427d6a2b346f24a44fba982aee7d36740c6bd2ab18271621ba217b4a3",
+      "bytes": 9689,
       "git_mode": "100644"
     },
     "VERSION": {
@@ -4573,13 +4573,18 @@
       "bytes": 2088,
       "git_mode": "100644"
     },
+    "docs/demonstrations/FORM_A/CONSTANT_COMPARISONS.csv": {
+      "sha256": "79e773fcd92d11b816b664c9609db86d7bca78b79fdfb1da25d84a088928f137",
+      "bytes": 3349,
+      "git_mode": "100644"
+    },
     "docs/demonstrations/FORM_A/DESCRIPTIVE_ONSET.csv": {
       "sha256": "e0a5808ef84ae82f41bf4f3e7e08399ef3673a8d82710a974bb143c72a64d32d",
       "bytes": 2834,
       "git_mode": "100644"
     },
     "docs/demonstrations/FORM_A/DESCRIPTIVE_ONSET.json": {
-      "sha256": "3e66d4b3c283c81f58ad88661b942b1f77bbe6fcb4bc95e80d3fc66b8af31f69",
+      "sha256": "c9130954f860bc70b3c79d2f4c6b1bdf5e9ca6b4239fccf86d19f7a2de8e2f5e",
       "bytes": 247206,
       "git_mode": "100644"
     },
@@ -4588,9 +4593,69 @@
       "bytes": 2232,
       "git_mode": "100644"
     },
+    "docs/demonstrations/FORM_A/ENDPOINTS.csv": {
+      "sha256": "e457637a03fd40f5395e0002040e096551137dfcfc6a9c6c97a6628a77b41cac",
+      "bytes": 74969,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/ENDPOINT_FLOW.png": {
+      "sha256": "1db2d2b3524d9163a26ec9a1f0c616d3833e0514a4e6cdb2d146f06eae486d82",
+      "bytes": 125379,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/FIRST_DRIP.png": {
+      "sha256": "51085f27dbcfaca375e50930813eec96c71e967bc65c0d76284930d1d9c7f049",
+      "bytes": 236021,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/FIRST_DRIP_BY_BREW.csv": {
+      "sha256": "a37e807797efeb8219cf584c756b788dfbe866bb038a863c6b47dc56ec97c510",
+      "bytes": 246575,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/FIRST_DRIP_BY_PRESSURE.csv": {
+      "sha256": "d23ec52356de578c1a22175a95850c79c35b19e9699d547bddb52ad46638cbe9",
+      "bytes": 6191,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/GRADES.csv": {
+      "sha256": "5a6e93b8a50c485d5f103de34f9e400665a76ddc286dc29df81c92e8d11f67aa",
+      "bytes": 20820,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/METHODS.md": {
+      "sha256": "52975cef4bf7f9fbf5d99ad860785d6c65a6e6fad3b8fec2a731f3bc37f05ef5",
+      "bytes": 10662,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/PAIRED_COMPARISONS.csv": {
+      "sha256": "185ebafaeb2eb34ffe05377009df405613f70d09fef7bcefc9e3254e60f3a1d1",
+      "bytes": 1815,
+      "git_mode": "100644"
+    },
     "docs/demonstrations/FORM_A/PLAN.md": {
-      "sha256": "3a21643388342313179c713086dc1b311112da63268e4bbcebab5685b39e2cf7",
-      "bytes": 4663,
+      "sha256": "e266fcb3faec69c0feb346989883e745369dd501e63f46b3bd3b85a5674149c0",
+      "bytes": 4831,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/PYTHON_PREDICTIONS.csv": {
+      "sha256": "27205122bf246891e5e7e330ba05cc776b6b1d0bc397a9137ce6fad42e7bc48a",
+      "bytes": 19917,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/QUALIFICATION_FAILURES.json": {
+      "sha256": "e75e02d2d4d1917f8f6dd9b26df62c533b6ea9171e508302fe1d4cb9d3df791a",
+      "bytes": 76895,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/RUN_MANIFEST.json": {
+      "sha256": "aae7f9c9d1720eb07dd25659281de00fdeaa4b038acc293deacbaebbe3a4e2ff",
+      "bytes": 656315,
+      "git_mode": "100644"
+    },
+    "docs/demonstrations/FORM_A/SUMMARY.md": {
+      "sha256": "58ea9c70bd70d0d354fb6c4a362d099e79882485f5731ebe13e72c89376edd69",
+      "bytes": 4236,
       "git_mode": "100644"
     },
     "docs/demonstrations/FORM_A/VERIFICATION.json": {
@@ -5674,8 +5739,8 @@
       "git_mode": "100755"
     },
     "scripts/form_a_closeout.py": {
-      "sha256": "6bdcd2170a0987b0ac4d775348e08a90609dcde75dc2866254992c496b2e7756",
-      "bytes": 61742,
+      "sha256": "5ee6c6807577236278298f5cca2b9b103efb96d90ce2f22906b191f5855506eb",
+      "bytes": 64690,
       "git_mode": "100755"
     },
     "scripts/form_a_demonstration.py": {

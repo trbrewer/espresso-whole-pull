@@ -347,6 +347,9 @@
           "detector_censor_bound_s": 97.878,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-1-dt0.005",
+          "native_trace_sha256": "f42e56abd22d6c6a21a73dc075ca9332a0fd681f4be2a2ac2453ccbb2661466d",
+          "native_config_sha256": "0b1416fc3e5a44b689921e47c024760568d3591568c40f9257cb96a8597d38b6",
           "detector_observation": {
             "onset_s": null,
             "detected": false,
@@ -360,10 +363,7 @@
             "baseline_g": 0.0,
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
-          "detector_squared_error_or_bound_s2": 5344.341025000001,
-          "native_run": "A0-constant-1-dt0.005",
-          "native_trace_sha256": "f42e56abd22d6c6a21a73dc075ca9332a0fd681f4be2a2ac2453ccbb2661466d",
-          "native_config_sha256": "0b1416fc3e5a44b689921e47c024760568d3591568c40f9257cb96a8597d38b6"
+          "detector_squared_error_or_bound_s2": 5344.341025000001
         },
         {
           "arm": "A0",
@@ -381,6 +381,9 @@
           "detector_censor_bound_s": 97.901,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-1-dt0.005",
+          "native_trace_sha256": "f42e56abd22d6c6a21a73dc075ca9332a0fd681f4be2a2ac2453ccbb2661466d",
+          "native_config_sha256": "0b1416fc3e5a44b689921e47c024760568d3591568c40f9257cb96a8597d38b6",
           "detector_observation": {
             "onset_s": null,
             "detected": false,
@@ -394,10 +397,7 @@
             "baseline_g": 0.0,
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
-          "detector_squared_error_or_bound_s2": 5306.102648999999,
-          "native_run": "A0-constant-1-dt0.005",
-          "native_trace_sha256": "f42e56abd22d6c6a21a73dc075ca9332a0fd681f4be2a2ac2453ccbb2661466d",
-          "native_config_sha256": "0b1416fc3e5a44b689921e47c024760568d3591568c40f9257cb96a8597d38b6"
+          "detector_squared_error_or_bound_s2": 5306.102648999999
         },
         {
           "arm": "A0",
@@ -415,6 +415,9 @@
           "detector_censor_bound_s": 97.87100000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-1-dt0.005",
+          "native_trace_sha256": "f42e56abd22d6c6a21a73dc075ca9332a0fd681f4be2a2ac2453ccbb2661466d",
+          "native_config_sha256": "0b1416fc3e5a44b689921e47c024760568d3591568c40f9257cb96a8597d38b6",
           "detector_observation": {
             "onset_s": null,
             "detected": false,
@@ -428,10 +431,7 @@
             "baseline_g": 0.0,
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
-          "detector_squared_error_or_bound_s2": 5547.419361000001,
-          "native_run": "A0-constant-1-dt0.005",
-          "native_trace_sha256": "f42e56abd22d6c6a21a73dc075ca9332a0fd681f4be2a2ac2453ccbb2661466d",
-          "native_config_sha256": "0b1416fc3e5a44b689921e47c024760568d3591568c40f9257cb96a8597d38b6"
+          "detector_squared_error_or_bound_s2": 5547.419361000001
         },
         {
           "arm": "A0",
@@ -449,6 +449,9 @@
           "detector_censor_bound_s": 97.86600000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-1-dt0.005",
+          "native_trace_sha256": "f42e56abd22d6c6a21a73dc075ca9332a0fd681f4be2a2ac2453ccbb2661466d",
+          "native_config_sha256": "0b1416fc3e5a44b689921e47c024760568d3591568c40f9257cb96a8597d38b6",
           "detector_observation": {
             "onset_s": null,
             "detected": false,
@@ -462,10 +465,7 @@
             "baseline_g": 0.0,
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
-          "detector_squared_error_or_bound_s2": 5190.482025000002,
-          "native_run": "A0-constant-1-dt0.005",
-          "native_trace_sha256": "f42e56abd22d6c6a21a73dc075ca9332a0fd681f4be2a2ac2453ccbb2661466d",
-          "native_config_sha256": "0b1416fc3e5a44b689921e47c024760568d3591568c40f9257cb96a8597d38b6"
+          "detector_squared_error_or_bound_s2": 5190.482025000002
         },
         {
           "arm": "A0",
@@ -483,6 +483,9 @@
           "detector_censor_bound_s": 97.908,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-1-dt0.005",
+          "native_trace_sha256": "f42e56abd22d6c6a21a73dc075ca9332a0fd681f4be2a2ac2453ccbb2661466d",
+          "native_config_sha256": "0b1416fc3e5a44b689921e47c024760568d3591568c40f9257cb96a8597d38b6",
           "detector_observation": {
             "onset_s": null,
             "detected": false,
@@ -496,10 +499,7 @@
             "baseline_g": 0.0,
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
-          "detector_squared_error_or_bound_s2": 4838.315363999999,
-          "native_run": "A0-constant-1-dt0.005",
-          "native_trace_sha256": "f42e56abd22d6c6a21a73dc075ca9332a0fd681f4be2a2ac2453ccbb2661466d",
-          "native_config_sha256": "0b1416fc3e5a44b689921e47c024760568d3591568c40f9257cb96a8597d38b6"
+          "detector_squared_error_or_bound_s2": 4838.315363999999
         },
         {
           "arm": "A0",
@@ -517,6 +517,9 @@
           "detector_censor_bound_s": 97.87700000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-2-dt0.005",
+          "native_trace_sha256": "b105ed7c00fff257cd460caf5b76e398501f61759f4b1c34957ba0c8ec52662d",
+          "native_config_sha256": "13bd71736f78d155292478094ea6b527b70ceedcdb41591d44f452e6262164c4",
           "detector_observation": {
             "confirmation_s": 18.771,
             "observer_mass_support_start_s": 15.221,
@@ -535,10 +538,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": 2.4289999999999985,
-          "detector_squared_error_or_bound_s2": 5.900040999999993,
-          "native_run": "A0-constant-2-dt0.005",
-          "native_trace_sha256": "b105ed7c00fff257cd460caf5b76e398501f61759f4b1c34957ba0c8ec52662d",
-          "native_config_sha256": "13bd71736f78d155292478094ea6b527b70ceedcdb41591d44f452e6262164c4"
+          "detector_squared_error_or_bound_s2": 5.900040999999993
         },
         {
           "arm": "A0",
@@ -556,6 +556,9 @@
           "detector_censor_bound_s": 97.91,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-2-dt0.005",
+          "native_trace_sha256": "b105ed7c00fff257cd460caf5b76e398501f61759f4b1c34957ba0c8ec52662d",
+          "native_config_sha256": "13bd71736f78d155292478094ea6b527b70ceedcdb41591d44f452e6262164c4",
           "detector_observation": {
             "confirmation_s": 18.778,
             "observer_mass_support_start_s": 15.229,
@@ -574,10 +577,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": 5.791999999999998,
-          "detector_squared_error_or_bound_s2": 33.54726399999998,
-          "native_run": "A0-constant-2-dt0.005",
-          "native_trace_sha256": "b105ed7c00fff257cd460caf5b76e398501f61759f4b1c34957ba0c8ec52662d",
-          "native_config_sha256": "13bd71736f78d155292478094ea6b527b70ceedcdb41591d44f452e6262164c4"
+          "detector_squared_error_or_bound_s2": 33.54726399999998
         },
         {
           "arm": "A0",
@@ -595,6 +595,9 @@
           "detector_censor_bound_s": 97.92399999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-2-dt0.005",
+          "native_trace_sha256": "b105ed7c00fff257cd460caf5b76e398501f61759f4b1c34957ba0c8ec52662d",
+          "native_config_sha256": "13bd71736f78d155292478094ea6b527b70ceedcdb41591d44f452e6262164c4",
           "detector_observation": {
             "confirmation_s": 18.781000000000002,
             "observer_mass_support_start_s": 15.229999999999999,
@@ -613,10 +616,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": 1.0270000000000028,
-          "detector_squared_error_or_bound_s2": 1.0547290000000058,
-          "native_run": "A0-constant-2-dt0.005",
-          "native_trace_sha256": "b105ed7c00fff257cd460caf5b76e398501f61759f4b1c34957ba0c8ec52662d",
-          "native_config_sha256": "13bd71736f78d155292478094ea6b527b70ceedcdb41591d44f452e6262164c4"
+          "detector_squared_error_or_bound_s2": 1.0547290000000058
         },
         {
           "arm": "A0",
@@ -634,6 +634,9 @@
           "detector_censor_bound_s": 97.92,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-2-dt0.005",
+          "native_trace_sha256": "b105ed7c00fff257cd460caf5b76e398501f61759f4b1c34957ba0c8ec52662d",
+          "native_config_sha256": "13bd71736f78d155292478094ea6b527b70ceedcdb41591d44f452e6262164c4",
           "detector_observation": {
             "confirmation_s": 18.779999999999998,
             "observer_mass_support_start_s": 15.23,
@@ -652,10 +655,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": 3.1779999999999973,
-          "detector_squared_error_or_bound_s2": 10.099683999999982,
-          "native_run": "A0-constant-2-dt0.005",
-          "native_trace_sha256": "b105ed7c00fff257cd460caf5b76e398501f61759f4b1c34957ba0c8ec52662d",
-          "native_config_sha256": "13bd71736f78d155292478094ea6b527b70ceedcdb41591d44f452e6262164c4"
+          "detector_squared_error_or_bound_s2": 10.099683999999982
         },
         {
           "arm": "A0",
@@ -673,6 +673,9 @@
           "detector_censor_bound_s": 97.873,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-3.5-dt0.005",
+          "native_trace_sha256": "0dc3a70c0e4627d45ca92ef2add482eb38cb50af2689e8b920f27119783c5c86",
+          "native_config_sha256": "1b6a51bf77d1a916b168b07d8097ecf706e6a8295b72ed6401d0a2175010b0ca",
           "detector_observation": {
             "confirmation_s": 11.208,
             "observer_mass_support_start_s": 7.659000000000001,
@@ -691,10 +694,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -1.9619999999999997,
-          "detector_squared_error_or_bound_s2": 3.849443999999999,
-          "native_run": "A0-constant-3.5-dt0.005",
-          "native_trace_sha256": "0dc3a70c0e4627d45ca92ef2add482eb38cb50af2689e8b920f27119783c5c86",
-          "native_config_sha256": "1b6a51bf77d1a916b168b07d8097ecf706e6a8295b72ed6401d0a2175010b0ca"
+          "detector_squared_error_or_bound_s2": 3.849443999999999
         },
         {
           "arm": "A0",
@@ -712,6 +712,9 @@
           "detector_censor_bound_s": 97.871,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-3.5-dt0.005",
+          "native_trace_sha256": "0dc3a70c0e4627d45ca92ef2add482eb38cb50af2689e8b920f27119783c5c86",
+          "native_config_sha256": "1b6a51bf77d1a916b168b07d8097ecf706e6a8295b72ed6401d0a2175010b0ca",
           "detector_observation": {
             "confirmation_s": 11.207,
             "observer_mass_support_start_s": 7.658,
@@ -730,10 +733,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -0.6539999999999999,
-          "detector_squared_error_or_bound_s2": 0.4277159999999999,
-          "native_run": "A0-constant-3.5-dt0.005",
-          "native_trace_sha256": "0dc3a70c0e4627d45ca92ef2add482eb38cb50af2689e8b920f27119783c5c86",
-          "native_config_sha256": "1b6a51bf77d1a916b168b07d8097ecf706e6a8295b72ed6401d0a2175010b0ca"
+          "detector_squared_error_or_bound_s2": 0.4277159999999999
         },
         {
           "arm": "A0",
@@ -751,6 +751,9 @@
           "detector_censor_bound_s": 97.892,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-3.5-dt0.005",
+          "native_trace_sha256": "0dc3a70c0e4627d45ca92ef2add482eb38cb50af2689e8b920f27119783c5c86",
+          "native_config_sha256": "1b6a51bf77d1a916b168b07d8097ecf706e6a8295b72ed6401d0a2175010b0ca",
           "detector_observation": {
             "confirmation_s": 11.209,
             "observer_mass_support_start_s": 7.659999999999999,
@@ -769,10 +772,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -2.801000000000002,
-          "detector_squared_error_or_bound_s2": 7.845601000000011,
-          "native_run": "A0-constant-3.5-dt0.005",
-          "native_trace_sha256": "0dc3a70c0e4627d45ca92ef2add482eb38cb50af2689e8b920f27119783c5c86",
-          "native_config_sha256": "1b6a51bf77d1a916b168b07d8097ecf706e6a8295b72ed6401d0a2175010b0ca"
+          "detector_squared_error_or_bound_s2": 7.845601000000011
         },
         {
           "arm": "A0",
@@ -790,6 +790,9 @@
           "detector_censor_bound_s": 97.893,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-4-dt0.005",
+          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
+          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540",
           "detector_observation": {
             "confirmation_s": 10.088000000000001,
             "observer_mass_support_start_s": 6.539,
@@ -808,10 +811,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -1.9620000000000015,
-          "detector_squared_error_or_bound_s2": 3.849444000000006,
-          "native_run": "A0-constant-4-dt0.005",
-          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
-          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540"
+          "detector_squared_error_or_bound_s2": 3.849444000000006
         },
         {
           "arm": "A0",
@@ -829,6 +829,9 @@
           "detector_censor_bound_s": 97.912,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-4-dt0.005",
+          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
+          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540",
           "detector_observation": {
             "confirmation_s": 10.11,
             "observer_mass_support_start_s": 6.553000000000001,
@@ -847,10 +850,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -5.055999999999999,
-          "detector_squared_error_or_bound_s2": 25.563135999999993,
-          "native_run": "A0-constant-4-dt0.005",
-          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
-          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540"
+          "detector_squared_error_or_bound_s2": 25.563135999999993
         },
         {
           "arm": "A0",
@@ -868,6 +868,9 @@
           "detector_censor_bound_s": 97.87599999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-4-dt0.005",
+          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
+          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540",
           "detector_observation": {
             "confirmation_s": 10.087,
             "observer_mass_support_start_s": 6.538,
@@ -886,10 +889,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -4.763,
-          "detector_squared_error_or_bound_s2": 22.686169,
-          "native_run": "A0-constant-4-dt0.005",
-          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
-          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540"
+          "detector_squared_error_or_bound_s2": 22.686169
         },
         {
           "arm": "A0",
@@ -907,6 +907,9 @@
           "detector_censor_bound_s": 97.86500000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-4-dt0.005",
+          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
+          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540",
           "detector_observation": {
             "confirmation_s": 10.105999999999998,
             "observer_mass_support_start_s": 6.55,
@@ -925,10 +928,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -4.491000000000003,
-          "detector_squared_error_or_bound_s2": 20.16908100000003,
-          "native_run": "A0-constant-4-dt0.005",
-          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
-          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540"
+          "detector_squared_error_or_bound_s2": 20.16908100000003
         },
         {
           "arm": "A0",
@@ -946,6 +946,9 @@
           "detector_censor_bound_s": 97.86500000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-4-dt0.005",
+          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
+          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540",
           "detector_observation": {
             "confirmation_s": 10.084,
             "observer_mass_support_start_s": 6.5360000000000005,
@@ -964,10 +967,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -3.3619999999999983,
-          "detector_squared_error_or_bound_s2": 11.30304399999999,
-          "native_run": "A0-constant-4-dt0.005",
-          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
-          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540"
+          "detector_squared_error_or_bound_s2": 11.30304399999999
         },
         {
           "arm": "A0",
@@ -985,6 +985,9 @@
           "detector_censor_bound_s": 97.914,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-4-dt0.005",
+          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
+          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540",
           "detector_observation": {
             "confirmation_s": 10.100999999999999,
             "observer_mass_support_start_s": 6.547,
@@ -1003,10 +1006,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -5.985999999999997,
-          "detector_squared_error_or_bound_s2": 35.83219599999997,
-          "native_run": "A0-constant-4-dt0.005",
-          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
-          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540"
+          "detector_squared_error_or_bound_s2": 35.83219599999997
         },
         {
           "arm": "A0",
@@ -1024,6 +1024,9 @@
           "detector_censor_bound_s": 97.86,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-4-dt0.005",
+          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
+          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540",
           "detector_observation": {
             "confirmation_s": 10.085,
             "observer_mass_support_start_s": 6.537,
@@ -1042,10 +1045,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -2.6140000000000008,
-          "detector_squared_error_or_bound_s2": 6.832996000000004,
-          "native_run": "A0-constant-4-dt0.005",
-          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
-          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540"
+          "detector_squared_error_or_bound_s2": 6.832996000000004
         },
         {
           "arm": "A0",
@@ -1063,6 +1063,9 @@
           "detector_censor_bound_s": 97.87899999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-4-dt0.005",
+          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
+          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540",
           "detector_observation": {
             "confirmation_s": 10.097,
             "observer_mass_support_start_s": 6.545,
@@ -1081,10 +1084,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -6.543999999999999,
-          "detector_squared_error_or_bound_s2": 42.82393599999998,
-          "native_run": "A0-constant-4-dt0.005",
-          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
-          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540"
+          "detector_squared_error_or_bound_s2": 42.82393599999998
         },
         {
           "arm": "A0",
@@ -1102,6 +1102,9 @@
           "detector_censor_bound_s": 97.86699999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-4-dt0.005",
+          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
+          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540",
           "detector_observation": {
             "confirmation_s": 10.084,
             "observer_mass_support_start_s": 6.536,
@@ -1120,10 +1123,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -4.388999999999999,
-          "detector_squared_error_or_bound_s2": 19.263320999999994,
-          "native_run": "A0-constant-4-dt0.005",
-          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
-          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540"
+          "detector_squared_error_or_bound_s2": 19.263320999999994
         },
         {
           "arm": "A0",
@@ -1141,6 +1141,9 @@
           "detector_censor_bound_s": 97.94200000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-4-dt0.005",
+          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
+          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540",
           "detector_observation": {
             "confirmation_s": 10.094999999999999,
             "observer_mass_support_start_s": 6.543,
@@ -1159,10 +1162,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -4.2059999999999995,
-          "detector_squared_error_or_bound_s2": 17.690435999999995,
-          "native_run": "A0-constant-4-dt0.005",
-          "native_trace_sha256": "d5ae5bf9e0f0f7482a6305f0b445558e1fe5b7b1222586087ae1e207188a0cc7",
-          "native_config_sha256": "1508bd000f4abe5dbeaf934bd89f755a30a08343ecc469b037cd83f63bcd0540"
+          "detector_squared_error_or_bound_s2": 17.690435999999995
         },
         {
           "arm": "A0",
@@ -1180,6 +1180,9 @@
           "detector_censor_bound_s": 97.932,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-5-dt0.005",
+          "native_trace_sha256": "96753e72ee6caabf369cb8c681730310f7374d21dbe49a68d98940b738884021",
+          "native_config_sha256": "84d5546051c179d7161273ce10ef13c2c3851b43389708df9e790e5aee0d06b7",
           "detector_observation": {
             "confirmation_s": 8.504,
             "observer_mass_support_start_s": 4.953000000000001,
@@ -1198,10 +1201,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -7.663,
-          "detector_squared_error_or_bound_s2": 58.721569,
-          "native_run": "A0-constant-5-dt0.005",
-          "native_trace_sha256": "96753e72ee6caabf369cb8c681730310f7374d21dbe49a68d98940b738884021",
-          "native_config_sha256": "84d5546051c179d7161273ce10ef13c2c3851b43389708df9e790e5aee0d06b7"
+          "detector_squared_error_or_bound_s2": 58.721569
         },
         {
           "arm": "A0",
@@ -1219,6 +1219,9 @@
           "detector_censor_bound_s": 97.908,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-5-dt0.005",
+          "native_trace_sha256": "96753e72ee6caabf369cb8c681730310f7374d21dbe49a68d98940b738884021",
+          "native_config_sha256": "84d5546051c179d7161273ce10ef13c2c3851b43389708df9e790e5aee0d06b7",
           "detector_observation": {
             "confirmation_s": 8.502,
             "observer_mass_support_start_s": 4.9510000000000005,
@@ -1237,10 +1240,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -7.286999999999999,
-          "detector_squared_error_or_bound_s2": 53.100368999999986,
-          "native_run": "A0-constant-5-dt0.005",
-          "native_trace_sha256": "96753e72ee6caabf369cb8c681730310f7374d21dbe49a68d98940b738884021",
-          "native_config_sha256": "84d5546051c179d7161273ce10ef13c2c3851b43389708df9e790e5aee0d06b7"
+          "detector_squared_error_or_bound_s2": 53.100368999999986
         },
         {
           "arm": "A0",
@@ -1258,6 +1258,9 @@
           "detector_censor_bound_s": 97.92999999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-5-dt0.005",
+          "native_trace_sha256": "96753e72ee6caabf369cb8c681730310f7374d21dbe49a68d98940b738884021",
+          "native_config_sha256": "84d5546051c179d7161273ce10ef13c2c3851b43389708df9e790e5aee0d06b7",
           "detector_observation": {
             "confirmation_s": 8.503,
             "observer_mass_support_start_s": 4.952,
@@ -1276,10 +1279,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -4.2989999999999995,
-          "detector_squared_error_or_bound_s2": 18.481400999999995,
-          "native_run": "A0-constant-5-dt0.005",
-          "native_trace_sha256": "96753e72ee6caabf369cb8c681730310f7374d21dbe49a68d98940b738884021",
-          "native_config_sha256": "84d5546051c179d7161273ce10ef13c2c3851b43389708df9e790e5aee0d06b7"
+          "detector_squared_error_or_bound_s2": 18.481400999999995
         },
         {
           "arm": "A0",
@@ -1297,6 +1297,9 @@
           "detector_censor_bound_s": 97.931,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-5-dt0.005",
+          "native_trace_sha256": "96753e72ee6caabf369cb8c681730310f7374d21dbe49a68d98940b738884021",
+          "native_config_sha256": "84d5546051c179d7161273ce10ef13c2c3851b43389708df9e790e5aee0d06b7",
           "detector_observation": {
             "confirmation_s": 8.504,
             "observer_mass_support_start_s": 4.953000000000001,
@@ -1315,10 +1318,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -5.3260000000000005,
-          "detector_squared_error_or_bound_s2": 28.366276000000006,
-          "native_run": "A0-constant-5-dt0.005",
-          "native_trace_sha256": "96753e72ee6caabf369cb8c681730310f7374d21dbe49a68d98940b738884021",
-          "native_config_sha256": "84d5546051c179d7161273ce10ef13c2c3851b43389708df9e790e5aee0d06b7"
+          "detector_squared_error_or_bound_s2": 28.366276000000006
         },
         {
           "arm": "A0",
@@ -1336,6 +1336,9 @@
           "detector_censor_bound_s": 97.904,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-5-dt0.005",
+          "native_trace_sha256": "96753e72ee6caabf369cb8c681730310f7374d21dbe49a68d98940b738884021",
+          "native_config_sha256": "84d5546051c179d7161273ce10ef13c2c3851b43389708df9e790e5aee0d06b7",
           "detector_observation": {
             "confirmation_s": 8.501000000000001,
             "observer_mass_support_start_s": 4.952,
@@ -1354,10 +1357,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -6.538999999999999,
-          "detector_squared_error_or_bound_s2": 42.75852099999999,
-          "native_run": "A0-constant-5-dt0.005",
-          "native_trace_sha256": "96753e72ee6caabf369cb8c681730310f7374d21dbe49a68d98940b738884021",
-          "native_config_sha256": "84d5546051c179d7161273ce10ef13c2c3851b43389708df9e790e5aee0d06b7"
+          "detector_squared_error_or_bound_s2": 42.75852099999999
         },
         {
           "arm": "A0",
@@ -1375,6 +1375,9 @@
           "detector_censor_bound_s": 97.91,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-6-dt0.005",
+          "native_trace_sha256": "3cd4a2944cc4ddad8c4489c2a861a9f74b016054f5e1108b49f1be9c5c19881f",
+          "native_config_sha256": "a5811fe5ce84fe6d4a484a0025eb40ae3042f79e8b78150124218833f3c55903",
           "detector_observation": {
             "confirmation_s": 7.566,
             "observer_mass_support_start_s": 4.017,
@@ -1393,10 +1396,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -7.7540000000000004,
-          "detector_squared_error_or_bound_s2": 60.12451600000001,
-          "native_run": "A0-constant-6-dt0.005",
-          "native_trace_sha256": "3cd4a2944cc4ddad8c4489c2a861a9f74b016054f5e1108b49f1be9c5c19881f",
-          "native_config_sha256": "a5811fe5ce84fe6d4a484a0025eb40ae3042f79e8b78150124218833f3c55903"
+          "detector_squared_error_or_bound_s2": 60.12451600000001
         },
         {
           "arm": "A0",
@@ -1414,6 +1414,9 @@
           "detector_censor_bound_s": 97.89699999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-6-dt0.005",
+          "native_trace_sha256": "3cd4a2944cc4ddad8c4489c2a861a9f74b016054f5e1108b49f1be9c5c19881f",
+          "native_config_sha256": "a5811fe5ce84fe6d4a484a0025eb40ae3042f79e8b78150124218833f3c55903",
           "detector_observation": {
             "confirmation_s": 7.566999999999999,
             "observer_mass_support_start_s": 4.017,
@@ -1432,10 +1435,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -7.192000000000001,
-          "detector_squared_error_or_bound_s2": 51.72486400000002,
-          "native_run": "A0-constant-6-dt0.005",
-          "native_trace_sha256": "3cd4a2944cc4ddad8c4489c2a861a9f74b016054f5e1108b49f1be9c5c19881f",
-          "native_config_sha256": "a5811fe5ce84fe6d4a484a0025eb40ae3042f79e8b78150124218833f3c55903"
+          "detector_squared_error_or_bound_s2": 51.72486400000002
         },
         {
           "arm": "A0",
@@ -1453,6 +1453,9 @@
           "detector_censor_bound_s": 97.91,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-6-dt0.005",
+          "native_trace_sha256": "3cd4a2944cc4ddad8c4489c2a861a9f74b016054f5e1108b49f1be9c5c19881f",
+          "native_config_sha256": "a5811fe5ce84fe6d4a484a0025eb40ae3042f79e8b78150124218833f3c55903",
           "detector_observation": {
             "confirmation_s": 7.567,
             "observer_mass_support_start_s": 4.0169999999999995,
@@ -1471,10 +1474,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -4.9510000000000005,
-          "detector_squared_error_or_bound_s2": 24.512401000000004,
-          "native_run": "A0-constant-6-dt0.005",
-          "native_trace_sha256": "3cd4a2944cc4ddad8c4489c2a861a9f74b016054f5e1108b49f1be9c5c19881f",
-          "native_config_sha256": "a5811fe5ce84fe6d4a484a0025eb40ae3042f79e8b78150124218833f3c55903"
+          "detector_squared_error_or_bound_s2": 24.512401000000004
         },
         {
           "arm": "A0",
@@ -1492,6 +1492,9 @@
           "detector_censor_bound_s": 97.887,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-6-dt0.005",
+          "native_trace_sha256": "3cd4a2944cc4ddad8c4489c2a861a9f74b016054f5e1108b49f1be9c5c19881f",
+          "native_config_sha256": "a5811fe5ce84fe6d4a484a0025eb40ae3042f79e8b78150124218833f3c55903",
           "detector_observation": {
             "confirmation_s": 7.566,
             "observer_mass_support_start_s": 4.016,
@@ -1510,10 +1513,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -7.005000000000002,
-          "detector_squared_error_or_bound_s2": 49.07002500000002,
-          "native_run": "A0-constant-6-dt0.005",
-          "native_trace_sha256": "3cd4a2944cc4ddad8c4489c2a861a9f74b016054f5e1108b49f1be9c5c19881f",
-          "native_config_sha256": "a5811fe5ce84fe6d4a484a0025eb40ae3042f79e8b78150124218833f3c55903"
+          "detector_squared_error_or_bound_s2": 49.07002500000002
         },
         {
           "arm": "A0",
@@ -1531,6 +1531,9 @@
           "detector_censor_bound_s": 97.904,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-6-dt0.005",
+          "native_trace_sha256": "3cd4a2944cc4ddad8c4489c2a861a9f74b016054f5e1108b49f1be9c5c19881f",
+          "native_config_sha256": "a5811fe5ce84fe6d4a484a0025eb40ae3042f79e8b78150124218833f3c55903",
           "detector_observation": {
             "confirmation_s": 7.567000000000001,
             "observer_mass_support_start_s": 4.017,
@@ -1549,10 +1552,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -10.463000000000001,
-          "detector_squared_error_or_bound_s2": 109.47436900000002,
-          "native_run": "A0-constant-6-dt0.005",
-          "native_trace_sha256": "3cd4a2944cc4ddad8c4489c2a861a9f74b016054f5e1108b49f1be9c5c19881f",
-          "native_config_sha256": "a5811fe5ce84fe6d4a484a0025eb40ae3042f79e8b78150124218833f3c55903"
+          "detector_squared_error_or_bound_s2": 109.47436900000002
         },
         {
           "arm": "A0",
@@ -1570,6 +1570,9 @@
           "detector_censor_bound_s": 97.85900000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-6-dt0.005",
+          "native_trace_sha256": "3cd4a2944cc4ddad8c4489c2a861a9f74b016054f5e1108b49f1be9c5c19881f",
+          "native_config_sha256": "a5811fe5ce84fe6d4a484a0025eb40ae3042f79e8b78150124218833f3c55903",
           "detector_observation": {
             "confirmation_s": 7.569999999999999,
             "observer_mass_support_start_s": 4.018999999999999,
@@ -1588,10 +1591,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -6.9159999999999995,
-          "detector_squared_error_or_bound_s2": 47.83105599999999,
-          "native_run": "A0-constant-6-dt0.005",
-          "native_trace_sha256": "3cd4a2944cc4ddad8c4489c2a861a9f74b016054f5e1108b49f1be9c5c19881f",
-          "native_config_sha256": "a5811fe5ce84fe6d4a484a0025eb40ae3042f79e8b78150124218833f3c55903"
+          "detector_squared_error_or_bound_s2": 47.83105599999999
         },
         {
           "arm": "A0",
@@ -1609,6 +1609,9 @@
           "detector_censor_bound_s": 97.903,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-7-dt0.005",
+          "native_trace_sha256": "2b83228c8cc6f82453e2b81072471ce510c5b77a9f9575447b6e1ee578540aa5",
+          "native_config_sha256": "8639023d0d7cddd78bcef545c1155ae324229c71085f5b100351c94dddf48cc3",
           "detector_observation": {
             "confirmation_s": 6.819,
             "observer_mass_support_start_s": 3.2699999999999996,
@@ -1627,10 +1630,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -8.409000000000002,
-          "detector_squared_error_or_bound_s2": 70.71128100000004,
-          "native_run": "A0-constant-7-dt0.005",
-          "native_trace_sha256": "2b83228c8cc6f82453e2b81072471ce510c5b77a9f9575447b6e1ee578540aa5",
-          "native_config_sha256": "8639023d0d7cddd78bcef545c1155ae324229c71085f5b100351c94dddf48cc3"
+          "detector_squared_error_or_bound_s2": 70.71128100000004
         },
         {
           "arm": "A0",
@@ -1648,6 +1648,9 @@
           "detector_censor_bound_s": 97.886,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-7-dt0.005",
+          "native_trace_sha256": "2b83228c8cc6f82453e2b81072471ce510c5b77a9f9575447b6e1ee578540aa5",
+          "native_config_sha256": "8639023d0d7cddd78bcef545c1155ae324229c71085f5b100351c94dddf48cc3",
           "detector_observation": {
             "confirmation_s": 6.818,
             "observer_mass_support_start_s": 3.269,
@@ -1666,10 +1669,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -12.889999999999999,
-          "detector_squared_error_or_bound_s2": 166.15209999999996,
-          "native_run": "A0-constant-7-dt0.005",
-          "native_trace_sha256": "2b83228c8cc6f82453e2b81072471ce510c5b77a9f9575447b6e1ee578540aa5",
-          "native_config_sha256": "8639023d0d7cddd78bcef545c1155ae324229c71085f5b100351c94dddf48cc3"
+          "detector_squared_error_or_bound_s2": 166.15209999999996
         },
         {
           "arm": "A0",
@@ -1687,6 +1687,9 @@
           "detector_censor_bound_s": 97.868,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-7-dt0.005",
+          "native_trace_sha256": "2b83228c8cc6f82453e2b81072471ce510c5b77a9f9575447b6e1ee578540aa5",
+          "native_config_sha256": "8639023d0d7cddd78bcef545c1155ae324229c71085f5b100351c94dddf48cc3",
           "detector_observation": {
             "confirmation_s": 6.817,
             "observer_mass_support_start_s": 3.269,
@@ -1705,10 +1708,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -10.179,
-          "detector_squared_error_or_bound_s2": 103.612041,
-          "native_run": "A0-constant-7-dt0.005",
-          "native_trace_sha256": "2b83228c8cc6f82453e2b81072471ce510c5b77a9f9575447b6e1ee578540aa5",
-          "native_config_sha256": "8639023d0d7cddd78bcef545c1155ae324229c71085f5b100351c94dddf48cc3"
+          "detector_squared_error_or_bound_s2": 103.612041
         },
         {
           "arm": "A0",
@@ -1726,6 +1726,9 @@
           "detector_censor_bound_s": 97.88000000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-7-dt0.005",
+          "native_trace_sha256": "2b83228c8cc6f82453e2b81072471ce510c5b77a9f9575447b6e1ee578540aa5",
+          "native_config_sha256": "8639023d0d7cddd78bcef545c1155ae324229c71085f5b100351c94dddf48cc3",
           "detector_observation": {
             "confirmation_s": 6.8180000000000005,
             "observer_mass_support_start_s": 3.2689999999999992,
@@ -1744,10 +1747,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -10.180000000000003,
-          "detector_squared_error_or_bound_s2": 103.63240000000006,
-          "native_run": "A0-constant-7-dt0.005",
-          "native_trace_sha256": "2b83228c8cc6f82453e2b81072471ce510c5b77a9f9575447b6e1ee578540aa5",
-          "native_config_sha256": "8639023d0d7cddd78bcef545c1155ae324229c71085f5b100351c94dddf48cc3"
+          "detector_squared_error_or_bound_s2": 103.63240000000006
         },
         {
           "arm": "A0",
@@ -1765,6 +1765,9 @@
           "detector_censor_bound_s": 97.905,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-8-dt0.005",
+          "native_trace_sha256": "48c5cc1712801ede47cb36c2e644c5d6b901f8a97685d436d8de68c1059f2957",
+          "native_config_sha256": "a68309d867a6afe0eae4cff897f099e64dca73e320b9809d4264c0f14cac0e26",
           "detector_observation": {
             "confirmation_s": 6.351999999999999,
             "observer_mass_support_start_s": 2.803,
@@ -1783,10 +1786,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -6.445999999999999,
-          "detector_squared_error_or_bound_s2": 41.55091599999999,
-          "native_run": "A0-constant-8-dt0.005",
-          "native_trace_sha256": "48c5cc1712801ede47cb36c2e644c5d6b901f8a97685d436d8de68c1059f2957",
-          "native_config_sha256": "a68309d867a6afe0eae4cff897f099e64dca73e320b9809d4264c0f14cac0e26"
+          "detector_squared_error_or_bound_s2": 41.55091599999999
         },
         {
           "arm": "A0",
@@ -1804,6 +1804,9 @@
           "detector_censor_bound_s": 97.87899999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-8-dt0.005",
+          "native_trace_sha256": "48c5cc1712801ede47cb36c2e644c5d6b901f8a97685d436d8de68c1059f2957",
+          "native_config_sha256": "a68309d867a6afe0eae4cff897f099e64dca73e320b9809d4264c0f14cac0e26",
           "detector_observation": {
             "confirmation_s": 6.370000000000001,
             "observer_mass_support_start_s": 2.811,
@@ -1822,10 +1825,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -14.144,
-          "detector_squared_error_or_bound_s2": 200.052736,
-          "native_run": "A0-constant-8-dt0.005",
-          "native_trace_sha256": "48c5cc1712801ede47cb36c2e644c5d6b901f8a97685d436d8de68c1059f2957",
-          "native_config_sha256": "a68309d867a6afe0eae4cff897f099e64dca73e320b9809d4264c0f14cac0e26"
+          "detector_squared_error_or_bound_s2": 200.052736
         },
         {
           "arm": "A0",
@@ -1843,6 +1843,9 @@
           "detector_censor_bound_s": 97.865,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-8-dt0.005",
+          "native_trace_sha256": "48c5cc1712801ede47cb36c2e644c5d6b901f8a97685d436d8de68c1059f2957",
+          "native_config_sha256": "a68309d867a6afe0eae4cff897f099e64dca73e320b9809d4264c0f14cac0e26",
           "detector_observation": {
             "confirmation_s": 6.348999999999999,
             "observer_mass_support_start_s": 2.8009999999999993,
@@ -1861,10 +1864,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -12.510000000000002,
-          "detector_squared_error_or_bound_s2": 156.50010000000003,
-          "native_run": "A0-constant-8-dt0.005",
-          "native_trace_sha256": "48c5cc1712801ede47cb36c2e644c5d6b901f8a97685d436d8de68c1059f2957",
-          "native_config_sha256": "a68309d867a6afe0eae4cff897f099e64dca73e320b9809d4264c0f14cac0e26"
+          "detector_squared_error_or_bound_s2": 156.50010000000003
         },
         {
           "arm": "A0",
@@ -1882,6 +1882,9 @@
           "detector_censor_bound_s": 97.943,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-8-dt0.005",
+          "native_trace_sha256": "48c5cc1712801ede47cb36c2e644c5d6b901f8a97685d436d8de68c1059f2957",
+          "native_config_sha256": "a68309d867a6afe0eae4cff897f099e64dca73e320b9809d4264c0f14cac0e26",
           "detector_observation": {
             "confirmation_s": 6.356,
             "observer_mass_support_start_s": 2.8040000000000003,
@@ -1900,10 +1903,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -7.010000000000002,
-          "detector_squared_error_or_bound_s2": 49.140100000000025,
-          "native_run": "A0-constant-8-dt0.005",
-          "native_trace_sha256": "48c5cc1712801ede47cb36c2e644c5d6b901f8a97685d436d8de68c1059f2957",
-          "native_config_sha256": "a68309d867a6afe0eae4cff897f099e64dca73e320b9809d4264c0f14cac0e26"
+          "detector_squared_error_or_bound_s2": 49.140100000000025
         },
         {
           "arm": "A0",
@@ -1921,6 +1921,9 @@
           "detector_censor_bound_s": 97.85300000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-9-dt0.005",
+          "native_trace_sha256": "c2da74e3a73a6b7f3df974a9f147157a2d6f05053ecfc76cc46b482d285b42ee",
+          "native_config_sha256": "a2b76ced5241b637a0e4ef632ee2e6983a0ef5f818105e29b5efc253167d76cc",
           "detector_observation": {
             "confirmation_s": 5.976000000000001,
             "observer_mass_support_start_s": 2.4270000000000005,
@@ -1939,10 +1942,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -10.549999999999999,
-          "detector_squared_error_or_bound_s2": 111.30249999999998,
-          "native_run": "A0-constant-9-dt0.005",
-          "native_trace_sha256": "c2da74e3a73a6b7f3df974a9f147157a2d6f05053ecfc76cc46b482d285b42ee",
-          "native_config_sha256": "a2b76ced5241b637a0e4ef632ee2e6983a0ef5f818105e29b5efc253167d76cc"
+          "detector_squared_error_or_bound_s2": 111.30249999999998
         },
         {
           "arm": "A0",
@@ -1960,6 +1960,9 @@
           "detector_censor_bound_s": 97.91399999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-9-dt0.005",
+          "native_trace_sha256": "c2da74e3a73a6b7f3df974a9f147157a2d6f05053ecfc76cc46b482d285b42ee",
+          "native_config_sha256": "a2b76ced5241b637a0e4ef632ee2e6983a0ef5f818105e29b5efc253167d76cc",
           "detector_observation": {
             "confirmation_s": 5.968000000000001,
             "observer_mass_support_start_s": 2.425,
@@ -1978,10 +1981,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -10.536999999999999,
-          "detector_squared_error_or_bound_s2": 111.02836899999998,
-          "native_run": "A0-constant-9-dt0.005",
-          "native_trace_sha256": "c2da74e3a73a6b7f3df974a9f147157a2d6f05053ecfc76cc46b482d285b42ee",
-          "native_config_sha256": "a2b76ced5241b637a0e4ef632ee2e6983a0ef5f818105e29b5efc253167d76cc"
+          "detector_squared_error_or_bound_s2": 111.02836899999998
         },
         {
           "arm": "A0",
@@ -1999,6 +1999,9 @@
           "detector_censor_bound_s": 97.93799999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-9-dt0.005",
+          "native_trace_sha256": "c2da74e3a73a6b7f3df974a9f147157a2d6f05053ecfc76cc46b482d285b42ee",
+          "native_config_sha256": "a2b76ced5241b637a0e4ef632ee2e6983a0ef5f818105e29b5efc253167d76cc",
           "detector_observation": {
             "confirmation_s": 5.97,
             "observer_mass_support_start_s": 2.425,
@@ -2017,10 +2020,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -15.204,
-          "detector_squared_error_or_bound_s2": 231.161616,
-          "native_run": "A0-constant-9-dt0.005",
-          "native_trace_sha256": "c2da74e3a73a6b7f3df974a9f147157a2d6f05053ecfc76cc46b482d285b42ee",
-          "native_config_sha256": "a2b76ced5241b637a0e4ef632ee2e6983a0ef5f818105e29b5efc253167d76cc"
+          "detector_squared_error_or_bound_s2": 231.161616
         },
         {
           "arm": "A0",
@@ -2038,6 +2038,9 @@
           "detector_censor_bound_s": 97.905,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-9-dt0.005",
+          "native_trace_sha256": "c2da74e3a73a6b7f3df974a9f147157a2d6f05053ecfc76cc46b482d285b42ee",
+          "native_config_sha256": "a2b76ced5241b637a0e4ef632ee2e6983a0ef5f818105e29b5efc253167d76cc",
           "detector_observation": {
             "confirmation_s": 5.973000000000001,
             "observer_mass_support_start_s": 2.4270000000000005,
@@ -2056,10 +2059,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -11.386,
-          "detector_squared_error_or_bound_s2": 129.64099599999997,
-          "native_run": "A0-constant-9-dt0.005",
-          "native_trace_sha256": "c2da74e3a73a6b7f3df974a9f147157a2d6f05053ecfc76cc46b482d285b42ee",
-          "native_config_sha256": "a2b76ced5241b637a0e4ef632ee2e6983a0ef5f818105e29b5efc253167d76cc"
+          "detector_squared_error_or_bound_s2": 129.64099599999997
         },
         {
           "arm": "A0",
@@ -2077,6 +2077,9 @@
           "detector_censor_bound_s": 97.929,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-9-dt0.005",
+          "native_trace_sha256": "c2da74e3a73a6b7f3df974a9f147157a2d6f05053ecfc76cc46b482d285b42ee",
+          "native_config_sha256": "a2b76ced5241b637a0e4ef632ee2e6983a0ef5f818105e29b5efc253167d76cc",
           "detector_observation": {
             "confirmation_s": 5.974,
             "observer_mass_support_start_s": 2.4259999999999997,
@@ -2095,10 +2098,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -15.683,
-          "detector_squared_error_or_bound_s2": 245.956489,
-          "native_run": "A0-constant-9-dt0.005",
-          "native_trace_sha256": "c2da74e3a73a6b7f3df974a9f147157a2d6f05053ecfc76cc46b482d285b42ee",
-          "native_config_sha256": "a2b76ced5241b637a0e4ef632ee2e6983a0ef5f818105e29b5efc253167d76cc"
+          "detector_squared_error_or_bound_s2": 245.956489
         },
         {
           "arm": "A0",
@@ -2116,6 +2116,9 @@
           "detector_censor_bound_s": 97.877,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-11-dt0.005",
+          "native_trace_sha256": "1835aca796343b05d36c4f006068f66af8e77e989c3cfab05b208b082c55020e",
+          "native_config_sha256": "366ac7d1829fcd4ef6d5a5375526b02c24042027a1fd45cc6efe2ef5b4748f56",
           "detector_observation": {
             "confirmation_s": 5.505000000000001,
             "observer_mass_support_start_s": 1.9580000000000002,
@@ -2134,10 +2137,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -15.301000000000002,
-          "detector_squared_error_or_bound_s2": 234.12060100000005,
-          "native_run": "A0-constant-11-dt0.005",
-          "native_trace_sha256": "1835aca796343b05d36c4f006068f66af8e77e989c3cfab05b208b082c55020e",
-          "native_config_sha256": "366ac7d1829fcd4ef6d5a5375526b02c24042027a1fd45cc6efe2ef5b4748f56"
+          "detector_squared_error_or_bound_s2": 234.12060100000005
         },
         {
           "arm": "A0",
@@ -2155,6 +2155,9 @@
           "detector_censor_bound_s": 97.905,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-11-dt0.005",
+          "native_trace_sha256": "1835aca796343b05d36c4f006068f66af8e77e989c3cfab05b208b082c55020e",
+          "native_config_sha256": "366ac7d1829fcd4ef6d5a5375526b02c24042027a1fd45cc6efe2ef5b4748f56",
           "detector_observation": {
             "confirmation_s": 5.506,
             "observer_mass_support_start_s": 1.959999999999999,
@@ -2173,10 +2176,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -12.225999999999999,
-          "detector_squared_error_or_bound_s2": 149.47507599999997,
-          "native_run": "A0-constant-11-dt0.005",
-          "native_trace_sha256": "1835aca796343b05d36c4f006068f66af8e77e989c3cfab05b208b082c55020e",
-          "native_config_sha256": "366ac7d1829fcd4ef6d5a5375526b02c24042027a1fd45cc6efe2ef5b4748f56"
+          "detector_squared_error_or_bound_s2": 149.47507599999997
         },
         {
           "arm": "A0",
@@ -2194,6 +2194,9 @@
           "detector_censor_bound_s": 97.866,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-11-dt0.005",
+          "native_trace_sha256": "1835aca796343b05d36c4f006068f66af8e77e989c3cfab05b208b082c55020e",
+          "native_config_sha256": "366ac7d1829fcd4ef6d5a5375526b02c24042027a1fd45cc6efe2ef5b4748f56",
           "detector_observation": {
             "confirmation_s": 5.5040000000000004,
             "observer_mass_support_start_s": 1.9589999999999996,
@@ -2212,10 +2215,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -12.595,
-          "detector_squared_error_or_bound_s2": 158.634025,
-          "native_run": "A0-constant-11-dt0.005",
-          "native_trace_sha256": "1835aca796343b05d36c4f006068f66af8e77e989c3cfab05b208b082c55020e",
-          "native_config_sha256": "366ac7d1829fcd4ef6d5a5375526b02c24042027a1fd45cc6efe2ef5b4748f56"
+          "detector_squared_error_or_bound_s2": 158.634025
         },
         {
           "arm": "A0",
@@ -2233,6 +2233,9 @@
           "detector_censor_bound_s": 97.946,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-11-dt0.005",
+          "native_trace_sha256": "1835aca796343b05d36c4f006068f66af8e77e989c3cfab05b208b082c55020e",
+          "native_config_sha256": "366ac7d1829fcd4ef6d5a5375526b02c24042027a1fd45cc6efe2ef5b4748f56",
           "detector_observation": {
             "confirmation_s": 5.504000000000001,
             "observer_mass_support_start_s": 1.959,
@@ -2251,10 +2254,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -11.941,
-          "detector_squared_error_or_bound_s2": 142.58748100000003,
-          "native_run": "A0-constant-11-dt0.005",
-          "native_trace_sha256": "1835aca796343b05d36c4f006068f66af8e77e989c3cfab05b208b082c55020e",
-          "native_config_sha256": "366ac7d1829fcd4ef6d5a5375526b02c24042027a1fd45cc6efe2ef5b4748f56"
+          "detector_squared_error_or_bound_s2": 142.58748100000003
         },
         {
           "arm": "A0",
@@ -2272,6 +2272,9 @@
           "detector_censor_bound_s": 97.873,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-13-dt0.005",
+          "native_trace_sha256": "f0607c1b4620e85b9a48153007e121d4507ceab3d11958624fe181956d3107c5",
+          "native_config_sha256": "e2f074175db479acfc276f6af0daf012b2c73f200d8fe4714eeed4f101b7dca6",
           "detector_observation": {
             "confirmation_s": 5.148000000000001,
             "observer_mass_support_start_s": 1.5910000000000002,
@@ -2290,10 +2293,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -11.698999999999998,
-          "detector_squared_error_or_bound_s2": 136.86660099999995,
-          "native_run": "A0-constant-13-dt0.005",
-          "native_trace_sha256": "f0607c1b4620e85b9a48153007e121d4507ceab3d11958624fe181956d3107c5",
-          "native_config_sha256": "e2f074175db479acfc276f6af0daf012b2c73f200d8fe4714eeed4f101b7dca6"
+          "detector_squared_error_or_bound_s2": 136.86660099999995
         },
         {
           "arm": "A0",
@@ -2311,6 +2311,9 @@
           "detector_censor_bound_s": 97.86999999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-13-dt0.005",
+          "native_trace_sha256": "f0607c1b4620e85b9a48153007e121d4507ceab3d11958624fe181956d3107c5",
+          "native_config_sha256": "e2f074175db479acfc276f6af0daf012b2c73f200d8fe4714eeed4f101b7dca6",
           "detector_observation": {
             "confirmation_s": 5.143000000000001,
             "observer_mass_support_start_s": 1.5890000000000004,
@@ -2329,10 +2332,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -14.399999999999999,
-          "detector_squared_error_or_bound_s2": 207.35999999999996,
-          "native_run": "A0-constant-13-dt0.005",
-          "native_trace_sha256": "f0607c1b4620e85b9a48153007e121d4507ceab3d11958624fe181956d3107c5",
-          "native_config_sha256": "e2f074175db479acfc276f6af0daf012b2c73f200d8fe4714eeed4f101b7dca6"
+          "detector_squared_error_or_bound_s2": 207.35999999999996
         },
         {
           "arm": "A0",
@@ -2350,6 +2350,9 @@
           "detector_censor_bound_s": 97.858,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-13-dt0.005",
+          "native_trace_sha256": "f0607c1b4620e85b9a48153007e121d4507ceab3d11958624fe181956d3107c5",
+          "native_config_sha256": "e2f074175db479acfc276f6af0daf012b2c73f200d8fe4714eeed4f101b7dca6",
           "detector_observation": {
             "confirmation_s": 5.136,
             "observer_mass_support_start_s": 1.5870000000000006,
@@ -2368,10 +2371,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -17.93,
-          "detector_squared_error_or_bound_s2": 321.4849,
-          "native_run": "A0-constant-13-dt0.005",
-          "native_trace_sha256": "f0607c1b4620e85b9a48153007e121d4507ceab3d11958624fe181956d3107c5",
-          "native_config_sha256": "e2f074175db479acfc276f6af0daf012b2c73f200d8fe4714eeed4f101b7dca6"
+          "detector_squared_error_or_bound_s2": 321.4849
         },
         {
           "arm": "A0",
@@ -2389,6 +2389,9 @@
           "detector_censor_bound_s": 97.93299999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-13-dt0.005",
+          "native_trace_sha256": "f0607c1b4620e85b9a48153007e121d4507ceab3d11958624fe181956d3107c5",
+          "native_config_sha256": "e2f074175db479acfc276f6af0daf012b2c73f200d8fe4714eeed4f101b7dca6",
           "detector_observation": {
             "confirmation_s": 5.130000000000001,
             "observer_mass_support_start_s": 1.5850000000000009,
@@ -2407,10 +2410,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -16.043,
-          "detector_squared_error_or_bound_s2": 257.37784899999997,
-          "native_run": "A0-constant-13-dt0.005",
-          "native_trace_sha256": "f0607c1b4620e85b9a48153007e121d4507ceab3d11958624fe181956d3107c5",
-          "native_config_sha256": "e2f074175db479acfc276f6af0daf012b2c73f200d8fe4714eeed4f101b7dca6"
+          "detector_squared_error_or_bound_s2": 257.37784899999997
         },
         {
           "arm": "A0",
@@ -2428,6 +2428,9 @@
           "detector_censor_bound_s": 97.927,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-13-dt0.005",
+          "native_trace_sha256": "f0607c1b4620e85b9a48153007e121d4507ceab3d11958624fe181956d3107c5",
+          "native_config_sha256": "e2f074175db479acfc276f6af0daf012b2c73f200d8fe4714eeed4f101b7dca6",
           "detector_observation": {
             "confirmation_s": 5.13,
             "observer_mass_support_start_s": 1.5869999999999997,
@@ -2446,10 +2449,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -14.920000000000002,
-          "detector_squared_error_or_bound_s2": 222.60640000000006,
-          "native_run": "A0-constant-13-dt0.005",
-          "native_trace_sha256": "f0607c1b4620e85b9a48153007e121d4507ceab3d11958624fe181956d3107c5",
-          "native_config_sha256": "e2f074175db479acfc276f6af0daf012b2c73f200d8fe4714eeed4f101b7dca6"
+          "detector_squared_error_or_bound_s2": 222.60640000000006
         },
         {
           "arm": "A0",
@@ -2467,6 +2467,9 @@
           "detector_censor_bound_s": 97.922,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A0-constant-13-dt0.005",
+          "native_trace_sha256": "f0607c1b4620e85b9a48153007e121d4507ceab3d11958624fe181956d3107c5",
+          "native_config_sha256": "e2f074175db479acfc276f6af0daf012b2c73f200d8fe4714eeed4f101b7dca6",
           "detector_observation": {
             "confirmation_s": 5.1290000000000004,
             "observer_mass_support_start_s": 1.585,
@@ -2485,10 +2488,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -14.640999999999998,
-          "detector_squared_error_or_bound_s2": 214.35888099999994,
-          "native_run": "A0-constant-13-dt0.005",
-          "native_trace_sha256": "f0607c1b4620e85b9a48153007e121d4507ceab3d11958624fe181956d3107c5",
-          "native_config_sha256": "e2f074175db479acfc276f6af0daf012b2c73f200d8fe4714eeed4f101b7dca6"
+          "detector_squared_error_or_bound_s2": 214.35888099999994
         }
       ],
       "summary": [
@@ -2789,6 +2789,9 @@
           "detector_censor_bound_s": 97.878,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-1-dt0.005",
+          "native_trace_sha256": "c1459c5cc941d5d559bfb33f24be8f980770434ed8b9e470dbd2769af6a017c6",
+          "native_config_sha256": "53d549f85c78e2d7760b873001409d1eb20c8d870ca096324d8d17eaa5f44252",
           "detector_observation": {
             "onset_s": null,
             "detected": false,
@@ -2802,10 +2805,7 @@
             "baseline_g": 0.0,
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
-          "detector_squared_error_or_bound_s2": 5344.341025000001,
-          "native_run": "A1-constant-1-dt0.005",
-          "native_trace_sha256": "c1459c5cc941d5d559bfb33f24be8f980770434ed8b9e470dbd2769af6a017c6",
-          "native_config_sha256": "53d549f85c78e2d7760b873001409d1eb20c8d870ca096324d8d17eaa5f44252"
+          "detector_squared_error_or_bound_s2": 5344.341025000001
         },
         {
           "arm": "A1",
@@ -2823,6 +2823,9 @@
           "detector_censor_bound_s": 97.901,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-1-dt0.005",
+          "native_trace_sha256": "c1459c5cc941d5d559bfb33f24be8f980770434ed8b9e470dbd2769af6a017c6",
+          "native_config_sha256": "53d549f85c78e2d7760b873001409d1eb20c8d870ca096324d8d17eaa5f44252",
           "detector_observation": {
             "onset_s": null,
             "detected": false,
@@ -2836,10 +2839,7 @@
             "baseline_g": 0.0,
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
-          "detector_squared_error_or_bound_s2": 5306.102648999999,
-          "native_run": "A1-constant-1-dt0.005",
-          "native_trace_sha256": "c1459c5cc941d5d559bfb33f24be8f980770434ed8b9e470dbd2769af6a017c6",
-          "native_config_sha256": "53d549f85c78e2d7760b873001409d1eb20c8d870ca096324d8d17eaa5f44252"
+          "detector_squared_error_or_bound_s2": 5306.102648999999
         },
         {
           "arm": "A1",
@@ -2857,6 +2857,9 @@
           "detector_censor_bound_s": 97.87100000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-1-dt0.005",
+          "native_trace_sha256": "c1459c5cc941d5d559bfb33f24be8f980770434ed8b9e470dbd2769af6a017c6",
+          "native_config_sha256": "53d549f85c78e2d7760b873001409d1eb20c8d870ca096324d8d17eaa5f44252",
           "detector_observation": {
             "onset_s": null,
             "detected": false,
@@ -2870,10 +2873,7 @@
             "baseline_g": 0.0,
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
-          "detector_squared_error_or_bound_s2": 5547.419361000001,
-          "native_run": "A1-constant-1-dt0.005",
-          "native_trace_sha256": "c1459c5cc941d5d559bfb33f24be8f980770434ed8b9e470dbd2769af6a017c6",
-          "native_config_sha256": "53d549f85c78e2d7760b873001409d1eb20c8d870ca096324d8d17eaa5f44252"
+          "detector_squared_error_or_bound_s2": 5547.419361000001
         },
         {
           "arm": "A1",
@@ -2891,6 +2891,9 @@
           "detector_censor_bound_s": 97.86600000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-1-dt0.005",
+          "native_trace_sha256": "c1459c5cc941d5d559bfb33f24be8f980770434ed8b9e470dbd2769af6a017c6",
+          "native_config_sha256": "53d549f85c78e2d7760b873001409d1eb20c8d870ca096324d8d17eaa5f44252",
           "detector_observation": {
             "onset_s": null,
             "detected": false,
@@ -2904,10 +2907,7 @@
             "baseline_g": 0.0,
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
-          "detector_squared_error_or_bound_s2": 5190.482025000002,
-          "native_run": "A1-constant-1-dt0.005",
-          "native_trace_sha256": "c1459c5cc941d5d559bfb33f24be8f980770434ed8b9e470dbd2769af6a017c6",
-          "native_config_sha256": "53d549f85c78e2d7760b873001409d1eb20c8d870ca096324d8d17eaa5f44252"
+          "detector_squared_error_or_bound_s2": 5190.482025000002
         },
         {
           "arm": "A1",
@@ -2925,6 +2925,9 @@
           "detector_censor_bound_s": 97.908,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-1-dt0.005",
+          "native_trace_sha256": "c1459c5cc941d5d559bfb33f24be8f980770434ed8b9e470dbd2769af6a017c6",
+          "native_config_sha256": "53d549f85c78e2d7760b873001409d1eb20c8d870ca096324d8d17eaa5f44252",
           "detector_observation": {
             "onset_s": null,
             "detected": false,
@@ -2938,10 +2941,7 @@
             "baseline_g": 0.0,
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
-          "detector_squared_error_or_bound_s2": 4838.315363999999,
-          "native_run": "A1-constant-1-dt0.005",
-          "native_trace_sha256": "c1459c5cc941d5d559bfb33f24be8f980770434ed8b9e470dbd2769af6a017c6",
-          "native_config_sha256": "53d549f85c78e2d7760b873001409d1eb20c8d870ca096324d8d17eaa5f44252"
+          "detector_squared_error_or_bound_s2": 4838.315363999999
         },
         {
           "arm": "A1",
@@ -2959,6 +2959,9 @@
           "detector_censor_bound_s": 97.87700000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-2-dt0.005",
+          "native_trace_sha256": "ac7a0da1ddc6dcb8728d0f332af6df2f0b5a19a0a03a6a6929e0df4fc11ef481",
+          "native_config_sha256": "71b6cbf84d3a25821a2542b09f69890459a03558c36dedfb0a8acf2e3f6577ec",
           "detector_observation": {
             "confirmation_s": 27.364,
             "observer_mass_support_start_s": 23.815,
@@ -2977,10 +2980,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": 11.021999999999998,
-          "detector_squared_error_or_bound_s2": 121.48448399999997,
-          "native_run": "A1-constant-2-dt0.005",
-          "native_trace_sha256": "ac7a0da1ddc6dcb8728d0f332af6df2f0b5a19a0a03a6a6929e0df4fc11ef481",
-          "native_config_sha256": "71b6cbf84d3a25821a2542b09f69890459a03558c36dedfb0a8acf2e3f6577ec"
+          "detector_squared_error_or_bound_s2": 121.48448399999997
         },
         {
           "arm": "A1",
@@ -2998,6 +2998,9 @@
           "detector_censor_bound_s": 97.91,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-2-dt0.005",
+          "native_trace_sha256": "ac7a0da1ddc6dcb8728d0f332af6df2f0b5a19a0a03a6a6929e0df4fc11ef481",
+          "native_config_sha256": "71b6cbf84d3a25821a2542b09f69890459a03558c36dedfb0a8acf2e3f6577ec",
           "detector_observation": {
             "confirmation_s": 27.374000000000002,
             "observer_mass_support_start_s": 23.823,
@@ -3016,10 +3019,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": 14.386999999999997,
-          "detector_squared_error_or_bound_s2": 206.98576899999992,
-          "native_run": "A1-constant-2-dt0.005",
-          "native_trace_sha256": "ac7a0da1ddc6dcb8728d0f332af6df2f0b5a19a0a03a6a6929e0df4fc11ef481",
-          "native_config_sha256": "71b6cbf84d3a25821a2542b09f69890459a03558c36dedfb0a8acf2e3f6577ec"
+          "detector_squared_error_or_bound_s2": 206.98576899999992
         },
         {
           "arm": "A1",
@@ -3037,6 +3037,9 @@
           "detector_censor_bound_s": 97.92399999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-2-dt0.005",
+          "native_trace_sha256": "ac7a0da1ddc6dcb8728d0f332af6df2f0b5a19a0a03a6a6929e0df4fc11ef481",
+          "native_config_sha256": "71b6cbf84d3a25821a2542b09f69890459a03558c36dedfb0a8acf2e3f6577ec",
           "detector_observation": {
             "confirmation_s": 27.377000000000002,
             "observer_mass_support_start_s": 23.826,
@@ -3055,10 +3058,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": 9.623000000000003,
-          "detector_squared_error_or_bound_s2": 92.60212900000006,
-          "native_run": "A1-constant-2-dt0.005",
-          "native_trace_sha256": "ac7a0da1ddc6dcb8728d0f332af6df2f0b5a19a0a03a6a6929e0df4fc11ef481",
-          "native_config_sha256": "71b6cbf84d3a25821a2542b09f69890459a03558c36dedfb0a8acf2e3f6577ec"
+          "detector_squared_error_or_bound_s2": 92.60212900000006
         },
         {
           "arm": "A1",
@@ -3076,6 +3076,9 @@
           "detector_censor_bound_s": 97.92,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-2-dt0.005",
+          "native_trace_sha256": "ac7a0da1ddc6dcb8728d0f332af6df2f0b5a19a0a03a6a6929e0df4fc11ef481",
+          "native_config_sha256": "71b6cbf84d3a25821a2542b09f69890459a03558c36dedfb0a8acf2e3f6577ec",
           "detector_observation": {
             "confirmation_s": 27.377,
             "observer_mass_support_start_s": 23.825,
@@ -3094,10 +3097,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": 11.773,
-          "detector_squared_error_or_bound_s2": 138.60352899999998,
-          "native_run": "A1-constant-2-dt0.005",
-          "native_trace_sha256": "ac7a0da1ddc6dcb8728d0f332af6df2f0b5a19a0a03a6a6929e0df4fc11ef481",
-          "native_config_sha256": "71b6cbf84d3a25821a2542b09f69890459a03558c36dedfb0a8acf2e3f6577ec"
+          "detector_squared_error_or_bound_s2": 138.60352899999998
         },
         {
           "arm": "A1",
@@ -3115,6 +3115,9 @@
           "detector_censor_bound_s": 97.873,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-3.5-dt0.005",
+          "native_trace_sha256": "49a2e197f6cb7fe3fbc9221bdc5740aae063f3ebf53da1cf67917562366c97ce",
+          "native_config_sha256": "8b07568de5acd948ef1c08c106f4da6077e48fd37a399107d429e252eeb71e1a",
           "detector_observation": {
             "confirmation_s": 11.394,
             "observer_mass_support_start_s": 7.845000000000001,
@@ -3133,10 +3136,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -1.7750000000000004,
-          "detector_squared_error_or_bound_s2": 3.150625000000001,
-          "native_run": "A1-constant-3.5-dt0.005",
-          "native_trace_sha256": "49a2e197f6cb7fe3fbc9221bdc5740aae063f3ebf53da1cf67917562366c97ce",
-          "native_config_sha256": "8b07568de5acd948ef1c08c106f4da6077e48fd37a399107d429e252eeb71e1a"
+          "detector_squared_error_or_bound_s2": 3.150625000000001
         },
         {
           "arm": "A1",
@@ -3154,6 +3154,9 @@
           "detector_censor_bound_s": 97.871,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-3.5-dt0.005",
+          "native_trace_sha256": "49a2e197f6cb7fe3fbc9221bdc5740aae063f3ebf53da1cf67917562366c97ce",
+          "native_config_sha256": "8b07568de5acd948ef1c08c106f4da6077e48fd37a399107d429e252eeb71e1a",
           "detector_observation": {
             "confirmation_s": 11.393,
             "observer_mass_support_start_s": 7.845,
@@ -3172,10 +3175,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -0.4670000000000023,
-          "detector_squared_error_or_bound_s2": 0.21808900000000214,
-          "native_run": "A1-constant-3.5-dt0.005",
-          "native_trace_sha256": "49a2e197f6cb7fe3fbc9221bdc5740aae063f3ebf53da1cf67917562366c97ce",
-          "native_config_sha256": "8b07568de5acd948ef1c08c106f4da6077e48fd37a399107d429e252eeb71e1a"
+          "detector_squared_error_or_bound_s2": 0.21808900000000214
         },
         {
           "arm": "A1",
@@ -3193,6 +3193,9 @@
           "detector_censor_bound_s": 97.892,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-3.5-dt0.005",
+          "native_trace_sha256": "49a2e197f6cb7fe3fbc9221bdc5740aae063f3ebf53da1cf67917562366c97ce",
+          "native_config_sha256": "8b07568de5acd948ef1c08c106f4da6077e48fd37a399107d429e252eeb71e1a",
           "detector_observation": {
             "confirmation_s": 11.395,
             "observer_mass_support_start_s": 7.846000000000001,
@@ -3211,10 +3214,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -2.615000000000002,
-          "detector_squared_error_or_bound_s2": 6.83822500000001,
-          "native_run": "A1-constant-3.5-dt0.005",
-          "native_trace_sha256": "49a2e197f6cb7fe3fbc9221bdc5740aae063f3ebf53da1cf67917562366c97ce",
-          "native_config_sha256": "8b07568de5acd948ef1c08c106f4da6077e48fd37a399107d429e252eeb71e1a"
+          "detector_squared_error_or_bound_s2": 6.83822500000001
         },
         {
           "arm": "A1",
@@ -3232,6 +3232,9 @@
           "detector_censor_bound_s": 97.893,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-4-dt0.005",
+          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
+          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d",
           "detector_observation": {
             "confirmation_s": 10.088000000000001,
             "observer_mass_support_start_s": 6.539,
@@ -3250,10 +3253,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -1.9620000000000015,
-          "detector_squared_error_or_bound_s2": 3.849444000000006,
-          "native_run": "A1-constant-4-dt0.005",
-          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
-          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d"
+          "detector_squared_error_or_bound_s2": 3.849444000000006
         },
         {
           "arm": "A1",
@@ -3271,6 +3271,9 @@
           "detector_censor_bound_s": 97.912,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-4-dt0.005",
+          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
+          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d",
           "detector_observation": {
             "confirmation_s": 10.11,
             "observer_mass_support_start_s": 6.553000000000001,
@@ -3289,10 +3292,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -5.055999999999999,
-          "detector_squared_error_or_bound_s2": 25.563135999999993,
-          "native_run": "A1-constant-4-dt0.005",
-          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
-          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d"
+          "detector_squared_error_or_bound_s2": 25.563135999999993
         },
         {
           "arm": "A1",
@@ -3310,6 +3310,9 @@
           "detector_censor_bound_s": 97.87599999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-4-dt0.005",
+          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
+          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d",
           "detector_observation": {
             "confirmation_s": 10.087,
             "observer_mass_support_start_s": 6.538,
@@ -3328,10 +3331,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -4.763,
-          "detector_squared_error_or_bound_s2": 22.686169,
-          "native_run": "A1-constant-4-dt0.005",
-          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
-          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d"
+          "detector_squared_error_or_bound_s2": 22.686169
         },
         {
           "arm": "A1",
@@ -3349,6 +3349,9 @@
           "detector_censor_bound_s": 97.86500000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-4-dt0.005",
+          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
+          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d",
           "detector_observation": {
             "confirmation_s": 10.105999999999998,
             "observer_mass_support_start_s": 6.55,
@@ -3367,10 +3370,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -4.491000000000003,
-          "detector_squared_error_or_bound_s2": 20.16908100000003,
-          "native_run": "A1-constant-4-dt0.005",
-          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
-          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d"
+          "detector_squared_error_or_bound_s2": 20.16908100000003
         },
         {
           "arm": "A1",
@@ -3388,6 +3388,9 @@
           "detector_censor_bound_s": 97.86500000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-4-dt0.005",
+          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
+          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d",
           "detector_observation": {
             "confirmation_s": 10.084,
             "observer_mass_support_start_s": 6.5360000000000005,
@@ -3406,10 +3409,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -3.3619999999999983,
-          "detector_squared_error_or_bound_s2": 11.30304399999999,
-          "native_run": "A1-constant-4-dt0.005",
-          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
-          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d"
+          "detector_squared_error_or_bound_s2": 11.30304399999999
         },
         {
           "arm": "A1",
@@ -3427,6 +3427,9 @@
           "detector_censor_bound_s": 97.914,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-4-dt0.005",
+          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
+          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d",
           "detector_observation": {
             "confirmation_s": 10.100999999999999,
             "observer_mass_support_start_s": 6.547,
@@ -3445,10 +3448,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -5.985999999999997,
-          "detector_squared_error_or_bound_s2": 35.83219599999997,
-          "native_run": "A1-constant-4-dt0.005",
-          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
-          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d"
+          "detector_squared_error_or_bound_s2": 35.83219599999997
         },
         {
           "arm": "A1",
@@ -3466,6 +3466,9 @@
           "detector_censor_bound_s": 97.86,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-4-dt0.005",
+          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
+          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d",
           "detector_observation": {
             "confirmation_s": 10.085,
             "observer_mass_support_start_s": 6.537,
@@ -3484,10 +3487,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -2.6140000000000008,
-          "detector_squared_error_or_bound_s2": 6.832996000000004,
-          "native_run": "A1-constant-4-dt0.005",
-          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
-          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d"
+          "detector_squared_error_or_bound_s2": 6.832996000000004
         },
         {
           "arm": "A1",
@@ -3505,6 +3505,9 @@
           "detector_censor_bound_s": 97.87899999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-4-dt0.005",
+          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
+          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d",
           "detector_observation": {
             "confirmation_s": 10.097,
             "observer_mass_support_start_s": 6.545,
@@ -3523,10 +3526,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -6.543999999999999,
-          "detector_squared_error_or_bound_s2": 42.82393599999998,
-          "native_run": "A1-constant-4-dt0.005",
-          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
-          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d"
+          "detector_squared_error_or_bound_s2": 42.82393599999998
         },
         {
           "arm": "A1",
@@ -3544,6 +3544,9 @@
           "detector_censor_bound_s": 97.86699999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-4-dt0.005",
+          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
+          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d",
           "detector_observation": {
             "confirmation_s": 10.084,
             "observer_mass_support_start_s": 6.536,
@@ -3562,10 +3565,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -4.388999999999999,
-          "detector_squared_error_or_bound_s2": 19.263320999999994,
-          "native_run": "A1-constant-4-dt0.005",
-          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
-          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d"
+          "detector_squared_error_or_bound_s2": 19.263320999999994
         },
         {
           "arm": "A1",
@@ -3583,6 +3583,9 @@
           "detector_censor_bound_s": 97.94200000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-4-dt0.005",
+          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
+          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d",
           "detector_observation": {
             "confirmation_s": 10.094999999999999,
             "observer_mass_support_start_s": 6.543,
@@ -3601,10 +3604,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -4.2059999999999995,
-          "detector_squared_error_or_bound_s2": 17.690435999999995,
-          "native_run": "A1-constant-4-dt0.005",
-          "native_trace_sha256": "6ffc58780a71f67620135e6b39c85793687d0ce8992a158aab88f6556a1f34c7",
-          "native_config_sha256": "560fa41b741969ce59f3eca8870cfc051317b9c4de3db26a1a8b947144d8ef8d"
+          "detector_squared_error_or_bound_s2": 17.690435999999995
         },
         {
           "arm": "A1",
@@ -3622,6 +3622,9 @@
           "detector_censor_bound_s": 97.932,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-5-dt0.005",
+          "native_trace_sha256": "1f4a17404085c7ad6750b7ecb555a6d69498e5caaecd85079dcf48959b312252",
+          "native_config_sha256": "aac2a76d35fed7794047336f80eaa8499e3dfe7cb60336606255a4bd8b063172",
           "detector_observation": {
             "confirmation_s": 8.878,
             "observer_mass_support_start_s": 5.3260000000000005,
@@ -3640,10 +3643,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -7.290000000000001,
-          "detector_squared_error_or_bound_s2": 53.144100000000016,
-          "native_run": "A1-constant-5-dt0.005",
-          "native_trace_sha256": "1f4a17404085c7ad6750b7ecb555a6d69498e5caaecd85079dcf48959b312252",
-          "native_config_sha256": "aac2a76d35fed7794047336f80eaa8499e3dfe7cb60336606255a4bd8b063172"
+          "detector_squared_error_or_bound_s2": 53.144100000000016
         },
         {
           "arm": "A1",
@@ -3661,6 +3661,9 @@
           "detector_censor_bound_s": 97.908,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-5-dt0.005",
+          "native_trace_sha256": "1f4a17404085c7ad6750b7ecb555a6d69498e5caaecd85079dcf48959b312252",
+          "native_config_sha256": "aac2a76d35fed7794047336f80eaa8499e3dfe7cb60336606255a4bd8b063172",
           "detector_observation": {
             "confirmation_s": 8.875,
             "observer_mass_support_start_s": 5.324999999999999,
@@ -3679,10 +3682,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -6.9129999999999985,
-          "detector_squared_error_or_bound_s2": 47.78956899999998,
-          "native_run": "A1-constant-5-dt0.005",
-          "native_trace_sha256": "1f4a17404085c7ad6750b7ecb555a6d69498e5caaecd85079dcf48959b312252",
-          "native_config_sha256": "aac2a76d35fed7794047336f80eaa8499e3dfe7cb60336606255a4bd8b063172"
+          "detector_squared_error_or_bound_s2": 47.78956899999998
         },
         {
           "arm": "A1",
@@ -3700,6 +3700,9 @@
           "detector_censor_bound_s": 97.92999999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-5-dt0.005",
+          "native_trace_sha256": "1f4a17404085c7ad6750b7ecb555a6d69498e5caaecd85079dcf48959b312252",
+          "native_config_sha256": "aac2a76d35fed7794047336f80eaa8499e3dfe7cb60336606255a4bd8b063172",
           "detector_observation": {
             "confirmation_s": 8.876999999999999,
             "observer_mass_support_start_s": 5.325999999999999,
@@ -3718,10 +3721,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -3.924999999999999,
-          "detector_squared_error_or_bound_s2": 15.405624999999992,
-          "native_run": "A1-constant-5-dt0.005",
-          "native_trace_sha256": "1f4a17404085c7ad6750b7ecb555a6d69498e5caaecd85079dcf48959b312252",
-          "native_config_sha256": "aac2a76d35fed7794047336f80eaa8499e3dfe7cb60336606255a4bd8b063172"
+          "detector_squared_error_or_bound_s2": 15.405624999999992
         },
         {
           "arm": "A1",
@@ -3739,6 +3739,9 @@
           "detector_censor_bound_s": 97.931,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-5-dt0.005",
+          "native_trace_sha256": "1f4a17404085c7ad6750b7ecb555a6d69498e5caaecd85079dcf48959b312252",
+          "native_config_sha256": "aac2a76d35fed7794047336f80eaa8499e3dfe7cb60336606255a4bd8b063172",
           "detector_observation": {
             "confirmation_s": 8.877,
             "observer_mass_support_start_s": 5.327,
@@ -3757,10 +3760,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -4.952,
-          "detector_squared_error_or_bound_s2": 24.522304,
-          "native_run": "A1-constant-5-dt0.005",
-          "native_trace_sha256": "1f4a17404085c7ad6750b7ecb555a6d69498e5caaecd85079dcf48959b312252",
-          "native_config_sha256": "aac2a76d35fed7794047336f80eaa8499e3dfe7cb60336606255a4bd8b063172"
+          "detector_squared_error_or_bound_s2": 24.522304
         },
         {
           "arm": "A1",
@@ -3778,6 +3778,9 @@
           "detector_censor_bound_s": 97.904,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-5-dt0.005",
+          "native_trace_sha256": "1f4a17404085c7ad6750b7ecb555a6d69498e5caaecd85079dcf48959b312252",
+          "native_config_sha256": "aac2a76d35fed7794047336f80eaa8499e3dfe7cb60336606255a4bd8b063172",
           "detector_observation": {
             "confirmation_s": 8.875,
             "observer_mass_support_start_s": 5.324000000000001,
@@ -3796,10 +3799,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -6.1659999999999995,
-          "detector_squared_error_or_bound_s2": 38.019555999999994,
-          "native_run": "A1-constant-5-dt0.005",
-          "native_trace_sha256": "1f4a17404085c7ad6750b7ecb555a6d69498e5caaecd85079dcf48959b312252",
-          "native_config_sha256": "aac2a76d35fed7794047336f80eaa8499e3dfe7cb60336606255a4bd8b063172"
+          "detector_squared_error_or_bound_s2": 38.019555999999994
         },
         {
           "arm": "A1",
@@ -3817,6 +3817,9 @@
           "detector_censor_bound_s": 97.91,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-6-dt0.005",
+          "native_trace_sha256": "ce32c3b1e08b49359f83c9bbe4004129b44301217ed3f3b0ff60fd7d36d4ff68",
+          "native_config_sha256": "34bac7d5e536d1f1b6b3dc734d346c645d87eee9dddfe74a2d04734d55348682",
           "detector_observation": {
             "confirmation_s": 8.687999999999999,
             "observer_mass_support_start_s": 5.137,
@@ -3835,10 +3838,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -6.633000000000002,
-          "detector_squared_error_or_bound_s2": 43.996689000000025,
-          "native_run": "A1-constant-6-dt0.005",
-          "native_trace_sha256": "ce32c3b1e08b49359f83c9bbe4004129b44301217ed3f3b0ff60fd7d36d4ff68",
-          "native_config_sha256": "34bac7d5e536d1f1b6b3dc734d346c645d87eee9dddfe74a2d04734d55348682"
+          "detector_squared_error_or_bound_s2": 43.996689000000025
         },
         {
           "arm": "A1",
@@ -3856,6 +3856,9 @@
           "detector_censor_bound_s": 97.89699999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-6-dt0.005",
+          "native_trace_sha256": "ce32c3b1e08b49359f83c9bbe4004129b44301217ed3f3b0ff60fd7d36d4ff68",
+          "native_config_sha256": "34bac7d5e536d1f1b6b3dc734d346c645d87eee9dddfe74a2d04734d55348682",
           "detector_observation": {
             "confirmation_s": 8.687000000000001,
             "observer_mass_support_start_s": 5.138,
@@ -3874,10 +3877,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -6.072,
-          "detector_squared_error_or_bound_s2": 36.869184000000004,
-          "native_run": "A1-constant-6-dt0.005",
-          "native_trace_sha256": "ce32c3b1e08b49359f83c9bbe4004129b44301217ed3f3b0ff60fd7d36d4ff68",
-          "native_config_sha256": "34bac7d5e536d1f1b6b3dc734d346c645d87eee9dddfe74a2d04734d55348682"
+          "detector_squared_error_or_bound_s2": 36.869184000000004
         },
         {
           "arm": "A1",
@@ -3895,6 +3895,9 @@
           "detector_censor_bound_s": 97.91,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-6-dt0.005",
+          "native_trace_sha256": "ce32c3b1e08b49359f83c9bbe4004129b44301217ed3f3b0ff60fd7d36d4ff68",
+          "native_config_sha256": "34bac7d5e536d1f1b6b3dc734d346c645d87eee9dddfe74a2d04734d55348682",
           "detector_observation": {
             "confirmation_s": 8.688,
             "observer_mass_support_start_s": 5.138,
@@ -3913,10 +3916,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -3.83,
-          "detector_squared_error_or_bound_s2": 14.6689,
-          "native_run": "A1-constant-6-dt0.005",
-          "native_trace_sha256": "ce32c3b1e08b49359f83c9bbe4004129b44301217ed3f3b0ff60fd7d36d4ff68",
-          "native_config_sha256": "34bac7d5e536d1f1b6b3dc734d346c645d87eee9dddfe74a2d04734d55348682"
+          "detector_squared_error_or_bound_s2": 14.6689
         },
         {
           "arm": "A1",
@@ -3934,6 +3934,9 @@
           "detector_censor_bound_s": 97.887,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-6-dt0.005",
+          "native_trace_sha256": "ce32c3b1e08b49359f83c9bbe4004129b44301217ed3f3b0ff60fd7d36d4ff68",
+          "native_config_sha256": "34bac7d5e536d1f1b6b3dc734d346c645d87eee9dddfe74a2d04734d55348682",
           "detector_observation": {
             "confirmation_s": 8.686,
             "observer_mass_support_start_s": 5.137,
@@ -3952,10 +3955,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -5.8850000000000025,
-          "detector_squared_error_or_bound_s2": 34.63322500000003,
-          "native_run": "A1-constant-6-dt0.005",
-          "native_trace_sha256": "ce32c3b1e08b49359f83c9bbe4004129b44301217ed3f3b0ff60fd7d36d4ff68",
-          "native_config_sha256": "34bac7d5e536d1f1b6b3dc734d346c645d87eee9dddfe74a2d04734d55348682"
+          "detector_squared_error_or_bound_s2": 34.63322500000003
         },
         {
           "arm": "A1",
@@ -3973,6 +3973,9 @@
           "detector_censor_bound_s": 97.904,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-6-dt0.005",
+          "native_trace_sha256": "ce32c3b1e08b49359f83c9bbe4004129b44301217ed3f3b0ff60fd7d36d4ff68",
+          "native_config_sha256": "34bac7d5e536d1f1b6b3dc734d346c645d87eee9dddfe74a2d04734d55348682",
           "detector_observation": {
             "confirmation_s": 8.687999999999999,
             "observer_mass_support_start_s": 5.139,
@@ -3991,10 +3994,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -9.341000000000001,
-          "detector_squared_error_or_bound_s2": 87.25428100000002,
-          "native_run": "A1-constant-6-dt0.005",
-          "native_trace_sha256": "ce32c3b1e08b49359f83c9bbe4004129b44301217ed3f3b0ff60fd7d36d4ff68",
-          "native_config_sha256": "34bac7d5e536d1f1b6b3dc734d346c645d87eee9dddfe74a2d04734d55348682"
+          "detector_squared_error_or_bound_s2": 87.25428100000002
         },
         {
           "arm": "A1",
@@ -4012,6 +4012,9 @@
           "detector_censor_bound_s": 97.85900000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-6-dt0.005",
+          "native_trace_sha256": "ce32c3b1e08b49359f83c9bbe4004129b44301217ed3f3b0ff60fd7d36d4ff68",
+          "native_config_sha256": "34bac7d5e536d1f1b6b3dc734d346c645d87eee9dddfe74a2d04734d55348682",
           "detector_observation": {
             "confirmation_s": 8.690999999999999,
             "observer_mass_support_start_s": 5.14,
@@ -4030,10 +4033,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -5.795000000000001,
-          "detector_squared_error_or_bound_s2": 33.58202500000001,
-          "native_run": "A1-constant-6-dt0.005",
-          "native_trace_sha256": "ce32c3b1e08b49359f83c9bbe4004129b44301217ed3f3b0ff60fd7d36d4ff68",
-          "native_config_sha256": "34bac7d5e536d1f1b6b3dc734d346c645d87eee9dddfe74a2d04734d55348682"
+          "detector_squared_error_or_bound_s2": 33.58202500000001
         },
         {
           "arm": "A1",
@@ -4051,6 +4051,9 @@
           "detector_censor_bound_s": 97.903,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-7-dt0.005",
+          "native_trace_sha256": "e061c124c32b17c11e630e5001cc123e9bdb5f9ecb9e949c0d3357b703f72955",
+          "native_config_sha256": "c37d0b18946f9145e0e013a8270a805559a4826c22e64c1362a089a03cac9b3f",
           "detector_observation": {
             "confirmation_s": 8.780999999999999,
             "observer_mass_support_start_s": 5.232,
@@ -4069,10 +4072,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -6.447000000000002,
-          "detector_squared_error_or_bound_s2": 41.56380900000002,
-          "native_run": "A1-constant-7-dt0.005",
-          "native_trace_sha256": "e061c124c32b17c11e630e5001cc123e9bdb5f9ecb9e949c0d3357b703f72955",
-          "native_config_sha256": "c37d0b18946f9145e0e013a8270a805559a4826c22e64c1362a089a03cac9b3f"
+          "detector_squared_error_or_bound_s2": 41.56380900000002
         },
         {
           "arm": "A1",
@@ -4090,6 +4090,9 @@
           "detector_censor_bound_s": 97.886,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-7-dt0.005",
+          "native_trace_sha256": "e061c124c32b17c11e630e5001cc123e9bdb5f9ecb9e949c0d3357b703f72955",
+          "native_config_sha256": "c37d0b18946f9145e0e013a8270a805559a4826c22e64c1362a089a03cac9b3f",
           "detector_observation": {
             "confirmation_s": 8.779,
             "observer_mass_support_start_s": 5.23,
@@ -4108,10 +4111,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -10.927999999999999,
-          "detector_squared_error_or_bound_s2": 119.42118399999998,
-          "native_run": "A1-constant-7-dt0.005",
-          "native_trace_sha256": "e061c124c32b17c11e630e5001cc123e9bdb5f9ecb9e949c0d3357b703f72955",
-          "native_config_sha256": "c37d0b18946f9145e0e013a8270a805559a4826c22e64c1362a089a03cac9b3f"
+          "detector_squared_error_or_bound_s2": 119.42118399999998
         },
         {
           "arm": "A1",
@@ -4129,6 +4129,9 @@
           "detector_censor_bound_s": 97.868,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-7-dt0.005",
+          "native_trace_sha256": "e061c124c32b17c11e630e5001cc123e9bdb5f9ecb9e949c0d3357b703f72955",
+          "native_config_sha256": "c37d0b18946f9145e0e013a8270a805559a4826c22e64c1362a089a03cac9b3f",
           "detector_observation": {
             "confirmation_s": 8.778,
             "observer_mass_support_start_s": 5.23,
@@ -4147,10 +4150,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -8.218,
-          "detector_squared_error_or_bound_s2": 67.535524,
-          "native_run": "A1-constant-7-dt0.005",
-          "native_trace_sha256": "e061c124c32b17c11e630e5001cc123e9bdb5f9ecb9e949c0d3357b703f72955",
-          "native_config_sha256": "c37d0b18946f9145e0e013a8270a805559a4826c22e64c1362a089a03cac9b3f"
+          "detector_squared_error_or_bound_s2": 67.535524
         },
         {
           "arm": "A1",
@@ -4168,6 +4168,9 @@
           "detector_censor_bound_s": 97.88000000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-7-dt0.005",
+          "native_trace_sha256": "e061c124c32b17c11e630e5001cc123e9bdb5f9ecb9e949c0d3357b703f72955",
+          "native_config_sha256": "c37d0b18946f9145e0e013a8270a805559a4826c22e64c1362a089a03cac9b3f",
           "detector_observation": {
             "confirmation_s": 8.779,
             "observer_mass_support_start_s": 5.2299999999999995,
@@ -4186,10 +4189,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -8.218,
-          "detector_squared_error_or_bound_s2": 67.535524,
-          "native_run": "A1-constant-7-dt0.005",
-          "native_trace_sha256": "e061c124c32b17c11e630e5001cc123e9bdb5f9ecb9e949c0d3357b703f72955",
-          "native_config_sha256": "c37d0b18946f9145e0e013a8270a805559a4826c22e64c1362a089a03cac9b3f"
+          "detector_squared_error_or_bound_s2": 67.535524
         },
         {
           "arm": "A1",
@@ -4207,6 +4207,9 @@
           "detector_censor_bound_s": 97.905,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-8-dt0.005",
+          "native_trace_sha256": "26e5301c28da257e283faafa303439dfe91e4456211125737e8a89e9b7454ec5",
+          "native_config_sha256": "465bf66f82065fa0a77547596a1162ac901ea294482c9197797bce1012ab6208",
           "detector_observation": {
             "confirmation_s": 9.062000000000001,
             "observer_mass_support_start_s": 5.512,
@@ -4225,10 +4228,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -3.735999999999998,
-          "detector_squared_error_or_bound_s2": 13.957695999999984,
-          "native_run": "A1-constant-8-dt0.005",
-          "native_trace_sha256": "26e5301c28da257e283faafa303439dfe91e4456211125737e8a89e9b7454ec5",
-          "native_config_sha256": "465bf66f82065fa0a77547596a1162ac901ea294482c9197797bce1012ab6208"
+          "detector_squared_error_or_bound_s2": 13.957695999999984
         },
         {
           "arm": "A1",
@@ -4246,6 +4246,9 @@
           "detector_censor_bound_s": 97.87899999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-8-dt0.005",
+          "native_trace_sha256": "26e5301c28da257e283faafa303439dfe91e4456211125737e8a89e9b7454ec5",
+          "native_config_sha256": "465bf66f82065fa0a77547596a1162ac901ea294482c9197797bce1012ab6208",
           "detector_observation": {
             "confirmation_s": 8.992,
             "observer_mass_support_start_s": 5.433,
@@ -4264,10 +4267,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -11.520999999999999,
-          "detector_squared_error_or_bound_s2": 132.73344099999997,
-          "native_run": "A1-constant-8-dt0.005",
-          "native_trace_sha256": "26e5301c28da257e283faafa303439dfe91e4456211125737e8a89e9b7454ec5",
-          "native_config_sha256": "465bf66f82065fa0a77547596a1162ac901ea294482c9197797bce1012ab6208"
+          "detector_squared_error_or_bound_s2": 132.73344099999997
         },
         {
           "arm": "A1",
@@ -4285,6 +4285,9 @@
           "detector_censor_bound_s": 97.865,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-8-dt0.005",
+          "native_trace_sha256": "26e5301c28da257e283faafa303439dfe91e4456211125737e8a89e9b7454ec5",
+          "native_config_sha256": "465bf66f82065fa0a77547596a1162ac901ea294482c9197797bce1012ab6208",
           "detector_observation": {
             "confirmation_s": 9.056999999999999,
             "observer_mass_support_start_s": 5.5089999999999995,
@@ -4303,10 +4306,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -9.802,
-          "detector_squared_error_or_bound_s2": 96.07920399999999,
-          "native_run": "A1-constant-8-dt0.005",
-          "native_trace_sha256": "26e5301c28da257e283faafa303439dfe91e4456211125737e8a89e9b7454ec5",
-          "native_config_sha256": "465bf66f82065fa0a77547596a1162ac901ea294482c9197797bce1012ab6208"
+          "detector_squared_error_or_bound_s2": 96.07920399999999
         },
         {
           "arm": "A1",
@@ -4324,6 +4324,9 @@
           "detector_censor_bound_s": 97.943,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-8-dt0.005",
+          "native_trace_sha256": "26e5301c28da257e283faafa303439dfe91e4456211125737e8a89e9b7454ec5",
+          "native_config_sha256": "465bf66f82065fa0a77547596a1162ac901ea294482c9197797bce1012ab6208",
           "detector_observation": {
             "confirmation_s": 9.065999999999999,
             "observer_mass_support_start_s": 5.514999999999999,
@@ -4342,10 +4345,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -4.299000000000001,
-          "detector_squared_error_or_bound_s2": 18.481401000000012,
-          "native_run": "A1-constant-8-dt0.005",
-          "native_trace_sha256": "26e5301c28da257e283faafa303439dfe91e4456211125737e8a89e9b7454ec5",
-          "native_config_sha256": "465bf66f82065fa0a77547596a1162ac901ea294482c9197797bce1012ab6208"
+          "detector_squared_error_or_bound_s2": 18.481401000000012
         },
         {
           "arm": "A1",
@@ -4363,6 +4363,9 @@
           "detector_censor_bound_s": 97.85300000000001,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-9-dt0.005",
+          "native_trace_sha256": "31b1f94f05318a140c9db7c145c93777fbb3ed189de0ca1543e72a7ffdf3676d",
+          "native_config_sha256": "c81a4e085eb1f85162eb5fbccef416221fa92fc3f920ec59afb763ade646cb96",
           "detector_observation": {
             "confirmation_s": 9.336,
             "observer_mass_support_start_s": 5.789,
@@ -4381,10 +4384,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -7.1899999999999995,
-          "detector_squared_error_or_bound_s2": 51.696099999999994,
-          "native_run": "A1-constant-9-dt0.005",
-          "native_trace_sha256": "31b1f94f05318a140c9db7c145c93777fbb3ed189de0ca1543e72a7ffdf3676d",
-          "native_config_sha256": "c81a4e085eb1f85162eb5fbccef416221fa92fc3f920ec59afb763ade646cb96"
+          "detector_squared_error_or_bound_s2": 51.696099999999994
         },
         {
           "arm": "A1",
@@ -4402,6 +4402,9 @@
           "detector_censor_bound_s": 97.91399999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-9-dt0.005",
+          "native_trace_sha256": "31b1f94f05318a140c9db7c145c93777fbb3ed189de0ca1543e72a7ffdf3676d",
+          "native_config_sha256": "c81a4e085eb1f85162eb5fbccef416221fa92fc3f920ec59afb763ade646cb96",
           "detector_observation": {
             "confirmation_s": 9.325,
             "observer_mass_support_start_s": 5.782000000000001,
@@ -4420,10 +4423,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -7.180000000000001,
-          "detector_squared_error_or_bound_s2": 51.552400000000006,
-          "native_run": "A1-constant-9-dt0.005",
-          "native_trace_sha256": "31b1f94f05318a140c9db7c145c93777fbb3ed189de0ca1543e72a7ffdf3676d",
-          "native_config_sha256": "c81a4e085eb1f85162eb5fbccef416221fa92fc3f920ec59afb763ade646cb96"
+          "detector_squared_error_or_bound_s2": 51.552400000000006
         },
         {
           "arm": "A1",
@@ -4441,6 +4441,9 @@
           "detector_censor_bound_s": 97.93799999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-9-dt0.005",
+          "native_trace_sha256": "31b1f94f05318a140c9db7c145c93777fbb3ed189de0ca1543e72a7ffdf3676d",
+          "native_config_sha256": "c81a4e085eb1f85162eb5fbccef416221fa92fc3f920ec59afb763ade646cb96",
           "detector_observation": {
             "confirmation_s": 9.328,
             "observer_mass_support_start_s": 5.784,
@@ -4459,10 +4462,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -11.846,
-          "detector_squared_error_or_bound_s2": 140.327716,
-          "native_run": "A1-constant-9-dt0.005",
-          "native_trace_sha256": "31b1f94f05318a140c9db7c145c93777fbb3ed189de0ca1543e72a7ffdf3676d",
-          "native_config_sha256": "c81a4e085eb1f85162eb5fbccef416221fa92fc3f920ec59afb763ade646cb96"
+          "detector_squared_error_or_bound_s2": 140.327716
         },
         {
           "arm": "A1",
@@ -4480,6 +4480,9 @@
           "detector_censor_bound_s": 97.905,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-9-dt0.005",
+          "native_trace_sha256": "31b1f94f05318a140c9db7c145c93777fbb3ed189de0ca1543e72a7ffdf3676d",
+          "native_config_sha256": "c81a4e085eb1f85162eb5fbccef416221fa92fc3f920ec59afb763ade646cb96",
           "detector_observation": {
             "confirmation_s": 9.333,
             "observer_mass_support_start_s": 5.787000000000001,
@@ -4498,10 +4501,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -8.025999999999998,
-          "detector_squared_error_or_bound_s2": 64.41667599999997,
-          "native_run": "A1-constant-9-dt0.005",
-          "native_trace_sha256": "31b1f94f05318a140c9db7c145c93777fbb3ed189de0ca1543e72a7ffdf3676d",
-          "native_config_sha256": "c81a4e085eb1f85162eb5fbccef416221fa92fc3f920ec59afb763ade646cb96"
+          "detector_squared_error_or_bound_s2": 64.41667599999997
         },
         {
           "arm": "A1",
@@ -4519,6 +4519,9 @@
           "detector_censor_bound_s": 97.929,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-9-dt0.005",
+          "native_trace_sha256": "31b1f94f05318a140c9db7c145c93777fbb3ed189de0ca1543e72a7ffdf3676d",
+          "native_config_sha256": "c81a4e085eb1f85162eb5fbccef416221fa92fc3f920ec59afb763ade646cb96",
           "detector_observation": {
             "confirmation_s": 9.334,
             "observer_mass_support_start_s": 5.787000000000001,
@@ -4537,10 +4540,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -12.322,
-          "detector_squared_error_or_bound_s2": 151.83168399999997,
-          "native_run": "A1-constant-9-dt0.005",
-          "native_trace_sha256": "31b1f94f05318a140c9db7c145c93777fbb3ed189de0ca1543e72a7ffdf3676d",
-          "native_config_sha256": "c81a4e085eb1f85162eb5fbccef416221fa92fc3f920ec59afb763ade646cb96"
+          "detector_squared_error_or_bound_s2": 151.83168399999997
         },
         {
           "arm": "A1",
@@ -4558,6 +4558,9 @@
           "detector_censor_bound_s": 97.877,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-11-dt0.005",
+          "native_trace_sha256": "2ce03c7041bf129472f105a2b98d5d39c130785cada48ead4ff32f4157628619",
+          "native_config_sha256": "7fc3dd163eca7caccbfeb7e109f8031629efbe321859651b2d584861e39400a8",
           "detector_observation": {
             "confirmation_s": 9.889,
             "observer_mass_support_start_s": 6.343999999999999,
@@ -4576,10 +4579,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -10.916000000000002,
-          "detector_squared_error_or_bound_s2": 119.15905600000005,
-          "native_run": "A1-constant-11-dt0.005",
-          "native_trace_sha256": "2ce03c7041bf129472f105a2b98d5d39c130785cada48ead4ff32f4157628619",
-          "native_config_sha256": "7fc3dd163eca7caccbfeb7e109f8031629efbe321859651b2d584861e39400a8"
+          "detector_squared_error_or_bound_s2": 119.15905600000005
         },
         {
           "arm": "A1",
@@ -4597,6 +4597,9 @@
           "detector_censor_bound_s": 97.905,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-11-dt0.005",
+          "native_trace_sha256": "2ce03c7041bf129472f105a2b98d5d39c130785cada48ead4ff32f4157628619",
+          "native_config_sha256": "7fc3dd163eca7caccbfeb7e109f8031629efbe321859651b2d584861e39400a8",
           "detector_observation": {
             "confirmation_s": 9.893,
             "observer_mass_support_start_s": 6.346,
@@ -4615,10 +4618,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -7.838999999999999,
-          "detector_squared_error_or_bound_s2": 61.44992099999998,
-          "native_run": "A1-constant-11-dt0.005",
-          "native_trace_sha256": "2ce03c7041bf129472f105a2b98d5d39c130785cada48ead4ff32f4157628619",
-          "native_config_sha256": "7fc3dd163eca7caccbfeb7e109f8031629efbe321859651b2d584861e39400a8"
+          "detector_squared_error_or_bound_s2": 61.44992099999998
         },
         {
           "arm": "A1",
@@ -4636,6 +4636,9 @@
           "detector_censor_bound_s": 97.866,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-11-dt0.005",
+          "native_trace_sha256": "2ce03c7041bf129472f105a2b98d5d39c130785cada48ead4ff32f4157628619",
+          "native_config_sha256": "7fc3dd163eca7caccbfeb7e109f8031629efbe321859651b2d584861e39400a8",
           "detector_observation": {
             "confirmation_s": 9.889,
             "observer_mass_support_start_s": 6.342999999999999,
@@ -4654,10 +4657,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -8.211000000000002,
-          "detector_squared_error_or_bound_s2": 67.42052100000004,
-          "native_run": "A1-constant-11-dt0.005",
-          "native_trace_sha256": "2ce03c7041bf129472f105a2b98d5d39c130785cada48ead4ff32f4157628619",
-          "native_config_sha256": "7fc3dd163eca7caccbfeb7e109f8031629efbe321859651b2d584861e39400a8"
+          "detector_squared_error_or_bound_s2": 67.42052100000004
         },
         {
           "arm": "A1",
@@ -4675,6 +4675,9 @@
           "detector_censor_bound_s": 97.946,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-11-dt0.005",
+          "native_trace_sha256": "2ce03c7041bf129472f105a2b98d5d39c130785cada48ead4ff32f4157628619",
+          "native_config_sha256": "7fc3dd163eca7caccbfeb7e109f8031629efbe321859651b2d584861e39400a8",
           "detector_observation": {
             "confirmation_s": 9.889000000000001,
             "observer_mass_support_start_s": 6.343,
@@ -4693,10 +4696,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -7.557,
-          "detector_squared_error_or_bound_s2": 57.10824900000001,
-          "native_run": "A1-constant-11-dt0.005",
-          "native_trace_sha256": "2ce03c7041bf129472f105a2b98d5d39c130785cada48ead4ff32f4157628619",
-          "native_config_sha256": "7fc3dd163eca7caccbfeb7e109f8031629efbe321859651b2d584861e39400a8"
+          "detector_squared_error_or_bound_s2": 57.10824900000001
         },
         {
           "arm": "A1",
@@ -4714,6 +4714,9 @@
           "detector_censor_bound_s": 97.873,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-13-dt0.005",
+          "native_trace_sha256": "23f1f61267319aa83030690aa9d0a57fcb6dd700131d5e7f765e9412a4ecdbb7",
+          "native_config_sha256": "93083b1b24f114f155d1e11bc2036c5eb6976962395bc6adcafff9e684579877",
           "detector_observation": {
             "confirmation_s": 10.575,
             "observer_mass_support_start_s": 7.0200000000000005,
@@ -4732,10 +4735,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -6.27,
-          "detector_squared_error_or_bound_s2": 39.31289999999999,
-          "native_run": "A1-constant-13-dt0.005",
-          "native_trace_sha256": "23f1f61267319aa83030690aa9d0a57fcb6dd700131d5e7f765e9412a4ecdbb7",
-          "native_config_sha256": "93083b1b24f114f155d1e11bc2036c5eb6976962395bc6adcafff9e684579877"
+          "detector_squared_error_or_bound_s2": 39.31289999999999
         },
         {
           "arm": "A1",
@@ -4753,6 +4753,9 @@
           "detector_censor_bound_s": 97.86999999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-13-dt0.005",
+          "native_trace_sha256": "23f1f61267319aa83030690aa9d0a57fcb6dd700131d5e7f765e9412a4ecdbb7",
+          "native_config_sha256": "93083b1b24f114f155d1e11bc2036c5eb6976962395bc6adcafff9e684579877",
           "detector_observation": {
             "confirmation_s": 10.566,
             "observer_mass_support_start_s": 7.0120000000000005,
@@ -4771,10 +4774,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -8.977,
-          "detector_squared_error_or_bound_s2": 80.586529,
-          "native_run": "A1-constant-13-dt0.005",
-          "native_trace_sha256": "23f1f61267319aa83030690aa9d0a57fcb6dd700131d5e7f765e9412a4ecdbb7",
-          "native_config_sha256": "93083b1b24f114f155d1e11bc2036c5eb6976962395bc6adcafff9e684579877"
+          "detector_squared_error_or_bound_s2": 80.586529
         },
         {
           "arm": "A1",
@@ -4792,6 +4792,9 @@
           "detector_censor_bound_s": 97.858,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-13-dt0.005",
+          "native_trace_sha256": "23f1f61267319aa83030690aa9d0a57fcb6dd700131d5e7f765e9412a4ecdbb7",
+          "native_config_sha256": "93083b1b24f114f155d1e11bc2036c5eb6976962395bc6adcafff9e684579877",
           "detector_observation": {
             "confirmation_s": 10.552,
             "observer_mass_support_start_s": 7.0040000000000004,
@@ -4810,10 +4813,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -12.512999999999998,
-          "detector_squared_error_or_bound_s2": 156.57516899999996,
-          "native_run": "A1-constant-13-dt0.005",
-          "native_trace_sha256": "23f1f61267319aa83030690aa9d0a57fcb6dd700131d5e7f765e9412a4ecdbb7",
-          "native_config_sha256": "93083b1b24f114f155d1e11bc2036c5eb6976962395bc6adcafff9e684579877"
+          "detector_squared_error_or_bound_s2": 156.57516899999996
         },
         {
           "arm": "A1",
@@ -4831,6 +4831,9 @@
           "detector_censor_bound_s": 97.93299999999999,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-13-dt0.005",
+          "native_trace_sha256": "23f1f61267319aa83030690aa9d0a57fcb6dd700131d5e7f765e9412a4ecdbb7",
+          "native_config_sha256": "93083b1b24f114f155d1e11bc2036c5eb6976962395bc6adcafff9e684579877",
           "detector_observation": {
             "confirmation_s": 10.540000000000001,
             "observer_mass_support_start_s": 6.995000000000001,
@@ -4849,10 +4852,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -10.633000000000003,
-          "detector_squared_error_or_bound_s2": 113.06068900000005,
-          "native_run": "A1-constant-13-dt0.005",
-          "native_trace_sha256": "23f1f61267319aa83030690aa9d0a57fcb6dd700131d5e7f765e9412a4ecdbb7",
-          "native_config_sha256": "93083b1b24f114f155d1e11bc2036c5eb6976962395bc6adcafff9e684579877"
+          "detector_squared_error_or_bound_s2": 113.06068900000005
         },
         {
           "arm": "A1",
@@ -4870,6 +4870,9 @@
           "detector_censor_bound_s": 97.927,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-13-dt0.005",
+          "native_trace_sha256": "23f1f61267319aa83030690aa9d0a57fcb6dd700131d5e7f765e9412a4ecdbb7",
+          "native_config_sha256": "93083b1b24f114f155d1e11bc2036c5eb6976962395bc6adcafff9e684579877",
           "detector_observation": {
             "confirmation_s": 10.538,
             "observer_mass_support_start_s": 6.995,
@@ -4888,10 +4891,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -9.512,
-          "detector_squared_error_or_bound_s2": 90.47814400000001,
-          "native_run": "A1-constant-13-dt0.005",
-          "native_trace_sha256": "23f1f61267319aa83030690aa9d0a57fcb6dd700131d5e7f765e9412a4ecdbb7",
-          "native_config_sha256": "93083b1b24f114f155d1e11bc2036c5eb6976962395bc6adcafff9e684579877"
+          "detector_squared_error_or_bound_s2": 90.47814400000001
         },
         {
           "arm": "A1",
@@ -4909,6 +4909,9 @@
           "detector_censor_bound_s": 97.922,
           "unavailable_reason": null,
           "native_qualification_failed": false,
+          "native_run": "A1-constant-13-dt0.005",
+          "native_trace_sha256": "23f1f61267319aa83030690aa9d0a57fcb6dd700131d5e7f765e9412a4ecdbb7",
+          "native_config_sha256": "93083b1b24f114f155d1e11bc2036c5eb6976962395bc6adcafff9e684579877",
           "detector_observation": {
             "confirmation_s": 10.631,
             "observer_mass_support_start_s": 7.087000000000001,
@@ -4927,10 +4930,7 @@
             "operator": "B0c clean_course then sustained_onset; original timestamps; beverage mass; gradient then Savitzky-Golay 31 samples/order 1; strict >0.5 g and >0.1 g/s for >=2 s; interval start"
           },
           "signed_detector_error_s": -9.139,
-          "detector_squared_error_or_bound_s2": 83.52132099999999,
-          "native_run": "A1-constant-13-dt0.005",
-          "native_trace_sha256": "23f1f61267319aa83030690aa9d0a57fcb6dd700131d5e7f765e9412a4ecdbb7",
-          "native_config_sha256": "93083b1b24f114f155d1e11bc2036c5eb6976962395bc6adcafff9e684579877"
+          "detector_squared_error_or_bound_s2": 83.52132099999999
         }
       ],
       "summary": [

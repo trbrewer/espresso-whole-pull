@@ -233,8 +233,14 @@ def hydraulic_predictions(args, bank, inputs, constants, histories, native, e1_r
                                available_brews=56-len(e1_unavailable),accuracy_grade='NOT_SCORED'))
             continue
         prediction=predictions[label]
-        scores.append(R.flow_score(inputs,prediction['endpoints'],prediction['traces'],
-            nominal_pressure if label in ('A0','A1 descriptive') else endpoint_pressure,label,scopes[label]))
+        score=R.flow_score(inputs,prediction['endpoints'],prediction['traces'],
+            nominal_pressure if label in ('A0','A1 descriptive') else endpoint_pressure,label,scopes[label])
+        score['forcing']='constant_descriptive' if label in ('A0','A1 descriptive') else 'measured_history'
+        score['trend_grade']='NOT_SCORED'
+        score['trend_note']='D0 late-trend windows can extend beyond retained 100-s support; no extrapolation'
+        if label in ('A0','A1 descriptive'):
+            score['reference_comparison_qualification']='In-sample descriptive comparison; not a like-for-like held-out gain over B1'
+        scores.append(score)
     paired = R.paired_comparison(inputs,predictions['A0'],predictions['A1 descriptive'],'native DESCRIPTIVE_ALL constants; descriptive')
     paired += R.paired_comparison(inputs,predictions['Python A A0-delay'],predictions['A1'],
                                  'reduced A0 comparator, qualified by A0 parity; ordinary-fold held-out')
@@ -366,9 +372,10 @@ def run_accounting(args, records, xc):
             if not case.is_dir() or not (case/'postProcessing/wholePull/0/traces.csv').is_file():
                 continue
             wall=float((case/'wall_seconds.txt').read_text())
+            executable=args.work.parent/('baseline-bin' if case.name=='off-main' else 'bin')/'espressoWholePullFoam'
             ledger.append(dict(run=case.name,namespace=namespace,
                 roles=['implementation verification' if namespace=='verification' else 'superseded off-report wrapper; native completed'],
-                native_completed=True,wall_seconds=wall,ranks=1,core_hours=wall/3600.,
+                native_completed=True,wall_seconds=wall,ranks=1,core_hours=wall/3600.,executable_sha256=D.digest(executable),
                 config_sha256=D.digest(case.with_name(case.name+'.json')),
                 trace_sha256=D.digest(case/'postProcessing/wholePull/0/traces.csv')))
     keys=[(r['namespace'],r['run']) for r in ledger]
@@ -460,6 +467,12 @@ def generate_report(args):
             expected=F.parameters_for(bank,record['forcing'],record['nominal_pressure_bar'])
             if record['delta_t_s']!=selected['delta_t_s'] or any(record['parameters'][k]!=v for k,v in expected.items()):
                 raise ValueError('Campaign transfer parameters or time step changed')
+            source=next((r for r in inputs if r['brew']==record['brew']),None)
+            history=(source['times_s'],source['pressure_bar']) if source else None
+            expected_config=V.scenario(expected,record['arm'],record['nominal_pressure_bar'],selected['delta_t_s'],
+                                       xc=xc['xc_9bar'] if record['arm']=='A2' else None,history=history)
+            if F.hashlib.sha256((json.dumps(expected_config,indent=2)+'\n').encode()).hexdigest()!=record['config_sha256']:
+                raise ValueError('Retained pressure history, geometry or initial state changed')
         record['numerical_sanity']=D.final_field_sanity(args.work/record['run'])
         record['numerical_sanity'].pop('positive_e1_multiplier')
         if not record['numerical_sanity']['finite_values']:
@@ -478,6 +491,8 @@ def generate_report(args):
     constant_chosen={r['brew']:constants['A1'][r['nominal_pressure_bar']] for r in inputs}
     score,rows,summary=onset_assessment(inputs,constant_chosen,args.work,contexts,'A1','native DESCRIPTIVE_ALL constants; descriptive')
     descriptive_onset=descriptive_onset_comparison(inputs,dict(A0=assessments['A0'],A1=dict(score=score,rows=rows,summary=summary)))
+    onsets.extend(dict(row,arm='A1 descriptive') for row in summary)
+    onset_rows.extend(dict(row,arm='A1 descriptive') for row in rows)
     for score in scores:
         if score['arm'] in onset_scores:score.update(onset_scores[score['arm']])
     qualification=[]
@@ -545,12 +560,15 @@ def generate_report(args):
                          rerun=False,modified=False,core_hours_excluded_from_this_task=True),
         qualification_failures=qualification,normalization_record='VERIFICATION_FINAL.json',
         follow_up_outside_this_PR='Consider a relative tolerance on the concentration-bound check; no successor implementation in this PR',
+        implementation_verification=json.loads((ROOT/'docs/demonstrations/FORM_A/VERIFICATION.json').read_text()),
+        implementation_verification_sha256=D.digest(ROOT/'docs/demonstrations/FORM_A/VERIFICATION.json'),
         run_roles=roles,native_execution_count=len(ledger),native_core_hours=sum(r['core_hours'] for r in ledger),
         geometry_postprocessing=postprocessing,total_core_hours=sum(r['core_hours'] for r in ledger)+postprocessing['core_hours'],
         runs=ledger,native_outputs='Retained outside Git; no native evidence deleted; no runtime caps',
         source_sha256={str(p.relative_to(ROOT)):D.digest(p) for p in [ROOT/'scripts'/n for n in
-            ('form_a_closeout.py','form_a_report.py','form_a_demonstration.py','form_a_verification.py','e1_demonstration.py','e1_verification.py')]
-            +[ROOT/'solver/espressoWholePullFoam/formAWholeBedClosure.H',ROOT/'solver/espressoWholePullFoam/espressoWholePullFoam.C']})
+            ('form_a_closeout.py','form_a_report.py','form_a_demonstration.py','form_a_verification.py','e1_demonstration.py','e1_verification.py','prepare_case.py')]
+            +[ROOT/'solver/espressoWholePullFoam/formAWholeBedClosure.H',ROOT/'solver/espressoWholePullFoam/espressoWholePullFoam.C',
+              ROOT/'config/reference_R0.json',ROOT/'dependencies/puckworks.lock.json']})
     args.out.mkdir(parents=True,exist_ok=True)
     for name,data in [('ENDPOINTS.csv',endpoint_rows),('GRADES.csv',scores),('FIRST_DRIP_BY_BREW.csv',onset_rows),
         ('FIRST_DRIP_BY_PRESSURE.csv',onsets),('PAIRED_COMPARISONS.csv',paired),('CONSTANT_COMPARISONS.csv',constant_comparison),
@@ -570,7 +588,7 @@ def plot_report(args, inputs, constants, partial, normalization, onsets, bank):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
-    colors=dict(A0='#4477aa',A1='#228833',E1='#aa3377',A2='#cc6677')
+    colors=dict(A0='#4477aa',A1='#228833',E1='#aa3377',A2='#cc6677',**{'A1 descriptive':'#ee7733'})
     fig,ax=plt.subplots(figsize=(8,4.8),layout='constrained')
     groups=[[r['observed_endpoint_g_s'] for r in inputs if r['nominal_pressure_bar']==p] for p in NOMINAL]
     means=np.array([np.mean(g) for g in groups])
@@ -594,20 +612,22 @@ def plot_report(args, inputs, constants, partial, normalization, onsets, bank):
     for j,name in enumerate(('front','detector')):
         for k in range(2):
             ax=axes[j,k];ax.plot(NOMINAL,observed,'ko-',linewidth=1,markersize=3,label='Observed B0c onset median')
-            for arm in ('E1','A0','A1'):
+            for arm in ('E1','A0','A1 descriptive','A1'):
                 rows=sorted([r for r in onsets if r['arm']==arm],key=lambda r:r['nominal_pressure_bar'])
                 y=[r[name+'_median_s'] if r[name+'_median_s'] is not None else np.nan for r in rows]
-                ax.plot(NOMINAL,y,'o-',color=colors[arm],linewidth=1.2,markersize=3,
-                        label=arm+(' constants, descriptive' if arm=='A0' else ' histories'))
+                ax.plot(NOMINAL,y,'s--' if arm=='A1 descriptive' else 'o-',color=colors[arm],linewidth=1.2,markersize=3,
+                        label='A1 constants, descriptive' if arm=='A1 descriptive' else arm+(' constants, descriptive' if arm=='A0' else ' histories'))
                 for p,r in zip(NOMINAL,rows):
                     bound=r[name+'_median_lower_bound_s']
                     if r[name+'_median_s'] is None and bound is not None:
-                        ax.scatter(p,bound,marker='^',color=colors[arm],s=40)
+                        ax.scatter(p,bound,marker='^',edgecolors=colors[arm],
+                                   facecolors=colors[arm] if arm=='A1' else 'none',
+                                   s={'A0':90,'A1 descriptive':55,'A1':20}.get(arm,40))
             ax.set(xlabel='Nominal pressure (bar)',ylabel='Stable-clock time (s)',
                 title=('Sharp front (descriptive)' if name=='front' else 'B0c beverage-mass detector')+(' — all 11 conditions' if k==0 else ' — 3.5–13 bar detail'),
                 xlim=(.7,13.3) if k==0 else (3.2,13.3),ylim=(0,105) if k==0 else (0,23))
             ax.grid(alpha=.2)
-    axes[0,0].legend(fontsize=7);axes[1,0].text(.04,.95,'▲ median lower bound; missing evidence is omitted',transform=axes[1,0].transAxes,fontsize=7,va='top')
+    axes[0,0].legend(fontsize=7);axes[1,0].text(.04,.95,'△ 1 bar: A0 and both A1 onset median bounds ≈98 s',transform=axes[1,0].transAxes,fontsize=7,va='top')
     fig.savefig(args.out/'FIRST_DRIP.png',dpi=180);plt.close(fig)
 
 
@@ -635,7 +655,7 @@ def write_summary(args, manifest, onsets):
     differences=[]
     for row,label in zip(paired,('native descriptive','reduced held-out')):
         lo,hi=row['paired_interval_g_s']
-        differences.append(f"{label} {row['A0_rmse_g_s']:.3f}→{row['A1_rmse_g_s']:.3f}, Δ {row['A1_minus_A0_g_s']:+.3f} [{lo:+.3f}, {hi:+.3f}]")
+        differences.append(f"{label} {row['A0_rmse_g_s']:.3f}→{row['A1_rmse_g_s']:.3f}, Δ {row['A1_minus_A0_g_s']:+.4f} [{lo:+.4f}, {hi:+.4f}]")
     byp={r['nominal_pressure_bar']:r for r in onsets if r['arm']=='A1'}
     onset6=byp[6.]['detector_median_s'];onset13=byp[13.]['detector_median_s']
     increase=100*(onset13/onset6-1.) if onset6 is not None and onset13 is not None else None
@@ -644,19 +664,22 @@ def write_summary(args, manifest, onsets):
         '**capability demonstration, not validation. PHYSICAL_VALIDATION=NOT_ESTABLISHED; TARGET_EXPOSED.**','',
         f"**Held-out A1 endpoint/primary-trace RMSE: {a1['endpoint_rmse_g_s']:.3f}/{a1['trace_rmse_g_s']:.3f} g/s; B1: {a1['b1_endpoint_rmse_g_s']:.3f}/{a1['b1_trace_rmse_g_s']:.3f}.** "
         'This transfers form A, the selected four-parameter primary candidate (accuracy vs B1: NEAR / UNRESOLVED).','',
-        '| Prediction | Endpoint/primary/companion RMSE, g/s | ≥9-bar slope | Residuals 1/2/3.5 bar, g/s |',
+        '| Prediction | Endpoint/primary/companion RMSE, g/s | ≥9-bar slope, g/s/bar | Residuals 1/2/3.5 bar, g/s |',
         '|---|---|---|---|',*rows,'',
         'A0 is DESCRIPTIVE_ALL in-sample; its score is not a like-for-like gain over B1. ¹Delayed held-out curves explain wetting offsets; the A0-delay curve is the reduced A0 comparator, qualified by A0 parity, with hydraulic quantities only. '
         'Scored flow is liquid ρQ; observed flow is scale-derived beverage flow. '
         f'The largest A1 endpoint beverage-minus-ρQ difference is {diagnostic:.2g} g/s (ungraded).','',
         '**Paired A1−A0 endpoint RMSE:** '+'; '.join(differences)+' g/s. Intervals are conditional on transferred fits; [all three paired scores](PAIRED_COMPARISONS.csv) use identical condition/brew draws.','',
-        f"**Peaks:** D0 capacity **6.00 [5.77, 6.27] bar** (parameter-refit interval); finite 100-s solver sweeps: A0 **{peaks['A0']['continuous_sweep_peak_bar']:.3f}**, A1 **{peaks['A1']['continuous_sweep_peak_bar']:.3f}**, E1 **{peaks['E1']['continuous_sweep_peak_bar']:.3f} bar** (0.25-bar interpolation, not statistical intervals). "
+        f"**Peaks:** D0 capacity **6.00 [5.77, 6.27] bar** (parameter-refit interval); observed **6.1 [5.9, 6.3] bar**. "
+        f"Native front/100-s flow optima: A0 **13*/{peaks['A0']['continuous_sweep_peak_bar']:.3f}**, "
+        f"A1 **{peaks['A1']['fastest_wetting_bar']:.3f}/{peaks['A1']['continuous_sweep_peak_bar']:.3f}**, "
+        f"E1 **13*/{peaks['E1']['continuous_sweep_peak_bar']:.3f} bar** (*fastest tested boundary; 0.25-bar peak interpolation, no statistical solver interval). "
         f"Nominal peak grades A0/A1/E1: {scores['A0']['peak_grade']}/{a1['peak_grade']}/{scores['E1'].get('peak_grade','unavailable')}. "
-        f"A1 fastest physical wetting is {peaks['A1']['fastest_wetting_bar']:.3f} bar: the same capacity fixes both optima. "
-        "Observed fastest onset at nominal 3.5 bar; C0's 4.55 bar is a fitted-curve median.",'',
+        "A1 ties the two optima; observed fastest onset at nominal 3.5 bar; C0's 4.55 bar is a fitted-curve median.",'',
         '**Detector onset:** '+'; '.join(onset)+'. '
         f"Observed 6→13-bar onset increases **41.6%**; A1 measured-history detector medians are **{fmt(onset6,2)}→{fmt(onset13,2)} s ({fmt(increase,1)}%)**. "
         'Censor bounds use actual last confirmable timestamps, not 100 s. Old A0 front RMSE 8.63 s is superseded and ungraded; [all eleven medians](FIRST_DRIP_BY_PRESSURE.csv).','',
+        '**Native descriptive onset:** RMSE bounds A0/A1 **14.415/13.435 s**; paired bound difference **−0.980 [−2.634, +1.279] s**, conditional on transferred fits. Detector grid minima: **13/6 bar** ([table](DESCRIPTIVE_ONSET.md)); no grading change.','',
         'The uniform saturated solver reproduced the imposed lumped law. A0 retains pressure-accelerated R0 wetting; A1 leaves recovery at exp(−1) until outflow. The 6.57e−14 s analytic/native first-drip match verifies the implemented relation, not agreement with measured onset.','',
         A2_DISPOSITION,'',
         f"All **102 primary cases** completed; {len(manifest['qualification_failures'])} A1 concentration-bound qualification failures are retained without excluding hydraulic brews. "
@@ -681,7 +704,7 @@ def write_methods(args, manifest, onsets):
     for arm,s in manifest['onset_scores'].items():
         bounds=s.get('onset_rmse_interval_s');ci='unavailable' if bounds is None else f'[{bounds[0]:.3f}, {bounds[1]:.3f}]'
         lines.append(f"| {arm} | {s['available_brews']}/{s['intended_brews']} | {s.get('onset_detected_brews',0)} | {s.get('onset_censored_brews',0)} | {'≥' if s.get('onset_rmse_is_lower_bound') else ''}{fmt(s.get('onset_rmse_s'))} | {ci} | {s['onset_grade']} |")
-    lines += ['', 'The separate [native descriptive onset comparison](DESCRIPTIVE_ONSET.md) reports A0/A1 constants, signed condition errors, sharp fronts, grid minima and paired differences of censor-aware RMSE lower bounds. It does not change grades.', '', 'All intervals above are conditional on transferred fits; intervals in censored rows describe the RMSE lower bound. Per-brew censor bounds, observation timestamp hashes, detector support and eleven condition medians appear in the onset CSVs. The old A0 front-versus-observed-onset RMSE 8.627208878837111 s is preserved solely as a superseded diagnostic, with no grade.', '',
+    lines += ['', 'The separate [native descriptive onset comparison](DESCRIPTIVE_ONSET.md) reports A0/A1 constants, signed condition errors, sharp fronts, grid minima and paired differences of censor-aware RMSE lower bounds. It does not change grades.', '', 'All intervals above are conditional on transferred fits; intervals in censored rows describe the RMSE lower bound. Per-brew censor bounds, observation timestamp hashes, detector support and eleven condition medians appear in the onset CSVs. The old A0/E1 matched-constant front-versus-observed-onset RMSE 8.627208878837111 s is preserved solely as a superseded diagnostic, with no grade. The retained E1 history front diagnostic is 8.927776300556106 s, also ungraded.', '',
         '## Hydraulic comparisons and peaks','',
         'Endpoint/trace scoring remains liquid ρQ against scale-derived observed beverage flow. Native instantaneous beverage flow is ρQ/(1−instantaneous TDS); its endpoint difference from ρQ is an ungraded ENDPOINTS.csv diagnostic. Detector flow instead comes from differentiation/filtering of the resampled beverage mass.','',
         'The empirical Python A prediction starts M at stable-pressure zero. Its recomputed held-out endpoint score is '
@@ -694,7 +717,7 @@ def write_methods(args, manifest, onsets):
     for arm,s in manifest['time_step_studies'].items():
         rows=[r for r in s['comparisons'] if r['pressure_bar'] in (2.,6.,11.)]
         lines.append(f"| {arm} | {s['continuous_peak_bar']['fine']:.9f} / {s['continuous_peak_bar']['coarse']:.9f} | {max(abs(r['endpoint_change_g_s']) for r in rows):.9g} | {max(abs(r['first_drip_change_s']) for r in rows):.9g} |")
-    lines += ['', 'The pre-campaign study selected 0.005 s because these reported quantities were stable under halving the step; no extractable-inventory gate was used. A0/A1 controls are unchanged. A2’s earlier pressure-tolerance diagnostics and every superseded run remain separately accounted for.', '',
+    lines += ['', 'A0/E1 constant front times agree within 5.01e−13 s at all eleven nominal pressures, well within one time step ([comparison](A0_FIRST_DRIP_COMPARISON.csv)). The saved G1 uniform saturated check has maximum Python/native endpoint difference 1.19494097e−5 g/s; 14 disabled-path outputs were byte-identical to the retained main build. The 6.57e−14 s analytic/native wetting difference verifies the implemented relation, not agreement with measured onset.', '', 'The pre-campaign study selected 0.005 s because these reported quantities were stable under halving the step; no extractable-inventory gate was used. A0/A1 controls are unchanged. A2’s earlier pressure-tolerance diagnostics and every superseded run remain separately accounted for.', '',
         '## Retained failed qualifications','',
         'The original concentration check remains failed. Recovery reads retained config, traces, logs, runtime and hashes; it records native completion separately from numerical qualification, without rerunning, clipping or relaxing a bound. All 56 A1 histories remain in the hydraulic assessment because viscosity is constant and concentration does not feed back into A1 permeability.','',
         '| Brew | Maximum C versus 180 kg/m³ | Worst time, s | Exact final excess solute, g | Worst-time excess upper bound, g | Beverage mass at detector onset, g | Excess bound over onset support, g |',
@@ -708,6 +731,6 @@ def write_methods(args, manifest, onsets):
         '## Probe and figure captions','',A2_DISPOSITION,'',
         f"Xc at 6/9/11 bar is 0.8294438807 / 0.8422833432 / 0.8524326302. The [final normalization record](VERIFICATION_FINAL.json) separates the algebraic recovery cap {normal['algebraic_limits']['recovery_cap']:.9f} from the probe’s numerical observations. The 9-bar A2/A1 flow ratios at 10/20/40/60/100 s are "+' / '.join(f"{r['A2_over_A1_flow_ratio']:.6f}" for r in normal['numerical_probe_observations'])+'.','',
         '**Endpoint figure:** Observed means/ranges use scale-derived beverage flow; Python A, A0 and A1 show DESCRIPTIVE_ALL liquid-flow predictions at 100 s. Python original has no wetting delay. A2 markers are retained partial constants and its single 9-bar probe, not a completed sweep or grade. Connecting lines do not supply an uncertainty interval.','',
-        '**Onset figure:** All eleven nominal medians appear in full-range panels; right panels expand 3.5–13 bar. Sharp-front arrival is descriptive, plotted against observed detector onset for context. The lower panels use the full B0c beverage-mass operator. A0 constants are descriptive; E1/A1 use measured histories. Triangles indicate median lower bounds from actual censor times (front bounds remain 100 s); unavailable evidence is omitted and its coverage reported. A2 is retired and receives no completed onset curve or grade.','',
+        '**Onset figure:** All eleven nominal medians appear in full-range panels; right panels expand 3.5–13 bar. Sharp-front arrival is descriptive, plotted against observed detector onset for context. The lower panels use the full B0c beverage-mass operator. A0 and dashed A1 constants are descriptive; solid E1/A1 curves use measured histories. Nested triangles at 1 bar show the overlapping median lower bounds from actual censor times (front bounds remain 100 s); unavailable evidence is omitted and its coverage reported. A2 is retired and receives no completed onset curve or grade.','',
         '[Endpoint flow](ENDPOINT_FLOW.png) · [Front and detector onset](FIRST_DRIP.png) · [Probe observations](A2_PROBE.csv) · [Qualification details](QUALIFICATION_FAILURES.json).']
     (args.out/'METHODS.md').write_text('\n'.join(lines)+'\n')

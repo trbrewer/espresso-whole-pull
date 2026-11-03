@@ -48,6 +48,8 @@ Recompute original, A0-delay and A1-delay Python A on E1's primary/companion mas
 Compare native descriptive A1−A0 and ordinary-fold held-out A1−reduced-A0 hydraulics;
 the latter uses authenticated E1/R0 delays, no beverage observer or borrowed solute.
 Report both scores and paired differences on identical draws (1,000; seed 20261103).
+For native constants, also report signed detector errors, fronts, nominal-grid onset
+minima and the paired difference of censor-aware onset RMSE bounds, descriptively.
 Reuse [existing bands][bands], individual 1/2/3.5 residuals and 9/11/13 slope regression.
 Separate D0 parameter-refit capacity intervals, numerical solver sweep peaks and
 nominal peak grades; label resamples “conditional on transferred fits.”
